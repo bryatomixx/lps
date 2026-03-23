@@ -1,6 +1,5 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import SplashCursorLazy from "@/components/SplashCursorLazy";
 import Problem from "@/components/Problem";
 import AIEmployee from "@/components/AIEmployee";
 import ROICalculator from "@/components/ROICalculator";
@@ -23,7 +22,6 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <SplashCursorLazy />
       <Nav />
       <main>
         {/* 1. Hero */}

@@ -454,31 +454,17 @@ export default function Hero() {
             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="hero-robot-wrap"
           >
-            {/* Glow rings */}
-            <motion.div
-              animate={{ scale: [1, 1.08, 1], opacity: [0.3, 0.5, 0.3] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              style={{
-                position: "absolute",
-                width: "85%",
-                height: "85%",
-                borderRadius: "50%",
-                border: "1px solid rgba(26,127,212,0.2)",
-                pointerEvents: "none",
-              }}
-            />
-            <motion.div
-              animate={{ scale: [1, 1.12, 1], opacity: [0.15, 0.3, 0.15] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-                borderRadius: "50%",
-                border: "1px solid rgba(200,148,26,0.12)",
-                pointerEvents: "none",
-              }}
-            />
+            {/* Glow rings — CSS animations (GPU compositor, no JS) */}
+            <div style={{
+              position: "absolute", width: "85%", height: "85%",
+              borderRadius: "50%", border: "1px solid rgba(26,127,212,0.2)",
+              pointerEvents: "none", animation: "glow-pulse 4s ease-in-out infinite",
+            }} />
+            <div style={{
+              position: "absolute", width: "100%", height: "100%",
+              borderRadius: "50%", border: "1px solid rgba(200,148,26,0.12)",
+              pointerEvents: "none", animation: "glow-pulse 4s ease-in-out infinite 0.5s",
+            }} />
             <div
               style={{
                 position: "absolute",
