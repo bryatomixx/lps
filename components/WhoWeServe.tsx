@@ -39,7 +39,7 @@ const industries = [
     name: "Dental & Healthcare",
     slug: "dental",
     desc: "Every missed appointment is lost revenue. Every unanswered call is a patient who went to the next clinic on the list.",
-    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d28d3eae5fc91f63b3.png",
+    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d2f3d78f630c1a9f7e.png",
     items: [
       "24/7 appointment booking — no receptionist needed after hours",
       "Automated reminders that cut no-shows by up to 60%",
@@ -54,7 +54,7 @@ const industries = [
     name: "Med Spas & Aesthetics",
     slug: "med-spa",
     desc: "Clients ghost after their first visit. The money is in the rebooking — and that only happens when the follow-up is automatic.",
-    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d28d3eae4ef11f63b4.png",
+    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d28d3eaee28e1f63b3.png",
     items: [
       "Automated rebooking sequence after every treatment",
       "Upsell sequences for complementary services",
@@ -69,7 +69,7 @@ const industries = [
     name: "Contractors & Home Services",
     slug: "contractors",
     desc: "You're on a job site. You miss calls. Those missed calls are your competitors' new clients.",
-    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d28d3eae5a0c1f63b5.png",
+    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d2c2389c1a78536c6c.png",
     items: [
       "Missed call text-back — every missed call gets an immediate SMS",
       "AI voice agent answers inbound calls and books estimates",
@@ -84,7 +84,7 @@ const industries = [
     name: "Tax & Accounting Firms",
     slug: "tax-accounting",
     desc: "Tax season is chaos. Document collection, deadline reminders, client follow-up — all of it can be automated.",
-    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d28d3eae567a1f63b6.png",
+    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d28cb259174841bf11.png",
     items: [
       "Document collection sequences — automated reminders until complete",
       "Tax season intake — fully automated new client onboarding",
@@ -99,7 +99,7 @@ const industries = [
     name: "Restaurants & Local Business",
     slug: "restaurants",
     desc: "You compete on Google reviews and repeat visits. Both can be driven by automation.",
-    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d28d3eae07f11f63b7.png",
+    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d27fc07c048f9b8b54.png",
     items: [
       "SMS loyalty program — automated points, rewards, and promotions",
       "Review request sequence after every visit or order",
@@ -114,7 +114,7 @@ const industries = [
     name: "Coaches & Consultants",
     slug: "coaches",
     desc: "You sell outcomes. Your systems should reflect that — capturing, nurturing, and closing leads without you being in the loop for every step.",
-    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d28d3eae2cce1f63b8.png",
+    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d2584eaa8406418690.png",
     items: [
       "Lead magnet → email sequence → sales call, fully automated",
       "Discovery call booking directly from ads and social media",
@@ -129,7 +129,7 @@ const industries = [
     name: "Law Firms & Legal Services",
     slug: "law-firms",
     desc: "Potential clients don't wait. If you don't respond within minutes, they call the next firm on the list.",
-    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d28d3eae58361f63b9.png",
+    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d2584eaa6b2e418691.png",
     items: [
       "24/7 intake system — AI agent qualifies case type and urgency",
       "Immediate response to web form submissions and missed calls",
@@ -144,7 +144,7 @@ const industries = [
     name: "Salons, Barbershops & Spas",
     slug: "salons",
     desc: "Empty chairs cost money. Automated rebooking keeps your calendar full without you doing anything.",
-    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d28d3eae36561f63ba.png",
+    img: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69b1b1d257249b6b5f3cdce7.png",
     items: [
       "Automated rebooking reminder 3–4 weeks after every visit",
       "No-show and late cancellation recovery sequence",
