@@ -1,5 +1,6 @@
 "use client";
 import SectionReveal from "./SectionReveal";
+import SpotlightCard from "./SpotlightCard";
 
 const solutions = [
   {
@@ -81,7 +82,8 @@ export default function Solutions() {
         >
           {solutions.map((sol, i) => (
             <SectionReveal key={i} delay={i * 0.08}>
-              <div
+              <SpotlightCard
+                spotlightColor={`${sol.color}22`}
                 style={{
                   background: "var(--surface2)",
                   border: "1px solid var(--border)",
@@ -89,8 +91,6 @@ export default function Solutions() {
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
-                  position: "relative",
-                  overflow: "hidden",
                   transition: "border-color 0.3s, transform 0.3s",
                 }}
                 onMouseEnter={(e) => {
@@ -168,7 +168,7 @@ export default function Solutions() {
                 >
                   {sol.footer}
                 </div>
-              </div>
+              </SpotlightCard>
             </SectionReveal>
           ))}
         </div>

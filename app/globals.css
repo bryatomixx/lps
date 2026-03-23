@@ -88,6 +88,26 @@ h1, h2, h3, h4, h5, h6 {
 .decrypt-revealed { color: var(--text-muted); }
 .decrypt-encrypted { color: rgba(26,127,212,0.5); }
 
+/* SpotlightCard */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(280px circle at var(--sx, 50%) var(--sy, 50%), var(--sc, transparent), transparent 70%);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.1s;
+}
+.spotlight-card > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Gradient divider */
 .gdiv {
   height: 1px;

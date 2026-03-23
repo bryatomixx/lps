@@ -1,8 +1,11 @@
 "use client";
 import { useRef } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import DecryptedText from "./DecryptedText";
+
+const ThreadsBg = dynamic(() => import("./Threads"), { ssr: false });
 
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
@@ -44,6 +47,14 @@ export default function Hero() {
           paddingTop: 80,
         }}
       >
+        {/* Threads WebGL background — self-pauses when off-screen */}
+        <ThreadsBg
+          color={[0.1, 0.5, 0.83]}
+          amplitude={1.2}
+          distance={0.25}
+          style={{ opacity: 0.28, zIndex: 0 }}
+        />
+
         {/* Static background glow */}
         <div
           style={{
