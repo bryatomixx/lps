@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -30,6 +30,12 @@ const proofChips = [
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const [showThreads, setShowThreads] = useState(false);
+
+  useEffect(() => {
+    const id = setTimeout(() => setShowThreads(true), 900);
+    return () => clearTimeout(id);
+  }, []);
 
 
   return (
@@ -47,13 +53,15 @@ export default function Hero() {
           paddingTop: 80,
         }}
       >
-        {/* Threads WebGL background — self-pauses when off-screen */}
-        <ThreadsBg
-          color={[0.1, 0.5, 0.83]}
-          amplitude={1.2}
-          distance={0.25}
-          style={{ opacity: 0.28, zIndex: 0 }}
-        />
+        {/* Threads WebGL background — deferred 900ms so initial paint is not blocked */}
+        {showThreads && (
+          <ThreadsBg
+            color={[0.1, 0.5, 0.83]}
+            amplitude={1.2}
+            distance={0.25}
+            style={{ opacity: 0.28, zIndex: 0 }}
+          />
+        )}
 
         {/* Static background glow */}
         <div
