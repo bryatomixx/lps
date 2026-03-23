@@ -1,11 +1,8 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import DecryptedText from "./DecryptedText";
-
-const Threads = dynamic(() => import("./Threads"), { ssr: false });
 
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
@@ -27,74 +24,10 @@ const proofChips = [
   "Tasks running while you sleep",
 ];
 
-// Floating particle component
-function Particle({ x, y, size, duration, delay, color, repeatDelay }: { x: number; y: number; size: number; duration: number; delay: number; color: string; repeatDelay: number }) {
-  return (
-    <motion.div
-      style={{
-        position: "absolute",
-        left: `${x}%`,
-        top: `${y}%`,
-        width: size,
-        height: size,
-        borderRadius: "50%",
-        background: color,
-        opacity: 0,
-        pointerEvents: "none",
-      }}
-      animate={{
-        opacity: [0, 0.6, 0],
-        y: [0, -60, -120],
-        scale: [0, 1, 0],
-      }}
-      transition={{
-        duration,
-        delay,
-        repeat: Infinity,
-        repeatDelay,
-        ease: "easeOut",
-      }}
-    />
-  );
-}
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
 
-  // Mouse-tracking glow
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const glowX = useSpring(mouseX, { stiffness: 80, damping: 30 });
-  const glowY = useSpring(mouseY, { stiffness: 80, damping: 30 });
-
-  type ParticleData = { id: number; x: number; y: number; size: number; duration: number; delay: number; color: string; repeatDelay: number };
-  const [particles, setParticles] = useState<ParticleData[]>([]);
-
-  useEffect(() => {
-    setParticles(
-      Array.from({ length: 8 }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 3 + 1,
-        duration: Math.random() * 4 + 3,
-        delay: Math.random() * 6,
-        color: Math.random() > 0.5 ? "var(--blue)" : "var(--gold)",
-        repeatDelay: Math.random() * 4,
-      }))
-    );
-  }, []);
-
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      const rect = ref.current?.getBoundingClientRect();
-      if (!rect) return;
-      mouseX.set(((e.clientX - rect.left) / rect.width) * 100);
-      mouseY.set(((e.clientY - rect.top) / rect.height) * 100);
-    };
-    window.addEventListener("mousemove", onMove, { passive: true });
-    return () => window.removeEventListener("mousemove", onMove);
-  }, [mouseX, mouseY]);
 
   return (
     <>
@@ -111,30 +44,19 @@ export default function Hero() {
           paddingTop: 80,
         }}
       >
-        {/* Threads WebGL background */}
-        <div style={{ position: "absolute", inset: 0, opacity: 0.35, pointerEvents: "none" }}>
-          <Threads
-            color={[0.102, 0.498, 0.831]}
-            amplitude={2.5}
-            distance={0.4}
-            enableMouseInteraction={false}
-          />
-        </div>
-
-        {/* Animated background glow that tracks mouse */}
-        <motion.div
+        {/* Static background glow */}
+        <div
           style={{
             position: "absolute",
+            top: "20%",
+            left: "10%",
             width: "60vw",
             height: "60vw",
             maxWidth: 700,
             maxHeight: 700,
             borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(26,127,212,0.10) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(26,127,212,0.10) 0%, transparent 70%)",
             pointerEvents: "none",
-            x: useTransform(glowX, [0, 100], ["-20%", "60%"]),
-            y: useTransform(glowY, [0, 100], ["-20%", "60%"]),
             filter: "blur(60px)",
           }}
         />
@@ -168,12 +90,6 @@ export default function Hero() {
           }}
         />
 
-        {/* Particles */}
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-          {particles.map((p) => (
-            <Particle key={p.id} {...p} />
-          ))}
-        </div>
 
         <div
           style={{
