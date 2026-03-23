@@ -335,6 +335,7 @@ export default function WhoWeServe() {
                     src={activeIndustry.img}
                     alt={activeIndustry.name}
                     fill
+                    unoptimized
                     style={{ objectFit: "cover", opacity: 0.85 }}
                   />
                   <div
