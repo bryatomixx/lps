@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import SectionReveal from "./SectionReveal";
 
 const industries = [
@@ -331,12 +330,18 @@ export default function WhoWeServe() {
                     overflow: "hidden",
                   }}
                 >
-                  <Image
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     src={activeIndustry.img}
                     alt={activeIndustry.name}
-                    fill
-                    unoptimized
-                    style={{ objectFit: "cover", opacity: 0.85 }}
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      opacity: 0.85,
+                    }}
                   />
                   <div
                     style={{
