@@ -331,16 +331,18 @@ export default function WhoWeServe() {
                   }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <motion.img
                     src={activeIndustry.img}
                     alt={activeIndustry.name}
+                    initial={{ opacity: 0, scale: 1.08 }}
+                    animate={{ opacity: 0.85, scale: 1 }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                     style={{
                       position: "absolute",
                       inset: 0,
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
-                      opacity: 0.85,
                     }}
                   />
                   <div
