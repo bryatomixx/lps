@@ -441,6 +441,7 @@ export default function Pricing() {
                     fontSize: "0.88rem",
                     textDecoration: "none",
                     transition: "all 0.25s",
+                    marginTop: "auto",
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLElement;
