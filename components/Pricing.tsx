@@ -233,7 +233,7 @@ export default function Pricing() {
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
             gap: 2,
-            alignItems: "start",
+            alignItems: "stretch",
           }}
         >
           {plans.map((plan, i) => (
@@ -247,6 +247,9 @@ export default function Pricing() {
                   padding: "36px 28px",
                   position: "relative",
                   overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
                 }}
               >
                 {/* Top gradient bar (featured) */}
@@ -372,6 +375,7 @@ export default function Pricing() {
                     maxHeight: expanded === i ? "none" : 240,
                     overflow: "hidden",
                     position: "relative",
+                    flex: 1,
                   }}
                 >
                   {plan.features.slice(0, expanded === i ? undefined : 6).map((feat, j) => (

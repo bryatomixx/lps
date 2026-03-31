@@ -8,7 +8,6 @@ import Compare from "@/components/Compare";
 import Solutions from "@/components/Solutions";
 import WhoWeServe from "@/components/WhoWeServe";
 import Process from "@/components/Process";
-import About from "@/components/About";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import AlaCartePricing from "@/components/AlaCartePricing";
@@ -59,11 +58,7 @@ export default function Home() {
         <Process />
         <div className="gdiv" />
 
-        {/* 10. About/Founder */}
-        <About />
-        <div className="gdiv" />
-
-        {/* 11. Pricing */}
+        {/* 10. Pricing */}
         <Pricing />
 
         {/* 12. FAQ — directly under pricing */}
