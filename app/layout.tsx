@@ -5,11 +5,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Latin Prime Systems — AI Automation Agency for Small Business",
+    default: "Latin Prime Systems — AI Automation, CRM & Voice Agents for Any Business",
     template: "%s | Latin Prime Systems",
   },
   description:
-    "Latin Prime Systems is a done-for-you AI automation agency for small and medium businesses. We deploy AI voice agents, CRM systems, workflow automation, and chatbots so your business captures every lead and runs 24/7 — without hiring.",
+    "Latin Prime Systems is a done-for-you AI automation agency. We deploy AI voice agents, CRM systems, workflow automation, and chatbots so your business captures every lead and runs 24/7 — without hiring. From local businesses to large operations.",
   keywords: [
     "AI automation agency",
     "CRM for small business",
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://latinprimesystems.com",
     siteName: "Latin Prime Systems",
-    title: "Latin Prime Systems — AI Automation Agency for Small Business",
+    title: "Latin Prime Systems — AI Automation, CRM & Voice Agents for Any Business",
     description:
-      "Done-for-you AI automation: voice agents, CRM, follow-up systems, and workflow automation. Stop losing leads. Scale without hiring. 90-Day ROI Guarantee.",
+      "Done-for-you AI automation: voice agents, CRM, follow-up systems, and workflow automation. From local businesses to large operations. Stop losing leads. Scale without hiring. 90-Day ROI Guarantee.",
     images: [
       {
         url: "https://storage.googleapis.com/msgsndr/0EgKTcd9YvsDKkQqklPo/media/691b4d7d013f3138a3825fc0.webp",
@@ -66,9 +66,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Latin Prime Systems — AI Automation Agency for Small Business",
+    title: "Latin Prime Systems — AI Automation, CRM & Voice Agents for Any Business",
     description:
-      "Done-for-you AI: voice agents that answer calls 24/7, automated follow-ups, CRM systems. 90-Day ROI Guarantee.",
+      "Done-for-you AI: voice agents that answer calls 24/7, automated follow-ups, CRM systems. Any business size. 90-Day ROI Guarantee.",
     images: [
       "https://storage.googleapis.com/msgsndr/0EgKTcd9YvsDKkQqklPo/media/691b4d7d013f3138a3825fc0.webp",
     ],
@@ -86,7 +86,7 @@ const jsonLd = [
     name: "Latin Prime Systems",
     alternateName: ["Latin Prime", "LPS", "Latin Prime Enterprises"],
     description:
-      "Latin Prime Systems is a done-for-you AI automation agency specializing in AI voice agents, CRM setup, workflow automation, automated follow-up systems, and AI chatbots for small and medium businesses in the United States and Latin America. Founded to help business owners stop being the bottleneck in their own operations by replacing manual work with intelligent, always-on AI systems.",
+      "Latin Prime Systems is a done-for-you AI automation agency specializing in AI voice agents, CRM setup, workflow automation, automated follow-up systems, and AI chatbots for businesses of all sizes in the United States and Latin America. Founded to help business owners stop being the bottleneck in their own operations by replacing manual work with intelligent, always-on AI systems.",
     url: "https://latinprimesystems.com",
     telephone: "+19714006390",
     email: "contact@latinprimesystems.com",
@@ -226,7 +226,7 @@ const jsonLd = [
         name: "What does Latin Prime Systems do?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Latin Prime Systems is a done-for-you AI automation agency. We build and deploy AI voice agents that answer calls 24/7, CRM systems that track every lead, workflow automations that eliminate manual work, and AI chatbots — so small and medium businesses can operate, follow up, and scale without hiring more people.",
+          text: "Latin Prime Systems is a done-for-you AI automation agency. We build and deploy AI voice agents that answer calls 24/7, CRM systems that track every lead, workflow automations that eliminate manual work, and AI chatbots — so businesses of any size can operate, follow up, and scale without hiring more people.",
         },
       },
       {
@@ -379,7 +379,7 @@ export default function RootLayout({
         <meta name="geo.placename" content="United States" />
         <meta name="ICBM" content="37.09024, -95.712891" />
         {/* GEO/AI: entity clarification for AI search engines */}
-        <meta name="description" content="Latin Prime Systems — done-for-you AI automation agency. AI voice agents, CRM systems, and workflow automation for small businesses. Plans from $497–$1,497/month. 90-Day ROI Guarantee. Serving US and Latin America." />
+        <meta name="description" content="Latin Prime Systems — done-for-you AI automation agency. AI voice agents, CRM systems, and workflow automation for any business. Plans from $497–$1,497/month. 90-Day ROI Guarantee. Serving US and Latin America." />
         <meta name="subject" content="AI Automation Agency for Small Business" />
         <meta name="rating" content="general" />
         <meta name="revisit-after" content="7 days" />
