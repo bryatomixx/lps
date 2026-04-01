@@ -165,21 +165,6 @@ export default function AIEmployee() {
                         >
                           {row.ai}
                         </span>
-                        {row.badge && (
-                          <span
-                            style={{
-                              background: "var(--gold-dim)",
-                              border: "1px solid var(--gold)",
-                              color: "var(--gold)",
-                              fontFamily: "'DM Mono', monospace",
-                              fontSize: "0.55rem",
-                              letterSpacing: "0.1em",
-                              padding: "2px 7px",
-                            }}
-                          >
-                            {row.badge}
-                          </span>
-                        )}
                       </div>
                     </td>
                     <td style={{ padding: "14px 16px", textAlign: "center" }}>
