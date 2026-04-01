@@ -7,6 +7,8 @@ const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
 const STARTER_PAYMENT =
   "https://link.latinprimesystems.com/payment-link/692e34bda611824d7675e7f0";
+const PRO_PAYMENT =
+  "https://link.latinprimesystems.com/payment-link/69cc6409c6a0e600f4d06bd2";
 const GROWTH_PAYMENT =
   "https://link.latinprimesystems.com/payment-link/692e3647d8c1a8022cff08f1";
 
@@ -68,7 +70,7 @@ const plans: Plan[] = [
     guarantee:
       "🛡️ If in 45 days you don't see a measurable improvement in lead response or time saved, we work for free until you do.",
     cta: "Get Started",
-    ctaHref: BOOKING_URL,
+    ctaHref: PRO_PAYMENT,
     features: [
       "Everything in Starter — unlimited pipelines & flows",
       { section: "── UNLIMITED AUTOMATIONS ──" },
