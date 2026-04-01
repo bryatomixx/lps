@@ -110,18 +110,15 @@ export default function Footer() {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {footerLinks.map((link) => (
-                <button
+                <a
                   key={link.href}
-                  onClick={() => scrollTo(link.href)}
+                  href={link.href}
+                  onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
                   style={{
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
                     color: "var(--text-muted)",
                     fontFamily: "'Inter', sans-serif",
                     fontSize: "0.88rem",
-                    textAlign: "left",
-                    padding: 0,
+                    textDecoration: "none",
                     transition: "color 0.2s",
                   }}
                   onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--text)")}
@@ -130,7 +127,7 @@ export default function Footer() {
                   }
                 >
                   {link.label}
-                </button>
+                </a>
               ))}
             </div>
           </div>

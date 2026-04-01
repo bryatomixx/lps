@@ -38,7 +38,11 @@ export default function Home() {
         {/* 4. ROI Calculator — right after the "why" section */}
         <ROICalculator />
 
-        {/* 5. Mid-funnel email capture */}
+        {/* 5. Testimonials — social proof at peak emotional intensity */}
+        <Testimonials />
+        <div className="gdiv" />
+
+        {/* 6. Mid-funnel email capture */}
         <EmailCapture />
         <div className="gdiv" />
 
@@ -77,11 +81,7 @@ export default function Home() {
         <TechStack />
         <div className="gdiv" />
 
-        {/* 15. Testimonials */}
-        <Testimonials />
-        <div className="gdiv" />
-
-        {/* 16. Big CTA */}
+        {/* 15. Big CTA */}
         <CTA />
         <div className="gdiv" />
 

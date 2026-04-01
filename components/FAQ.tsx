@@ -106,7 +106,7 @@ export default function FAQ() {
                   marginBottom: 32,
                 }}
               >
-                No sales pitch. Just straight answers to what every SMB owner
+                No sales pitch. Just straight answers to what every business owner
                 wants to know before committing.
               </p>
               <a

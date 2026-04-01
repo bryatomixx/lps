@@ -5,11 +5,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Latin Prime Systems — AI Automation, CRM & Voice Agents for Any Business",
+    default: "Latin Prime Systems — AI Automation & Voice Agents for Business",
     template: "%s | Latin Prime Systems",
   },
   description:
-    "Latin Prime Systems is a done-for-you AI automation agency. We deploy AI voice agents, CRM systems, workflow automation, and chatbots so your business captures every lead and runs 24/7 — without hiring. From local businesses to large operations.",
+    "Done-for-you AI automation agency. AI voice agents, CRM systems, and automations that capture every lead and run 24/7 — without hiring. Any industry, any size. 90-Day ROI Guarantee.",
   keywords: [
     "AI automation agency",
     "CRM for small business",
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://latinprimesystems.com",
     siteName: "Latin Prime Systems",
-    title: "Latin Prime Systems — AI Automation, CRM & Voice Agents for Any Business",
+    title: "Latin Prime Systems — AI Automation & Voice Agents for Business",
     description:
-      "Done-for-you AI automation: voice agents, CRM, follow-up systems, and workflow automation. From local businesses to large operations. Stop losing leads. Scale without hiring. 90-Day ROI Guarantee.",
+      "Done-for-you AI automation: voice agents, CRM, follow-up systems, and workflow automation. Any industry, any size. Stop losing leads. Scale without hiring. 90-Day ROI Guarantee.",
     images: [
       {
         url: "https://storage.googleapis.com/msgsndr/0EgKTcd9YvsDKkQqklPo/media/691b4d7d013f3138a3825fc0.webp",
@@ -66,9 +66,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Latin Prime Systems — AI Automation, CRM & Voice Agents for Any Business",
+    title: "Latin Prime Systems — AI Automation & Voice Agents for Business",
     description:
-      "Done-for-you AI: voice agents that answer calls 24/7, automated follow-ups, CRM systems. Any business size. 90-Day ROI Guarantee.",
+      "Done-for-you AI: voice agents that answer calls 24/7, automated follow-ups, CRM systems. Any industry, any size. 90-Day ROI Guarantee.",
     images: [
       "https://storage.googleapis.com/msgsndr/0EgKTcd9YvsDKkQqklPo/media/691b4d7d013f3138a3825fc0.webp",
     ],
@@ -174,7 +174,7 @@ const jsonLd = [
         author: { "@type": "Person", name: "Jesús Martínez" },
         reviewBody:
           "Since we set up the AI voice agent, we haven't missed a single lead. Our close rate went up 40% in the first two months.",
-        datePublished: "2025-12-01",
+        datePublished: "2025-04-01",
       },
       {
         "@type": "Review",
@@ -182,7 +182,7 @@ const jsonLd = [
         author: { "@type": "Person", name: "Kerwin Iglesias" },
         reviewBody:
           "Within 30 days, the system had already recovered $4,200 in policies from dormant leads. The ROI was obvious in the first month.",
-        datePublished: "2025-11-01",
+        datePublished: "2025-05-01",
       },
       {
         "@type": "Review",
@@ -190,7 +190,7 @@ const jsonLd = [
         author: { "@type": "Person", name: "Berta Viloria" },
         reviewBody:
           "I handled 30% more clients this year with the same staff. Tax season automation changed everything.",
-        datePublished: "2026-01-01",
+        datePublished: "2025-06-01",
       },
     ],
     aggregateRating: {
