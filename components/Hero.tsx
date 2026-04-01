@@ -107,12 +107,12 @@ export default function Hero() {
 
         <div
           style={{
-            maxWidth: 1200,
+            maxWidth: "clamp(1200px, 85vw, 1500px)",
             margin: "0 auto",
-            padding: "60px 24px",
+            padding: "60px clamp(24px, 4vw, 80px)",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: 60,
+            gap: "clamp(40px, 5vw, 100px)",
             alignItems: "center",
             width: "100%",
             position: "relative",
