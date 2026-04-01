@@ -5,7 +5,7 @@ const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
 
 const rows = [
-  { feature: "Monthly cost", ai: "$497 – $1,497", badge: "SAVE 70%", trad: "$2,000 – $4,000+" },
+  { feature: "Monthly cost", ai: "Fraction of hiring costs", trad: "$2,000 – $4,000+" },
   { feature: "Availability", ai: "24/7/365 — no breaks", trad: "Business hours only" },
   { feature: "Response speed", ai: "<1 second", trad: "Minutes or hours" },
   { feature: "Multitasking", ai: "Thousands of tasks at once", trad: "One thing at a time" },
