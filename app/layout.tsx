@@ -315,7 +315,12 @@ const jsonLd = [
     name: "Latin Prime Systems",
     url: "https://latinprimesystems.com",
     logo: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/69ac6d227bdf387250ce554b.png",
-    sameAs: [],
+    sameAs: [
+      "https://www.linkedin.com/company/latin-prime-systems/",
+      "https://www.facebook.com/latinprimesystem",
+      "https://www.instagram.com/latinprimesystems",
+      "https://www.tiktok.com/@carloslatinprime",
+    ],
     contactPoint: [
       {
         "@type": "ContactPoint",
