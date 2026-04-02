@@ -12,12 +12,39 @@ const PRO_PAYMENT =
 const GROWTH_PAYMENT =
   "https://link.latinprimesystems.com/payment-link/692e3647d8c1a8022cff08f1";
 
+type Currency = "USD" | "COP" | "MXN";
+
+// Approximate rates — USD is the billing currency
+const RATES: Record<Currency, number> = { USD: 1, COP: 4200, MXN: 17.5 };
+const CURRENCY_LABELS: Record<Currency, string> = {
+  USD: "🇺🇸 USD",
+  COP: "🇨🇴 COP",
+  MXN: "🇲🇽 MXN",
+};
+
+function formatPrice(usd: number | null, currency: Currency): string {
+  if (usd === null) return "Custom";
+  if (currency === "USD") return `$${usd.toLocaleString("en-US")}`;
+  const converted = Math.round(usd * RATES[currency]);
+  if (currency === "COP") return `$${converted.toLocaleString("es-CO")}`;
+  return `$${converted.toLocaleString("es-MX")}`;
+}
+
+function formatSetup(usd: number | null, currency: Currency, label: string): string {
+  if (usd === null) return label;
+  if (currency === "USD") return `+ $${usd.toLocaleString("en-US")} one-time setup fee`;
+  const converted = Math.round(usd * RATES[currency]);
+  const sym = currency === "COP" ? converted.toLocaleString("es-CO") : converted.toLocaleString("es-MX");
+  return `+ $${sym} ${currency} cuota de implementación única`;
+}
+
 interface Plan {
   tier: string;
   tagline: string;
-  price: string;
+  priceUSD: number | null;
+  setupUSD: number | null;
+  setupLabel: string;
   priceSub: string;
-  setup: string;
   ideal: string;
   featured: boolean;
   badge?: string;
@@ -32,9 +59,10 @@ const plans: Plan[] = [
     tier: "Starter",
     tagline:
       "Everything you need to capture leads and automate follow-up from day 1 — without hiring anyone.",
-    price: "$497",
+    priceUSD: 497,
+    setupUSD: 997,
+    setupLabel: "+ $997 one-time setup fee",
     priceSub: "/mo",
-    setup: "+ $997 one-time setup fee",
     ideal:
       "Best for: Local businesses, solo operators, and service providers taking their first step into automation.",
     featured: false,
@@ -60,9 +88,10 @@ const plans: Plan[] = [
     tier: "Pro",
     tagline:
       "Multichannel automation and unlimited flows — your leads captured everywhere, your operation running itself.",
-    price: "$997",
+    priceUSD: 997,
+    setupUSD: 1497,
+    setupLabel: "+ $1,497 one-time setup fee",
     priceSub: "/mo",
-    setup: "+ $1,497 one-time setup fee",
     ideal:
       "Best for: Growing businesses ready to automate across every channel and stop relying on manual follow-up.",
     featured: false,
@@ -96,9 +125,10 @@ const plans: Plan[] = [
     tier: "Growth",
     tagline:
       "Your entire operation running on its own — with an AI that answers every call, closes leads, and works 24/7.",
-    price: "$1,497",
+    priceUSD: 1497,
+    setupUSD: 1997,
+    setupLabel: "+ $1,997 one-time setup fee",
     priceSub: "/mo",
-    setup: "+ $1,997 one-time setup fee",
     ideal:
       "Best for: Businesses serious about never losing a lead — where an AI voice agent handles every call while you focus on closing.",
     featured: true,
@@ -127,9 +157,10 @@ const plans: Plan[] = [
   {
     tier: "Enterprise",
     tagline: "Complete infrastructure, built exactly for your operation.",
-    price: "Custom",
+    priceUSD: null,
+    setupUSD: null,
+    setupLabel: "Scoped & quoted for your specific needs",
     priceSub: "",
-    setup: "Scoped & quoted for your specific needs",
     ideal:
       "Best for: Agencies, multi-location businesses, and companies with complex operations that need fully custom infrastructure.",
     featured: false,
@@ -197,6 +228,7 @@ function FeatureItem({ feat }: { feat: string | { section: string } }) {
 
 export default function Pricing() {
   const [expanded, setExpanded] = useState<number | null>(null);
+  const [currency, setCurrency] = useState<Currency>("USD");
 
   return (
     <section
@@ -228,6 +260,41 @@ export default function Pricing() {
             Choose the level that fits where your business is today — and upgrade
             as you grow. Every plan includes setup, configuration, and ongoing support.
           </p>
+
+          {/* Currency toggle */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 24, flexWrap: "wrap" }}>
+            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--text-dim)" }}>
+              Currency:
+            </span>
+            <div style={{ display: "flex", border: "1px solid var(--border2)", overflow: "hidden" }}>
+              {(["USD", "COP", "MXN"] as Currency[]).map((c) => (
+                <button
+                  key={c}
+                  onClick={() => setCurrency(c)}
+                  style={{
+                    background: currency === c ? "var(--blue)" : "transparent",
+                    border: "none",
+                    borderRight: c !== "MXN" ? "1px solid var(--border2)" : "none",
+                    color: currency === c ? "white" : "var(--text-muted)",
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: "0.68rem",
+                    letterSpacing: "0.08em",
+                    padding: "7px 16px",
+                    cursor: "pointer",
+                    transition: "background 0.2s, color 0.2s",
+                    fontWeight: currency === c ? 700 : 400,
+                  }}
+                >
+                  {CURRENCY_LABELS[c]}
+                </button>
+              ))}
+            </div>
+            {currency !== "USD" && (
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.57rem", letterSpacing: "0.06em", color: "var(--text-dim)" }}>
+                ≈ Approximate · USD is the billing currency
+              </span>
+            )}
+          </div>
         </SectionReveal>
 
         <div
@@ -361,21 +428,20 @@ export default function Pricing() {
                     style={{
                       fontFamily: "'Plus Jakarta Sans', sans-serif",
                       fontWeight: 900,
-                      fontSize: "2.6rem",
+                      fontSize: plan.priceUSD && currency !== "USD" ? "2rem" : "2.6rem",
                       color: plan.featured ? "var(--blue)" : "var(--text)",
                       letterSpacing: "-0.03em",
+                      transition: "font-size 0.2s",
                     }}
                   >
-                    {plan.price}
+                    {formatPrice(plan.priceUSD, currency)}
                   </span>
-                  <span
-                    style={{
-                      color: "var(--text-muted)",
-                      fontSize: "0.9rem",
-                    }}
-                  >
-                    {plan.priceSub}
-                  </span>
+                  {plan.priceSub && (
+                    <span style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
+                      {plan.priceSub}
+                      {currency !== "USD" && <span style={{ fontSize: "0.7rem", marginLeft: 4 }}>{currency}</span>}
+                    </span>
+                  )}
                 </div>
 
                 <div
@@ -387,7 +453,7 @@ export default function Pricing() {
                     marginBottom: 6,
                   }}
                 >
-                  {plan.setup}
+                  {formatSetup(plan.setupUSD, currency, plan.setupLabel)}
                 </div>
 
                 <div

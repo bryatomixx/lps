@@ -385,7 +385,7 @@ export default function RootLayout({
         <meta name="revisit-after" content="7 days" />
         {/* hreflang — bilingual site */}
         <link rel="alternate" hrefLang="en" href="https://latinprimesystems.com" />
-        <link rel="alternate" hrefLang="es" href="https://latinprimesystems.com" />
+        <link rel="alternate" hrefLang="es" href="https://latinprimesystems.com/es" />
         <link rel="alternate" hrefLang="x-default" href="https://latinprimesystems.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
