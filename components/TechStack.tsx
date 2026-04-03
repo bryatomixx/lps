@@ -69,11 +69,11 @@ function LogoTrack({ items, reverse }: { items: LogoItem[]; reverse?: boolean })
                     width: "auto",
                     maxWidth: item.w,
                     objectFit: "contain",
-                    opacity: 0.75,
+                    opacity: 0.45,
                     transition: "opacity 0.3s",
                   }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.75")}
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.9")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.45")}
                 />
               ) : (
                 <span
@@ -81,7 +81,7 @@ function LogoTrack({ items, reverse }: { items: LogoItem[]; reverse?: boolean })
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
                     fontWeight: 700,
                     fontSize: "0.9rem",
-                    color: "rgba(255,255,255,0.65)",
+                    color: "rgba(15,34,64,0.45)",
                     letterSpacing: "0.02em",
                     whiteSpace: "nowrap",
                   }}
@@ -92,7 +92,7 @@ function LogoTrack({ items, reverse }: { items: LogoItem[]; reverse?: boolean })
             </div>
             <span
               style={{
-                color: "rgba(200,148,26,0.4)",
+                color: "rgba(180,148,93,0.5)",
                 fontSize: "0.5rem",
                 flexShrink: 0,
               }}
@@ -111,7 +111,7 @@ export default function TechStack() {
     <section
       id="stack"
       className="section-wrap"
-      style={{ background: "var(--bg)", overflow: "hidden" }}
+      style={{ background: "var(--surface)", overflow: "hidden" }}
     >
       <div className="section-inner">
         <SectionReveal>
@@ -121,17 +121,7 @@ export default function TechStack() {
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", maxWidth: 640 }}
           >
             The Most Powerful Platforms{" "}
-            <em
-              style={{
-                fontStyle: "italic",
-                background: "linear-gradient(135deg, var(--blue), var(--gold))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Working for Your Business
-            </em>
+            <em style={{ fontStyle: "italic", color: "#B4945D" }}>Working for Your Business</em>
           </h2>
           <p className="section-desc">
             Behind every result we deliver is a carefully selected stack of the
