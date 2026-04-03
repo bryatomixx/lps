@@ -29,7 +29,7 @@ export default function Problem() {
     <section
       id="problem"
       className="section-wrap"
-      style={{ background: "var(--bg)" }}
+      style={{ background: "var(--surface)" }}
     >
       <div className="section-inner">
         <SectionReveal>
@@ -42,10 +42,7 @@ export default function Problem() {
             <em
               style={{
                 fontStyle: "italic",
-                background: "linear-gradient(135deg, var(--blue), var(--gold))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
+                color: "#B4945D",
               }}
             >
               Knows Too Well
@@ -60,31 +57,35 @@ export default function Problem() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 2,
+            gap: 24,
           }}
         >
           {problems.map((p, i) => (
             <SectionReveal key={i} delay={i * 0.1}>
               <div
                 style={{
-                  background: "var(--surface)",
+                  background: "#FFFFFF",
                   border: "1px solid var(--border)",
+                  borderRadius: 12,
                   padding: "36px 28px",
                   position: "relative",
                   overflow: "hidden",
                   cursor: "default",
-                  transition: "border-color 0.3s, transform 0.3s",
+                  transition: "border-color 0.3s, transform 0.3s, box-shadow 0.3s",
                   height: "100%",
+                  boxShadow: "0 2px 8px rgba(15,34,64,0.04), 0 8px 32px rgba(15,34,64,0.06)",
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
-                  el.style.borderColor = "rgba(26,127,212,0.3)";
+                  el.style.borderColor = "rgba(180,148,93,0.35)";
                   el.style.transform = "translateY(-4px)";
+                  el.style.boxShadow = "0 8px 40px rgba(15,34,64,0.1)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.borderColor = "var(--border)";
                   el.style.transform = "translateY(0)";
+                  el.style.boxShadow = "0 2px 8px rgba(15,34,64,0.04), 0 8px 32px rgba(15,34,64,0.06)";
                 }}
               >
                 {/* Hover glow */}
@@ -95,7 +96,7 @@ export default function Problem() {
                     left: 0,
                     right: 0,
                     height: 2,
-                    background: "linear-gradient(90deg, var(--blue), var(--gold))",
+                    background: "#B4945D",
                     opacity: 0,
                     transition: "opacity 0.3s",
                   }}
@@ -134,7 +135,7 @@ export default function Problem() {
                     background: "none",
                     border: "none",
                     cursor: "pointer",
-                    color: "var(--blue)",
+                    color: "var(--gold)",
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "0.65rem",
                     letterSpacing: "0.1em",
