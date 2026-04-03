@@ -56,7 +56,7 @@ export default function EmailCapture() {
     <section
       ref={ref}
       style={{
-        background: "var(--surface)",
+        background: "#0F2240",
         padding: "0",
         position: "relative",
         overflow: "hidden",
@@ -67,36 +67,14 @@ export default function EmailCapture() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         style={{
-          background: "linear-gradient(135deg, rgba(26,127,212,0.08) 0%, rgba(200,148,26,0.06) 100%)",
-          border: "1px solid rgba(26,127,212,0.15)",
-          borderLeft: "none",
-          borderRight: "none",
+          background: "rgba(180,148,93,0.08)",
+          borderTop: "1px solid rgba(180,148,93,0.15)",
+          borderBottom: "1px solid rgba(180,148,93,0.15)",
           padding: "64px 24px",
           textAlign: "center",
           position: "relative",
         }}
       >
-        {/* Grid overlay */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "linear-gradient(rgba(26,127,212,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26,127,212,0.04) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "radial-gradient(ellipse 80% 100% at 50% 50%, transparent 30%, var(--surface) 100%)",
-            pointerEvents: "none",
-          }}
-        />
-
         <div
           style={{
             maxWidth: 560,
@@ -110,8 +88,8 @@ export default function EmailCapture() {
               display: "inline-flex",
               alignItems: "center",
               gap: 8,
-              background: "rgba(0,229,122,0.08)",
-              border: "1px solid rgba(0,229,122,0.2)",
+              background: "rgba(180,148,93,0.15)",
+              border: "1px solid rgba(180,148,93,0.35)",
               padding: "5px 14px",
               marginBottom: 20,
             }}
@@ -121,7 +99,7 @@ export default function EmailCapture() {
                 width: 6,
                 height: 6,
                 borderRadius: "50%",
-                background: "var(--green)",
+                background: "#B4945D",
                 animation: "dot-pulse 2s ease-in-out infinite",
               }}
             />
@@ -131,7 +109,7 @@ export default function EmailCapture() {
                 fontSize: "0.6rem",
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
-                color: "var(--green)",
+                color: "#B4945D",
               }}
             >
               Free — No credit card
@@ -151,11 +129,12 @@ export default function EmailCapture() {
                   fontWeight: 800,
                   fontSize: "1.4rem",
                   marginBottom: 8,
+                  color: "#FFFFFF",
                 }}
               >
                 You&apos;re in — check your inbox
               </h3>
-              <p style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
+              <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.9rem" }}>
                 Your custom automation plan is being prepared. We&apos;ll reach out within 24 hours.
               </p>
             </motion.div>
@@ -168,15 +147,13 @@ export default function EmailCapture() {
                   fontSize: "clamp(1.4rem, 2.5vw, 2rem)",
                   lineHeight: 1.2,
                   marginBottom: 10,
+                  color: "#FFFFFF",
                 }}
               >
                 Get Your Free{" "}
                 <span
                   style={{
-                    background: "linear-gradient(135deg, var(--blue), var(--gold))",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
+                    color: "#C5A059",
                   }}
                 >
                   Automation Plan
@@ -185,7 +162,7 @@ export default function EmailCapture() {
               <p
                 style={{
                   fontSize: "0.9rem",
-                  color: "var(--text-muted)",
+                  color: "rgba(255,255,255,0.65)",
                   lineHeight: 1.7,
                   marginBottom: 28,
                 }}
@@ -212,20 +189,21 @@ export default function EmailCapture() {
                   style={{
                     flex: "1 1 160px",
                     maxWidth: 180,
-                    background: "var(--surface2)",
-                    border: "1px solid var(--border2)",
-                    color: "var(--text)",
+                    background: "rgba(255,255,255,0.08)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    color: "#FFFFFF",
                     padding: "13px 16px",
                     fontFamily: "'Inter', sans-serif",
                     fontSize: "0.88rem",
                     outline: "none",
+                    borderRadius: 8,
                     transition: "border-color 0.2s",
                   }}
                   onFocus={(e) =>
-                    (e.currentTarget.style.borderColor = "rgba(26,127,212,0.5)")
+                    (e.currentTarget.style.borderColor = "rgba(180,148,93,0.7)")
                   }
                   onBlur={(e) =>
-                    (e.currentTarget.style.borderColor = "var(--border2)")
+                    (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
                   }
                 />
                 <input
@@ -237,20 +215,21 @@ export default function EmailCapture() {
                   style={{
                     flex: "2 1 220px",
                     maxWidth: 280,
-                    background: "var(--surface2)",
-                    border: "1px solid var(--border2)",
-                    color: "var(--text)",
+                    background: "rgba(255,255,255,0.08)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    color: "#FFFFFF",
                     padding: "13px 16px",
                     fontFamily: "'Inter', sans-serif",
                     fontSize: "0.88rem",
                     outline: "none",
+                    borderRadius: 8,
                     transition: "border-color 0.2s",
                   }}
                   onFocus={(e) =>
-                    (e.currentTarget.style.borderColor = "rgba(26,127,212,0.5)")
+                    (e.currentTarget.style.borderColor = "rgba(180,148,93,0.7)")
                   }
                   onBlur={(e) =>
-                    (e.currentTarget.style.borderColor = "var(--border2)")
+                    (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
                   }
                 />
                 <select
@@ -259,26 +238,27 @@ export default function EmailCapture() {
                   style={{
                     flex: "1 1 200px",
                     maxWidth: 240,
-                    background: "var(--surface2)",
-                    border: "1px solid var(--border2)",
-                    color: industry ? "var(--text)" : "var(--text-muted)",
+                    background: "rgba(255,255,255,0.08)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    color: "#FFFFFF",
                     padding: "13px 16px",
                     fontFamily: "'Inter', sans-serif",
                     fontSize: "0.88rem",
                     outline: "none",
+                    borderRadius: 8,
                     cursor: "pointer",
                     transition: "border-color 0.2s",
                   }}
                   onFocus={(e) =>
-                    (e.currentTarget.style.borderColor = "rgba(26,127,212,0.5)")
+                    (e.currentTarget.style.borderColor = "rgba(180,148,93,0.7)")
                   }
                   onBlur={(e) =>
-                    (e.currentTarget.style.borderColor = "var(--border2)")
+                    (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")
                   }
                 >
                   <option value="" disabled>Your industry</option>
                   {industries.map((ind) => (
-                    <option key={ind} value={ind} style={{ background: "var(--surface2)", color: "var(--text)" }}>{ind}</option>
+                    <option key={ind} value={ind} style={{ background: "#0F2240", color: "#FFFFFF" }}>{ind}</option>
                   ))}
                 </select>
                 <button
@@ -287,12 +267,13 @@ export default function EmailCapture() {
                   style={{
                     flex: "1 1 180px",
                     padding: "13px 24px",
-                    background: "var(--blue)",
+                    background: "#B4945D",
                     color: "white",
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
                     fontWeight: 700,
                     fontSize: "0.88rem",
                     border: "none",
+                    borderRadius: 8,
                     cursor: "pointer",
                     transition: "all 0.2s",
                     whiteSpace: "nowrap",
@@ -300,12 +281,12 @@ export default function EmailCapture() {
                   }}
                   onMouseEnter={(e) => {
                     if (status !== "sending") {
-                      (e.currentTarget as HTMLElement).style.background = "#2290e8";
+                      (e.currentTarget as HTMLElement).style.background = "#C5A059";
                       (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
                     }
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = "var(--blue)";
+                    (e.currentTarget as HTMLElement).style.background = "#B4945D";
                     (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                   }}
                 >
@@ -319,7 +300,7 @@ export default function EmailCapture() {
                   fontFamily: "'DM Mono', monospace",
                   fontSize: "0.62rem",
                   letterSpacing: "0.08em",
-                  color: "var(--text-muted)",
+                  color: "rgba(255,255,255,0.45)",
                 }}
               >
                 No spam. No sales pressure. Just a real automation strategy for your business.
