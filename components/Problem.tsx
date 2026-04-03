@@ -80,12 +80,16 @@ export default function Problem() {
                   el.style.borderColor = "rgba(180,148,93,0.35)";
                   el.style.transform = "translateY(-4px)";
                   el.style.boxShadow = "0 8px 40px rgba(15,34,64,0.1)";
+                  const bar = el.firstElementChild as HTMLElement;
+                  if (bar) bar.style.opacity = "1";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.borderColor = "var(--border)";
                   el.style.transform = "translateY(0)";
                   el.style.boxShadow = "0 2px 8px rgba(15,34,64,0.04), 0 8px 32px rgba(15,34,64,0.06)";
+                  const bar = el.firstElementChild as HTMLElement;
+                  if (bar) bar.style.opacity = "0";
                 }}
               >
                 {/* Hover glow */}
