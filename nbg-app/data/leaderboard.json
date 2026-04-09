@@ -1,0 +1,5 @@
+[
+  { "rank": 1, "name": "Agente Ejemplo 1", "sales": 42 },
+  { "rank": 2, "name": "Agente Ejemplo 2", "sales": 38 },
+  { "rank": 3, "name": "Agente Ejemplo 3", "sales": 31 }
+]
