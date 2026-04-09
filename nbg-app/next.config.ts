@@ -1,7 +1,17 @@
-import type { NextConfig } from "next";
+// nbg-app/next.config.ts
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+        ],
+      },
+    ]
+  },
+}
 
-export default nextConfig;
+export default nextConfig
