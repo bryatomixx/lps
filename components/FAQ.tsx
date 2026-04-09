@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionReveal from "./SectionReveal";
+import SplitText from "./SplitText";
+import ShinyText from "./ShinyText";
 
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
@@ -61,7 +63,7 @@ export default function FAQ() {
       }}
     >
       <div className="section-inner">
-        <SectionReveal>
+        <SectionReveal variant="left">
           <div
             style={{
               display: "grid",
@@ -83,12 +85,10 @@ export default function FAQ() {
                   marginBottom: 16,
                 }}
               >
-                Every Question
+                <SplitText text="Every Question" delay={0.05} />
                 <br />
-                You&apos;re Thinking{" "}
-                <em style={{ fontStyle: "italic", color: "#B4945D" }}>
-                  Right Now
-                </em>
+                <SplitText text="You're Thinking" delay={0.2} />{" "}
+                <ShinyText text="Right Now" speed={3.5} />
               </h2>
               <p
                 style={{
@@ -138,8 +138,8 @@ export default function FAQ() {
               {faqs.map((faq, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -24 : 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ delay: i * 0.05, duration: 0.5 }}
                   style={{

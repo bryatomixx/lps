@@ -158,7 +158,7 @@ export default function ROICalculator() {
               max={10000}
               step={100}
               onChange={setAvgValue}
-              display={`$${avgValue.toLocaleString()}`}
+              display={`$${avgValue.toLocaleString("en-US")}`}
               tooltip="Cuánto vale un cliente nuevo para tu negocio"
             />
             <SliderInput
@@ -337,7 +337,7 @@ export default function ROICalculator() {
                     }}
                   >
                     {roi > 0
-                      ? `$${roi.toLocaleString()}/mes neto sobre el costo del plan`
+                      ? `$${roi.toLocaleString("en-US")}/mes neto sobre el costo del plan`
                       : "El ROI crece a medida que aumenta tu volumen"}
                   </div>
                 </div>
@@ -369,7 +369,7 @@ export default function ROICalculator() {
                 {
                   label: "Ingresos por prospectos recuperados",
                   value: revenueRecovered,
-                  sub: `${recoveredClients} clientes nuevos/mes × $${avgValue.toLocaleString()}`,
+                  sub: `${recoveredClients} clientes nuevos/mes × $${avgValue.toLocaleString("en-US")}`,
                   color: "var(--blue)",
                 },
                 {
@@ -426,7 +426,7 @@ export default function ROICalculator() {
                     }}
                   >
                     {item.value < 0 ? "-" : "+"}$
-                    {Math.abs(item.value).toLocaleString()}
+                    {Math.abs(item.value).toLocaleString("en-US")}
                   </div>
                 </div>
               ))}

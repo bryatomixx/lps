@@ -2,25 +2,43 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #FFFFFF;
-  --surface: #F7F6F3;
-  --surface2: #EFEEE9;
-  --border: rgba(15,34,64,0.07);
-  --border2: rgba(15,34,64,0.15);
-  --blue: #0F2240;
-  --blue-bright: #C5A059;
-  --blue-dim: rgba(15,34,64,0.06);
-  --blue-glow: rgba(180,148,93,0.25);
-  --blue-glow-strong: rgba(180,148,93,0.45);
-  --gold: #B4945D;
-  --gold-bright: #C5A059;
-  --gold-dim: rgba(180,148,93,0.1);
-  --gold-glow: rgba(180,148,93,0.3);
-  --green: #00a854;
-  --green-dim: rgba(0,168,84,0.1);
-  --text: #0F2240;
-  --text-muted: rgba(15,34,64,0.6);
-  --text-dim: rgba(15,34,64,0.35);
+  /* Backgrounds */
+  --bg:        #F7F9FC;
+  --surface:   #EEF3F8;
+  --surface2:  #E2E8F0;
+  --navy:      #0D1B2A;
+  --navy2:     #132238;
+
+  /* Brand */
+  --blue:         #1A5CA8;
+  --blue-bright:  #2B7FE0;
+  --blue-dim:     rgba(26,92,168,0.08);
+  --blue-glow:    rgba(26,92,168,0.25);
+  --blue-glow-strong: rgba(26,92,168,0.45);
+
+  /* Primary CTA — navy → gold hover */
+  --orange:       #0D1B2A;
+  --orange-hover: #D4A53A;
+  --orange-dim:   rgba(13,27,42,0.1);
+
+  /* Accent gold (gradients, labels) */
+  --gold:       #D4A53A;
+  --gold-bright:#E8BE4A;
+  --gold-dim:   rgba(212,165,58,0.12);
+  --gold-glow:  rgba(212,165,58,0.32);
+
+  /* Semantic */
+  --green:     #15803D;
+  --green-dim: rgba(21,128,61,0.1);
+
+  /* Text */
+  --text:       #0F172A;
+  --text-muted: #334155;
+  --text-dim:   #475569;
+
+  /* Borders */
+  --border:  #E2E8F0;
+  --border2: #D9E2EC;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,30 +49,23 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Inter', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: rgba(180,148,93,0.4); border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(180,148,93,0.7); }
-::selection { background: rgba(180,148,93,0.18); color: var(--text); }
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: rgba(26,92,168,0.25); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(26,92,168,0.45); }
+::selection { background: rgba(212,165,58,0.18); color: var(--text); }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.025em;
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, var(--gold), var(--gold-bright));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 /* Section containers */
@@ -107,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* DecryptedText classes */
 .decrypt-revealed { color: var(--text-muted); }
-.decrypt-encrypted { color: rgba(180,148,93,0.6); }
+.decrypt-encrypted { color: rgba(212,165,58,0.6); }
 
 /* SpotlightCard */
 .spotlight-card {
@@ -132,18 +143,19 @@ h1, h2, h3, h4, h5, h6 {
 /* Gradient divider */
 .gdiv {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(15,34,64,0.08) 30%, rgba(180,148,93,0.18) 70%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(15,34,64,0.08) 30%, rgba(212,165,58,0.18) 70%, transparent);
 }
 
 /* Glow button */
 .btn-glow {
-  box-shadow: 0 4px 20px rgba(180,148,93,0.28);
+  box-shadow: 0 4px 20px rgba(13,27,42,0.25);
   transition: box-shadow 0.3s, transform 0.2s !important;
 }
 .btn-glow:hover {
-  box-shadow: 0 6px 30px rgba(180,148,93,0.42) !important;
+  box-shadow: 0 6px 30px rgba(212,165,58,0.4) !important;
   transform: translateY(-2px) !important;
 }
+.section-desc { font-weight: 400; }
 
 /* Animations */
 @keyframes marquee {
@@ -167,20 +179,83 @@ h1, h2, h3, h4, h5, h6 {
   50% { opacity: 1; transform: scale(1.06); }
 }
 @keyframes dot-pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(180,148,93,0.5); }
-  50% { opacity: 0.7; box-shadow: 0 0 0 7px rgba(180,148,93,0); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(212,165,58,0.5); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 7px rgba(212,165,58,0); }
 }
 @keyframes shimmer {
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
 @keyframes border-glow-pulse {
-  0%, 100% { box-shadow: 0 4px 20px rgba(180,148,93,0.28); }
-  50% { box-shadow: 0 6px 32px rgba(180,148,93,0.45); }
+  0%, 100% { box-shadow: 0 4px 20px rgba(212,165,58,0.28); }
+  50% { box-shadow: 0 6px 32px rgba(212,165,58,0.45); }
 }
 @keyframes scan-line {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100vh); }
+}
+
+/* ── React Bits: ShinyText ─────────────────────────── */
+/*
+  Seamless loop trick: gradient pattern is "from → to → white → to → from"
+  and background-size is 200%. Moving position 0%→200% crosses the full
+  pattern once, and since 200% wraps back to the same visual as 0% the
+  loop is completely seamless — no flash, no jump.
+*/
+@keyframes shiny-sweep {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 200% center; }
+}
+
+.shiny-text {
+  font-style: var(--st-style, italic);
+  display: inline;
+  background-image: linear-gradient(
+    90deg,
+    var(--st-from, #1A5CA8)      0%,
+    var(--st-to,   #D4A53A)      30%,
+    rgba(255, 255, 255, 0.88)    50%,
+    var(--st-to,   #D4A53A)      70%,
+    var(--st-from, #1A5CA8)      100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shiny-sweep var(--st-speed, 3.5s) linear infinite;
+}
+
+.shiny-text--off {
+  animation: none;
+  background-position: 0% center;
+}
+
+/* ── React Bits: GradientText ──────────────────────── */
+/*
+  Seamless loop: gradient goes from→mid→to→from (200% wide).
+  Position moves 0%→200%, same wrap-around trick as ShinyText.
+*/
+@keyframes gradient-drift {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 200% center; }
+}
+
+.gradient-text {
+  display: inline-block;
+  background-image: linear-gradient(
+    90deg,
+    var(--gt-from, #1A5CA8) 0%,
+    var(--gt-mid,  #D4A53A) 35%,
+    var(--gt-to,   #2B7FE0) 65%,
+    var(--gt-from, #1A5CA8) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient-drift var(--gt-speed, 4s) linear infinite;
 }
 
 /* Ultrawide (2560px+) */

@@ -35,7 +35,7 @@ export default function AIEmployee() {
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", maxWidth: 640 }}
           >
             Your Business Needs an Employee{" "}
-            <em style={{ fontStyle: "italic", color: "#B4945D" }}>
+            <em style={{ fontStyle: "italic", background: "linear-gradient(135deg, var(--blue), var(--gold))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               That Never Clocks Out.
             </em>
           </h2>
@@ -46,7 +46,7 @@ export default function AIEmployee() {
           </p>
         </SectionReveal>
 
-        <SectionReveal delay={0.15}>
+        <SectionReveal delay={0.15} variant="flip">
           <div
             style={{
               background: "#FFFFFF",
@@ -219,7 +219,7 @@ export default function AIEmployee() {
                 alignItems: "center",
                 gap: 8,
                 padding: "15px 32px",
-                background: "#B4945D",
+                background: "var(--gold)",
                 color: "white",
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontWeight: 700,
@@ -229,18 +229,18 @@ export default function AIEmployee() {
                 transition: "all 0.25s",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "#C5A059";
+                (e.currentTarget as HTMLElement).style.background = "var(--gold-bright)";
                 (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
                 (e.currentTarget as HTMLElement).style.boxShadow =
                   "0 6px 24px rgba(180,148,93,0.4)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "#B4945D";
+                (e.currentTarget as HTMLElement).style.background = "var(--gold)";
                 (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 (e.currentTarget as HTMLElement).style.boxShadow = "none";
               }}
             >
-              Get Your AI Employee →
+              Book Your Free Strategy Call →
             </a>
             <div
               style={{
@@ -251,7 +251,7 @@ export default function AIEmployee() {
                 color: "var(--text-dim)",
               }}
             >
-              🛡️ 60-Day Guarantee — measurable results or we work free
+              🛡️ 90-Day ROI Guarantee — measurable results or we work free
             </div>
           </div>
         </SectionReveal>

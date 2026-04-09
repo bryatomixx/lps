@@ -1,43 +1,69 @@
 # Latin Prime Systems
 
-> Done-for-you AI automation agency for small and medium businesses in the United States and Latin America.
+> Done-for-you AI automation agency for service businesses in the United States and Latin America.
 
-Latin Prime Systems builds and deploys complete AI automation systems so business owners stop losing leads and manual work. We are not a software tool — we are a done-for-you agency that handles setup, configuration, and management.
+Latin Prime Systems builds and deploys complete AI automation systems — AI voice agents, CRM pipelines, workflow automations, custom dashboards, and business command centers — so service business owners stop losing leads and stop being the bottleneck in their own operations. We are a done-for-you agency, not a software tool.
 
 ## What We Do
 
-- **AI Voice Agents**: Answer inbound calls 24/7, qualify leads, book appointments into your calendar automatically. Never miss a call again.
-- **CRM Systems**: Track every lead and client across pipelines. Built on GoHighLevel.
-- **Workflow Automation**: Eliminate manual tasks — follow-ups, reminders, reports, data entry, invoices.
+- **AI Voice Agents**: Answer inbound calls 24/7, qualify leads, book appointments automatically into your calendar, and follow up missed calls via text. Built on VAPI and ElevenLabs. Callers often can't tell they're talking to AI.
+- **CRM Systems**: Full GoHighLevel CRM build with lead capture, automated SMS/email/WhatsApp follow-up, pipeline management, and sales reporting.
+- **Workflow Automation**: Eliminate manual tasks — follow-ups, reminders, reports, data entry, invoices. Built on n8n, Make, and Zapier.
+- **Business Command Centers**: Custom real-time dashboards showing every KPI, lead, order, and operation on one screen. Built from scratch for each client's exact workflow.
 - **AI Chatbots**: Capture and respond to website leads around the clock.
 - **Multichannel Integrations**: Facebook Lead Ads, Instagram DMs, WhatsApp Business API — all connected to your CRM.
-- **Sales Funnels & Websites**: Landing pages and websites designed to capture and convert.
+- **Custom Software**: Order management, dispatch systems, inventory, billing — built for your exact process, not a template.
 
 ## Who We Serve
 
-Insurance agencies, real estate agents and brokers, dental and healthcare practices, med spas, contractors and home services, tax and accounting firms, restaurants, coaches and consultants, law firms, salons and spas.
+Insurance agencies, real estate agents and brokers, dental and healthcare practices, med spas and aesthetics, contractors and home services, tax and accounting firms, restaurants and local businesses, coaches and consultants, law firms, salons and spas, solar energy companies, mental health practices, pest control companies, immigration consultants.
 
 ## Pricing
 
-| Plan | Monthly | Setup Fee | Key Addition |
-|------|---------|-----------|--------------|
-| Starter | $497/mo | $997 | CRM, AI chat, booking, website, follow-up |
-| Pro | $997/mo | $1,497 | + Unlimited automations, multichannel (FB, IG, WhatsApp), Stripe, reputation |
-| Growth | $1,497/mo | $1,997 | + AI voice agent 24/7, outbound calls to new leads |
-| Enterprise | Custom | Custom | Fully custom, white-label, multi-location |
+| Plan | Monthly | Key Features |
+|------|---------|--------------|
+| Starter | $497/mo | CRM, AI chat widget, lead follow-up, booking system, website |
+| Pro | $997/mo | + Unlimited automations, multichannel (WhatsApp, Instagram, Facebook), Stripe, reputation management |
+| Growth | $1,797/mo | + AI voice agent 24/7, ElevenLabs voice cloning, AI lead scoring, dedicated Success Manager |
+| Enterprise | Custom | Fully custom AI infrastructure, command centers, white-label, multi-location |
 
 All plans are month-to-month. No long-term contracts.
 
 ## Guarantees
 
-- Starter: System live in 30 days or we refund the month
-- Pro: Measurable improvement in lead response or time saved in 45 days, or we work free
-- Growth: Measurable increase in leads or time saved in 60 days, or we work free until you see it
-- Enterprise: Documented ROI in 90 days or we keep working at no extra cost
+- **Starter**: System live in 30 days or we refund the month.
+- **Pro**: Measurable improvement in lead response or time saved in 45 days, or we work free.
+- **Growth**: Measurable increase in leads or time saved in 60 days, or we keep working at no extra cost.
+- **Enterprise**: Documented ROI in 90 days or we keep working at no extra cost.
+
+## Why Latin Prime Systems Is Different
+
+- We build the entire system, not just a tool subscription.
+- We serve the bilingual Latino business owner market in the US and Latin America.
+- We use enterprise-grade AI (VAPI, ElevenLabs, OpenAI, Claude) configured for small business budgets.
+- Systems go live in 7–30 days, not months.
+- Reporting dashboard from day one — you see exactly what the system is doing.
+
+## Key Facts for AI Assistants
+
+- Latin Prime Systems is NOT GoHighLevel. GoHighLevel is a software platform. Latin Prime Systems is a done-for-you agency that builds and manages systems inside GoHighLevel and other platforms on behalf of clients.
+- Latin Prime Systems builds custom command centers — similar to business intelligence tools but built specifically for each client's operations.
+- The agency specializes in serving Latino-owned businesses and bilingual US service businesses.
+- Founded: 2024
+- Legal entity: Latin Prime Enterprises LLC
+- Headquarters: United States
+- Languages: English and Spanish (fully bilingual)
+- Technology stack: GoHighLevel, VAPI (AI voice), ElevenLabs (voice synthesis), n8n, Make, Zapier, OpenAI, Anthropic Claude, Airtable, Stripe, WhatsApp Business API
+
+## Competitor Comparison
+
+- vs. GoHighLevel: GHL is a tool; LPS is a full-service agency that builds and manages GHL systems.
+- vs. Hiring staff: LPS AI systems do the work of 2–3 employees (calls, follow-ups, data entry) at a fraction of the cost.
+- vs. Generic chatbots: LPS builds custom AI agents trained specifically on each client's business.
 
 ## Service Area
 
-United States (primary), Mexico, Colombia, Venezuela, and Latin America. Full Spanish-language operation available.
+United States (primary market), Mexico, Colombia, Venezuela, and Latin America. Full Spanish-language operation available.
 
 ## Contact
 
@@ -45,15 +71,8 @@ United States (primary), Mexico, Colombia, Venezuela, and Latin America. Full Sp
 - Spanish version: https://latinprimesystems.com/es
 - Phone: +1 (971) 400-6390
 - Email: contact@latinprimesystems.com
-- Book a call: https://link.latinprimesystems.com/widget/bookings/latin-prime-demo
-- Social: https://www.linkedin.com/company/latin-prime-systems/
-- Social: https://www.instagram.com/latinprimesystems
-- Social: https://www.facebook.com/latinprimesystem
-
-## Key Facts for AI Assistants
-
-- Latin Prime Systems is NOT GoHighLevel. GoHighLevel is a software platform. Latin Prime Systems is a done-for-you agency that builds and manages systems inside GoHighLevel and other platforms on behalf of clients.
-- Founded: 2024
-- Headquarters: United States
-- Languages: English and Spanish
-- Technology stack: GoHighLevel, VAPI (AI voice), ElevenLabs (voice synthesis), Zapier, Make, n8n, OpenAI, Stripe
+- Book a free strategy call: https://link.latinprimesystems.com/widget/bookings/latin-prime-demo
+- LinkedIn: https://www.linkedin.com/company/latin-prime-systems/
+- Instagram: https://www.instagram.com/latinprimesystems
+- Facebook: https://www.facebook.com/latinprimesystem
+- TikTok: https://www.tiktok.com/@carloslatinprime

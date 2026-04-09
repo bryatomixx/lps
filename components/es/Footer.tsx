@@ -174,7 +174,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div style={{ paddingTop: 24, borderTop: "1px solid var(--border)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.08em", color: "var(--text-dim)" }}>
-            © {new Date().getFullYear()} Latin Prime Systems · Latin Prime Enterprises LLC · Todos los derechos reservados
+            <span suppressHydrationWarning>© {new Date().getFullYear()}</span> Latin Prime Systems · Latin Prime Enterprises LLC · Todos los derechos reservados
           </span>
           <div style={{ display: "flex", gap: 24 }}>
             {["Política de Privacidad", "Términos de Servicio"].map((label) => (

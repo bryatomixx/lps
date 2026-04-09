@@ -109,17 +109,7 @@ export default function AlaCartePricing() {
             style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)" }}
           >
             Don&apos;t Need Everything?{" "}
-            <em
-              style={{
-                fontStyle: "italic",
-                background: "linear-gradient(135deg, var(--blue), var(--gold))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Pick What You Need.
-            </em>
+            <em style={{ fontStyle: "italic", background: "linear-gradient(135deg, var(--blue), var(--gold))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Pick What You Need.</em>
           </h2>
           <p className="section-desc">
             Select the features that match your exact situation. We&apos;ll review your
@@ -170,11 +160,12 @@ export default function AlaCartePricing() {
                             onClick={() => toggle(feat.id)}
                             style={{
                               background: isOn
-                                ? "rgba(26,127,212,0.12)"
-                                : "var(--surface2)",
+                                ? "rgba(180,148,93,0.08)"
+                                : "#FFFFFF",
                               border: isOn
-                                ? "1px solid rgba(26,127,212,0.5)"
+                                ? "1px solid rgba(180,148,93,0.4)"
                                 : "1px solid var(--border)",
+                              borderRadius: 8,
                               padding: "14px 16px",
                               cursor: "pointer",
                               textAlign: "left",
@@ -183,7 +174,7 @@ export default function AlaCartePricing() {
                             onMouseEnter={(e) => {
                               if (!isOn)
                                 (e.currentTarget as HTMLElement).style.borderColor =
-                                  "rgba(26,127,212,0.3)";
+                                  "rgba(180,148,93,0.3)";
                             }}
                             onMouseLeave={(e) => {
                               if (!isOn)
@@ -206,7 +197,8 @@ export default function AlaCartePricing() {
                                   border: isOn
                                     ? "none"
                                     : "1px solid var(--border2)",
-                                  background: isOn ? "var(--blue)" : "transparent",
+                                  borderRadius: 3,
+                                  background: isOn ? "#B4945D" : "transparent",
                                   flexShrink: 0,
                                   display: "flex",
                                   alignItems: "center",
@@ -223,7 +215,7 @@ export default function AlaCartePricing() {
                                   fontFamily: "'Plus Jakarta Sans', sans-serif",
                                   fontWeight: 700,
                                   fontSize: "0.82rem",
-                                  color: isOn ? "var(--blue)" : "var(--text)",
+                                  color: isOn ? "var(--gold)" : "var(--text)",
                                   transition: "color 0.18s",
                                 }}
                               >
@@ -254,8 +246,10 @@ export default function AlaCartePricing() {
           <SectionReveal delay={0.15}>
             <div
               style={{
-                background: "var(--surface2)",
+                background: "#FFFFFF",
                 border: "1px solid var(--border)",
+                borderRadius: 12,
+                boxShadow: "0 4px 24px rgba(15,34,64,0.08)",
                 padding: "28px 24px",
                 position: "sticky",
                 top: 24,
@@ -345,8 +339,9 @@ export default function AlaCartePricing() {
                 <div
                   style={{
                     padding: "10px 14px",
-                    background: "rgba(26,127,212,0.08)",
-                    border: "1px solid rgba(26,127,212,0.2)",
+                    background: "rgba(180,148,93,0.1)",
+                    border: "1px solid rgba(180,148,93,0.25)",
+                    borderRadius: 6,
                     marginBottom: 20,
                   }}
                 >
@@ -355,7 +350,7 @@ export default function AlaCartePricing() {
                       fontFamily: "'DM Mono', monospace",
                       fontSize: "0.62rem",
                       letterSpacing: "0.08em",
-                      color: "var(--blue)",
+                      color: "var(--gold)",
                     }}
                   >
                     {selected.size} feature{selected.size !== 1 ? "s" : ""} selected
@@ -406,6 +401,7 @@ export default function AlaCartePricing() {
                         width: "100%",
                         background: "var(--surface)",
                         border: "1px solid var(--border2)",
+                        borderRadius: 6,
                         color: "var(--text)",
                         padding: "10px 12px",
                         fontFamily: "'Inter', sans-serif",
@@ -414,7 +410,7 @@ export default function AlaCartePricing() {
                       }}
                       onFocus={(e) =>
                         (e.currentTarget.style.borderColor =
-                          "rgba(26,127,212,0.5)")
+                          "rgba(180,148,93,0.5)")
                       }
                       onBlur={(e) =>
                         (e.currentTarget.style.borderColor = "var(--border2)")
@@ -435,6 +431,7 @@ export default function AlaCartePricing() {
                   style={{
                     width: "100%",
                     padding: "13px",
+                    borderRadius: 8,
                     background:
                       selected.size === 0 || !form.name || !form.email
                         ? "var(--surface)"
@@ -442,7 +439,7 @@ export default function AlaCartePricing() {
                         ? "linear-gradient(135deg, #00a854, #007a3d)"
                         : status === "error"
                         ? "linear-gradient(135deg, #c0392b, #922b21)"
-                        : "var(--blue)",
+                        : "#B4945D",
                     border:
                       selected.size === 0 || !form.name || !form.email
                         ? "1px solid var(--border)"

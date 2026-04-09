@@ -2,6 +2,8 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import SectionReveal from "./SectionReveal";
+import SplitText from "./SplitText";
+import ShinyText from "./ShinyText";
 
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
@@ -69,10 +71,8 @@ export default function ROICalculator() {
             className="section-title"
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", maxWidth: 600 }}
           >
-            How Much Is{" "}
-            <em style={{ fontStyle: "italic", color: "#B4945D" }}>
-              Doing Nothing Costing You?
-            </em>
+            <SplitText text="How Much Is" delay={0.05} />{" "}
+            <ShinyText text="Doing Nothing Costing You?" speed={4} />
           </h2>
           <p className="section-desc">
             Adjust the sliders to match your business. See exactly what automation
@@ -132,7 +132,7 @@ export default function ROICalculator() {
               max={10000}
               step={100}
               onChange={setAvgValue}
-              display={`$${avgValue.toLocaleString()}`}
+              display={`$${avgValue.toLocaleString("en-US")}`}
               tooltip="What a single new client is worth to your business"
             />
             <SliderInput
@@ -189,7 +189,7 @@ export default function ROICalculator() {
                 {[
                   { label: "Starter", val: 497 },
                   { label: "Pro", val: 997 },
-                  { label: "Growth", val: 1497 },
+                  { label: "Growth", val: 1797 },
                 ].map((p) => (
                   <button
                     key={p.val}
@@ -197,8 +197,8 @@ export default function ROICalculator() {
                     style={{
                       flex: 1,
                       padding: "10px",
-                      background: plan === p.val ? "#B4945D" : "var(--surface2)",
-                      border: `1px solid ${plan === p.val ? "#B4945D" : "var(--border2)"}`,
+                      background: plan === p.val ? "var(--gold)" : "var(--surface2)",
+                      border: `1px solid ${plan === p.val ? "var(--gold)" : "var(--border2)"}`,
                       color: plan === p.val ? "white" : "var(--text-muted)",
                       borderRadius: 6,
                       fontFamily: "'DM Mono', monospace",
@@ -241,7 +241,7 @@ export default function ROICalculator() {
                   left: 0,
                   right: 0,
                   height: 3,
-                  background: "#B4945D",
+                  background: "var(--gold)",
                 }}
               />
               <div
@@ -312,7 +312,7 @@ export default function ROICalculator() {
                     }}
                   >
                     {roi > 0
-                      ? `$${roi.toLocaleString()}/mo net above plan cost`
+                      ? `$${roi.toLocaleString("en-US")}/mo net above plan cost`
                       : "ROI builds as your volume grows"}
                   </div>
                 </div>
@@ -346,7 +346,7 @@ export default function ROICalculator() {
                 {
                   label: "Revenue from recovered leads",
                   value: revenueRecovered,
-                  sub: `${recoveredClients} new clients/mo × $${avgValue.toLocaleString()}`,
+                  sub: `${recoveredClients} new clients/mo × $${avgValue.toLocaleString("en-US")}`,
                   color: "var(--gold)",
                 },
                 {
@@ -403,7 +403,7 @@ export default function ROICalculator() {
                     }}
                   >
                     {item.value < 0 ? "-" : "+"}$
-                    {Math.abs(item.value).toLocaleString()}
+                    {Math.abs(item.value).toLocaleString("en-US")}
                   </div>
                 </div>
               ))}
@@ -437,7 +437,7 @@ export default function ROICalculator() {
                 style={{
                   display: "block",
                   padding: "14px",
-                  background: "#B4945D",
+                  background: "var(--orange)",
                   color: "white",
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
                   fontWeight: 700,
@@ -445,20 +445,20 @@ export default function ROICalculator() {
                   textDecoration: "none",
                   borderRadius: 8,
                   transition: "all 0.2s",
+                  boxShadow: "0 4px 16px rgba(13,27,42,0.2)",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "#C5A059";
+                  (e.currentTarget as HTMLElement).style.background = "var(--orange-hover)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-                  (e.currentTarget as HTMLElement).style.boxShadow =
-                    "0 10px 30px rgba(180,148,93,0.4)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 28px rgba(212,165,58,0.45)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "#B4945D";
+                  (e.currentTarget as HTMLElement).style.background = "var(--orange)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(13,27,42,0.2)";
                 }}
               >
-                Get My Custom ROI Plan →
+                Book Your Free Strategy Call →
               </a>
             </div>
           </motion.div>
@@ -541,7 +541,7 @@ function SliderInput({
             width: "100%",
             appearance: "none",
             height: 4,
-            background: `linear-gradient(to right, #B4945D ${pct}%, var(--border2) ${pct}%)`,
+            background: `linear-gradient(to right, var(--gold) ${pct}%, var(--border2) ${pct}%)`,
             outline: "none",
             cursor: "pointer",
           }}
@@ -553,10 +553,10 @@ function SliderInput({
           width: 16px;
           height: 16px;
           border-radius: 50%;
-          background: #B4945D;
+          background: var(--gold);
           cursor: pointer;
           border: 2px solid #FFFFFF;
-          box-shadow: 0 0 0 2px #B4945D;
+          box-shadow: 0 0 0 2px var(--gold);
           transition: transform 0.2s;
         }
         input[type=range]::-webkit-slider-thumb:hover {
@@ -566,7 +566,7 @@ function SliderInput({
           width: 16px;
           height: 16px;
           border-radius: 50%;
-          background: #B4945D;
+          background: var(--gold);
           cursor: pointer;
           border: 2px solid #FFFFFF;
         }

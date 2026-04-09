@@ -3,25 +3,27 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import DecryptedText from "./DecryptedText";
+import GradientText from "./GradientText";
+import ShinyText from "./ShinyText";
 
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
 
 const tickerItems = [
-  "Your phone, answered 24/7",
-  "Follow-ups on autopilot",
-  "No lead left behind",
-  "Reports generated automatically",
+  "Zero leads fall through the cracks",
+  "Follow-ups sent in seconds, not days",
+  "No more missed calls or lost revenue",
+  "Appointments booked automatically",
   "AI that works while you sleep",
   "More revenue, less manual work",
-  "Scale without hiring",
-  "Websites that capture & convert",
+  "Scale without adding headcount",
+  "No-shows reduced by up to 80%",
 ];
 
 const proofChips = [
+  "Bilingual — English & Spanish",
   "Calls answered automatically",
-  "Leads followed up in seconds",
-  "Tasks running while you sleep",
+  "Live in 7–30 days",
 ];
 
 
@@ -149,7 +151,7 @@ export default function Hero() {
                 }}
               />
               <DecryptedText
-                text="Done-for-you AI automation for business owners"
+                text="The AI agency built for US & Latin America"
                 animateOn="view"
                 sequential={true}
                 speed={30}
@@ -179,36 +181,36 @@ export default function Hero() {
                 fontWeight: 800,
               }}
             >
-              {["Stop Running", "Your Business.", "Start Growing It."].map((line, li) => (
+              {(["Stop Running", "Your Business.", "Start Growing It."] as const).map((line, li) => (
                 <motion.span
                   key={li}
                   initial={{ opacity: 0, y: 30, skewX: -5 }}
                   animate={{ opacity: 1, y: 0, skewX: 0 }}
                   transition={{ duration: 0.65, delay: 0.25 + li * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                  style={{
-                    display: "block",
-                    background: li === 0 ? "none" : li === 1 ? "linear-gradient(135deg, var(--blue), var(--gold))" : "none",
-                    WebkitBackgroundClip: li === 1 ? "text" : "unset",
-                    WebkitTextFillColor: li === 1 ? "transparent" : "unset",
-                    backgroundClip: li === 1 ? "text" : "unset",
-                  }}
+                  style={{ display: "block" }}
                 >
-                  {li === 2 ? (
+                  {li === 0 && line}
+                  {li === 1 && (
+                    <GradientText
+                      text="Your Business."
+                      speed={5}
+                      from="#1A5CA8"
+                      mid="#D4A53A"
+                      to="#2B7FE0"
+                      style={{ fontWeight: 800 }}
+                    />
+                  )}
+                  {li === 2 && (
                     <>
                       Start{" "}
-                      <span
-                        style={{
-                          background: "linear-gradient(135deg, var(--blue), var(--gold))",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                          backgroundClip: "text",
-                        }}
-                      >
-                        Growing It.
-                      </span>
+                      <ShinyText
+                        text="Growing It."
+                        speed={3.2}
+                        fromColor="#2B7FE0"
+                        toColor="#D4A53A"
+                        style={{ "--st-style": "normal" } as React.CSSProperties}
+                      />
                     </>
-                  ) : (
-                    line
                   )}
                 </motion.span>
               ))}
@@ -225,12 +227,12 @@ export default function Hero() {
                 lineHeight: 1.75,
                 maxWidth: 480,
                 marginBottom: 36,
-                fontWeight: 300,
+                fontWeight: 400,
               }}
             >
-              We build the AI systems that handle your calls, follow-ups,
-              scheduling, and admin — so you stop being the bottleneck in your
-              own business.
+              We build custom AI systems for service businesses in the US
+              and Latin America — handling your calls, messages, and follow-ups
+              in English and Spanish. You run your business. The system does the rest.
             </motion.p>
 
             {/* Proof chips */}
@@ -299,35 +301,37 @@ export default function Hero() {
                     alignItems: "center",
                     gap: 8,
                     padding: "16px 34px",
-                    background: "var(--blue)",
+                    background: "var(--orange)",
                     color: "white",
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
                     fontWeight: 700,
                     fontSize: "0.95rem",
                     letterSpacing: "0.02em",
                     textDecoration: "none",
-                    boxShadow: "0 0 25px rgba(26,127,212,0.3), 0 4px 20px rgba(26,127,212,0.2)",
+                    boxShadow: "0 4px 24px rgba(13,27,42,0.25)",
                     transition: "all 0.25s",
                   }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 0 45px rgba(26,127,212,0.6), 0 12px 40px rgba(26,127,212,0.35)";
-                    (e.currentTarget as HTMLElement).style.background = "var(--blue-bright)";
+                    (e.currentTarget as HTMLElement).style.background = "var(--orange-hover)";
+                    (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(212,165,58,0.5)";
+                    (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 0 25px rgba(26,127,212,0.3), 0 4px 20px rgba(26,127,212,0.2)";
-                    (e.currentTarget as HTMLElement).style.background = "var(--blue)";
+                    (e.currentTarget as HTMLElement).style.background = "var(--orange)";
+                    (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 24px rgba(13,27,42,0.25)";
+                    (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                   }}
                 >
-                  Show Me My Automation Plan
+                  Book Your Free Strategy Call
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </motion.a>
                 <motion.a
-                  href="#solutions"
+                  href="#automation-quiz"
                   onClick={(e) => {
                     e.preventDefault();
-                    document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" });
+                    document.getElementById("automation-quiz")?.scrollIntoView({ behavior: "smooth" });
                   }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

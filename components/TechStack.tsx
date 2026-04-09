@@ -121,7 +121,7 @@ export default function TechStack() {
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", maxWidth: 640 }}
           >
             The Most Powerful Platforms{" "}
-            <em style={{ fontStyle: "italic", color: "#B4945D" }}>Working for Your Business</em>
+            <em style={{ fontStyle: "italic", background: "linear-gradient(135deg, var(--blue), var(--gold))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Working for Your Business</em>
           </h2>
           <p className="section-desc">
             Behind every result we deliver is a carefully selected stack of the

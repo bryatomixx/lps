@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import SectionReveal from "../SectionReveal";
 
 const industries = [
@@ -251,19 +252,44 @@ export default function WhoWeServe() {
                   >
                     {ind.desc}
                   </p>
-                  <span
-                    style={{
-                      fontFamily: "'DM Mono', monospace",
-                      fontSize: "0.62rem",
-                      letterSpacing: "0.1em",
-                      color: "var(--blue)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 6,
-                    }}
-                  >
-                    Ver qué podemos hacer →
-                  </span>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    <span
+                      style={{
+                        fontFamily: "'DM Mono', monospace",
+                        fontSize: "0.62rem",
+                        letterSpacing: "0.1em",
+                        color: "var(--blue)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 6,
+                      }}
+                    >
+                      Ver qué podemos hacer →
+                    </span>
+                    <Link
+                      href={`/es/${ind.slug}`}
+                      onClick={(e) => e.stopPropagation()}
+                      style={{
+                        fontFamily: "'DM Mono', monospace",
+                        fontSize: "0.58rem",
+                        letterSpacing: "0.1em",
+                        color: "var(--text-muted)",
+                        textDecoration: "none",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 4,
+                        transition: "color 0.2s",
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLElement).style.color = "var(--gold)";
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLElement).style.color = "var(--text-muted)";
+                      }}
+                    >
+                      Página dedicada ↗
+                    </Link>
+                  </div>
                 </div>
               </SectionReveal>
             ))}

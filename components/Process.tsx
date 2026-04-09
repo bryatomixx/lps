@@ -1,6 +1,8 @@
 "use client";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import SplitText from "./SplitText";
+import ShinyText from "./ShinyText";
 
 const steps = [
   {
@@ -38,17 +40,17 @@ export default function Process() {
     >
       <div className="section-inner">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.65 }}
+          initial={{ opacity: 0, x: -40 }}
+          animate={isInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ opacity: { duration: 0.5, ease: "easeOut" }, x: { type: "spring", stiffness: 65, damping: 14 } }}
         >
           <div className="slabel">How It Works</div>
           <h2
             className="section-title"
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
           >
-            We Handle Everything.{" "}
-            <em style={{ fontStyle: "italic", color: "#B4945D" }}>You See Results.</em>
+            <SplitText text="We Handle Everything." delay={0.05} />{" "}
+            <ShinyText text="You See Results." speed={3.8} />
           </h2>
           <p className="section-desc">
             You don&apos;t need to understand the technology. That&apos;s our job.
@@ -66,9 +68,13 @@ export default function Process() {
           {steps.map((step, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.65, delay: i * 0.12 }}
+              initial={{ opacity: 0, scale: 0.84, y: 24 }}
+              animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+              transition={{
+                opacity: { duration: 0.45, delay: i * 0.14, ease: "easeOut" },
+                scale:   { type: "spring", stiffness: 68, damping: 13, delay: i * 0.14 },
+                y:       { type: "spring", stiffness: 68, damping: 13, delay: i * 0.14 },
+              }}
               style={{
                 background: "var(--surface)",
                 border: "1px solid var(--border)",
@@ -103,7 +109,7 @@ export default function Process() {
                 style={{
                   width: 32,
                   height: 3,
-                  background: "#B4945D",
+                  background: "var(--gold)",
                   marginBottom: 20,
                 }}
               />
@@ -111,11 +117,12 @@ export default function Process() {
               <div
                 style={{
                   fontFamily: "'DM Mono', monospace",
-                  fontSize: "0.6rem",
-                  letterSpacing: "0.18em",
+                  fontSize: "0.72rem",
+                  letterSpacing: "0.12em",
                   color: "var(--gold)",
                   marginBottom: 12,
                   textTransform: "uppercase",
+                  fontWeight: 500,
                 }}
               >
                 Step {step.num}

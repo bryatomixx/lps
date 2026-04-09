@@ -1,6 +1,8 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import SplitText from "./SplitText";
+import ShinyText from "./ShinyText";
 
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
@@ -66,19 +68,12 @@ export default function CTA() {
               margin: "0 auto 20px",
             }}
           >
-            Your Business Deserves{" "}
-            <em
-              style={{
-                fontStyle: "italic",
-                background: "linear-gradient(135deg, var(--blue), var(--gold))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                paddingRight: "0.08em",
-              }}
-            >
-              Better Systems
-            </em>
+            <SplitText text="Your Business Deserves" delay={0.05} />{" "}
+            <ShinyText
+              text="Better Systems"
+              speed={3}
+              style={{ paddingRight: "0.08em" }}
+            />
           </h2>
           <p
             style={{
@@ -111,7 +106,7 @@ export default function CTA() {
                 alignItems: "center",
                 gap: 10,
                 padding: "18px 44px",
-                background: "var(--blue)",
+                background: "var(--orange)",
                 color: "white",
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontWeight: 800,
@@ -119,19 +114,17 @@ export default function CTA() {
                 letterSpacing: "0.01em",
                 textDecoration: "none",
                 transition: "all 0.25s",
-                boxShadow: "0 0 30px rgba(26,127,212,0.3), 0 6px 25px rgba(26,127,212,0.2)",
-                animation: "border-glow 3s ease-in-out infinite",
+                boxShadow: "0 6px 28px rgba(13,27,42,0.25)",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "var(--blue-bright)";
+                (e.currentTarget as HTMLElement).style.background = "var(--orange-hover)";
                 (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 0 60px rgba(26,127,212,0.6), 0 16px 50px rgba(26,127,212,0.4)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(212,165,58,0.55)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "var(--blue)";
+                (e.currentTarget as HTMLElement).style.background = "var(--orange)";
                 (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 30px rgba(26,127,212,0.3), 0 6px 25px rgba(26,127,212,0.2)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 28px rgba(13,27,42,0.25)";
               }}
             >
               Book Your Free Strategy Call

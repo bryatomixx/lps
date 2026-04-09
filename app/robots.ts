@@ -39,6 +39,17 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "cohere-ai", allow: "/" },
       // Diffbot
       { userAgent: "Diffbot", allow: "/" },
+      // Google Gemini / Bard
+      { userAgent: "Google-CloudVertexBot", allow: "/" },
+      // Microsoft Copilot / Bing AI
+      { userAgent: "BingPreview", allow: "/" },
+      { userAgent: "MicrosoftPreview", allow: "/" },
+      // Brave Search
+      { userAgent: "Brave", allow: "/" },
+      // DuckDuckGo AI
+      { userAgent: "DuckAssistBot", allow: "/" },
+      // Bytedance / Doubao
+      { userAgent: "Bytespider", allow: "/" },
       // Common Crawl (trains most LLMs)
       { userAgent: "CCBot", allow: "/" },
     ],

@@ -3,6 +3,8 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import SectionReveal from "./SectionReveal";
+import SplitText from "./SplitText";
+import ShinyText from "./ShinyText";
 
 const testimonials = [
   {
@@ -82,10 +84,8 @@ export default function Testimonials() {
             className="section-title"
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", maxWidth: 600 }}
           >
-            What Happens When{" "}
-            <em style={{ fontStyle: "italic", color: "#B4945D" }}>
-              We Go to Work
-            </em>
+            <SplitText text="What Happens When" delay={0.05} />{" "}
+            <ShinyText text="We Go to Work" speed={3.5} />
           </h2>
         </SectionReveal>
 
@@ -195,9 +195,9 @@ export default function Testimonials() {
                     <div
                       style={{
                         fontFamily: "'DM Mono', monospace",
-                        fontSize: "0.62rem",
-                        letterSpacing: "0.08em",
-                        color: "var(--text-dim)",
+                        fontSize: "0.75rem",
+                        letterSpacing: "0.04em",
+                        color: "var(--text-muted)",
                         marginTop: 2,
                       }}
                     >
@@ -211,8 +211,8 @@ export default function Testimonials() {
                       background: "var(--green-dim)",
                       border: "1px solid rgba(0,168,84,0.2)",
                       fontFamily: "'DM Mono', monospace",
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.1em",
+                      fontSize: "0.72rem",
+                      letterSpacing: "0.06em",
                       color: "var(--green)",
                       whiteSpace: "nowrap",
                     }}
@@ -366,9 +366,9 @@ export default function Testimonials() {
                   <div
                     style={{
                       fontFamily: "'DM Mono', monospace",
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.08em",
-                      color: "var(--text-dim)",
+                      fontSize: "0.72rem",
+                      letterSpacing: "0.05em",
+                      color: "var(--text-muted)",
                     }}
                   >
                     {tm.role}
@@ -377,8 +377,8 @@ export default function Testimonials() {
                 <div
                   style={{
                     fontFamily: "'DM Mono', monospace",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.08em",
+                    fontSize: "0.72rem",
+                    letterSpacing: "0.05em",
                     color: "var(--green)",
                     flexShrink: 0,
                   }}

@@ -3,6 +3,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import SectionReveal from "./SectionReveal";
+import SplitText from "./SplitText";
+import ShinyText from "./ShinyText";
+import GradientText from "./GradientText";
 
 const industries = [
   {
@@ -157,6 +160,40 @@ const industries = [
   },
 ];
 
+const nichesRow1 = [
+  { icon: "🏦", title: "Mortgage / Lending" },
+  { icon: "💰", title: "Financial Services" },
+  { icon: "💪", title: "Fitness / Wellness" },
+  { icon: "🩺", title: "Chiro / Physical Therapy" },
+  { icon: "🚗", title: "Auto Dealership / Services" },
+  { icon: "🏢", title: "Property Management" },
+  { icon: "🛒", title: "E-commerce / Retail" },
+  { icon: "🎓", title: "Education / Training" },
+  { icon: "👥", title: "Staffing / HR Services" },
+  { icon: "🐾", title: "Veterinary Clinic" },
+  { icon: "🤝", title: "Non-Profit / Association" },
+  { icon: "🚛", title: "Trucking / Logistics" },
+  { icon: "📣", title: "Marketing / Creative Agency" },
+  { icon: "✈️", title: "Travel Agency" },
+];
+
+const nichesRow2 = [
+  { icon: "🧒", title: "Childcare / Daycare" },
+  { icon: "🎉", title: "Events / Entertainment" },
+  { icon: "🧹", title: "Cleaning / Janitorial" },
+  { icon: "💊", title: "Pharmacy / Compounding" },
+  { icon: "👓", title: "Optometry / Vision" },
+  { icon: "🏡", title: "Senior Care / Assisted Living" },
+  { icon: "🔧", title: "Contractor / Home Services" },
+  { icon: "📊", title: "Tax / Accounting" },
+  { icon: "⚖️", title: "Law Firm / Legal" },
+  { icon: "🎯", title: "Coach / Consultant" },
+  { icon: "🍽️", title: "Restaurant / Local Business" },
+  { icon: "✂️", title: "Salon / Barbershop / Spa" },
+  { icon: "💆", title: "Med Spa / Aesthetics" },
+  { icon: "💼", title: "Any Service Business" },
+];
+
 export default function WhoWeServe() {
   const [activeModal, setActiveModal] = useState<number | null>(null);
   const activeIndustry = activeModal !== null ? industries[activeModal] : null;
@@ -175,10 +212,8 @@ export default function WhoWeServe() {
               className="section-title"
               style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", maxWidth: 600 }}
             >
-              Any Business That Wants to{" "}
-              <em style={{ fontStyle: "italic", color: "#B4945D" }}>
-                Operate Smarter
-              </em>
+              <SplitText text="Any Business That Wants to" delay={0.05} />{" "}
+              <ShinyText text="Operate Smarter" speed={3.5} />
             </h2>
             <p className="section-desc">
               This used to be only for companies with million-dollar tech budgets.
@@ -194,7 +229,8 @@ export default function WhoWeServe() {
             }}
           >
             {industries.map((ind, i) => (
-              <SectionReveal key={i} delay={i * 0.05} style={{ height: "100%" }}>
+              <SectionReveal key={i} delay={i * 0.06} variant="scale" style={{ height: "100%" }}>
+
                 <div
                   style={{
                     background: "#FFFFFF",
@@ -288,8 +324,76 @@ export default function WhoWeServe() {
               </SectionReveal>
             ))}
           </div>
+
         </div>
       </section>
+
+      {/* Niche carousel — full width, outside section-inner */}
+      <div style={{ background: "var(--surface)", paddingBottom: 64, overflow: "hidden" }}>
+        <div style={{ textAlign: "center", padding: "0 0 32px" }}>
+          <GradientText
+            text="And many more industries"
+            speed={5}
+            from="#1A5CA8"
+            mid="#D4A53A"
+            to="#2B7FE0"
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: 800,
+              fontSize: "clamp(1.4rem, 2.5vw, 2rem)",
+              letterSpacing: "-0.02em",
+            }}
+          />
+        </div>
+
+        {/* Row 1 — left */}
+        <div style={{ overflow: "hidden", marginBottom: 10 }}>
+          <div
+            style={{ display: "flex", width: "max-content", animation: "ticker-scroll 35s linear infinite" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.animationPlayState = "paused"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.animationPlayState = "running"; }}
+          >
+            {[...nichesRow1, ...nichesRow1].map((n, i) => (
+              <div
+                key={i}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 8,
+                  background: "#FFFFFF", border: "1px solid var(--border)",
+                  borderRadius: 100, padding: "8px 20px", marginRight: 10,
+                  whiteSpace: "nowrap", flexShrink: 0,
+                }}
+              >
+                <span style={{ fontSize: "0.9rem" }}>{n.icon}</span>
+                <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.82rem", color: "var(--text-muted)" }}>{n.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2 — right */}
+        <div style={{ overflow: "hidden" }}>
+          <div
+            style={{ display: "flex", width: "max-content", animation: "ticker-scroll 42s linear infinite reverse" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.animationPlayState = "paused"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.animationPlayState = "running"; }}
+          >
+            {[...nichesRow2, ...nichesRow2].map((n, i) => (
+              <div
+                key={i}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 8,
+                  background: "#FFFFFF", border: "1px solid var(--border)",
+                  borderRadius: 100, padding: "8px 20px", marginRight: 10,
+                  whiteSpace: "nowrap", flexShrink: 0,
+                }}
+              >
+                <span style={{ fontSize: "0.9rem" }}>{n.icon}</span>
+                <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.82rem", color: "var(--text-muted)" }}>{n.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* Modal */}
       <AnimatePresence>

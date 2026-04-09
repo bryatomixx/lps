@@ -114,9 +114,7 @@ export default function Footer() {
                 marginBottom: 24,
               }}
             >
-              We build the AI systems that handle your calls, follow-ups,
-              scheduling, and admin — so you stop being the bottleneck in your
-              own business.
+              Done-for-you AI systems for service businesses. Live in 7–30 days. No technical knowledge required.
             </p>
             <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
               <span
@@ -237,7 +235,7 @@ export default function Footer() {
                 marginBottom: 20,
               }}
             >
-              Get Started
+              Ready to Start
             </div>
             <p
               style={{
@@ -247,7 +245,7 @@ export default function Footer() {
                 marginBottom: 20,
               }}
             >
-              Book a free strategy call and get a custom automation plan for your business.
+              30-minute call. We map out your system. No pitch deck, no commitment.
             </p>
             <a
               href={BOOKING_URL}
@@ -256,7 +254,7 @@ export default function Footer() {
               style={{
                 display: "block",
                 padding: "12px 20px",
-                background: "var(--blue)",
+                background: "var(--orange)",
                 color: "white",
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontWeight: 700,
@@ -264,15 +262,17 @@ export default function Footer() {
                 textDecoration: "none",
                 textAlign: "center",
                 transition: "all 0.2s",
+                borderRadius: 6,
+                boxShadow: "0 4px 14px rgba(13,27,42,0.2)",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "#2290e8";
+                (e.currentTarget as HTMLElement).style.background = "var(--orange-hover)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "var(--blue)";
+                (e.currentTarget as HTMLElement).style.background = "var(--orange)";
               }}
             >
-              Book a Free Demo
+              Book Your Free Strategy Call
             </a>
           </div>
         </div>
@@ -297,7 +297,7 @@ export default function Footer() {
               color: "var(--text-dim)",
             }}
           >
-            © {new Date().getFullYear()} Latin Prime Systems · Latin Prime Enterprises LLC ·
+            <span suppressHydrationWarning>© {new Date().getFullYear()}</span> Latin Prime Systems · Latin Prime Enterprises LLC ·
             All rights reserved
           </span>
           <div style={{ display: "flex", gap: 24 }}>

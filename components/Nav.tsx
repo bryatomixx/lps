@@ -48,7 +48,7 @@ export default function Nav() {
           alignItems: "center",
           justifyContent: "space-between",
           transition: "background 0.3s, border-color 0.3s",
-          background: scrolled ? "rgba(255,255,255,0.95)" : "transparent",
+          background: scrolled ? "rgba(248,247,244,0.96)" : "transparent",
           borderBottom: scrolled ? "1px solid rgba(15,34,64,0.08)" : "1px solid transparent",
           backdropFilter: scrolled ? "blur(20px)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
@@ -111,7 +111,7 @@ export default function Nav() {
             rel="noopener noreferrer"
             style={{
               padding: "9px 20px",
-              background: "#B4945D",
+              background: "var(--orange)",
               color: "white",
               fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontWeight: 700,
@@ -120,21 +120,19 @@ export default function Nav() {
               textDecoration: "none",
               transition: "all 0.25s",
               borderRadius: 6,
-              boxShadow: "0 4px 16px rgba(180,148,93,0.28)",
+              boxShadow: "0 4px 16px rgba(13,27,42,0.2)",
             }}
             className="hidden md:inline-flex items-center btn-glow"
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.background = "#C5A059";
+              (e.currentTarget as HTMLElement).style.background = "var(--orange-hover)";
               (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 24px rgba(180,148,93,0.4)";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.background = "#B4945D";
+              (e.currentTarget as HTMLElement).style.background = "var(--orange)";
               (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(180,148,93,0.28)";
             }}
           >
-            Book a Demo
+            Book a Free Call
           </a>
 
           {/* Hamburger */}
@@ -157,7 +155,7 @@ export default function Nav() {
                 display: "block",
                 width: 18,
                 height: 1.5,
-                background: "#0F2240",
+                background: "var(--text)",
                 transition: "all 0.3s",
                 transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none",
               }}
@@ -167,7 +165,7 @@ export default function Nav() {
                 display: "block",
                 width: 18,
                 height: 1.5,
-                background: "#0F2240",
+                background: "var(--text)",
                 transition: "all 0.3s",
                 opacity: menuOpen ? 0 : 1,
               }}
@@ -177,7 +175,7 @@ export default function Nav() {
                 display: "block",
                 width: 18,
                 height: 1.5,
-                background: "#0F2240",
+                background: "var(--text)",
                 transition: "all 0.3s",
                 transform: menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none",
               }}
@@ -200,7 +198,7 @@ export default function Nav() {
               left: 0,
               right: 0,
               zIndex: 99,
-              background: "rgba(255,255,255,0.98)",
+              background: "rgba(248,247,244,0.98)",
               borderBottom: "1px solid rgba(15,34,64,0.08)",
               padding: "24px",
               backdropFilter: "blur(20px)",
@@ -239,7 +237,7 @@ export default function Nav() {
                 display: "block",
                 marginTop: 20,
                 padding: "14px",
-                background: "#B4945D",
+                background: "var(--orange)",
                 color: "white",
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontWeight: 700,
@@ -249,7 +247,7 @@ export default function Nav() {
                 borderRadius: 8,
               }}
             >
-              Book a Free Demo
+              Book a Free Call
             </a>
           </motion.div>
         )}

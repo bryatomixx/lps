@@ -5,7 +5,7 @@ const rows = [
   {
     icon: "🟡",
     badge: "Starter",
-    badgeColor: "var(--gold)",
+    badgeColor: "#B4945D",
     condition: "You have a business and you're doing everything manually",
     detail:
       "You want to start automating the basics — follow-ups, appointments, responses — without overhauling everything at once.",
@@ -13,7 +13,7 @@ const rows = [
   {
     icon: "🔵",
     badge: "Growth",
-    badgeColor: "var(--blue)",
+    badgeColor: "#B4945D",
     condition: "Your business grew — but you're still running it like day one",
     detail:
       "The manual processes that worked when you were small are now costing you time, leads, and money.",
@@ -21,7 +21,9 @@ const rows = [
   {
     icon: "⚡",
     badge: "Enterprise",
-    badgeColor: "var(--text-muted)",
+    badgeColor: "rgba(15,34,64,0.4)",
+    badgeBorderColor: "rgba(15,34,64,0.3)",
+    badgeTextColor: "var(--text-muted)" as string | undefined,
     condition: "Your operation is too specific to fit into a standard package",
     detail:
       "You have complex workflows, multiple locations, or need integrations with existing systems — and you need someone to build it right.",
@@ -33,14 +35,16 @@ export default function PlanGuide() {
     <section
       className="section-wrap"
       id="plan-guide"
-      style={{ background: "var(--surface)", padding: "80px 0" }}
+      style={{ background: "var(--bg)", padding: "80px 0" }}
     >
       <div className="section-inner">
         <SectionReveal>
           <div
             style={{
-              background: "var(--surface2)",
-              border: "1px solid var(--border2)",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: 16,
+              boxShadow: "0 2px 8px rgba(15,34,64,0.04), 0 8px 32px rgba(15,34,64,0.07)",
               padding: "48px 44px",
               maxWidth: 820,
               margin: "0 auto",
@@ -57,17 +61,7 @@ export default function PlanGuide() {
               }}
             >
               The best plan for you is the one that{" "}
-              <em
-                style={{
-                  fontStyle: "italic",
-                  background: "linear-gradient(135deg, var(--blue), var(--gold))",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                matches where you actually are.
-              </em>
+              <em style={{ fontStyle: "italic", background: "linear-gradient(135deg, var(--blue), var(--gold))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>matches where you actually are.</em>
             </h2>
             <p
               style={{
@@ -80,7 +74,7 @@ export default function PlanGuide() {
               Choose based on where your business is right now, not where you want it to be.
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {rows.map((row, i) => (
                 <div
                   key={i}
@@ -88,8 +82,9 @@ export default function PlanGuide() {
                     display: "flex",
                     alignItems: "center",
                     gap: 20,
-                    background: "var(--surface)",
+                    background: "#FFFFFF",
                     border: "1px solid var(--border)",
+                    borderRadius: 8,
                     padding: "20px 24px",
                     transition: "border-color 0.3s",
                   }}
@@ -140,8 +135,8 @@ export default function PlanGuide() {
                     style={{
                       flexShrink: 0,
                       padding: "6px 16px",
-                      border: `1px solid ${row.badgeColor}`,
-                      color: row.badgeColor,
+                      border: `1px solid ${"badgeBorderColor" in row ? row.badgeBorderColor : row.badgeColor}`,
+                      color: "badgeTextColor" in row ? (row as { badgeTextColor: string }).badgeTextColor : row.badgeColor,
                       fontFamily: "'Plus Jakarta Sans', sans-serif",
                       fontWeight: 700,
                       fontSize: "0.78rem",
