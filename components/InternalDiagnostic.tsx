@@ -105,7 +105,7 @@ export default function InternalDiagnostic() {
   // ── Keyboard shortcut: Shift+Alt+D ──
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.shiftKey && e.altKey && e.key === "D") {
+      if (e.shiftKey && e.altKey && e.code === "KeyD") {
         setShowGate(true);
       }
     };
