@@ -4,7 +4,7 @@ import NavDrawer from './NavDrawer'
 export default function AppHeader() {
   return (
     <header
-      className="px-5 py-3"
+      className="px-6 py-3"
       style={{
         background: '#FFFFFF',
         borderBottom: '1px solid #E6E2D9',

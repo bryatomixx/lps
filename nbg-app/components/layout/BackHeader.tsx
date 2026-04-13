@@ -9,7 +9,7 @@ interface BackHeaderProps {
 export default function BackHeader({ title, backHref, subtitle }: BackHeaderProps) {
   return (
     <header
-      className="px-5 py-4"
+      className="px-6 py-4"
       style={{ background: '#FFFFFF', borderBottom: '1px solid #E6E2D9' }}
     >
       <div className="flex items-center gap-4">

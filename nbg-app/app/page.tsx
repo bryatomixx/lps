@@ -12,7 +12,7 @@ export default function Home() {
       <AppHeader />
 
       {/* Page heading */}
-      <div className="px-4 pt-5 pb-4" style={{ borderBottom: '1px solid #E6E2D9', background: '#FFFFFF' }}>
+      <div className="px-6 pt-5 pb-4" style={{ borderBottom: '1px solid #E6E2D9', background: '#FFFFFF' }}>
         <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '2px' }}>
           National Brokers Group
         </p>

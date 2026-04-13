@@ -26,7 +26,7 @@ export default function ItemList({ items }: ItemListProps) {
   }
 
   return (
-    <div className="px-4 py-4 flex flex-col gap-2">
+    <div className="px-6 py-4 flex flex-col gap-2">
       {items.map((item) => (
         <Link
           key={item.slug}

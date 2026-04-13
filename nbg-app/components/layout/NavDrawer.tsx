@@ -57,19 +57,19 @@ export default function NavDrawer() {
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 overflow-y-auto py-2">
+        <nav className="flex-1 overflow-y-auto py-3">
           {categories.map((cat) => (
             <Link
               key={cat.slug}
               href={cat.directItemSlug ? `/item/${cat.directItemSlug}` : `/categoria/${cat.slug}`}
               onClick={() => setOpen(false)}
-              className="flex items-center gap-3 px-5 py-3 transition-colors"
-              style={{ color: '#AAAAAA' }}
+              className="flex items-center gap-4 transition-colors"
+              style={{ color: '#AAAAAA', padding: '13px 24px', minHeight: '52px' }}
               onMouseEnter={e => (e.currentTarget.style.background = '#1F1F1F')}
               onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
             >
-              <span style={{ fontSize: '15px', width: '20px', textAlign: 'center', flexShrink: 0 }}>{cat.icon}</span>
-              <span style={{ fontSize: '13px', fontWeight: 500, color: '#DEDEDE' }}>{cat.name}</span>
+              <span style={{ fontSize: '18px', width: '26px', textAlign: 'center', flexShrink: 0 }}>{cat.icon}</span>
+              <span style={{ fontSize: '13.5px', fontWeight: 500, color: '#DEDEDE', lineHeight: '1.3' }}>{cat.name}</span>
             </Link>
           ))}
         </nav>
