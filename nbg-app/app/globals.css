@@ -2,10 +2,10 @@
 @import "tailwindcss";
 
 :root {
-  --bg-base: #ffffff;
-  --bg-card: #f8fafc;
-  --bg-card-hover: #f1f5f9;
-  --border-subtle: #e2e8f0;
+  --bg-base: #F5F0E8;
+  --bg-card: #ffffff;
+  --bg-card-hover: #faf7f2;
+  --border-subtle: #e8e0d0;
   --border-gold: rgba(161, 128, 20, 0.35);
   --gold: #A18014;
   --text-primary: #0f172a;

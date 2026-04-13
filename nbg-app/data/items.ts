@@ -69,6 +69,9 @@ export const items: Item[] = [
   // --- Pre Licensing Center ---
   { slug: 'pre-licensing-center-drive', name: 'Pre Licensing Center', categorySlug: 'pre-licensing-center', type: 'link', description: 'Google Drive with pre-licensing materials', url: 'https://drive.google.com/drive/u/2/folders/1OjxAeHt3rIEoH6WezIglu3BNjuTaNa4v' },
 
+  // --- Supplemental Products ---
+  { slug: 'supplemental-products-drive', name: 'Supplemental Products', categorySlug: 'supplemental-products', type: 'link', description: 'Supplemental product resources', url: 'https://drive.google.com/drive/u/2/folders/1Zf4Go_NdC9xIWziHPfqmXS7Uo63Bqcej' },
+
   // --- Support ---
   { slug: 'policy-conservation', name: 'Policy Conservation', categorySlug: 'soporte', type: 'email', description: 'Policy conservation', email: 'Policyconservation@NationalBrokersGroup.com' },
   { slug: 'case-management', name: 'Case Management', categorySlug: 'soporte', type: 'email', description: 'Case management', email: 'Casemanagement@NationalBrokersGroup.com' },

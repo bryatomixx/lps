@@ -69,7 +69,7 @@ export const categories: Category[] = [
   },
   {
     slug: 'carriers-portals',
-    name: 'Carriers Portals Log In',
+    name: 'E-APP Carrier Sites',
     icon: '🏢',
     color: 'border-indigo-500',
     description: 'Carrier portal access',
@@ -102,5 +102,13 @@ export const categories: Category[] = [
     color: 'border-cyan-500',
     description: 'Pre-licensing study materials',
     directItemSlug: 'pre-licensing-center-drive',
+  },
+  {
+    slug: 'supplemental-products',
+    name: 'Supplemental Products',
+    icon: '➕',
+    color: 'border-violet-500',
+    description: 'Supplemental product resources',
+    directItemSlug: 'supplemental-products-drive',
   },
 ]
