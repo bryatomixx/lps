@@ -66,6 +66,9 @@ export const items: Item[] = [
   { slug: 'carrier-ameritas', name: 'Ameritas', categorySlug: 'carriers-portals', type: 'link', description: 'Ameritas portal', url: 'https://service.ameritas.com/service/login.asp' },
   { slug: 'carrier-americo', name: 'Americo', categorySlug: 'carriers-portals', type: 'link', description: 'Americo portal', url: 'https://account.americoagent.com/Identity/Account/Login/?returnUrl=https%3a%2f%2ftools.americoagent.com%2f' },
 
+  // --- Pre Licensing Center ---
+  { slug: 'pre-licensing-center-drive', name: 'Pre Licensing Center', categorySlug: 'pre-licensing-center', type: 'link', description: 'Google Drive with pre-licensing materials', url: 'https://drive.google.com/drive/u/2/folders/1OjxAeHt3rIEoH6WezIglu3BNjuTaNa4v' },
+
   // --- Support ---
   { slug: 'policy-conservation', name: 'Policy Conservation', categorySlug: 'soporte', type: 'email', description: 'Policy conservation', email: 'Policyconservation@NationalBrokersGroup.com' },
   { slug: 'case-management', name: 'Case Management', categorySlug: 'soporte', type: 'email', description: 'Case management', email: 'Casemanagement@NationalBrokersGroup.com' },

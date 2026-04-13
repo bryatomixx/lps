@@ -95,4 +95,12 @@ export const categories: Category[] = [
     color: 'border-slate-500',
     description: 'NBG administrative support',
   },
+  {
+    slug: 'pre-licensing-center',
+    name: 'Pre Licensing Center',
+    icon: '📚',
+    color: 'border-cyan-500',
+    description: 'Pre-licensing study materials',
+    directItemSlug: 'pre-licensing-center-drive',
+  },
 ]
