@@ -40,7 +40,7 @@ export default function NavDrawer() {
       >
         {/* Header */}
         <div
-          className="flex items-center justify-between px-5 py-4"
+          className="flex items-center justify-between py-4" style={{ paddingLeft: '24px', paddingRight: '20px' }}
           style={{ borderBottom: '1px solid #2A2A2A' }}
         >
           <div>
@@ -64,7 +64,7 @@ export default function NavDrawer() {
               href={cat.directItemSlug ? `/item/${cat.directItemSlug}` : `/categoria/${cat.slug}`}
               onClick={() => setOpen(false)}
               className="flex items-center gap-4 transition-colors"
-              style={{ color: '#AAAAAA', padding: '13px 24px', minHeight: '52px' }}
+              style={{ color: '#AAAAAA', padding: '13px 24px 13px 28px', minHeight: '52px' }}
               onMouseEnter={e => (e.currentTarget.style.background = '#1F1F1F')}
               onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
             >
@@ -75,7 +75,7 @@ export default function NavDrawer() {
         </nav>
 
         {/* Footer */}
-        <div className="px-5 py-4" style={{ borderTop: '1px solid #2A2A2A' }}>
+        <div className="py-4" style={{ borderTop: '1px solid #2A2A2A', paddingLeft: '28px' }}>
           <p style={{ fontSize: '10px', color: '#444444', letterSpacing: '0.04em' }}>National Brokers Group</p>
         </div>
       </div>

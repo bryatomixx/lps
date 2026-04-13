@@ -7,7 +7,7 @@ interface CategoryGridProps {
 
 export default function CategoryGrid({ categories }: CategoryGridProps) {
   return (
-    <div className="px-6 pb-8">
+    <div className="pb-8" style={{ paddingLeft: '28px', paddingRight: '28px' }}>
       <div className="flex items-center justify-between mb-4">
         <div>
           <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '2px' }}>
