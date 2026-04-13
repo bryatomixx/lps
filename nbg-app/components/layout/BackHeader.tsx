@@ -9,8 +9,8 @@ interface BackHeaderProps {
 export default function BackHeader({ title, backHref, subtitle }: BackHeaderProps) {
   return (
     <header
-      className="py-4" style={{ paddingLeft: '28px', paddingRight: '28px', background: '#FFFFFF', borderBottom: '1px solid #E6E2D9' }}
-      style={{}}
+      className="py-4"
+      style={{ paddingLeft: '28px', paddingRight: '28px', background: '#FFFFFF', borderBottom: '1px solid #E6E2D9' }}
     >
       <div className="flex items-center gap-4">
         <Link
