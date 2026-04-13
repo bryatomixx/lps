@@ -7,6 +7,7 @@ export interface Category {
   icon: string
   color: string
   description: string
+  directItemSlug?: string
 }
 
 export interface LinkEntry {

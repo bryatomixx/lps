@@ -16,7 +16,7 @@ export default function CategoryGrid({ categories }: CategoryGridProps) {
         {categories.map((cat) => (
           <Link
             key={cat.slug}
-            href={`/categoria/${cat.slug}`}
+            href={cat.directItemSlug ? `/item/${cat.directItemSlug}` : `/categoria/${cat.slug}`}
             className="rounded-xl p-3 text-center flex flex-col items-center gap-1.5 transition-colors"
             style={{
               background: 'var(--bg-card)',

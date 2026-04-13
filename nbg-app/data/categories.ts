@@ -51,4 +51,27 @@ export const categories: Category[] = [
     color: 'border-rose-500',
     description: 'Contacto, tickets y case management',
   },
+  {
+    slug: 'nbg-new-hire',
+    name: 'NBG New Hire',
+    icon: '🆕',
+    color: 'border-teal-500',
+    description: 'Portal de nuevos reclutas NBG',
+    directItemSlug: 'nbg-new-hire',
+  },
+  {
+    slug: 'comp-override',
+    name: 'COMP & Override Protection',
+    icon: '🛡️',
+    color: 'border-yellow-500',
+    description: 'Protección de compensación y override NBG',
+    directItemSlug: 'comp-override',
+  },
+  {
+    slug: 'carriers-portals',
+    name: 'Carriers Portals Log In',
+    icon: '🏢',
+    color: 'border-indigo-500',
+    description: 'Acceso a portales de carriers',
+  },
 ]
