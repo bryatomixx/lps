@@ -10,17 +10,14 @@ export default function BackHeader({ title, backHref, subtitle }: BackHeaderProp
   return (
     <header
       className="px-4 pt-4 pb-3 border-b"
-      style={{
-        background: 'linear-gradient(160deg, #0d1f45 0%, #060e1f 100%)',
-        borderColor: 'var(--border-subtle)',
-      }}
+      style={{ background: 'var(--bg-base)', borderColor: 'var(--border-subtle)' }}
     >
       <div className="flex items-center gap-3">
         <Link
           href={backHref}
           className="text-lg font-bold leading-none"
           style={{ color: 'var(--gold)' }}
-          aria-label="Volver"
+          aria-label="Back"
         >
           ←
         </Link>
@@ -31,7 +28,7 @@ export default function BackHeader({ title, backHref, subtitle }: BackHeaderProp
               {subtitle}
             </p>
           )}
-          <h1 className="text-base font-bold text-white">{title}</h1>
+          <h1 className="text-base font-bold" style={{ color: 'var(--text-primary)' }}>{title}</h1>
         </div>
       </div>
     </header>

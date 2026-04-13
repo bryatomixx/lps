@@ -3,18 +3,18 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'NBG Latino',
+  title: 'NBG',
   description: 'National Brokers Group — Agent Hub',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
-    statusBarStyle: 'black-translucent',
-    title: 'NBG Latino',
+    statusBarStyle: 'default',
+    title: 'NBG',
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: '#060e1f',
+  themeColor: '#ffffff',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,

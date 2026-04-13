@@ -13,7 +13,7 @@ export default function NavDrawer() {
       <button
         onClick={() => setOpen(true)}
         className="flex flex-col justify-center items-center gap-1 w-8 h-8"
-        aria-label="Abrir menú"
+        aria-label="Open menu"
       >
         <span className="block w-5 h-0.5 rounded" style={{ background: 'var(--gold)' }} />
         <span className="block w-5 h-0.5 rounded" style={{ background: 'var(--gold)' }} />
@@ -23,7 +23,7 @@ export default function NavDrawer() {
       {/* Backdrop */}
       {open && (
         <div
-          className="fixed inset-0 z-40 bg-black/60"
+          className="fixed inset-0 z-40 bg-black/40"
           onClick={() => setOpen(false)}
         />
       )}
@@ -32,7 +32,7 @@ export default function NavDrawer() {
       <div
         className="fixed top-0 left-0 h-full z-50 w-72 flex flex-col transition-transform duration-300"
         style={{
-          background: 'var(--bg-card)',
+          background: 'var(--bg-base)',
           borderRight: '1px solid var(--border-subtle)',
           transform: open ? 'translateX(0)' : 'translateX(-100%)',
         }}
@@ -42,14 +42,14 @@ export default function NavDrawer() {
           className="flex items-center justify-between px-4 py-4"
           style={{ borderBottom: '1px solid var(--border-subtle)' }}
         >
-          <span className="font-black text-white text-base tracking-wide">
+          <span className="font-black text-base tracking-wide" style={{ color: 'var(--text-primary)' }}>
             NBG
           </span>
           <button
             onClick={() => setOpen(false)}
             className="text-xl leading-none"
             style={{ color: 'var(--text-muted)' }}
-            aria-label="Cerrar menú"
+            aria-label="Close menu"
           >
             ✕
           </button>

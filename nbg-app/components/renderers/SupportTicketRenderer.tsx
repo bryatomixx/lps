@@ -2,12 +2,12 @@
 import { useState } from 'react'
 
 const TOPICS = [
-  'Póliza / Conservación',
-  'Caso en proceso',
-  'Manejo de deuda',
-  'Comisiones',
-  'Tecnología / CRM',
-  'Otro',
+  'Policy / Conservation',
+  'Case in Progress',
+  'Debt Management',
+  'Commissions',
+  'Technology / CRM',
+  'Other',
 ]
 
 interface FormState {
@@ -49,9 +49,9 @@ export default function SupportTicketRenderer() {
 
   function validate(): FormErrors {
     const e: FormErrors = {}
-    if (!form.name.trim()) e.name = 'El nombre es requerido'
-    if (!form.email.trim()) e.email = 'El email es requerido'
-    if (!form.description.trim()) e.description = 'La descripción es requerida'
+    if (!form.name.trim()) e.name = 'Name is required'
+    if (!form.email.trim()) e.email = 'Email is required'
+    if (!form.description.trim()) e.description = 'Description is required'
     return e
   }
 
@@ -68,16 +68,16 @@ export default function SupportTicketRenderer() {
     return (
       <div className="flex flex-col items-center justify-center gap-4 px-6 py-16 text-center">
         <div className="text-5xl">✅</div>
-        <h2 className="text-lg font-bold text-white">Ticket enviado</h2>
+        <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Ticket Submitted</h2>
         <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-          El equipo de NBG te contactará pronto.
+          The NBG team will contact you shortly.
         </p>
         <button
           onClick={() => { setSubmitted(false); setForm({ name: '', email: '', topic: TOPICS[0], description: '' }) }}
           className="text-sm font-semibold"
           style={{ color: 'var(--gold)' }}
         >
-          Crear otro ticket
+          Submit another ticket
         </button>
       </div>
     )
@@ -86,17 +86,17 @@ export default function SupportTicketRenderer() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 px-4 py-4" noValidate>
       <div>
-        <label htmlFor="name" style={LABEL_STYLE}>Nombre</label>
+        <label htmlFor="name" style={LABEL_STYLE}>Name</label>
         <input
           id="name"
           type="text"
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
-          placeholder="Tu nombre completo"
+          placeholder="Your full name"
           style={INPUT_STYLE}
           autoComplete="name"
         />
-        {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name}</p>}
+        {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
       </div>
 
       <div>
@@ -106,15 +106,15 @@ export default function SupportTicketRenderer() {
           type="email"
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
-          placeholder="tu@email.com"
+          placeholder="your@email.com"
           style={INPUT_STYLE}
           autoComplete="email"
         />
-        {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email}</p>}
+        {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
       </div>
 
       <div>
-        <label htmlFor="topic" style={LABEL_STYLE}>Tema</label>
+        <label htmlFor="topic" style={LABEL_STYLE}>Topic</label>
         <select
           id="topic"
           value={form.topic}
@@ -126,24 +126,24 @@ export default function SupportTicketRenderer() {
       </div>
 
       <div>
-        <label htmlFor="description" style={LABEL_STYLE}>Descripción</label>
+        <label htmlFor="description" style={LABEL_STYLE}>Description</label>
         <textarea
           id="description"
           value={form.description}
           onChange={(e) => setForm({ ...form, description: e.target.value })}
-          placeholder="Describe tu problema o pregunta..."
+          placeholder="Describe your issue or question..."
           rows={4}
           style={{ ...INPUT_STYLE, resize: 'none' }}
         />
-        {errors.description && <p className="text-xs text-red-400 mt-1">{errors.description}</p>}
+        {errors.description && <p className="text-xs text-red-500 mt-1">{errors.description}</p>}
       </div>
 
       <button
         type="submit"
         className="w-full py-3 rounded-xl text-sm font-bold tracking-wide transition-opacity active:opacity-70 mt-2"
-        style={{ background: 'var(--gold)', color: 'var(--bg-base)' }}
+        style={{ background: 'var(--gold)', color: '#ffffff' }}
       >
-        Enviar ticket
+        Submit Ticket
       </button>
     </form>
   )

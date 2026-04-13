@@ -1,11 +1,11 @@
 {
-  "name": "NBG Latino",
+  "name": "NBG",
   "short_name": "NBG",
   "description": "National Brokers Group — Agent Hub",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#060e1f",
-  "theme_color": "#060e1f",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "orientation": "portrait",
   "icons": [
     {

@@ -10,7 +10,7 @@ export default function CategoryGrid({ categories }: CategoryGridProps) {
     <div className="px-3 pb-6">
       <p className="text-[10px] font-bold tracking-[3px] uppercase mb-3"
          style={{ color: 'var(--gold)' }}>
-        Acceso rápido
+        Quick Access
       </p>
       <div className="grid grid-cols-3 gap-2.5">
         {categories.map((cat) => (

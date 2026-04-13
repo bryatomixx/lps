@@ -2,15 +2,15 @@
 @import "tailwindcss";
 
 :root {
-  --bg-base: #060e1f;
-  --bg-card: #0d1f45;
-  --bg-card-hover: #122660;
-  --border-subtle: #1a2f5e;
-  --border-gold: rgba(201, 168, 76, 0.33);
-  --gold: #C9A84C;
-  --text-primary: #ffffff;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --bg-base: #ffffff;
+  --bg-card: #f8fafc;
+  --bg-card-hover: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-gold: rgba(161, 128, 20, 0.35);
+  --gold: #A18014;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
 }
 
 * { box-sizing: border-box; }

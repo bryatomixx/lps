@@ -9,6 +9,7 @@ const TYPE_ICON: Record<string, string> = {
   email: '✉️',
   form: '🎫',
   display: '📊',
+  image: '🖼️',
 }
 
 interface ItemListProps {
@@ -19,7 +20,7 @@ export default function ItemList({ items }: ItemListProps) {
   if (items.length === 0) {
     return (
       <p className="px-4 py-8 text-center text-sm" style={{ color: 'var(--text-muted)' }}>
-        No hay items en esta categoría.
+        No items in this category yet.
       </p>
     )
   }
@@ -40,7 +41,7 @@ export default function ItemList({ items }: ItemListProps) {
             {TYPE_ICON[item.type] ?? '→'}
           </span>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-white truncate">{item.name}</p>
+            <p className="text-sm font-semibold truncate" style={{ color: 'var(--text-primary)' }}>{item.name}</p>
             {item.description && (
               <p className="text-[11px] truncate" style={{ color: 'var(--text-muted)' }}>
                 {item.description}
