@@ -74,4 +74,25 @@ export const categories: Category[] = [
     color: 'border-indigo-500',
     description: 'Acceso a portales de carriers',
   },
+  {
+    slug: 'carriers-quoter',
+    name: 'Carriers Quoter Tools',
+    icon: '💲',
+    color: 'border-emerald-500',
+    description: 'Herramientas de cotización por carrier',
+  },
+  {
+    slug: 'recorded-trainings',
+    name: 'Recorded Trainings',
+    icon: '🎬',
+    color: 'border-pink-500',
+    description: 'Grabaciones de entrenamientos NBG',
+  },
+  {
+    slug: 'admin-support',
+    name: 'Admin Support',
+    icon: '⚙️',
+    color: 'border-slate-500',
+    description: 'Soporte administrativo NBG',
+  },
 ]

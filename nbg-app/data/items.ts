@@ -39,6 +39,15 @@ export const items: Item[] = [
   { slug: 'telegram', name: 'Join Telegram Chat', categorySlug: 'recursos', type: 'link', description: 'Grupo de Telegram de agentes NBG', url: 'https://t.me/nbglatino' },
   { slug: 'insurance-toolkit', name: 'Insurance Toolkit', categorySlug: 'recursos', type: 'link', description: 'Herramientas de seguros para agentes', url: 'https://www.landing.insurancetoolkits.com/' },
 
+  // --- Carriers Quoter Tools ---
+  { slug: 'quoter-corebridge', name: 'Corebridge', categorySlug: 'carriers-quoter', type: 'link', description: 'Cotizador de Corebridge Financial', url: 'https://rapid-rater.live.web.corebridgefinancial.com/SimpliNowQuoter' },
+  { slug: 'quoter-transamerica', name: 'Transamerica', categorySlug: 'carriers-quoter', type: 'link', description: 'Cotizador de Transamerica', url: 'https://lifesales.transamerica.com/RunAQuoteForm.aspx?hFaceAmount=&hSumOfIPOPayments=&hReceiveMonth=&hYear=&hFrontLumSum=&hBackLumSum=&hProduct=Trendsetter%20LB%202017' },
+  { slug: 'quoter-amam', name: 'AM AM', categorySlug: 'carriers-quoter', type: 'link', description: 'Cotizador de AM AM', url: 'https://www.insuranceapplication.com/AppPage/index.html' },
+
+  // --- Recorded Trainings (empty for now) ---
+
+  // --- Admin Support (empty for now) ---
+
   // --- NBG New Hire ---
   { slug: 'nbg-new-hire', name: 'NBG New Hire', categorySlug: 'nbg-new-hire', type: 'webview', description: 'Portal de nuevos reclutas', url: 'https://www.nbghire.com/' },
 
