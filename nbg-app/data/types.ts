@@ -1,5 +1,5 @@
 // nbg-app/data/types.ts
-export type ContentType = 'webview' | 'pdf' | 'link' | 'link-list' | 'email' | 'form' | 'display'
+export type ContentType = 'webview' | 'pdf' | 'link' | 'link-list' | 'email' | 'form' | 'display' | 'image'
 
 export interface Category {
   slug: string
@@ -23,6 +23,7 @@ export interface Item {
   url?: string
   links?: LinkEntry[]
   email?: string
+  imageUrl?: string
 }
 
 export interface Bulletin {

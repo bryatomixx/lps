@@ -28,7 +28,7 @@ export const items: Item[] = [
   // --- Equipo ---
   { slug: 'add-recruit', name: 'Add a New Recruit', categorySlug: 'equipo', type: 'webview', description: 'Agregar un nuevo recluta al equipo', url: 'https://www.nbghire.com' },
   { slug: '7th-level', name: 'NBG 7th Level Qualification', categorySlug: 'equipo', type: 'webview', description: 'Calificación para el 7mo nivel', url: 'https://www.nbg7thlevel.com' },
-  { slug: 'manager-levels', name: 'NBG Manager Levels', categorySlug: 'equipo', type: 'link', description: 'Niveles de manager y solicitar promoción', url: 'https://www.nationalbrokersgroup.com' },
+  { slug: 'manager-levels', name: 'NBG Manager Levels', categorySlug: 'equipo', type: 'image', description: 'Niveles de manager y solicitar promoción', imageUrl: '/manager-levels.jpg' },
   { slug: 'compensation-protection', name: 'NBG Compensation Protection', categorySlug: 'equipo', type: 'webview', description: 'Protección de compensación', url: 'https://www.nbgcomp.com' },
 
   // --- Recursos ---

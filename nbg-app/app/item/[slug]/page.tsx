@@ -6,6 +6,7 @@ import PdfRenderer from '@/components/renderers/PdfRenderer'
 import LinkRenderer from '@/components/renderers/LinkRenderer'
 import LinkListRenderer from '@/components/renderers/LinkListRenderer'
 import SupportTicketRenderer from '@/components/renderers/SupportTicketRenderer'
+import ImageRenderer from '@/components/renderers/ImageRenderer'
 import { items } from '@/data/items'
 import { categories } from '@/data/categories'
 import leaderboard from '@/data/leaderboard.json'
@@ -53,6 +54,10 @@ export default async function ItemPage({ params }: Props) {
 
       {item.type === 'form' && (
         <SupportTicketRenderer />
+      )}
+
+      {item.type === 'image' && (
+        <ImageRenderer item={item} />
       )}
 
       {item.type === 'display' && item.slug === 'leaderboard' && (
