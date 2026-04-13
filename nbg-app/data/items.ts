@@ -63,6 +63,8 @@ export const items: Item[] = [
   { slug: 'carrier-amam', name: 'AM AM', categorySlug: 'carriers-portals', type: 'link', description: 'Portal de AM AM', url: 'https://www.insuranceapplication.com/cgi/webappmobile/login.aspx?ReturnUrl=%2fcgi%2fwebappmobile%2f' },
   { slug: 'carrier-foresters', name: 'Foresters', categorySlug: 'carriers-portals', type: 'link', description: 'Portal de Foresters', url: 'https://myezbiz.foresters.com/my.policy' },
   { slug: 'carrier-aig', name: 'AIG/Corebridge', categorySlug: 'carriers-portals', type: 'link', description: 'Portal de AIG / Corebridge Financial', url: 'https://connext.corebridgefinancial.com/life/connext-portal/public/login' },
+  { slug: 'carrier-ameritas', name: 'Ameritas', categorySlug: 'carriers-portals', type: 'link', description: 'Portal de Ameritas', url: 'https://service.ameritas.com/service/login.asp' },
+  { slug: 'carrier-americo', name: 'Americo', categorySlug: 'carriers-portals', type: 'link', description: 'Portal de Americo', url: 'https://account.americoagent.com/Identity/Account/Login/?returnUrl=https%3a%2f%2ftools.americoagent.com%2f' },
 
   // --- Soporte ---
   { slug: 'policy-conservation', name: 'Policy Conservation', categorySlug: 'soporte', type: 'email', description: 'Conservación de pólizas', email: 'Policyconservation@NationalBrokersGroup.com' },
