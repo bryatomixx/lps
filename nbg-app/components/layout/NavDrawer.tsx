@@ -9,73 +9,73 @@ export default function NavDrawer() {
 
   return (
     <>
-      {/* Hamburger */}
+      {/* Hamburger — 3 bars, white on black header */}
       <button
         onClick={() => setOpen(true)}
-        className="flex flex-col justify-center items-center gap-[5px] w-9 h-9 rounded-lg transition-colors"
-        style={{ background: 'transparent' }}
+        style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '5px', width: '36px', height: '36px', flexShrink: 0, background: 'transparent', border: 'none', cursor: 'pointer', padding: '6px' }}
         aria-label="Open navigation"
       >
-        <span className="block w-[18px] h-[1.5px]" style={{ background: '#222222' }} />
-        <span className="block w-[18px] h-[1.5px]" style={{ background: '#222222' }} />
-        <span className="block w-[12px] h-[1.5px]" style={{ background: '#222222' }} />
+        <span style={{ display: 'block', width: '20px', height: '1.5px', background: '#FFFFFF', borderRadius: '2px' }} />
+        <span style={{ display: 'block', width: '20px', height: '1.5px', background: '#FFFFFF', borderRadius: '2px' }} />
+        <span style={{ display: 'block', width: '13px', height: '1.5px', background: '#FFFFFF', borderRadius: '2px' }} />
       </button>
 
       {/* Backdrop */}
       {open && (
         <div
-          className="fixed inset-0 z-40"
-          style={{ background: 'rgba(0,0,0,0.55)' }}
           onClick={() => setOpen(false)}
+          style={{ position: 'fixed', inset: 0, zIndex: 40, background: 'rgba(0,0,0,0.6)' }}
         />
       )}
 
       {/* Drawer */}
       <div
-        className="fixed top-0 left-0 h-full z-50 w-72 flex flex-col transition-transform duration-300"
         style={{
+          position: 'fixed', top: 0, left: 0, height: '100%', zIndex: 50,
+          width: '280px', display: 'flex', flexDirection: 'column',
           background: '#111111',
           transform: open ? 'translateX(0)' : 'translateX(-100%)',
+          transition: 'transform 0.28s cubic-bezier(0.4,0,0.2,1)',
         }}
       >
         {/* Header */}
-        <div
-          className="flex items-center justify-between py-4"
-          style={{ paddingLeft: '24px', paddingRight: '20px', borderBottom: '1px solid #2A2A2A' }}
-        >
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 24px', borderBottom: '1px solid #222222' }}>
           <div>
-            <p className="font-bold text-sm tracking-widest uppercase" style={{ color: '#EDEDED', letterSpacing: '0.15em' }}>NBG</p>
-            <p style={{ color: 'var(--gold)', fontSize: '9px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', marginTop: '2px' }}>Agent Platform</p>
+            <p style={{ fontWeight: 800, fontSize: '14px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF' }}>NBG</p>
+            <p style={{ fontSize: '9px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#C9A227', marginTop: '2px' }}>Agent Platform</p>
           </div>
           <button
             onClick={() => setOpen(false)}
-            style={{ color: '#666666', fontSize: '18px', lineHeight: 1, padding: '4px' }}
+            style={{ color: '#666666', fontSize: '18px', lineHeight: 1, background: 'transparent', border: 'none', cursor: 'pointer', padding: '4px 8px' }}
             aria-label="Close"
           >
             ✕
           </button>
         </div>
 
-        {/* Nav */}
-        <nav className="flex-1 overflow-y-auto py-3">
+        {/* Nav items */}
+        <nav style={{ flex: 1, overflowY: 'auto', paddingTop: '8px', paddingBottom: '8px' }}>
           {categories.map((cat) => (
             <Link
               key={cat.slug}
               href={cat.directItemSlug ? `/item/${cat.directItemSlug}` : `/categoria/${cat.slug}`}
               onClick={() => setOpen(false)}
-              className="flex items-center gap-4 transition-colors"
-              style={{ color: '#AAAAAA', padding: '13px 24px 13px 28px', minHeight: '52px' }}
-              onMouseEnter={e => (e.currentTarget.style.background = '#1F1F1F')}
-              onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+              style={{
+                display: 'flex', alignItems: 'center', gap: '14px',
+                padding: '14px 28px', minHeight: '52px',
+                color: '#CCCCCC', textDecoration: 'none',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#1A1A1A'; e.currentTarget.style.color = '#FFFFFF' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#CCCCCC' }}
             >
-              <span style={{ fontSize: '18px', width: '26px', textAlign: 'center', flexShrink: 0 }}>{cat.icon}</span>
-              <span style={{ fontSize: '13.5px', fontWeight: 500, color: '#DEDEDE', lineHeight: '1.3' }}>{cat.name}</span>
+              <span style={{ fontSize: '18px', width: '24px', textAlign: 'center', flexShrink: 0 }}>{cat.icon}</span>
+              <span style={{ fontSize: '13px', fontWeight: 500, lineHeight: '1.3' }}>{cat.name}</span>
             </Link>
           ))}
         </nav>
 
         {/* Footer */}
-        <div className="py-4" style={{ borderTop: '1px solid #2A2A2A', paddingLeft: '28px' }}>
+        <div style={{ padding: '16px 28px', borderTop: '1px solid #222222' }}>
           <p style={{ fontSize: '10px', color: '#444444', letterSpacing: '0.04em' }}>National Brokers Group</p>
         </div>
       </div>

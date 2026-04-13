@@ -8,22 +8,22 @@ export default function Home() {
   const activeBulletin = bulletins.find((b) => b.active)
 
   return (
-    <main className="min-h-dvh flex flex-col" style={{ background: 'var(--bg-base)' }}>
+    <main style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column', background: 'var(--bg-base)' }}>
       <AppHeader />
 
       {/* Page heading */}
-      <div style={{ borderBottom: '1px solid #E6E2D9', background: '#FFFFFF', padding: '14px 20px' }}>
-        <p style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '3px' }}>
+      <div style={{ padding: '18px 20px 14px', background: '#FFFFFF', borderBottom: '1px solid #E5E7EB' }}>
+        <p style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#C9A227', marginBottom: '4px' }}>
           National Brokers Group
         </p>
-        <h1 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
+        <h1 style={{ fontSize: '21px', fontWeight: 800, color: '#111111', letterSpacing: '-0.02em' }}>
           Agent Dashboard
         </h1>
       </div>
 
       {activeBulletin && <BulletinBanner text={activeBulletin.text} />}
 
-      <div className="mt-5 flex-1">
+      <div style={{ flex: 1, marginTop: '8px' }}>
         <CategoryGrid categories={categories} />
       </div>
     </main>

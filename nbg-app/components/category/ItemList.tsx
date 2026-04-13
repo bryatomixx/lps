@@ -50,7 +50,7 @@ export default function ItemList({ items }: ItemListProps) {
           </div>
           <div className="flex items-center gap-2 shrink-0">
             <span
-              style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--gold)', background: '#FBF7F0', padding: '2px 7px', borderRadius: '20px', border: '1px solid #EBE0CC' }}
+              style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--gold)', background: '#FDF8EC', padding: '2px 7px', borderRadius: '20px', border: '1px solid #F0E4B8' }}
             >
               {TYPE_LABEL[item.type] ?? 'View'}
             </span>

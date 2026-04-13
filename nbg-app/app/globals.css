@@ -2,39 +2,27 @@
 @import "tailwindcss";
 
 :root {
-  /* Core */
-  --black: #111111;
-  --charcoal: #1F1F1F;
-  --white: #FFFFFF;
+  --bg-base:        #F8F9FB;
+  --bg-card:        #FFFFFF;
+  --bg-card-hover:  #F4F6F9;
 
-  /* Backgrounds */
-  --bg-base: #F7F7F5;
-  --bg-card: #FFFFFF;
-  --bg-card-hover: #FCFBF8;
+  --gold:           #C9A227;
+  --gold-hover:     #B8911F;
 
-  /* Gold Accent */
-  --gold: #B4945D;
-  --gold-hover: #C5A059;
+  --text-primary:   #111111;
+  --text-secondary: #4B5563;
+  --text-muted:     #9CA3AF;
 
-  /* Text */
-  --text-primary: #222222;
-  --text-secondary: #666666;
-  --text-muted: #8A8A8A;
+  --border:         #E5E7EB;
+  --border-soft:    #F3F4F6;
 
-  /* Borders */
-  --border: #D9D9D4;
-  --border-soft: #E6E2D9;
-  --border-gold: #B4945D;
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.08);
 
-  /* Shadows */
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
-
-  /* States */
-  --success: #2E7D32;
-  --warning: #C58A00;
-  --error: #C62828;
-  --info: #1565C0;
+  --success: #15803D;
+  --error:   #DC2626;
+  --warning: #CA8A04;
+  --info:    #1D4ED8;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,9 +32,7 @@ body {
   color: var(--text-primary);
   font-family: -apple-system, 'Inter', 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   min-height: 100dvh;
-  font-size: 15px;
   line-height: 1.5;
 }
 
