@@ -7,25 +7,33 @@ interface CategoryGridProps {
 
 export default function CategoryGrid({ categories }: CategoryGridProps) {
   return (
-    <div className="px-3 pb-6">
-      <p className="text-[10px] font-bold tracking-[3px] uppercase mb-3"
-         style={{ color: 'var(--gold)' }}>
-        Quick Access
-      </p>
-      <div className="grid grid-cols-3 gap-2.5">
+    <div className="px-4 pb-8">
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '2px' }}>
+            Agent Hub
+          </p>
+          <h2 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>
+            Quick Access
+          </h2>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-3">
         {categories.map((cat) => (
           <Link
             key={cat.slug}
             href={cat.directItemSlug ? `/item/${cat.directItemSlug}` : `/categoria/${cat.slug}`}
-            className="rounded-xl p-3 text-center flex flex-col items-center gap-1.5 transition-colors"
+            className="flex flex-col items-center text-center rounded-2xl px-2 py-4 transition-all duration-200"
             style={{
               background: 'var(--bg-card)',
-              border: '1px solid var(--border-subtle)',
+              border: '1px solid var(--border-soft)',
+              boxShadow: 'var(--shadow-card)',
+              gap: '8px',
             }}
           >
-            <span className="text-2xl leading-none">{cat.icon}</span>
-            <span className="text-[11px] font-medium leading-tight"
-                  style={{ color: 'var(--text-secondary)' }}>
+            <span style={{ fontSize: '22px', lineHeight: 1 }}>{cat.icon}</span>
+            <span style={{ fontSize: '10.5px', fontWeight: 600, color: 'var(--text-primary)', lineHeight: '1.3', letterSpacing: '0.01em' }}>
               {cat.name}
             </span>
           </Link>

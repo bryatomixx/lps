@@ -4,25 +4,29 @@ import NavDrawer from './NavDrawer'
 export default function AppHeader() {
   return (
     <header
-      className="px-4 pt-4 pb-3 border-b"
-      style={{ background: 'var(--bg-base)', borderColor: 'var(--border-subtle)' }}
+      className="px-5 py-3"
+      style={{
+        background: '#FFFFFF',
+        borderBottom: '1px solid #E6E2D9',
+      }}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <NavDrawer />
-          <div className="flex items-center gap-2">
-            <Image
-              src="/nbg-logo.png"
-              alt="NBG"
-              width={72}
-              height={36}
-              className="object-contain"
-              priority
-            />
-          </div>
+          <Image
+            src="/nbg-logo.png"
+            alt="NBG"
+            width={80}
+            height={32}
+            className="object-contain"
+            priority
+          />
         </div>
-        <p className="text-[10px] font-medium" style={{ color: 'var(--gold)' }}>
-          Real Training. Real Support. Real Systems. Real Success.
+        <p
+          className="text-right hidden sm:block"
+          style={{ color: 'var(--gold)', fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', lineHeight: '1.4', maxWidth: '180px' }}
+        >
+          Real Training. Real Support.<br />Real Systems. Real Success.
         </p>
       </div>
     </header>

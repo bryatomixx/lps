@@ -9,26 +9,27 @@ interface BackHeaderProps {
 export default function BackHeader({ title, backHref, subtitle }: BackHeaderProps) {
   return (
     <header
-      className="px-4 pt-4 pb-3 border-b"
-      style={{ background: 'var(--bg-base)', borderColor: 'var(--border-subtle)' }}
+      className="px-5 py-4"
+      style={{ background: '#FFFFFF', borderBottom: '1px solid #E6E2D9' }}
     >
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         <Link
           href={backHref}
-          className="text-lg font-bold leading-none"
-          style={{ color: 'var(--gold)' }}
+          className="flex items-center justify-center w-8 h-8 rounded-lg transition-colors"
+          style={{ background: '#F7F7F5', color: 'var(--text-primary)', fontSize: '16px', fontWeight: 600 }}
           aria-label="Back"
         >
           ←
         </Link>
         <div>
           {subtitle && (
-            <p className="text-[10px] font-bold tracking-[2px] uppercase mb-0.5"
-               style={{ color: 'var(--gold)' }}>
+            <p style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '2px' }}>
               {subtitle}
             </p>
           )}
-          <h1 className="text-base font-bold" style={{ color: 'var(--text-primary)' }}>{title}</h1>
+          <h1 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>
+            {title}
+          </h1>
         </div>
       </div>
     </header>

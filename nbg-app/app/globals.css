@@ -2,27 +2,53 @@
 @import "tailwindcss";
 
 :root {
-  --bg-base: #F5F0E8;
-  --bg-card: #ffffff;
-  --bg-card-hover: #faf7f2;
-  --border-subtle: #e8e0d0;
-  --border-gold: rgba(161, 128, 20, 0.35);
-  --gold: #A18014;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  /* Core */
+  --black: #111111;
+  --charcoal: #1F1F1F;
+  --white: #FFFFFF;
+
+  /* Backgrounds */
+  --bg-base: #F7F7F5;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FCFBF8;
+
+  /* Gold Accent */
+  --gold: #B4945D;
+  --gold-hover: #C5A059;
+
+  /* Text */
+  --text-primary: #222222;
+  --text-secondary: #666666;
+  --text-muted: #8A8A8A;
+
+  /* Borders */
+  --border: #D9D9D4;
+  --border-soft: #E6E2D9;
+  --border-gold: #B4945D;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
+
+  /* States */
+  --success: #2E7D32;
+  --warning: #C58A00;
+  --error: #C62828;
+  --info: #1565C0;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   background-color: var(--bg-base);
   color: var(--text-primary);
-  font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, 'Inter', 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100dvh;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
-/* Prevent overscroll bounce on iOS */
 html { overflow: hidden; height: 100%; }
 body { overflow: auto; height: 100%; }

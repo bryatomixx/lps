@@ -9,21 +9,23 @@ export default function NavDrawer() {
 
   return (
     <>
-      {/* Hamburger button */}
+      {/* Hamburger */}
       <button
         onClick={() => setOpen(true)}
-        className="flex flex-col justify-center items-center gap-1 w-8 h-8"
-        aria-label="Open menu"
+        className="flex flex-col justify-center items-center gap-[5px] w-9 h-9 rounded-lg transition-colors"
+        style={{ background: 'transparent' }}
+        aria-label="Open navigation"
       >
-        <span className="block w-5 h-0.5 rounded" style={{ background: 'var(--gold)' }} />
-        <span className="block w-5 h-0.5 rounded" style={{ background: 'var(--gold)' }} />
-        <span className="block w-5 h-0.5 rounded" style={{ background: 'var(--gold)' }} />
+        <span className="block w-[18px] h-[1.5px]" style={{ background: '#222222' }} />
+        <span className="block w-[18px] h-[1.5px]" style={{ background: '#222222' }} />
+        <span className="block w-[12px] h-[1.5px]" style={{ background: '#222222' }} />
       </button>
 
       {/* Backdrop */}
       {open && (
         <div
-          className="fixed inset-0 z-40 bg-black/40"
+          className="fixed inset-0 z-40"
+          style={{ background: 'rgba(0,0,0,0.55)' }}
           onClick={() => setOpen(false)}
         />
       )}
@@ -32,44 +34,50 @@ export default function NavDrawer() {
       <div
         className="fixed top-0 left-0 h-full z-50 w-72 flex flex-col transition-transform duration-300"
         style={{
-          background: 'var(--bg-base)',
-          borderRight: '1px solid var(--border-subtle)',
+          background: '#111111',
           transform: open ? 'translateX(0)' : 'translateX(-100%)',
         }}
       >
-        {/* Drawer header */}
+        {/* Header */}
         <div
-          className="flex items-center justify-between px-4 py-4"
-          style={{ borderBottom: '1px solid var(--border-subtle)' }}
+          className="flex items-center justify-between px-5 py-4"
+          style={{ borderBottom: '1px solid #2A2A2A' }}
         >
-          <span className="font-black text-base tracking-wide" style={{ color: 'var(--text-primary)' }}>
-            NBG
-          </span>
+          <div>
+            <p className="font-bold text-sm tracking-widest uppercase" style={{ color: '#EDEDED', letterSpacing: '0.15em' }}>NBG</p>
+            <p style={{ color: 'var(--gold)', fontSize: '9px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', marginTop: '2px' }}>Agent Platform</p>
+          </div>
           <button
             onClick={() => setOpen(false)}
-            className="text-xl leading-none"
-            style={{ color: 'var(--text-muted)' }}
-            aria-label="Close menu"
+            style={{ color: '#666666', fontSize: '18px', lineHeight: 1, padding: '4px' }}
+            aria-label="Close"
           >
             ✕
           </button>
         </div>
 
-        {/* Nav links */}
-        <nav className="flex-1 overflow-y-auto py-3">
+        {/* Nav */}
+        <nav className="flex-1 overflow-y-auto py-2">
           {categories.map((cat) => (
             <Link
               key={cat.slug}
               href={cat.directItemSlug ? `/item/${cat.directItemSlug}` : `/categoria/${cat.slug}`}
               onClick={() => setOpen(false)}
               className="flex items-center gap-3 px-5 py-3 transition-colors"
-              style={{ color: 'var(--text-secondary)' }}
+              style={{ color: '#AAAAAA' }}
+              onMouseEnter={e => (e.currentTarget.style.background = '#1F1F1F')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
             >
-              <span className="text-lg w-6 text-center">{cat.icon}</span>
-              <span className="text-sm font-medium">{cat.name}</span>
+              <span style={{ fontSize: '15px', width: '20px', textAlign: 'center', flexShrink: 0 }}>{cat.icon}</span>
+              <span style={{ fontSize: '13px', fontWeight: 500, color: '#DEDEDE' }}>{cat.name}</span>
             </Link>
           ))}
         </nav>
+
+        {/* Footer */}
+        <div className="px-5 py-4" style={{ borderTop: '1px solid #2A2A2A' }}>
+          <p style={{ fontSize: '10px', color: '#444444', letterSpacing: '0.04em' }}>National Brokers Group</p>
+        </div>
       </div>
     </>
   )

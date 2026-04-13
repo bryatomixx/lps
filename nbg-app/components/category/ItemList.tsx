@@ -1,15 +1,15 @@
 import Link from 'next/link'
 import type { Item } from '@/data/types'
 
-const TYPE_ICON: Record<string, string> = {
-  webview: '🌐',
-  pdf: '📄',
-  link: '🔗',
-  'link-list': '📋',
-  email: '✉️',
-  form: '🎫',
-  display: '📊',
-  image: '🖼️',
+const TYPE_LABEL: Record<string, string> = {
+  webview: 'Portal',
+  pdf: 'Document',
+  link: 'Link',
+  'link-list': 'Links',
+  email: 'Email',
+  form: 'Form',
+  display: 'Dashboard',
+  image: 'Reference',
 }
 
 interface ItemListProps {
@@ -19,36 +19,43 @@ interface ItemListProps {
 export default function ItemList({ items }: ItemListProps) {
   if (items.length === 0) {
     return (
-      <p className="px-4 py-8 text-center text-sm" style={{ color: 'var(--text-muted)' }}>
-        No items in this category yet.
-      </p>
+      <div className="px-4 py-12 text-center">
+        <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>No items in this section yet.</p>
+      </div>
     )
   }
 
   return (
-    <div className="flex flex-col gap-2 px-3 py-3">
+    <div className="px-4 py-4 flex flex-col gap-2">
       {items.map((item) => (
         <Link
           key={item.slug}
           href={`/item/${item.slug}`}
-          className="flex items-center gap-3 rounded-xl px-3 py-3 transition-colors"
+          className="flex items-center gap-4 rounded-2xl px-4 py-3.5 transition-all duration-150"
           style={{
-            background: 'var(--bg-card)',
-            border: '1px solid var(--border-subtle)',
+            background: '#FFFFFF',
+            border: '1px solid #E6E2D9',
+            boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
           }}
         >
-          <span className="text-lg leading-none w-6 text-center shrink-0">
-            {TYPE_ICON[item.type] ?? '→'}
-          </span>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold truncate" style={{ color: 'var(--text-primary)' }}>{item.name}</p>
+            <p style={{ fontSize: '13.5px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '2px' }} className="truncate">
+              {item.name}
+            </p>
             {item.description && (
-              <p className="text-[11px] truncate" style={{ color: 'var(--text-muted)' }}>
+              <p style={{ fontSize: '11px', color: 'var(--text-muted)' }} className="truncate">
                 {item.description}
               </p>
             )}
           </div>
-          <span className="text-base shrink-0" style={{ color: 'var(--gold)' }}>›</span>
+          <div className="flex items-center gap-2 shrink-0">
+            <span
+              style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--gold)', background: '#FBF7F0', padding: '2px 7px', borderRadius: '20px', border: '1px solid #EBE0CC' }}
+            >
+              {TYPE_LABEL[item.type] ?? 'View'}
+            </span>
+            <span style={{ color: 'var(--text-muted)', fontSize: '14px', fontWeight: 300 }}>›</span>
+          </div>
         </Link>
       ))}
     </div>

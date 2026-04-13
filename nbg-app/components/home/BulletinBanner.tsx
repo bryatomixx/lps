@@ -7,17 +7,23 @@ export default function BulletinBanner({ text }: BulletinBannerProps) {
 
   return (
     <div
-      className="mx-3 mt-3 rounded px-3 py-2 border-l-2"
+      className="mx-4 mt-4 rounded-xl px-4 py-3 flex items-start gap-3"
       style={{
-        background: 'rgba(161,128,20,0.08)',
-        borderColor: 'var(--gold)',
+        background: '#FFFFFF',
+        border: '1px solid #E6E2D9',
+        boxShadow: 'var(--shadow-card)',
       }}
     >
-      <p className="text-[10px] font-bold tracking-widest uppercase mb-0.5"
-         style={{ color: 'var(--gold)' }}>
-        Important Bulletin
-      </p>
-      <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>{text}</p>
+      <div
+        className="shrink-0 mt-0.5 rounded-full w-1.5 h-1.5"
+        style={{ background: 'var(--gold)', marginTop: '6px' }}
+      />
+      <div>
+        <p style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '3px' }}>
+          Announcement
+        </p>
+        <p style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>{text}</p>
+      </div>
     </div>
   )
 }
