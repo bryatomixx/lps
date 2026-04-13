@@ -12,16 +12,13 @@ export default function Home() {
       <AppHeader />
 
       {/* Page heading */}
-      <div className="pt-5 pb-4" style={{ borderBottom: '1px solid #E6E2D9', background: '#FFFFFF', paddingLeft: '28px', paddingRight: '28px' }}>
-        <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '2px' }}>
+      <div style={{ borderBottom: '1px solid #E6E2D9', background: '#FFFFFF', padding: '14px 20px' }}>
+        <p style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '3px' }}>
           National Brokers Group
         </p>
-        <h1 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
+        <h1 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
           Agent Dashboard
         </h1>
-        <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>
-          Tools, training, and resources — all in one place.
-        </p>
       </div>
 
       {activeBulletin && <BulletinBanner text={activeBulletin.text} />}
