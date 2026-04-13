@@ -10,22 +10,14 @@ export default function AppHeader() {
         <div className="flex items-center gap-3">
           <NavDrawer />
           <div>
-            <div className="flex items-center gap-2 mb-0.5">
-              <span
-                className="text-white font-black text-lg italic tracking-wide"
-                style={{ fontFamily: '-apple-system, Segoe UI, sans-serif' }}
-              >
-                NBG
-              </span>
-              <span
-                className="text-xs font-bold tracking-[3px]"
-                style={{ color: 'var(--gold)' }}
-              >
-                LATINO
-              </span>
-            </div>
-            <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
-              Buenos días, Agente 👋
+            <span
+              className="text-white font-black text-lg italic tracking-wide"
+              style={{ fontFamily: '-apple-system, Segoe UI, sans-serif' }}
+            >
+              NBG
+            </span>
+            <p className="text-[10px] leading-tight mt-0.5" style={{ color: 'var(--gold)' }}>
+              Real Training. Real Support. Real Systems. Real Success.
             </p>
           </div>
         </div>

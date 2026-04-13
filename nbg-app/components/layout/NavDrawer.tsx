@@ -43,7 +43,7 @@ export default function NavDrawer() {
           style={{ borderBottom: '1px solid var(--border-subtle)' }}
         >
           <span className="font-black text-white text-base tracking-wide">
-            NBG <span style={{ color: 'var(--gold)' }}>LATINO</span>
+            NBG
           </span>
           <button
             onClick={() => setOpen(false)}
