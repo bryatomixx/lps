@@ -40,8 +40,8 @@ export default function NavDrawer() {
       >
         {/* Header */}
         <div
-          className="flex items-center justify-between py-4" style={{ paddingLeft: '24px', paddingRight: '20px' }}
-          style={{ borderBottom: '1px solid #2A2A2A' }}
+          className="flex items-center justify-between py-4"
+          style={{ paddingLeft: '24px', paddingRight: '20px', borderBottom: '1px solid #2A2A2A' }}
         >
           <div>
             <p className="font-bold text-sm tracking-widest uppercase" style={{ color: '#EDEDED', letterSpacing: '0.15em' }}>NBG</p>

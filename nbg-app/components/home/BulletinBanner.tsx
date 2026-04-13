@@ -8,8 +8,9 @@ export default function BulletinBanner({ text }: BulletinBannerProps) {
   return (
     <div
       className="mt-5 rounded-2xl overflow-hidden"
-      style={{ marginLeft: '28px', marginRight: '28px' }}
       style={{
+        marginLeft: '20px',
+        marginRight: '20px',
         background: '#FFFFFF',
         border: '1px solid #E6E2D9',
         boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
