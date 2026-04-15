@@ -11,6 +11,7 @@ import Testimonials from "@/components/Testimonials";
 import Compare from "@/components/Compare";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
+import About from "@/components/About";
 import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -68,11 +69,15 @@ export default function Home() {
         <FAQ />
         <div className="gdiv" />
 
-        {/* 12. CTA final */}
+        {/* 12. About — antes del CTA final */}
+        <About />
+        <div className="gdiv" />
+
+        {/* 13. CTA final */}
         <CTA />
         <div className="gdiv" />
 
-        {/* 13. Contacto */}
+        {/* 14. Contacto */}
         <Contact />
       </main>
       <Footer />
