@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import SectionReveal from "./SectionReveal";
 
 export default function About() {
@@ -37,26 +38,17 @@ export default function About() {
                   aspectRatio: "4/5",
                   background: "var(--surface)",
                   border: "1px solid var(--border)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
                   overflow: "hidden",
+                  position: "relative",
                 }}
               >
-                {/* Placeholder — replace with <Image src="YOUR_PHOTO.jpg" fill style={{objectFit:'cover'}} alt="Founder" /> */}
-                <div style={{ textAlign: "center", color: "var(--text-dim)" }}>
-                  <div style={{ fontSize: "4rem", marginBottom: 12 }}>👤</div>
-                  <div
-                    style={{
-                      fontFamily: "'DM Mono', monospace",
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Add your photo here
-                  </div>
-                </div>
+                <Image
+                  src="https://latinprimefg.com/wp-content/uploads/2022/03/latin-prime_president-carlos.jpg"
+                  alt="Carlos J. Torres — Founder, Latin Prime Systems"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "center top" }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
               <div
                 style={{
@@ -83,7 +75,7 @@ export default function About() {
                 marginBottom: 6,
               }}
             >
-              Founder
+              Meet the Founder
             </div>
             <h2
               style={{
@@ -93,7 +85,7 @@ export default function About() {
                 marginBottom: 4,
               }}
             >
-              [Your Name]
+              Carlos J. Torres
             </h2>
             <div
               style={{
@@ -115,9 +107,28 @@ export default function About() {
                 marginBottom: 20,
               }}
             >
-              [Your story in English — why you founded Latin Prime, what you saw in the market,
-              what your connection is to the Latin American business world, and why this matters
-              to you personally.]
+              Carlos J. Torres is the founder of Latin Prime Systems, a business growth and
+              automation company built to help small and mid-sized businesses operate smarter,
+              respond faster, and scale with more structure. His work is rooted in a simple
+              belief: technology should not be reserved for large corporations. It should be
+              practical, understandable, and accessible for real business owners who need
+              systems that save time, capture opportunities, and reduce daily chaos.
+            </p>
+            <p
+              style={{
+                fontSize: "0.95rem",
+                color: "var(--text-muted)",
+                lineHeight: 1.8,
+                marginBottom: 20,
+              }}
+            >
+              As an entrepreneur with a strong background in client service, sales, business
+              operations, and automation strategy, Carlos has spent years working closely with
+              Hispanic families, entrepreneurs, and business owners across the United States.
+              Through that experience, he saw a consistent problem in the market: many businesses
+              had ambition and talent, but lacked the systems, automation, follow-up, and digital
+              infrastructure needed to grow efficiently. Latin Prime Systems was created to close
+              that gap.
             </p>
             <p
               style={{
@@ -127,8 +138,10 @@ export default function About() {
                 marginBottom: 32,
               }}
             >
-              [Second paragraph — your background in technology & automation, and why you
-              committed to making this accessible for small businesses, not just large enterprises.]
+              His broader entrepreneurial path also includes leading Latin Prime Financial Group,
+              where his public-facing mission emphasizes education, transparency, and empowering
+              the Hispanic community with clear guidance and responsible solutions. That same
+              commitment to clarity, trust, and long-term value is now embedded into Latin Prime Systems.
             </p>
 
             {/* Stats */}
