@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Backgrounds */
+  --bg:        #F7F9FC;
+  --surface:   #EEF3F8;
+  --surface2:  #E2E8F0;
+  --navy:      #0D1B2A;
+  --navy2:     #132238;
+
+  /* Brand */
+  --blue:         #1A5CA8;
+  --blue-bright:  #2B7FE0;
+  --blue-dim:     rgba(26,92,168,0.08);
+  --blue-glow:    rgba(26,92,168,0.25);
+  --blue-glow-strong: rgba(26,92,168,0.45);
+
+  /* Primary CTA — navy → gold hover */
+  --orange:       #0D1B2A;
+  --orange-hover: #D4A53A;
+  --orange-dim:   rgba(13,27,42,0.1);
+
+  /* Accent gold (gradients, labels) */
+  --gold:       #D4A53A;
+  --gold-bright:#E8BE4A;
+  --gold-dim:   rgba(212,165,58,0.12);
+  --gold-glow:  rgba(212,165,58,0.32);
+
+  /* Semantic */
+  --green:     #15803D;
+  --green-dim: rgba(21,128,61,0.1);
+
+  /* Text */
+  --text:       #0F172A;
+  --text-muted: #334155;
+  --text-dim:   #475569;
+
+  /* Borders */
+  --border:  #E2E8F0;
+  --border2: #D9E2EC;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: rgba(26,92,168,0.25); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(26,92,168,0.45); }
+::selection { background: rgba(212,165,58,0.18); color: var(--text); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+/* Section containers */
+.section-wrap {
+  padding: 120px 0;
+  position: relative;
+}
+.section-inner {
+  max-width: clamp(1100px, 85vw, 1440px);
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 80px);
+}
+
+/* Section title */
+.section-title {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  margin-bottom: 20px;
+  line-height: 1.05;
+}
+
+/* Section labels */
+.slabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.60rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.slabel::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+  flex-shrink: 0;
+}
+
+/* Section desc */
+.section-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 580px;
+  margin-bottom: 56px;
+  font-weight: 300;
+}
+
+/* DecryptedText classes */
+.decrypt-revealed { color: var(--text-muted); }
+.decrypt-encrypted { color: rgba(212,165,58,0.6); }
+
+/* SpotlightCard */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(280px circle at var(--sx, 50%) var(--sy, 50%), var(--sc, transparent), transparent 70%);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.1s;
+}
+.spotlight-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Gradient divider */
+.gdiv {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(15,34,64,0.08) 30%, rgba(212,165,58,0.18) 70%, transparent);
+}
+
+/* Glow button */
+.btn-glow {
+  box-shadow: 0 4px 20px rgba(13,27,42,0.25);
+  transition: box-shadow 0.3s, transform 0.2s !important;
+}
+.btn-glow:hover {
+  box-shadow: 0 6px 30px rgba(212,165,58,0.4) !important;
+  transform: translateY(-2px) !important;
+}
+.section-desc { font-weight: 400; }
+
+/* Animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+@keyframes marquee-rev {
+  0% { transform: translateX(-33.333%); }
+  100% { transform: translateX(0); }
+}
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(1deg); }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(212,165,58,0.5); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 7px rgba(212,165,58,0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes border-glow-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(212,165,58,0.28); }
+  50% { box-shadow: 0 6px 32px rgba(212,165,58,0.45); }
+}
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* ── React Bits: ShinyText ─────────────────────────── */
+/*
+  Seamless loop trick: gradient pattern is "from → to → white → to → from"
+  and background-size is 200%. Moving position 0%→200% crosses the full
+  pattern once, and since 200% wraps back to the same visual as 0% the
+  loop is completely seamless — no flash, no jump.
+*/
+@keyframes shiny-sweep {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 200% center; }
+}
+
+.shiny-text {
+  font-style: var(--st-style, italic);
+  display: inline;
+  background-image: linear-gradient(
+    90deg,
+    var(--st-from, #1A5CA8)      0%,
+    var(--st-to,   #D4A53A)      30%,
+    rgba(255, 255, 255, 0.88)    50%,
+    var(--st-to,   #D4A53A)      70%,
+    var(--st-from, #1A5CA8)      100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shiny-sweep var(--st-speed, 3.5s) linear infinite;
+}
+
+.shiny-text--off {
+  animation: none;
+  background-position: 0% center;
+}
+
+/* ── React Bits: GradientText ──────────────────────── */
+/*
+  Seamless loop: gradient goes from→mid→to→from (200% wide).
+  Position moves 0%→200%, same wrap-around trick as ShinyText.
+*/
+@keyframes gradient-drift {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 200% center; }
+}
+
+.gradient-text {
+  display: inline-block;
+  background-image: linear-gradient(
+    90deg,
+    var(--gt-from, #1A5CA8) 0%,
+    var(--gt-mid,  #D4A53A) 35%,
+    var(--gt-to,   #2B7FE0) 65%,
+    var(--gt-from, #1A5CA8) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient-drift var(--gt-speed, 4s) linear infinite;
+}
+
+/* Ultrawide (2560px+) */
+@media (min-width: 2200px) {
+  .section-wrap { padding: 160px 0; }
+  .section-inner { max-width: clamp(1440px, 75vw, 1800px); }
+  .section-desc { font-size: 1.1rem; max-width: 680px; }
+  .section-title { font-size: clamp(3rem, 3vw, 4.5rem) !important; }
+  .slabel { font-size: 0.72rem; }
+}
