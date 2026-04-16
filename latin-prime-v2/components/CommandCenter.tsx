@@ -2,55 +2,98 @@
 import SectionReveal from "./SectionReveal";
 import DashMockup from "./DashMockup";
 
+type Lang = "en" | "es";
+
 const DASHBOARDS_URL = "https://latinprimesystems.com/dashboards";
 
-const features = [
-  {
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <rect x="1" y="1" width="6" height="6" rx="1.5" fill="#2B7FE0" fillOpacity="0.9"/>
-        <rect x="9" y="1" width="6" height="6" rx="1.5" fill="#D4A53A" fillOpacity="0.9"/>
-        <rect x="1" y="9" width="6" height="6" rx="1.5" fill="#10B981" fillOpacity="0.9"/>
-        <rect x="9" y="9" width="6" height="6" rx="1.5" fill="#A78BFA" fillOpacity="0.9"/>
-      </svg>
-    ),
-    label: "Revenue & KPIs in real time",
-    desc: "Revenue, appointments, show rate, and conversions — updated live.",
+const t = {
+  en: {
+    sectionLabel: "Live Intelligence",
+    heading1: "Your Business.",
+    headingGradient: "One Screen. Always Live.",
+    desc: "Every LPS client gets access to a personalized Command Center — a real-time dashboard where you can see your KPIs, pipeline, team performance, and revenue without opening a single spreadsheet.",
+    cta: "Explore the Dashboard",
+    liveBadge: "LIVE DATA · UPDATED IN REAL TIME",
+    features: [
+      {
+        label: "Revenue & KPIs in real time",
+        desc: "Revenue, appointments, show rate, and conversions — updated live.",
+      },
+      {
+        label: "Full lead pipeline visibility",
+        desc: "Every lead tracked from first contact to closed deal.",
+      },
+      {
+        label: "Team performance at a glance",
+        desc: "Closers, conversion rates, and rankings — all in one place.",
+      },
+      {
+        label: "Automated monthly reports",
+        desc: "Your operation fully documented — without lifting a finger.",
+      },
+    ],
   },
-  {
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M2 12 L5 8 L8 10 L11 5 L14 7" stroke="#2B7FE0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="14" cy="7" r="1.5" fill="#D4A53A"/>
-      </svg>
-    ),
-    label: "Full lead pipeline visibility",
-    desc: "Every lead tracked from first contact to closed deal.",
+  es: {
+    sectionLabel: "Inteligencia en Vivo",
+    heading1: "Tu Negocio.",
+    headingGradient: "Una Pantalla. Siempre en Vivo.",
+    desc: "Cada cliente de LPS tiene acceso a un Command Center personalizado — un dashboard en tiempo real donde puedes ver tus KPIs, pipeline, rendimiento del equipo e ingresos sin abrir ni una sola hoja de cálculo.",
+    cta: "Explorar el Dashboard",
+    liveBadge: "DATOS EN VIVO · ACTUALIZADOS EN TIEMPO REAL",
+    features: [
+      {
+        label: "Ingresos y KPIs en tiempo real",
+        desc: "Ingresos, citas, tasa de asistencia y conversiones — actualizados en vivo.",
+      },
+      {
+        label: "Visibilidad total del pipeline de prospectos",
+        desc: "Cada prospecto rastreado desde el primer contacto hasta el cierre.",
+      },
+      {
+        label: "Rendimiento del equipo de un vistazo",
+        desc: "Vendedores, tasas de conversión y rankings — todo en un solo lugar.",
+      },
+      {
+        label: "Reportes mensuales automatizados",
+        desc: "Tu operación completamente documentada — sin mover un dedo.",
+      },
+    ],
   },
-  {
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <circle cx="8" cy="8" r="6.5" stroke="#10B981" strokeWidth="1.2"/>
-        <path d="M5 8.5L7 10.5L11 6" stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-    label: "Team performance at a glance",
-    desc: "Closers, conversion rates, and rankings — all in one place.",
-  },
-  {
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <rect x="2" y="10" width="2.5" height="4" rx="0.5" fill="#2B7FE0"/>
-        <rect x="6" y="7" width="2.5" height="7" rx="0.5" fill="#D4A53A"/>
-        <rect x="10" y="4" width="2.5" height="10" rx="0.5" fill="#10B981"/>
-      </svg>
-    ),
-    label: "Automated monthly reports",
-    desc: "Your operation fully documented — without lifting a finger.",
-  },
+};
+
+const featureIcons = [
+  (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <rect x="1" y="1" width="6" height="6" rx="1.5" fill="#2B7FE0" fillOpacity="0.9"/>
+      <rect x="9" y="1" width="6" height="6" rx="1.5" fill="#D4A53A" fillOpacity="0.9"/>
+      <rect x="1" y="9" width="6" height="6" rx="1.5" fill="#10B981" fillOpacity="0.9"/>
+      <rect x="9" y="9" width="6" height="6" rx="1.5" fill="#A78BFA" fillOpacity="0.9"/>
+    </svg>
+  ),
+  (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M2 12 L5 8 L8 10 L11 5 L14 7" stroke="#2B7FE0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <circle cx="14" cy="7" r="1.5" fill="#D4A53A"/>
+    </svg>
+  ),
+  (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <circle cx="8" cy="8" r="6.5" stroke="#10B981" strokeWidth="1.2"/>
+      <path d="M5 8.5L7 10.5L11 6" stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <rect x="2" y="10" width="2.5" height="4" rx="0.5" fill="#2B7FE0"/>
+      <rect x="6" y="7" width="2.5" height="7" rx="0.5" fill="#D4A53A"/>
+      <rect x="10" y="4" width="2.5" height="10" rx="0.5" fill="#10B981"/>
+    </svg>
+  ),
 ];
 
-export default function CommandCenter() {
+export default function CommandCenter({ lang = "en" }: { lang?: Lang }) {
+  const copy = t[lang ?? "en"];
+
   return (
     <section
       id="command-center"
@@ -83,7 +126,7 @@ export default function CommandCenter() {
           {/* Left — text */}
           <div>
             <SectionReveal>
-              <div className="slabel">Live Intelligence</div>
+              <div className="slabel">{copy.sectionLabel}</div>
               <h2
                 className="section-title"
                 style={{
@@ -91,7 +134,7 @@ export default function CommandCenter() {
                   marginBottom: 20,
                 }}
               >
-                Your Business.{" "}
+                {copy.heading1}{" "}
                 <span
                   style={{
                     background: "linear-gradient(135deg, #1A5CA8, #D4A53A)",
@@ -100,16 +143,14 @@ export default function CommandCenter() {
                     backgroundClip: "text",
                   }}
                 >
-                  One Screen. Always Live.
+                  {copy.headingGradient}
                 </span>
               </h2>
               <p
                 className="section-desc"
                 style={{ maxWidth: 460, marginBottom: 36 }}
               >
-                Every LPS client gets access to a personalized Command Center —
-                a real-time dashboard where you can see your KPIs, pipeline, team
-                performance, and revenue without opening a single spreadsheet.
+                {copy.desc}
               </p>
             </SectionReveal>
 
@@ -124,7 +165,7 @@ export default function CommandCenter() {
                   marginBottom: 44,
                 }}
               >
-                {features.map((f, i) => (
+                {copy.features.map((f, i) => (
                   <li
                     key={i}
                     style={{
@@ -147,7 +188,7 @@ export default function CommandCenter() {
                         marginTop: 1,
                       }}
                     >
-                      {f.icon}
+                      {featureIcons[i]}
                     </div>
                     <div>
                       <div
@@ -208,7 +249,7 @@ export default function CommandCenter() {
                   el.style.boxShadow = "0 4px 20px rgba(43,127,224,0.35)";
                 }}
               >
-                Explorar el Dashboard
+                {copy.cta}
                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
                   <path d="M2 7.5h11M8.5 3l4.5 4.5L8.5 12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -242,7 +283,7 @@ export default function CommandCenter() {
                     color: "var(--text-dim)",
                   }}
                 >
-                  LIVE DATA · UPDATED IN REAL TIME
+                  {copy.liveBadge}
                 </span>
               </div>
             </SectionReveal>

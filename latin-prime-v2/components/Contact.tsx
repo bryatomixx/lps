@@ -2,26 +2,81 @@
 import { useState } from "react";
 import SectionReveal from "./SectionReveal";
 
+type Lang = "en" | "es";
+
 const WEBHOOK_URL =
   "https://latinprimesystems.app.n8n.cloud/webhook/05355d0d-cce9-4f2a-94a4-174498a2b75e";
 
-const businessTypes = [
-  "Insurance Agency",
-  "Real Estate",
-  "Dental / Healthcare",
-  "Med Spa / Aesthetics",
-  "Contractor / Home Services",
-  "Tax / Accounting",
-  "Restaurant / Local Business",
-  "Coach / Consultant",
-  "Law Firm",
-  "Salon / Barbershop / Spa",
-  "Other",
-];
+const t = {
+  en: {
+    sectionLabel: "Get in Touch",
+    heading1: "Let\u2019s Build Your",
+    headingHighlight: "AI System",
+    subtext:
+      "Tell us about your business. We\u2019ll get back to you within 24 hours with a custom automation plan \u2014 no sales pitch, just a real strategy for your specific situation.",
+    whatsappCta: "Message us on WhatsApp",
+    fieldName: "Your name",
+    fieldEmail: "Your email",
+    fieldBusinessType: "Business type",
+    businessTypeDefault: "Select your industry",
+    fieldChallenge: "What\u2019s your biggest challenge?",
+    challengePlaceholder:
+      "Tell us about your biggest operational bottleneck or what\u2019s holding you back from growing...",
+    btnIdle: "Send \u2014 We respond within 24 hours",
+    btnSending: "Sending...",
+    btnSuccess: "\u2713 Sent \u2014 We will be in touch soon",
+    btnError: "Error \u2014 Please try again",
+    businessTypes: [
+      "Insurance Agency",
+      "Real Estate",
+      "Dental / Healthcare",
+      "Med Spa / Aesthetics",
+      "Contractor / Home Services",
+      "Tax / Accounting",
+      "Restaurant / Local Business",
+      "Coach / Consultant",
+      "Law Firm",
+      "Salon / Barbershop / Spa",
+      "Other",
+    ],
+  },
+  es: {
+    sectionLabel: "Contáctanos",
+    heading1: "Construyamos Tu",
+    headingHighlight: "Sistema de AI",
+    subtext:
+      "Cuéntanos sobre tu negocio. Te respondemos en menos de 24 horas con un plan de automatización personalizado \u2014 sin discurso de ventas, solo una estrategia real para tu situación específica.",
+    whatsappCta: "Escríbenos por WhatsApp",
+    fieldName: "Tu nombre",
+    fieldEmail: "Tu correo electrónico",
+    fieldBusinessType: "Tipo de negocio",
+    businessTypeDefault: "Selecciona tu industria",
+    fieldChallenge: "\u00bfCuál es tu mayor reto?",
+    challengePlaceholder:
+      "Cuéntanos sobre tu mayor obstáculo operativo o qué te impide crecer...",
+    btnIdle: "Enviar \u2014 Respondemos en 24 horas",
+    btnSending: "Enviando...",
+    btnSuccess: "\u2713 Enviado \u2014 Nos pondremos en contacto pronto",
+    btnError: "Error \u2014 Por favor intenta de nuevo",
+    businessTypes: [
+      "Agencia de Seguros",
+      "Bienes Raíces",
+      "Dental / Salud",
+      "Med Spa / Estética",
+      "Contratista / Servicios para el Hogar",
+      "Fiscal / Contabilidad",
+      "Restaurante / Negocio Local",
+      "Coach / Consultor",
+      "Bufete de Abogados",
+      "Salón / Barbería / Spa",
+      "Otro",
+    ],
+  },
+};
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export default function Contact() {
+export default function Contact({ lang = "en" }: { lang?: Lang }) {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -29,6 +84,7 @@ export default function Contact() {
     message: "",
   });
   const [status, setStatus] = useState<Status>("idle");
+  const copy = t[lang ?? "en"];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,12 +131,12 @@ export default function Contact() {
         >
           {/* Left */}
           <SectionReveal>
-            <div className="slabel">Get in Touch</div>
+            <div className="slabel">{copy.sectionLabel}</div>
             <h2
               className="section-title"
               style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", marginBottom: 16 }}
             >
-              Let&apos;s Build Your{" "}
+              {copy.heading1}{" "}
               <em
                 style={{
                   fontStyle: "italic",
@@ -90,7 +146,7 @@ export default function Contact() {
                   backgroundClip: "text",
                 }}
               >
-                AI System
+                {copy.headingHighlight}
               </em>
             </h2>
             <p
@@ -101,9 +157,7 @@ export default function Contact() {
                 marginBottom: 40,
               }}
             >
-              Tell us about your business. We&apos;ll get back to you within 24 hours
-              with a custom automation plan — no sales pitch, just a real strategy
-              for your specific situation.
+              {copy.subtext}
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
@@ -150,7 +204,7 @@ export default function Contact() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
-                Message us on WhatsApp
+                {copy.whatsappCta}
               </a>
             </div>
           </SectionReveal>
@@ -175,7 +229,7 @@ export default function Contact() {
                   className="form-row"
                 >
                   <FormField
-                    label="Your name"
+                    label={copy.fieldName}
                     id="name"
                     type="text"
                     value={form.name}
@@ -183,7 +237,7 @@ export default function Contact() {
                     required
                   />
                   <FormField
-                    label="Your email"
+                    label={copy.fieldEmail}
                     id="email"
                     type="email"
                     value={form.email}
@@ -205,7 +259,7 @@ export default function Contact() {
                       marginBottom: 8,
                     }}
                   >
-                    Business type
+                    {copy.fieldBusinessType}
                   </label>
                   <select
                     id="type"
@@ -223,10 +277,10 @@ export default function Contact() {
                       appearance: "none",
                     }}
                   >
-                    <option value="">Select your industry</option>
-                    {businessTypes.map((t) => (
-                      <option key={t} value={t}>
-                        {t}
+                    <option value="">{copy.businessTypeDefault}</option>
+                    {copy.businessTypes.map((bt) => (
+                      <option key={bt} value={bt}>
+                        {bt}
                       </option>
                     ))}
                   </select>
@@ -245,14 +299,14 @@ export default function Contact() {
                       marginBottom: 8,
                     }}
                   >
-                    What&apos;s your biggest challenge?
+                    {copy.fieldChallenge}
                   </label>
                   <textarea
                     id="message"
                     rows={4}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Tell us about your biggest operational bottleneck or what's holding you back from growing..."
+                    placeholder={copy.challengePlaceholder}
                     style={{
                       width: "100%",
                       background: "var(--surface)",
@@ -291,10 +345,10 @@ export default function Contact() {
                     opacity: status === "sending" ? 0.7 : 1,
                   }}
                 >
-                  {status === "idle" && "Send — We respond within 24 hours"}
-                  {status === "sending" && "Sending..."}
-                  {status === "success" && "✓ Sent — We will be in touch soon"}
-                  {status === "error" && "Error — Please try again"}
+                  {status === "idle" && copy.btnIdle}
+                  {status === "sending" && copy.btnSending}
+                  {status === "success" && copy.btnSuccess}
+                  {status === "error" && copy.btnError}
                 </button>
               </div>
             </form>

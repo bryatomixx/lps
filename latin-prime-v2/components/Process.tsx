@@ -4,30 +4,71 @@ import { motion, useInView } from "framer-motion";
 import SplitText from "./SplitText";
 import ShinyText from "./ShinyText";
 
-const steps = [
-  {
-    num: "01",
-    title: "We Learn Your Business",
-    desc: "We sit down and understand exactly how you operate — where you lose time, where you lose leads, what's holding you back from growing.",
-  },
-  {
-    num: "02",
-    title: "We Design Your System",
-    desc: "We map out exactly what we're going to build — what gets automated, what gets connected, what you'll be able to do that you can't do today.",
-  },
-  {
-    num: "03",
-    title: "We Build & Test It",
-    desc: "We build everything and test it thoroughly before you see it. When we hand it over, it works.",
-  },
-  {
-    num: "04",
-    title: "You Run Your Business Better",
-    desc: "You start seeing results immediately. More leads captured, less time wasted, more money in. We stay by your side as you grow.",
-  },
-];
+type Lang = "en" | "es";
 
-export default function Process() {
+const translations = {
+  en: {
+    sectionLabel: "How It Works",
+    headline: "We Handle Everything.",
+    headlineShiny: "You See Results.",
+    desc: "You don't need to understand the technology. That's our job.",
+    stepLabel: "Step",
+    steps: [
+      {
+        num: "01",
+        title: "We Learn Your Business",
+        desc: "We sit down and understand exactly how you operate — where you lose time, where you lose leads, what's holding you back from growing.",
+      },
+      {
+        num: "02",
+        title: "We Design Your System",
+        desc: "We map out exactly what we're going to build — what gets automated, what gets connected, what you'll be able to do that you can't do today.",
+      },
+      {
+        num: "03",
+        title: "We Build & Test It",
+        desc: "We build everything and test it thoroughly before you see it. When we hand it over, it works.",
+      },
+      {
+        num: "04",
+        title: "You Run Your Business Better",
+        desc: "You start seeing results immediately. More leads captured, less time wasted, more money in. We stay by your side as you grow.",
+      },
+    ],
+  },
+  es: {
+    sectionLabel: "Cómo Funciona",
+    headline: "Nosotros lo hacemos todo.",
+    headlineShiny: "Tú ves los resultados.",
+    desc: "No necesitas entender la tecnología. Eso es nuestro trabajo.",
+    stepLabel: "Paso",
+    steps: [
+      {
+        num: "01",
+        title: "Conocemos Tu Negocio",
+        desc: "Nos sentamos contigo y entendemos exactamente cómo operas — dónde pierdes tiempo, dónde pierdes prospectos, qué te frena para crecer.",
+      },
+      {
+        num: "02",
+        title: "Diseñamos Tu Sistema",
+        desc: "Trazamos con precisión lo que vamos a construir — qué se automatiza, qué se conecta, qué podrás hacer que hoy no puedes.",
+      },
+      {
+        num: "03",
+        title: "Lo Construimos y Probamos",
+        desc: "Construimos todo y lo probamos a fondo antes de que lo veas. Cuando te lo entregamos, funciona.",
+      },
+      {
+        num: "04",
+        title: "Operas Tu Negocio Mejor",
+        desc: "Comienzas a ver resultados de inmediato. Más prospectos capturados, menos tiempo perdido, más ingresos. Estamos a tu lado mientras creces.",
+      },
+    ],
+  },
+};
+
+export default function Process({ lang }: { lang?: Lang }) {
+  const t = translations[lang ?? "en"];
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -47,22 +88,22 @@ export default function Process() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ marginBottom: 64 }}
         >
-          <div className="slabel">How It Works</div>
+          <div className="slabel">{t.sectionLabel}</div>
           <h2
             className="section-title"
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", marginBottom: 16 }}
           >
-            <SplitText text="We Handle Everything." delay={0.04} />{" "}
-            <ShinyText text="You See Results." speed={3.8} />
+            <SplitText text={t.headline} delay={0.04} />{" "}
+            <ShinyText text={t.headlineShiny} speed={3.8} />
           </h2>
           <p className="section-desc" style={{ marginBottom: 0 }}>
-            You don&apos;t need to understand the technology. That&apos;s our job.
+            {t.desc}
           </p>
         </motion.div>
 
         {/* Steps grid */}
         <div className="process-grid">
-          {steps.map((step, i) => (
+          {t.steps.map((step, i) => (
             <div key={i} className="process-step-wrapper">
               <motion.div
                 className="process-card"
@@ -81,7 +122,7 @@ export default function Process() {
                 <div className="process-bar" />
 
                 {/* Step label */}
-                <div className="process-step-label">Step {step.num}</div>
+                <div className="process-step-label">{t.stepLabel} {step.num}</div>
 
                 {/* Title */}
                 <h3 className="process-card-title">{step.title}</h3>
@@ -91,7 +132,7 @@ export default function Process() {
               </motion.div>
 
               {/* Arrow connector */}
-              {i < steps.length - 1 && (
+              {i < t.steps.length - 1 && (
                 <motion.div
                   className="process-arrow"
                   initial={{ opacity: 0 }}

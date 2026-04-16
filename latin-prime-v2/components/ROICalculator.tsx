@@ -5,6 +5,8 @@ import SectionReveal from "./SectionReveal";
 import SplitText from "./SplitText";
 import ShinyText from "./ShinyText";
 
+type Lang = "en" | "es";
+
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
 
@@ -33,7 +35,82 @@ function AnimatedNumber({ value, prefix = "", suffix = "" }: { value: number; pr
   return <span ref={ref}>{prefix}0{suffix}</span>;
 }
 
-export default function ROICalculator() {
+export default function ROICalculator({ lang }: { lang?: Lang }) {
+  const t = {
+    en: {
+      sectionLabel: "ROI Calculator",
+      headingPart1: "How Much Is",
+      headingPart2: "Doing Nothing Costing You?",
+      sectionDesc: "Adjust the sliders to match your business. See exactly what automation is worth for your specific situation.",
+      inputsHeading: "Your Business Numbers",
+      slider1Label: "Missed calls / week",
+      slider1Tooltip: "How many calls go unanswered in a typical week",
+      slider2Label: "Average client value",
+      slider2Tooltip: "What a single new client is worth to your business",
+      slider3Label: "Your estimated close rate",
+      slider3Tooltip: "Percentage of qualified leads you typically close",
+      slider4Label: "Hours/week on manual admin",
+      slider4Tooltip: "Time spent on follow-ups, data entry, scheduling, reports",
+      slider5Label: "Your time value",
+      slider5Tooltip: "What an hour of your time is worth to the business",
+      comparePlan: "Compare against plan",
+      resultHeading: "Monthly Value of Automation",
+      resultSub: "per month in recovered revenue + time saved",
+      roiPositive: (multiple: string) => `${multiple}x ROI`,
+      roiNeutral: "Investing in growth",
+      roiNetPositive: (net: string) => `$${net}/mo net above plan cost`,
+      roiNetNeutral: "ROI builds as your volume grows",
+      breakdownHeading: "Breakdown",
+      breakdownRevLabel: "Revenue from recovered leads",
+      breakdownRevSub: (clients: number, value: string) => `${clients} new clients/mo × $${value}`,
+      breakdownTimeLabel: "Time saved on admin",
+      breakdownTimeSub: (hrs: number, rate: number) => `${hrs} hrs/mo × $${rate}/hr`,
+      breakdownPlanLabel: "Plan cost",
+      breakdownPlanSub: (name: string) => `${name} plan`,
+      ctaDesc: "These are conservative estimates. Most clients exceed these numbers within 60 days.",
+      ctaBtn: "Book Your Free Strategy Call →",
+      planStarter: "Starter",
+      planPro: "Pro",
+      planGrowth: "Growth",
+    },
+    es: {
+      sectionLabel: "Calculadora de ROI",
+      headingPart1: "¿Cuánto Te Está Costando",
+      headingPart2: "No Hacer Nada?",
+      sectionDesc: "Ajusta los controles según tu negocio. Ve exactamente cuánto vale la automatización para tu situación.",
+      inputsHeading: "Los Números de Tu Negocio",
+      slider1Label: "Llamadas perdidas / semana",
+      slider1Tooltip: "Cuántas llamadas quedan sin respuesta en una semana típica",
+      slider2Label: "Valor promedio por cliente",
+      slider2Tooltip: "Lo que un nuevo cliente vale para tu negocio",
+      slider3Label: "Tu tasa de cierre estimada",
+      slider3Tooltip: "Porcentaje de leads calificados que normalmente cierras",
+      slider4Label: "Horas/semana en tareas manuales",
+      slider4Tooltip: "Tiempo en seguimientos, captura de datos, agendas e informes",
+      slider5Label: "Valor de tu tiempo",
+      slider5Tooltip: "Lo que vale una hora de tu tiempo para el negocio",
+      comparePlan: "Comparar con plan",
+      resultHeading: "Valor Mensual de la Automatización",
+      resultSub: "al mes en ingresos recuperados + tiempo ahorrado",
+      roiPositive: (multiple: string) => `${multiple}x ROI`,
+      roiNeutral: "Invirtiendo en crecimiento",
+      roiNetPositive: (net: string) => `$${net}/mes neto sobre el costo del plan`,
+      roiNetNeutral: "El ROI crece con tu volumen",
+      breakdownHeading: "Desglose",
+      breakdownRevLabel: "Ingresos de leads recuperados",
+      breakdownRevSub: (clients: number, value: string) => `${clients} nuevos clientes/mes × $${value}`,
+      breakdownTimeLabel: "Tiempo ahorrado en admin",
+      breakdownTimeSub: (hrs: number, rate: number) => `${hrs} hrs/mes × $${rate}/hr`,
+      breakdownPlanLabel: "Costo del plan",
+      breakdownPlanSub: (name: string) => `Plan ${name}`,
+      ctaDesc: "Estas son estimaciones conservadoras. La mayoría de nuestros clientes superan estas cifras en 60 días.",
+      ctaBtn: "Reserva tu Llamada de Estrategia Gratis →",
+      planStarter: "Starter",
+      planPro: "Pro",
+      planGrowth: "Growth",
+    },
+  }[lang ?? "en"];
+
   const [calls, setCalls] = useState(20);
   const [avgValue, setAvgValue] = useState(500);
   const [closeRate, setCloseRate] = useState(20);
@@ -53,6 +130,8 @@ export default function ROICalculator() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
+  const planName = plan === 497 ? t.planStarter : plan === 997 ? t.planPro : t.planGrowth;
+
   return (
     <section
       ref={ref}
@@ -66,17 +145,16 @@ export default function ROICalculator() {
 
       <div className="section-inner" style={{ position: "relative", zIndex: 1 }}>
         <SectionReveal>
-          <div className="slabel">ROI Calculator</div>
+          <div className="slabel">{t.sectionLabel}</div>
           <h2
             className="section-title"
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", maxWidth: 600 }}
           >
-            <SplitText text="How Much Is" delay={0.05} />{" "}
-            <ShinyText text="Doing Nothing Costing You?" speed={4} />
+            <SplitText text={t.headingPart1} delay={0.05} />{" "}
+            <ShinyText text={t.headingPart2} speed={4} />
           </h2>
           <p className="section-desc">
-            Adjust the sliders to match your business. See exactly what automation
-            is worth for your specific situation.
+            {t.sectionDesc}
           </p>
         </SectionReveal>
 
@@ -112,58 +190,58 @@ export default function ROICalculator() {
                 marginBottom: 32,
               }}
             >
-              Your Business Numbers
+              {t.inputsHeading}
             </div>
 
             <SliderInput
-              label="Missed calls / week"
+              label={t.slider1Label}
               value={calls}
               min={1}
               max={100}
               step={1}
               onChange={setCalls}
               display={`${calls} calls`}
-              tooltip="How many calls go unanswered in a typical week"
+              tooltip={t.slider1Tooltip}
             />
             <SliderInput
-              label="Average client value"
+              label={t.slider2Label}
               value={avgValue}
               min={100}
               max={10000}
               step={100}
               onChange={setAvgValue}
               display={`$${avgValue.toLocaleString("en-US")}`}
-              tooltip="What a single new client is worth to your business"
+              tooltip={t.slider2Tooltip}
             />
             <SliderInput
-              label="Your estimated close rate"
+              label={t.slider3Label}
               value={closeRate}
               min={5}
               max={80}
               step={5}
               onChange={setCloseRate}
               display={`${closeRate}%`}
-              tooltip="Percentage of qualified leads you typically close"
+              tooltip={t.slider3Tooltip}
             />
             <SliderInput
-              label="Hours/week on manual admin"
+              label={t.slider4Label}
               value={hoursPerWeek}
               min={1}
               max={40}
               step={1}
               onChange={setHoursPerWeek}
               display={`${hoursPerWeek} hrs`}
-              tooltip="Time spent on follow-ups, data entry, scheduling, reports"
+              tooltip={t.slider4Tooltip}
             />
             <SliderInput
-              label="Your time value"
+              label={t.slider5Label}
               value={hourlyRate}
               min={25}
               max={500}
               step={25}
               onChange={setHourlyRate}
               display={`$${hourlyRate}/hr`}
-              tooltip="What an hour of your time is worth to the business"
+              tooltip={t.slider5Tooltip}
             />
 
             <div
@@ -183,13 +261,13 @@ export default function ROICalculator() {
                   marginBottom: 12,
                 }}
               >
-                Compare against plan
+                {t.comparePlan}
               </div>
               <div style={{ display: "flex", gap: 8 }}>
                 {[
-                  { label: "Starter", val: 497 },
-                  { label: "Pro", val: 997 },
-                  { label: "Growth", val: 1797 },
+                  { label: t.planStarter, val: 497 },
+                  { label: t.planPro, val: 997 },
+                  { label: t.planGrowth, val: 1797 },
                 ].map((p) => (
                   <button
                     key={p.val}
@@ -254,7 +332,7 @@ export default function ROICalculator() {
                   marginBottom: 12,
                 }}
               >
-                Monthly Value of Automation
+                {t.resultHeading}
               </div>
               <div
                 style={{
@@ -278,7 +356,7 @@ export default function ROICalculator() {
                   marginBottom: 20,
                 }}
               >
-                per month in recovered revenue + time saved
+                {t.resultSub}
               </div>
               <div
                 style={{
@@ -301,7 +379,7 @@ export default function ROICalculator() {
                       color: roi > 0 ? "var(--green)" : "var(--text-muted)",
                     }}
                   >
-                    {roi > 0 ? `${roiMultiple}x ROI` : "Investing in growth"}
+                    {roi > 0 ? t.roiPositive(roiMultiple) : t.roiNeutral}
                   </div>
                   <div
                     style={{
@@ -312,8 +390,8 @@ export default function ROICalculator() {
                     }}
                   >
                     {roi > 0
-                      ? `$${roi.toLocaleString("en-US")}/mo net above plan cost`
-                      : "ROI builds as your volume grows"}
+                      ? t.roiNetPositive(roi.toLocaleString("en-US"))
+                      : t.roiNetNeutral}
                   </div>
                 </div>
               </div>
@@ -339,26 +417,26 @@ export default function ROICalculator() {
                   marginBottom: 20,
                 }}
               >
-                Breakdown
+                {t.breakdownHeading}
               </div>
 
               {[
                 {
-                  label: "Revenue from recovered leads",
+                  label: t.breakdownRevLabel,
                   value: revenueRecovered,
-                  sub: `${recoveredClients} new clients/mo × $${avgValue.toLocaleString("en-US")}`,
+                  sub: t.breakdownRevSub(recoveredClients, avgValue.toLocaleString("en-US")),
                   color: "var(--gold)",
                 },
                 {
-                  label: "Time saved on admin",
+                  label: t.breakdownTimeLabel,
                   value: timeSaved,
-                  sub: `${hoursSaved} hrs/mo × $${hourlyRate}/hr`,
+                  sub: t.breakdownTimeSub(hoursSaved, hourlyRate),
                   color: "var(--gold-bright)",
                 },
                 {
-                  label: "Plan cost",
+                  label: t.breakdownPlanLabel,
                   value: -plan,
-                  sub: `${plan === 497 ? "Starter" : plan === 997 ? "Pro" : "Growth"} plan`,
+                  sub: t.breakdownPlanSub(planName),
                   color: "var(--text-dim)",
                 },
               ].map((item, i) => (
@@ -428,7 +506,7 @@ export default function ROICalculator() {
                   lineHeight: 1.6,
                 }}
               >
-                These are conservative estimates. Most clients exceed these numbers within 60 days.
+                {t.ctaDesc}
               </p>
               <a
                 href={BOOKING_URL}
@@ -458,7 +536,7 @@ export default function ROICalculator() {
                   (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(13,27,42,0.2)";
                 }}
               >
-                Book Your Free Strategy Call →
+                {t.ctaBtn}
               </a>
             </div>
           </motion.div>

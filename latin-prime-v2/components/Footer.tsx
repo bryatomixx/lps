@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 
+type Lang = "en" | "es";
+
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
 
@@ -76,16 +78,50 @@ const socialLinks = [
   },
 ];
 
-const footerLinks = [
-  { label: "Solutions", href: "#solutions" },
-  { label: "Who We Serve", href: "#who" },
-  { label: "How It Works", href: "#process" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
+export default function Footer({ lang }: { lang?: Lang }) {
+  const t = {
+    en: {
+      tagline: "Done-for-you AI systems for service businesses. Live in 7–30 days. No technical knowledge required.",
+      guarantee: "🛡️ 90-Day Guarantee",
+      region: "US & Latin America",
+      navHeading: "Navigation",
+      footerLinks: [
+        { label: "Solutions", href: "#solutions" },
+        { label: "Who We Serve", href: "#who" },
+        { label: "How It Works", href: "#process" },
+        { label: "Pricing", href: "#pricing" },
+        { label: "About", href: "#about" },
+        { label: "Contact", href: "#contact" },
+      ],
+      ctaHeading: "Ready to Start",
+      ctaDesc: "30-minute call. We map out your system. No pitch deck, no commitment.",
+      ctaBtn: "Book Your Free Strategy Call",
+      copyright: "All rights reserved",
+      privacy: "Privacy Policy",
+      terms: "Terms of Service",
+    },
+    es: {
+      tagline: "Sistemas de IA listos para ti. En vivo en 7–30 días. Sin conocimientos técnicos.",
+      guarantee: "🛡️ Garantía de 90 Días",
+      region: "EE.UU. y Latinoamérica",
+      navHeading: "Navegación",
+      footerLinks: [
+        { label: "Soluciones", href: "#solutions" },
+        { label: "A Quién Servimos", href: "#who" },
+        { label: "Cómo Funciona", href: "#process" },
+        { label: "Precios", href: "#pricing" },
+        { label: "Nosotros", href: "#about" },
+        { label: "Contacto", href: "#contact" },
+      ],
+      ctaHeading: "Listo para Empezar",
+      ctaDesc: "Llamada de 30 minutos. Diseñamos tu sistema. Sin presentación de ventas ni compromiso.",
+      ctaBtn: "Reserva tu Llamada de Estrategia Gratis",
+      copyright: "Todos los derechos reservados",
+      privacy: "Política de Privacidad",
+      terms: "Términos de Servicio",
+    },
+  }[lang ?? "en"];
 
-export default function Footer() {
   const scrollTo = (href: string) => {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -132,7 +168,7 @@ export default function Footer() {
                 marginBottom: 24,
               }}
             >
-              Done-for-you AI systems for service businesses. Live in 7–30 days. No technical knowledge required.
+              {t.tagline}
             </p>
             <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
               <span
@@ -146,7 +182,7 @@ export default function Footer() {
                   padding: "4px 10px",
                 }}
               >
-                US & Latin America
+                {t.region}
               </span>
               <span
                 style={{
@@ -159,7 +195,7 @@ export default function Footer() {
                   padding: "4px 10px",
                 }}
               >
-                🛡️ 90-Day Guarantee
+                {t.guarantee}
               </span>
             </div>
 
@@ -215,10 +251,10 @@ export default function Footer() {
                 marginBottom: 20,
               }}
             >
-              Navigation
+              {t.navHeading}
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              {footerLinks.map((link) => (
+              {t.footerLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -253,7 +289,7 @@ export default function Footer() {
                 marginBottom: 20,
               }}
             >
-              Ready to Start
+              {t.ctaHeading}
             </div>
             <p
               style={{
@@ -263,7 +299,7 @@ export default function Footer() {
                 marginBottom: 20,
               }}
             >
-              30-minute call. We map out your system. No pitch deck, no commitment.
+              {t.ctaDesc}
             </p>
             <a
               href={BOOKING_URL}
@@ -290,7 +326,7 @@ export default function Footer() {
                 (e.currentTarget as HTMLElement).style.background = "var(--orange)";
               }}
             >
-              Book Your Free Strategy Call
+              {t.ctaBtn}
             </a>
           </div>
         </div>
@@ -316,10 +352,10 @@ export default function Footer() {
             }}
           >
             <span suppressHydrationWarning>© {new Date().getFullYear()}</span> Latin Prime Systems · Latin Prime Enterprises LLC ·
-            All rights reserved
+            {t.copyright}
           </span>
           <div style={{ display: "flex", gap: 24 }}>
-            {["Privacy Policy", "Terms of Service"].map((label) => (
+            {[t.privacy, t.terms].map((label) => (
               <span
                 key={label}
                 style={{

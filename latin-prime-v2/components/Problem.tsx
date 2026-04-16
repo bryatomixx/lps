@@ -1,61 +1,44 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
 import GradientText from "./GradientText";
 
-const problems = [
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.25 1.2 2 2 0 012.23 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.56-1.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-        <line x1="18" y1="2" x2="22" y2="6"/>
-        <line x1="22" y1="2" x2="18" y2="6"/>
-      </svg>
-    ),
-    title: "Every missed call is a missed contract",
-    desc: "Leads call once. If you don't answer, they move on. Your best opportunities disappear before you know they existed.",
-    stat: "78% of buyers choose the first business that calls back.",
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="17 1 21 5 17 9"/>
-        <path d="M3 11V9a4 4 0 014-4h14"/>
-        <polyline points="7 23 3 19 7 15"/>
-        <path d="M21 13v2a4 4 0 01-4 4H3"/>
-      </svg>
-    ),
-    title: "Your team is stuck doing work robots should be doing",
-    desc: "Hours lost to copy-paste, manual data entry, rescheduling, and chasing paperwork — every day, on repeat.",
-    stat: "Owners report 60%+ of their week is administrative.",
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="18" y1="20" x2="18" y2="10"/>
-        <line x1="12" y1="20" x2="12" y2="4"/>
-        <line x1="6" y1="20" x2="6" y2="14"/>
-        <line x1="2" y1="20" x2="22" y2="20"/>
-        <path d="M2 12l4-4 4 3 6-7"/>
-      </svg>
-    ),
-    title: "You're managing by memory and gut feeling",
-    desc: "No live dashboard. No clear numbers. Decisions get made on guesses — and problems only surface after they've already cost you.",
-    stat: "Most service businesses can't tell you their real margins.",
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <polyline points="12 6 12 12 16 14"/>
-        <line x1="12" y1="2" x2="12" y2="1"/>
-        <path d="M8 3.5C5 5 3 8 3 11.5"/>
-        <path d="M16 3.5c3 1.5 5 4.5 5 8"/>
-      </svg>
-    ),
-    title: "You can't grow what you're too busy to run",
-    desc: "You become the bottleneck in your own business. Every system depends on you — so growth just means more pressure on one person.",
-    stat: "Scaling without systems just means bigger chaos.",
-  },
+type Lang = "en" | "es";
+
+const icons = [
+  (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.25 1.2 2 2 0 012.23 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.56-1.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+      <line x1="18" y1="2" x2="22" y2="6"/>
+      <line x1="22" y1="2" x2="18" y2="6"/>
+    </svg>
+  ),
+  (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="17 1 21 5 17 9"/>
+      <path d="M3 11V9a4 4 0 014-4h14"/>
+      <polyline points="7 23 3 19 7 15"/>
+      <path d="M21 13v2a4 4 0 01-4 4H3"/>
+    </svg>
+  ),
+  (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="20" x2="18" y2="10"/>
+      <line x1="12" y1="20" x2="12" y2="4"/>
+      <line x1="6" y1="20" x2="6" y2="14"/>
+      <line x1="2" y1="20" x2="22" y2="20"/>
+      <path d="M2 12l4-4 4 3 6-7"/>
+    </svg>
+  ),
+  (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <polyline points="12 6 12 12 16 14"/>
+      <line x1="12" y1="2" x2="12" y2="1"/>
+      <path d="M8 3.5C5 5 3 8 3 11.5"/>
+      <path d="M16 3.5c3 1.5 5 4.5 5 8"/>
+    </svg>
+  ),
 ];
 
 const fadeUp = {
@@ -63,7 +46,77 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" as const } },
 };
 
-export default function Problem() {
+interface ProblemProps {
+  lang?: Lang;
+}
+
+export default function Problem({ lang = "en" }: ProblemProps) {
+  const t = {
+    en: {
+      kicker: "Sound Familiar?",
+      h2Text: "run it by hand.",
+      h2Prefix: "You didn't build a business to",
+      subheading: "These are the four walls that keep service businesses from scaling — and they all have the same fix.",
+      problems: [
+        {
+          title: "Every missed call is a missed contract",
+          desc: "Leads call once. If you don't answer, they move on. Your best opportunities disappear before you know they existed.",
+          stat: "78% of buyers choose the first business that calls back.",
+        },
+        {
+          title: "Your team is stuck doing work robots should be doing",
+          desc: "Hours lost to copy-paste, manual data entry, rescheduling, and chasing paperwork — every day, on repeat.",
+          stat: "Owners report 60%+ of their week is administrative.",
+        },
+        {
+          title: "You're managing by memory and gut feeling",
+          desc: "No live dashboard. No clear numbers. Decisions get made on guesses — and problems only surface after they've already cost you.",
+          stat: "Most service businesses can't tell you their real margins.",
+        },
+        {
+          title: "You can't grow what you're too busy to run",
+          desc: "You become the bottleneck in your own business. Every system depends on you — so growth just means more pressure on one person.",
+          stat: "Scaling without systems just means bigger chaos.",
+        },
+      ],
+      ctaHeading: "Every one of these problems has a system for it.",
+      ctaBody: "In 30 minutes we map exactly which ones apply to your business — and what it costs you per month to leave them unsolved.",
+      ctaButton: "See How We Fix It",
+    },
+    es: {
+      kicker: "¿Te suena familiar?",
+      h2Text: "operarlo a mano.",
+      h2Prefix: "No construiste un negocio para",
+      subheading: "Estos son los cuatro obstáculos que frenan el crecimiento de los negocios de servicios — y todos tienen la misma solución.",
+      problems: [
+        {
+          title: "Cada llamada perdida es un contrato perdido",
+          desc: "Los prospectos llaman una vez. Si no respondes, siguen adelante. Tus mejores oportunidades desaparecen antes de que sepas que existieron.",
+          stat: "El 78% de los compradores elige al primer negocio que les devuelve la llamada.",
+        },
+        {
+          title: "Tu equipo está atascado haciendo trabajo que debería hacer un robot",
+          desc: "Horas perdidas en copiar y pegar, captura manual de datos, reagendados y papeleo — todos los días, sin parar.",
+          stat: "Los dueños reportan que el 60%+ de su semana es administrativo.",
+        },
+        {
+          title: "Estás gestionando de memoria y a pura intuición",
+          desc: "Sin Dashboard en tiempo real. Sin números claros. Las decisiones se toman a ciegas — y los problemas sólo aparecen cuando ya te costaron dinero.",
+          stat: "La mayoría de los negocios de servicios no sabe cuáles son sus márgenes reales.",
+        },
+        {
+          title: "No puedes crecer lo que no tienes tiempo de operar",
+          desc: "Te conviertes en el cuello de botella de tu propio negocio. Todo depende de ti — así que crecer sólo significa más presión sobre una sola persona.",
+          stat: "Escalar sin sistemas sólo genera un caos más grande.",
+        },
+      ],
+      ctaHeading: "Cada uno de estos problemas tiene un sistema que lo resuelve.",
+      ctaBody: "En 30 minutos mapeamos exactamente cuáles aplican a tu negocio — y cuánto te cuesta al mes dejarlos sin solución.",
+      ctaButton: "Ver Cómo Lo Resolvemos",
+    },
+  }[lang];
+
+  const problems = t.problems.map((p, i) => ({ ...p, icon: icons[i] }));
   return (
     <section
       id="problem"
@@ -93,7 +146,7 @@ export default function Problem() {
             padding: "5px 14px",
             marginBottom: 24,
           }}>
-            Sound Familiar?
+            {t.kicker}
           </div>
 
           <h2 style={{
@@ -106,8 +159,8 @@ export default function Problem() {
             marginBottom: 16,
             maxWidth: 700,
           }}>
-            You didn't build a business to{" "}
-            <GradientText text="run it by hand." speed={5} />
+            {t.h2Prefix}{" "}
+            <GradientText text={t.h2Text} speed={5} />
           </h2>
 
           <p style={{
@@ -116,7 +169,7 @@ export default function Problem() {
             lineHeight: 1.75,
             maxWidth: 560,
           }}>
-            These are the four walls that keep service businesses from scaling — and they all have the same fix.
+            {t.subheading}
           </p>
         </motion.div>
 
@@ -173,13 +226,13 @@ export default function Problem() {
               color: "var(--text)",
               marginBottom: 4,
             }}>
-              Every one of these problems has a system for it.
+              {t.ctaHeading}
             </div>
             <div style={{
               fontSize: "0.85rem",
               color: "var(--text-muted)",
             }}>
-              In 30 minutes we map exactly which ones apply to your business — and what it costs you per month to leave them unsolved.
+              {t.ctaBody}
             </div>
           </div>
           <a
@@ -206,7 +259,7 @@ export default function Problem() {
             onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.88")}
             onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
           >
-            See How We Fix It
+            {t.ctaButton}
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
             </svg>
@@ -224,7 +277,14 @@ export default function Problem() {
   );
 }
 
-function ProblemCard({ problem }: { problem: typeof problems[0] }) {
+interface ProblemItem {
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+  stat: string;
+}
+
+function ProblemCard({ problem }: { problem: ProblemItem }) {
   return (
     <div
       style={{

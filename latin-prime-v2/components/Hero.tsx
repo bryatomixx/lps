@@ -6,28 +6,70 @@ import DecryptedText from "./DecryptedText";
 import GradientText from "./GradientText";
 import ShinyText from "./ShinyText";
 
+type Lang = "en" | "es";
+
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
 
-const tickerItems = [
-  "Zero leads fall through the cracks",
-  "Follow-ups sent in seconds, not days",
-  "No more missed calls or lost revenue",
-  "Appointments booked automatically",
-  "AI that works while you sleep",
-  "More revenue, less manual work",
-  "Scale without adding headcount",
-  "No-shows reduced by up to 80%",
-];
+interface HeroProps {
+  lang?: Lang;
+}
 
-const proofChips = [
-  "AI + Automation + CRM",
-  "Bilingual — English & Spanish",
-  "Live in 7–30 days",
-];
-
-
-export default function Hero() {
+export default function Hero({ lang = "en" }: HeroProps) {
+  const t = {
+    en: {
+      kickerText: "AI · Automation · CRM · Business Infrastructure",
+      h1Lines: ["Stop Running", "Your Business.", "Start Growing It."],
+      h1Line2Gradient: "Your Business.",
+      h1Line3Start: "Start",
+      h1Line3Shiny: "Growing It.",
+      desc: "LPS is your strategic partner for AI, automation, CRM, and business infrastructure. We organize your operation, capture every lead, automate your follow-up, and build the systems that let your business grow — without it all depending on you.",
+      proofChips: [
+        "AI + Automation + CRM",
+        "Bilingual — English & Spanish",
+        "Live in 7–30 days",
+      ],
+      ctaPrimary: "Book Your Free Strategy Call",
+      ctaSecondary: "See How It Works",
+      guarantee: "🛡️ 90-Day ROI Guarantee — results or we work free",
+      tickerItems: [
+        "Zero leads fall through the cracks",
+        "Follow-ups sent in seconds, not days",
+        "No more missed calls or lost revenue",
+        "Appointments booked automatically",
+        "AI that works while you sleep",
+        "More revenue, less manual work",
+        "Scale without adding headcount",
+        "No-shows reduced by up to 80%",
+      ],
+    },
+    es: {
+      kickerText: "AI · Automatización · CRM · Infraestructura Empresarial",
+      h1Lines: ["Deja de Operar", "Tu Negocio.", "Empieza a Escalarlo."],
+      h1Line2Gradient: "Tu Negocio.",
+      h1Line3Start: "Empieza a",
+      h1Line3Shiny: "Escalarlo.",
+      desc: "LPS es tu socio estratégico en AI, automatización, CRM e infraestructura empresarial. Organizamos tu operación, capturamos cada prospecto, automatizamos tu seguimiento y construimos los sistemas que hacen crecer tu negocio — sin que todo dependa de ti.",
+      proofChips: [
+        "AI + Automatización + CRM",
+        "Bilingüe — Inglés y Español",
+        "En funcionamiento en 7–30 días",
+      ],
+      ctaPrimary: "Agenda tu Llamada Estratégica Gratis",
+      ctaSecondary: "Ver Cómo Funciona",
+      guarantee: "🛡️ Garantía de ROI a 90 días — resultados o trabajamos gratis",
+      tickerItems: [
+        "Cero prospectos perdidos",
+        "Seguimientos enviados en segundos, no días",
+        "Sin más llamadas perdidas ni ingresos escapados",
+        "Citas agendadas automáticamente",
+        "AI que trabaja mientras duermes",
+        "Más ingresos, menos trabajo manual",
+        "Escala sin contratar más personal",
+        "No-shows reducidos hasta un 80%",
+      ],
+    },
+  }[lang];
   const ref = useRef<HTMLElement>(null);
 
 
@@ -151,7 +193,7 @@ export default function Hero() {
                 }}
               />
               <DecryptedText
-                text="AI · Automation · CRM · Business Infrastructure"
+                text={t.kickerText}
                 animateOn="view"
                 sequential={true}
                 speed={30}
@@ -181,7 +223,7 @@ export default function Hero() {
                 fontWeight: 800,
               }}
             >
-              {(["Stop Running", "Your Business.", "Start Growing It."] as const).map((line, li) => (
+              {(t.h1Lines as readonly string[]).map((line, li) => (
                 <motion.span
                   key={li}
                   initial={{ opacity: 0, y: 30, skewX: -5 }}
@@ -192,7 +234,7 @@ export default function Hero() {
                   {li === 0 && line}
                   {li === 1 && (
                     <GradientText
-                      text="Your Business."
+                      text={t.h1Line2Gradient}
                       speed={5}
                       from="#1A5CA8"
                       mid="#D4A53A"
@@ -202,9 +244,9 @@ export default function Hero() {
                   )}
                   {li === 2 && (
                     <>
-                      Start{" "}
+                      {t.h1Line3Start}{" "}
                       <ShinyText
-                        text="Growing It."
+                        text={t.h1Line3Shiny}
                         speed={3.2}
                         fromColor="#2B7FE0"
                         toColor="#D4A53A"
@@ -230,10 +272,7 @@ export default function Hero() {
                 fontWeight: 400,
               }}
             >
-              LPS is your strategic partner for AI, automation, CRM, and business
-              infrastructure. We organize your operation, capture every lead, automate
-              your follow-up, and build the systems that let your business grow — without
-              it all depending on you.
+              {t.desc}
             </motion.p>
 
             {/* Proof chips */}
@@ -243,7 +282,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.65 }}
               style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 40 }}
             >
-              {proofChips.map((chip, i) => (
+              {t.proofChips.map((chip, i) => (
                 <motion.div
                   key={chip}
                   initial={{ opacity: 0, scale: 0.85 }}
@@ -323,7 +362,7 @@ export default function Hero() {
                     (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                   }}
                 >
-                  Book Your Free Strategy Call
+                  {t.ctaPrimary}
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -359,7 +398,7 @@ export default function Hero() {
                     (e.currentTarget as HTMLElement).style.background = "transparent";
                   }}
                 >
-                  See How It Works
+                  {t.ctaSecondary}
                 </motion.a>
               </div>
               <motion.span
@@ -373,7 +412,7 @@ export default function Hero() {
                   color: "var(--text-dim)",
                 }}
               >
-                🛡️ 90-Day ROI Guarantee — results or we work free
+                {t.guarantee}
               </motion.span>
             </motion.div>
           </div>
@@ -486,7 +525,7 @@ export default function Hero() {
             animation: "ticker-scroll 32s linear infinite",
           }}
         >
-          {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, i) => (
+          {[...t.tickerItems, ...t.tickerItems, ...t.tickerItems, ...t.tickerItems].map((item, i) => (
             <div key={i} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
               <span
                 style={{

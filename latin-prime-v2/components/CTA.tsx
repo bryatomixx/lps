@@ -4,12 +4,50 @@ import { useRef } from "react";
 import SplitText from "./SplitText";
 import ShinyText from "./ShinyText";
 
+type Lang = "en" | "es";
+
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
 
-export default function CTA() {
+const t = {
+  en: {
+    label: "Ready to Start",
+    heading: "Your Business Deserves",
+    headingShiny: "Better Systems",
+    subtext:
+      "Stop duct-taping your operation together. Start running a business that works — even when you\u2019re not there.",
+    primaryCta: "Book Your Free Strategy Call",
+    secondaryCta: "Start with a Strategy Session",
+    guarantee: "🛡️ 90-Day ROI Guarantee — results or we work free · No long-term contracts",
+    stats: [
+      { stat: "24/7", label: "Lead coverage" },
+      { stat: "<1s", label: "Response time" },
+      { stat: "10+", label: "Industries served" },
+      { stat: "90", label: "Day ROI guarantee" },
+    ],
+  },
+  es: {
+    label: "Listo para Empezar",
+    heading: "Tu Negocio Merece",
+    headingShiny: "Mejores Sistemas",
+    subtext:
+      "Deja de improvisar tu operación. Empieza a dirigir un negocio que funciona — incluso cuando no estás.",
+    primaryCta: "Agenda tu Llamada de Estrategia Gratuita",
+    secondaryCta: "Comenzar con una Sesión de Estrategia",
+    guarantee: "🛡️ Garantía de ROI de 90 días — resultados o trabajamos gratis · Sin contratos a largo plazo",
+    stats: [
+      { stat: "24/7", label: "Cobertura de prospectos" },
+      { stat: "<1s", label: "Tiempo de respuesta" },
+      { stat: "10+", label: "Industrias atendidas" },
+      { stat: "90", label: "Días de garantía ROI" },
+    ],
+  },
+};
+
+export default function CTA({ lang = "en" }: { lang?: Lang }) {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const copy = t[lang ?? "en"];
 
   return (
     <section
@@ -54,7 +92,7 @@ export default function CTA() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="slabel" style={{ justifyContent: "center" }}>
-            Ready to Start
+            {copy.label}
           </div>
           <h2
             style={{
@@ -68,9 +106,9 @@ export default function CTA() {
               margin: "0 auto 20px",
             }}
           >
-            <SplitText text="Your Business Deserves" delay={0.05} />{" "}
+            <SplitText text={copy.heading} delay={0.05} />{" "}
             <ShinyText
-              text="Better Systems"
+              text={copy.headingShiny}
               speed={3}
               style={{ paddingRight: "0.08em" }}
             />
@@ -85,8 +123,7 @@ export default function CTA() {
               fontWeight: 300,
             }}
           >
-            Stop duct-taping your operation together. Start running a business
-            that works — even when you&apos;re not there.
+            {copy.subtext}
           </p>
 
           <div
@@ -97,47 +134,75 @@ export default function CTA() {
               gap: 14,
             }}
           >
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                padding: "18px 44px",
-                background: "var(--orange)",
-                color: "white",
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 800,
-                fontSize: "1rem",
-                letterSpacing: "0.01em",
-                textDecoration: "none",
-                transition: "all 0.25s",
-                boxShadow: "0 6px 28px rgba(13,27,42,0.25)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "var(--orange-hover)";
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(212,165,58,0.55)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "var(--orange)";
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 28px rgba(13,27,42,0.25)";
-              }}
-            >
-              Book Your Free Strategy Call
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path
-                  d="M3 8h10M8 3l5 5-5 5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 10,
+                  padding: "18px 44px",
+                  background: "var(--orange)",
+                  color: "white",
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontWeight: 800,
+                  fontSize: "1rem",
+                  letterSpacing: "0.01em",
+                  textDecoration: "none",
+                  transition: "all 0.25s",
+                  boxShadow: "0 6px 28px rgba(13,27,42,0.25)",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "var(--orange-hover)";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(212,165,58,0.55)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "var(--orange)";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 28px rgba(13,27,42,0.25)";
+                }}
+              >
+                {copy.primaryCta}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+              <a
+                href="#pricing"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "17px 32px",
+                  background: "transparent",
+                  color: "var(--text)",
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontWeight: 700,
+                  fontSize: "0.95rem",
+                  textDecoration: "none",
+                  border: "1px solid var(--border2)",
+                  transition: "all 0.2s",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(15,34,64,0.25)";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(15,34,64,0.03)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "var(--border2)";
+                  (e.currentTarget as HTMLElement).style.background = "transparent";
+                }}
+              >
+                {copy.secondaryCta}
+              </a>
+            </div>
             <span
               style={{
                 fontFamily: "'DM Mono', monospace",
@@ -146,7 +211,7 @@ export default function CTA() {
                 color: "var(--text-muted)",
               }}
             >
-              🛡️ 90-Day ROI Guarantee — results or we work free · No long-term contracts
+              {copy.guarantee}
             </span>
           </div>
 
@@ -160,12 +225,7 @@ export default function CTA() {
               flexWrap: "wrap",
             }}
           >
-            {[
-              { stat: "24/7", label: "Lead coverage" },
-              { stat: "<1s", label: "Response time" },
-              { stat: "10+", label: "Industries served" },
-              { stat: "90", label: "Day ROI guarantee" },
-            ].map((item, i) => (
+            {copy.stats.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}

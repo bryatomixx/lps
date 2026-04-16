@@ -15,6 +15,7 @@ const PRO_PAYMENT =
 const GROWTH_PAYMENT =
   "https://link.latinprimesystems.com/payment-link/692e3647d8c1a8022cff08f1";
 
+type Lang = "en" | "es";
 type Currency = "USD" | "COP" | "MXN";
 
 // Approximate rates — USD is the billing currency
@@ -70,197 +71,9 @@ interface Plan {
   features: Array<string | { section: string }>;
 }
 
-const plans: Plan[] = [
-  {
-    tier: "Starter",
-    tagline:
-      "Your business organized, automated, and capturing every lead — without hiring anyone new.",
-    priceUSD: 497,
-    setupUSD: 2497,
-    setupLabel: "+ $2,497 one-time setup",
-    priceSub: "/mo",
-    ideal: "Best for: Solo operators and small teams running their business without a real system.",
-    featured: false,
-    guarantee:
-      "🛡️ 90-Day ROI Guarantee — measurable results or we keep working at no extra cost.",
-    cta: "Book Your Free Strategy Call",
-    ctaHref: STARTER_PAYMENT,
-    features: [
-      { section: "── WEBSITE ──" },
-      "1-page website or landing page — professionally designed, built, and connected to your CRM",
-      "Website hosting & maintenance — included every month, no extra cost",
-      { section: "── CRM & PIPELINE ──" },
-      "CRM fully built for your business — contacts, tags, custom fields, and pipeline stages configured from day one",
-      "Lead pipeline setup — custom stages from first contact to closed deal",
-      "Contact import & organization — all your existing contacts loaded and structured",
-      "Lead capture forms — connected directly to your CRM, no manual entry",
-      "Unified social media inbox — Instagram & Facebook DMs managed in one place",
-      { section: "── AUTOMATIONS ──" },
-      "Missed call text-back — automatic SMS sent in under 30 seconds when you don't answer",
-      "New lead SMS follow-up sequence — 3-step automated texts the moment someone enters your pipeline",
-      "New lead email follow-up sequence — automated welcome + follow-up emails",
-      "Appointment confirmation & reminder — automatic messages before every booking",
-      "No-show follow-up — automatic re-engagement if a client misses their appointment",
-      "Social media auto-reply — responds to DMs and captures contact info when you're unavailable",
-      "Online booking link — clients schedule directly to your calendar, zero back-and-forth",
-      { section: "── SUPPORT ──" },
-      "Onboarding & training session — full walkthrough of your system",
-      "Monthly strategy call — review performance and adjust",
-      "Email & chat support — 48h response",
-    ],
-  },
-  {
-    tier: "Pro",
-    tagline:
-      "Your full operation on autopilot — leads, sales, reputation, and a professional website. All connected.",
-    priceUSD: 997,
-    setupUSD: 3997,
-    setupLabel: "+ $3,997 one-time setup",
-    priceSub: "/mo",
-    ideal: "Best for: Growing businesses ready to replace manual processes with automated systems.",
-    featured: false,
-    badge: "Best Value",
-    guarantee:
-      "🛡️ 90-Day ROI Guarantee — measurable results or we keep working at no extra cost.",
-    cta: "Book Your Free Strategy Call",
-    ctaHref: PRO_PAYMENT,
-    features: [
-      "Everything in Starter, plus:",
-      { section: "── WEBSITE ──" },
-      "Full website — all the pages your business needs, custom designed, built, and connected to your CRM. Live in 7 days",
-      "Website hosting & maintenance — included every month, no extra cost",
-      "AI chatbot on your website — captures leads, answers FAQs, and books appointments automatically",
-      { section: "── ADVANCED AUTOMATIONS ──" },
-      "Internal workflow automations — task assignments, status updates, and process handoffs between your team",
-      "Re-engagement campaign — automatically reaches out to cold or inactive leads",
-      "Proposal follow-up — automatic nudge sent if a quote or proposal goes unanswered",
-      "Invoice & payment reminders — automated follow-up on unpaid or overdue invoices",
-      "Multi-channel follow-up sequences — SMS, email, and social DMs coordinated in one flow",
-      { section: "── SALES & REPUTATION ──" },
-      "AI lead scoring — automatically ranks your leads so you focus on the hottest ones first",
-      "Full sales pipeline — visual deal tracking from first contact to signed contract",
-      "Automated review requests — every client gets a review prompt after their service",
-      "Negative review alert — get notified immediately if a bad review is left anywhere",
-      { section: "── REPORTING & SUPPORT ──" },
-      "Monthly performance report — leads, bookings, conversions, and automation activity",
-      "Bi-weekly strategy calls",
-      "Priority support — 24h response",
-    ],
-  },
-  {
-    tier: "Growth",
-    tagline:
-      "An AI that answers your calls, speaks in your voice, and books appointments — with a dedicated team managing everything.",
-    priceUSD: 1797,
-    setupUSD: 5997,
-    setupLabel: "+ $5,997 one-time setup",
-    priceSub: "/mo",
-    ideal: "Best for: Businesses that want the full AI stack — voice, automation, and dedicated management.",
-    featured: true,
-    badge: "Most Popular",
-    guarantee:
-      "🛡️ 90-Day ROI Guarantee — measurable results or we keep working at no extra cost.",
-    cta: "Book Your Free Strategy Call",
-    ctaHref: GROWTH_PAYMENT,
-    features: [
-      "Everything in Pro, plus:",
-      { section: "── AI VOICE ──" },
-      "AI voice agent — answers inbound calls, qualifies leads, and books appointments automatically",
-      "Your voice, cloned with AI — the agent speaks using a replica of your own voice",
-      "Outbound AI calling — proactively calls your lead list and follows up without manual dialing",
-      "Call transcripts & summaries — every call automatically logged, summarized, and saved to the CRM",
-      "AI video avatar — a digital version of you for personalized video messages and follow-ups",
-      { section: "── INTELLIGENCE ──" },
-      "Advanced lead routing — hot leads get prioritized and assigned automatically",
-      "Full automation ecosystem — every process in your business mapped and automated end-to-end",
-      "Advanced analytics dashboard — full visibility into every call, lead, conversion, and revenue metric",
-      { section: "── DEDICATED MANAGEMENT ──" },
-      "Dedicated Success Manager — a real person assigned to your account, managing and optimizing your system weekly",
-      "Weekly strategy & optimization calls",
-      "Proactive improvements — monthly adjustments to automations based on your data",
-      "Same-day priority support",
-      "Quarterly full system audit & upgrade",
-    ],
-  },
-  {
-    tier: "Enterprise",
-    tagline:
-      "Custom AI infrastructure for agencies, franchises, and multi-location businesses operating at scale.",
-    priceUSD: null,
-    setupUSD: 8997,
-    setupLabel: "",
-    setupFrom: true,
-    priceSub: "",
-    ideal: "Best for: Agencies, multi-location brands, and high-volume operations needing fully custom infrastructure.",
-    featured: false,
-    guarantee:
-      "🛡️ Custom SLA & documented performance guarantees — or we keep working at no extra cost.",
-    cta: "Request Proposal",
-    ctaHref: BOOKING_URL,
-    features: [
-      "Everything in Growth, plus:",
-      { section: "── CUSTOM INFRASTRUCTURE ──" },
-      "Multiple AI voice agents — dedicated inbound and outbound agents for different campaigns or locations",
-      "Custom API integrations — connect any software, ERP, POS, or internal platform you use",
-      "Multi-location CRM architecture — manage all your locations and teams from a single dashboard",
-      "White-label dashboards — branded reporting for your clients or internal leadership",
-      "AI video series & full voice cloning suite — multiple avatars and branded voice assets",
-      "Dedicated development hours every month — new builds, custom automations, and ongoing updates",
-      { section: "── PLATINUM SUPPORT ──" },
-      "Executive Strategy Director assigned to your account",
-      "24/7 emergency support line",
-      "Monthly executive business review with documented results",
-      "Custom SLA & performance guarantees in writing",
-    ],
-  },
-];
-
-function FeatureItem({ feat, featured }: { feat: string | { section: string }; featured: boolean }) {
-  if (typeof feat === "object") {
-    return (
-      <li
-        style={{
-          fontFamily: "'DM Mono', monospace",
-          fontSize: "0.65rem",
-          letterSpacing: "0.1em",
-          color: "var(--text-muted)",
-          padding: "12px 0 4px",
-          marginTop: 4,
-          listStyle: "none",
-          fontWeight: 500,
-        }}
-      >
-        {feat.section}
-      </li>
-    );
-  }
-  return (
-    <li
-      style={{
-        display: "flex",
-        gap: 10,
-        fontSize: "0.83rem",
-        color: "var(--text-muted)",
-        lineHeight: 1.6,
-        listStyle: "none",
-      }}
-    >
-      <span style={{ color: "#D4A53A", flexShrink: 0, marginTop: 2 }}>✓</span>
-      {feat}
-    </li>
-  );
-}
-
 type Billing = "monthly" | "annual";
 
 const ANNUAL_DISCOUNT = 0.25;
-
-const MONTHLY_CTA: Record<string, string> = {
-  Starter:    "Get My Starter System →",
-  Pro:        "Get My Pro System →",
-  Growth:     "Get My AI Stack →",
-  Enterprise: "Request Proposal",
-};
 
 function getDisplayPrice(usd: number | null, billing: Billing): number | null {
   if (usd === null) return null;
@@ -270,10 +83,533 @@ function getDisplayPrice(usd: number | null, billing: Billing): number | null {
 
 const PREVIEW_COUNT = 5; // items shown before "see more"
 
-export default function Pricing() {
+export default function Pricing({ lang = "en" }: { lang?: Lang }) {
   const [currency, setCurrency] = useState<Currency>("USD");
   const [billing, setBilling] = useState<Billing>("monthly");
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
+
+  const t = {
+    en: {
+      // Divider
+      dividerLabel: "Monthly Plans — Full Implementation",
+      // Section header
+      sectionLabel: "Investment",
+      sectionTitle1: "Enterprise Infrastructure",
+      sectionTitle2: "at Every Budget",
+      sectionDesc:
+        "Choose the level that fits where your business is today — and upgrade as you grow. Every plan includes setup, configuration, and ongoing support.",
+      // Billing toggle
+      billingMonthly: "Monthly",
+      billingAnnual: "Annual",
+      billingBadge: "SAVE 25%",
+      annualNote: "Annual pricing shown · billed as one yearly payment",
+      billedAnnually: "✓ Billed annually · 25% saved",
+      // Currency toggle
+      currencyLabel: "Currency:",
+      currencyApprox: "≈ Approximate · USD is the billing currency",
+      // Feature expand/collapse
+      showLess: "↑ Show less",
+      moreFeatures: (n: number) => `+ ${n} more features`,
+      // Footer disclaimer
+      disclaimer:
+        "All plans include a free strategy call before you commit. No long-term contracts — cancel anytime. Setup fee is paid once at the start — it covers full system build, configuration, and launch.",
+      // CTA logic
+      ctaEnterprise: "Request Proposal",
+      ctaAnnualBook: "Book My Strategy Call →",
+      monthlyCTA: {
+        Starter:    "Get My Starter System →",
+        Pro:        "Get My Pro System →",
+        Growth:     "Get My AI Stack →",
+        Enterprise: "Request Proposal",
+      } as Record<string, string>,
+      ctaFallback: "Get Started →",
+      // Add-ons section
+      addOnsLabel: "Optional Upgrades",
+      addOnsTitle1: "Add AI Capabilities to",
+      addOnsTitle2: "Any Plan",
+      addOnsDesc:
+        "Not ready for Growth? Add individual AI capabilities to your Starter or Pro plan — and upgrade to the full stack whenever you're ready.",
+      addOnOneTimeLabel: "One-time setup",
+      addOnMonthlyLabel: "Monthly",
+      addOnFootnote:
+        "Add-ons are included by default in the Growth plan. Ask about bundling during your strategy call.",
+      addOns: [
+        {
+          icon: "🎙️",
+          name: "Voice AI Agent",
+          desc: "An AI that answers your inbound calls, qualifies leads, and books appointments — automatically, around the clock.",
+          setup: 1497,
+          monthly: 497,
+          available: "Available for Starter & Pro",
+          highlight: true,
+        },
+        {
+          icon: "🔊",
+          name: "Voice Cloning",
+          desc: "Your AI agent speaks in your own voice — cloned and branded. Every call sounds like you, even when you're not there.",
+          setup: 497,
+          monthly: 197,
+          available: "Available for Starter & Pro",
+          highlight: false,
+        },
+        {
+          icon: "🎬",
+          name: "AI Video Avatar",
+          desc: "A digital version of you for personalized video messages, follow-ups, and automated outreach that feels human.",
+          setup: 997,
+          monthly: 297,
+          available: "Available for Pro plan only",
+          highlight: false,
+        },
+      ],
+      // Strategic Services section
+      strategicLabel: "Strategic Services",
+      strategicTitle1: "Start with Strategy",
+      strategicTitle2: "Before You Commit",
+      strategicDesc:
+        "Not every business should jump straight into implementation. If you need clarity first, LPS offers strategic engagements to identify the right systems, automations, and AI opportunities before building anything.",
+      // Card 1 — AI Growth Strategy Session
+      card1Tag: "Strategic Engagement",
+      card1Title: "AI Growth Strategy Session",
+      card1Desc:
+        "A focused strategic session designed to help you identify where AI, automation, CRM, and smarter systems can create the biggest impact in your business right now.",
+      card1Items: [
+        "60–90 minute strategy session",
+        "Review of lead flow, follow-up, bottlenecks, and current systems",
+        "Identification of quick wins and best-fit opportunities",
+        "Clear recommendation on which LPS plan or next step makes the most sense",
+      ],
+      card1Ideal:
+        "Best for: Small businesses, service providers, and operators who want expert direction before committing to a larger build.",
+      card1Price: "From $297",
+      card1PriceSub: "one-time",
+      card1CTA: "Book Strategy Session",
+      // Card 2 — AI Business Audit
+      card2Tag: "Deep Diagnostic",
+      card2Title: "AI Business Audit",
+      card2Desc:
+        "A deeper diagnostic engagement for businesses that already have leads, tools, teams, or workflows in place but need a clear roadmap for improvement, automation, and AI implementation.",
+      card2Items: [
+        "In-depth review of sales process, lead handling, follow-up, CRM, and automation",
+        "Identification of inefficiencies, missed opportunities, and system gaps",
+        "Strategic recommendations prioritized by impact",
+        "Roadmap for implementation through LPS",
+      ],
+      card2Ideal:
+        "Best for: Clinics, agencies, established businesses, and teams with more complex operations or multi-step sales processes.",
+      card2Price: "From $750",
+      card2PriceSub: "one-time",
+      card2CTA: "Request an Audit",
+      // Bridge block
+      bridgeTitle: "Ready for Execution?",
+      bridgeDesc:
+        "Once the strategy is clear, LPS can build and manage the implementation through your selected Pro, Growth, or Enterprise engagement.",
+      bridgeCTA: "Book a Free Call",
+      // Plans
+      plans: [
+        {
+          tier: "Starter",
+          tagline:
+            "Your business organized, automated, and capturing every lead — without hiring anyone new.",
+          setupLabel: "+ $2,497 one-time setup",
+          priceSub: "/mo",
+          ideal: "Best for: Solo operators and small teams running their business without a real system.",
+          badge: undefined as string | undefined,
+          guarantee:
+            "🛡️ 90-Day ROI Guarantee — measurable results or we keep working at no extra cost.",
+          cta: "Book Your Free Strategy Call",
+          features: [
+            { section: "── WEBSITE ──" },
+            "1-page website or landing page — professionally designed, built, and connected to your CRM",
+            "Website hosting & maintenance — included every month, no extra cost",
+            { section: "── CRM & PIPELINE ──" },
+            "CRM fully built for your business — contacts, tags, custom fields, and pipeline stages configured from day one",
+            "Lead pipeline setup — custom stages from first contact to closed deal",
+            "Contact import & organization — all your existing contacts loaded and structured",
+            "Lead capture forms — connected directly to your CRM, no manual entry",
+            "Unified social media inbox — Instagram & Facebook DMs managed in one place",
+            { section: "── AUTOMATIONS ──" },
+            "Missed call text-back — automatic SMS sent in under 30 seconds when you don't answer",
+            "New lead SMS follow-up sequence — 3-step automated texts the moment someone enters your pipeline",
+            "New lead email follow-up sequence — automated welcome + follow-up emails",
+            "Appointment confirmation & reminder — automatic messages before every booking",
+            "No-show follow-up — automatic re-engagement if a client misses their appointment",
+            "Social media auto-reply — responds to DMs and captures contact info when you're unavailable",
+            "Online booking link — clients schedule directly to your calendar, zero back-and-forth",
+            { section: "── SUPPORT ──" },
+            "Onboarding & training session — full walkthrough of your system",
+            "Monthly strategy call — review performance and adjust",
+            "Email & chat support — 48h response",
+          ] as Array<string | { section: string }>,
+        },
+        {
+          tier: "Pro",
+          tagline:
+            "Your full operation on autopilot — leads, sales, reputation, and a professional website. All connected.",
+          setupLabel: "+ $3,997 one-time setup",
+          priceSub: "/mo",
+          ideal: "Best for: Growing businesses ready to replace manual processes with automated systems.",
+          badge: "Best Value",
+          guarantee:
+            "🛡️ 90-Day ROI Guarantee — measurable results or we keep working at no extra cost.",
+          cta: "Book Your Free Strategy Call",
+          features: [
+            "Everything in Starter, plus:",
+            { section: "── WEBSITE ──" },
+            "Full website — all the pages your business needs, custom designed, built, and connected to your CRM. Live in 7 days",
+            "Website hosting & maintenance — included every month, no extra cost",
+            "AI chatbot on your website — captures leads, answers FAQs, and books appointments automatically",
+            { section: "── ADVANCED AUTOMATIONS ──" },
+            "Internal workflow automations — task assignments, status updates, and process handoffs between your team",
+            "Re-engagement campaign — automatically reaches out to cold or inactive leads",
+            "Proposal follow-up — automatic nudge sent if a quote or proposal goes unanswered",
+            "Invoice & payment reminders — automated follow-up on unpaid or overdue invoices",
+            "Multi-channel follow-up sequences — SMS, email, and social DMs coordinated in one flow",
+            { section: "── SALES & REPUTATION ──" },
+            "AI lead scoring — automatically ranks your leads so you focus on the hottest ones first",
+            "Full sales pipeline — visual deal tracking from first contact to signed contract",
+            "Automated review requests — every client gets a review prompt after their service",
+            "Negative review alert — get notified immediately if a bad review is left anywhere",
+            { section: "── REPORTING & SUPPORT ──" },
+            "Monthly performance report — leads, bookings, conversions, and automation activity",
+            "Bi-weekly strategy calls",
+            "Priority support — 24h response",
+          ] as Array<string | { section: string }>,
+        },
+        {
+          tier: "Growth",
+          tagline:
+            "An AI that answers your calls, speaks in your voice, and books appointments — with a dedicated team managing everything.",
+          setupLabel: "+ $5,997 one-time setup",
+          priceSub: "/mo",
+          ideal: "Best for: Businesses that want the full AI stack — voice, automation, and dedicated management.",
+          badge: "Most Popular",
+          guarantee:
+            "🛡️ 90-Day ROI Guarantee — measurable results or we keep working at no extra cost.",
+          cta: "Book Your Free Strategy Call",
+          features: [
+            "Everything in Pro, plus:",
+            { section: "── AI VOICE ──" },
+            "AI voice agent — answers inbound calls, qualifies leads, and books appointments automatically",
+            "Your voice, cloned with AI — the agent speaks using a replica of your own voice",
+            "Outbound AI calling — proactively calls your lead list and follows up without manual dialing",
+            "Call transcripts & summaries — every call automatically logged, summarized, and saved to the CRM",
+            "AI video avatar — a digital version of you for personalized video messages and follow-ups",
+            { section: "── INTELLIGENCE ──" },
+            "Advanced lead routing — hot leads get prioritized and assigned automatically",
+            "Full automation ecosystem — every process in your business mapped and automated end-to-end",
+            "Advanced analytics dashboard — full visibility into every call, lead, conversion, and revenue metric",
+            { section: "── DEDICATED MANAGEMENT ──" },
+            "Dedicated Success Manager — a real person assigned to your account, managing and optimizing your system weekly",
+            "Weekly strategy & optimization calls",
+            "Proactive improvements — monthly adjustments to automations based on your data",
+            "Same-day priority support",
+            "Quarterly full system audit & upgrade",
+          ] as Array<string | { section: string }>,
+        },
+        {
+          tier: "Enterprise",
+          tagline:
+            "Custom AI infrastructure for agencies, franchises, and multi-location businesses operating at scale.",
+          setupLabel: "",
+          priceSub: "",
+          ideal: "Best for: Agencies, multi-location brands, and high-volume operations needing fully custom infrastructure.",
+          badge: undefined as string | undefined,
+          guarantee:
+            "🛡️ Custom SLA & documented performance guarantees — or we keep working at no extra cost.",
+          cta: "Request Proposal",
+          features: [
+            "Everything in Growth, plus:",
+            { section: "── CUSTOM INFRASTRUCTURE ──" },
+            "Multiple AI voice agents — dedicated inbound and outbound agents for different campaigns or locations",
+            "Custom API integrations — connect any software, ERP, POS, or internal platform you use",
+            "Multi-location CRM architecture — manage all your locations and teams from a single dashboard",
+            "White-label dashboards — branded reporting for your clients or internal leadership",
+            "AI video series & full voice cloning suite — multiple avatars and branded voice assets",
+            "Dedicated development hours every month — new builds, custom automations, and ongoing updates",
+            { section: "── PLATINUM SUPPORT ──" },
+            "Executive Strategy Director assigned to your account",
+            "24/7 emergency support line",
+            "Monthly executive business review with documented results",
+            "Custom SLA & performance guarantees in writing",
+          ] as Array<string | { section: string }>,
+        },
+      ],
+    },
+
+    es: {
+      // Divider
+      dividerLabel: "Planes Mensuales — Implementación Completa",
+      // Section header
+      sectionLabel: "Inversión",
+      sectionTitle1: "Infraestructura Enterprise",
+      sectionTitle2: "para Cada Presupuesto",
+      sectionDesc:
+        "Elige el nivel que se adapta a donde está tu negocio hoy — y escala cuando estés listo. Cada plan incluye configuración, implementación y soporte continuo.",
+      // Billing toggle
+      billingMonthly: "Mensual",
+      billingAnnual: "Anual",
+      billingBadge: "AHORRA 25%",
+      annualNote: "Precio anual mostrado · cobrado como un solo pago al año",
+      billedAnnually: "✓ Facturación anual · 25% de ahorro",
+      // Currency toggle
+      currencyLabel: "Moneda:",
+      currencyApprox: "≈ Aproximado · USD es la moneda de cobro",
+      // Feature expand/collapse
+      showLess: "↑ Ver menos",
+      moreFeatures: (n: number) => `+ ${n} características más`,
+      // Footer disclaimer
+      disclaimer:
+        "Todos los planes incluyen una llamada estratégica gratuita antes de comprometerte. Sin contratos a largo plazo — cancela cuando quieras. La cuota de implementación se paga una sola vez al inicio — cubre la construcción completa del sistema, configuración y lanzamiento.",
+      // CTA logic
+      ctaEnterprise: "Solicitar Propuesta",
+      ctaAnnualBook: "Agendar Mi Llamada Estratégica →",
+      monthlyCTA: {
+        Starter:    "Obtener Mi Sistema Starter →",
+        Pro:        "Obtener Mi Sistema Pro →",
+        Growth:     "Obtener Mi Stack de AI →",
+        Enterprise: "Solicitar Propuesta",
+      } as Record<string, string>,
+      ctaFallback: "Comenzar →",
+      // Add-ons section
+      addOnsLabel: "Mejoras Opcionales",
+      addOnsTitle1: "Agrega Capacidades de AI a",
+      addOnsTitle2: "Cualquier Plan",
+      addOnsDesc:
+        "¿No estás listo para Growth? Agrega capacidades individuales de AI a tu plan Starter o Pro — y actualiza al stack completo cuando estés listo.",
+      addOnOneTimeLabel: "Implementación única",
+      addOnMonthlyLabel: "Mensual",
+      addOnFootnote:
+        "Los add-ons están incluidos por defecto en el plan Growth. Pregunta por paquetes combinados durante tu llamada estratégica.",
+      addOns: [
+        {
+          icon: "🎙️",
+          name: "Voice AI Agent",
+          desc: "Un AI que responde tus llamadas entrantes, califica prospectos y agenda citas — de forma automática, las 24 horas.",
+          setup: 1497,
+          monthly: 497,
+          available: "Disponible para Starter & Pro",
+          highlight: true,
+        },
+        {
+          icon: "🔊",
+          name: "Voice Cloning",
+          desc: "Tu agente AI habla con tu propia voz — clonada y personalizada. Cada llamada suena como tú, incluso cuando no estás disponible.",
+          setup: 497,
+          monthly: 197,
+          available: "Disponible para Starter & Pro",
+          highlight: false,
+        },
+        {
+          icon: "🎬",
+          name: "AI Video Avatar",
+          desc: "Una versión digital de ti para mensajes de video personalizados, seguimientos y outreach automatizado que se siente humano.",
+          setup: 997,
+          monthly: 297,
+          available: "Disponible solo para el plan Pro",
+          highlight: false,
+        },
+      ],
+      // Strategic Services section
+      strategicLabel: "Servicios Estratégicos",
+      strategicTitle1: "Empieza con Estrategia",
+      strategicTitle2: "Antes de Comprometerte",
+      strategicDesc:
+        "No todo negocio debería saltar directo a la implementación. Si primero necesitas claridad, LPS ofrece sesiones estratégicas para identificar los sistemas, automatizaciones y oportunidades de AI correctas antes de construir cualquier cosa.",
+      // Card 1
+      card1Tag: "Sesión Estratégica",
+      card1Title: "Sesión de Estrategia de Crecimiento con AI",
+      card1Desc:
+        "Una sesión estratégica enfocada para identificar dónde AI, automatización, CRM y sistemas más inteligentes pueden generar el mayor impacto en tu negocio ahora mismo.",
+      card1Items: [
+        "Sesión estratégica de 60–90 minutos",
+        "Revisión del flujo de prospectos, seguimiento, cuellos de botella y sistemas actuales",
+        "Identificación de victorias rápidas y oportunidades de mayor impacto",
+        "Recomendación clara sobre qué plan LPS o siguiente paso tiene más sentido",
+      ],
+      card1Ideal:
+        "Ideal para: Pequeños negocios, proveedores de servicios y operadores que quieren dirección experta antes de comprometerse con un proyecto mayor.",
+      card1Price: "Desde $297",
+      card1PriceSub: "pago único",
+      card1CTA: "Agendar Sesión Estratégica",
+      // Card 2
+      card2Tag: "Diagnóstico Profundo",
+      card2Title: "Auditoría de Negocio con AI",
+      card2Desc:
+        "Un diagnóstico más profundo para negocios que ya tienen prospectos, herramientas, equipos o flujos de trabajo en funcionamiento, pero necesitan un plan claro de mejora, automatización e implementación de AI.",
+      card2Items: [
+        "Revisión profunda del proceso de ventas, manejo de prospectos, seguimiento, CRM y automatización",
+        "Identificación de ineficiencias, oportunidades perdidas y brechas en los sistemas",
+        "Recomendaciones estratégicas priorizadas por impacto",
+        "Hoja de ruta para implementación con LPS",
+      ],
+      card2Ideal:
+        "Ideal para: Clínicas, agencias, negocios establecidos y equipos con operaciones más complejas o procesos de ventas de múltiples pasos.",
+      card2Price: "Desde $750",
+      card2PriceSub: "pago único",
+      card2CTA: "Solicitar una Auditoría",
+      // Bridge block
+      bridgeTitle: "¿Listo para la Ejecución?",
+      bridgeDesc:
+        "Una vez que la estrategia es clara, LPS puede construir y gestionar la implementación a través de tu plan Pro, Growth o Enterprise seleccionado.",
+      bridgeCTA: "Agendar una Llamada Gratuita",
+      // Plans
+      plans: [
+        {
+          tier: "Starter",
+          tagline:
+            "Tu negocio organizado, automatizado y capturando cada prospecto — sin contratar a nadie nuevo.",
+          setupLabel: "+ $2,497 implementación única",
+          priceSub: "/mes",
+          ideal: "Ideal para: Operadores independientes y equipos pequeños que gestionan su negocio sin un sistema real.",
+          badge: undefined as string | undefined,
+          guarantee:
+            "🛡️ Garantía de ROI 90 días — resultados medibles o seguimos trabajando sin costo adicional.",
+          cta: "Agenda Tu Llamada Estratégica Gratuita",
+          features: [
+            { section: "── SITIO WEB ──" },
+            "Sitio web de 1 página o landing page — diseñado profesionalmente, construido y conectado a tu CRM",
+            "Hosting y mantenimiento del sitio web — incluido cada mes, sin costo adicional",
+            { section: "── CRM & PIPELINE ──" },
+            "CRM completamente configurado para tu negocio — contactos, etiquetas, campos personalizados y etapas del pipeline desde el día uno",
+            "Configuración del pipeline de prospectos — etapas personalizadas desde el primer contacto hasta el cierre",
+            "Importación y organización de contactos — todos tus contactos existentes cargados y estructurados",
+            "Formularios de captura de prospectos — conectados directamente a tu CRM, sin entrada manual",
+            "Bandeja de entrada unificada de redes sociales — DMs de Instagram & Facebook gestionados en un solo lugar",
+            { section: "── AUTOMATIZACIONES ──" },
+            "Respuesta automática por SMS a llamadas perdidas — SMS automático enviado en menos de 30 segundos cuando no contestas",
+            "Secuencia de SMS de seguimiento a nuevos prospectos — 3 mensajes automatizados en el momento en que alguien entra a tu pipeline",
+            "Secuencia de email de seguimiento a nuevos prospectos — emails de bienvenida + seguimiento automatizados",
+            "Confirmación y recordatorio de citas — mensajes automáticos antes de cada reservación",
+            "Seguimiento por no-show — reactivación automática si un cliente falta a su cita",
+            "Respuesta automática en redes sociales — responde DMs y captura información de contacto cuando no estás disponible",
+            "Enlace de reservación en línea — los clientes se agendan directo en tu calendario, sin ir y venir",
+            { section: "── SOPORTE ──" },
+            "Sesión de onboarding y capacitación — recorrido completo de tu sistema",
+            "Llamada estratégica mensual — revisión de rendimiento y ajustes",
+            "Soporte por email y chat — respuesta en 48h",
+          ] as Array<string | { section: string }>,
+        },
+        {
+          tier: "Pro",
+          tagline:
+            "Tu operación completa en piloto automático — prospectos, ventas, reputación y un sitio web profesional. Todo conectado.",
+          setupLabel: "+ $3,997 implementación única",
+          priceSub: "/mes",
+          ideal: "Ideal para: Negocios en crecimiento listos para reemplazar procesos manuales con sistemas automatizados.",
+          badge: "Mejor Valor",
+          guarantee:
+            "🛡️ Garantía de ROI 90 días — resultados medibles o seguimos trabajando sin costo adicional.",
+          cta: "Agenda Tu Llamada Estratégica Gratuita",
+          features: [
+            "Todo lo de Starter, más:",
+            { section: "── SITIO WEB ──" },
+            "Sitio web completo — todas las páginas que necesita tu negocio, diseño personalizado, construido y conectado a tu CRM. En vivo en 7 días",
+            "Hosting y mantenimiento del sitio web — incluido cada mes, sin costo adicional",
+            "Chatbot de AI en tu sitio web — captura prospectos, responde preguntas frecuentes y agenda citas automáticamente",
+            { section: "── AUTOMATIZACIONES AVANZADAS ──" },
+            "Automatizaciones de flujo de trabajo interno — asignación de tareas, actualizaciones de estado y transferencias de procesos entre tu equipo",
+            "Campaña de reactivación — contacta automáticamente a prospectos fríos o inactivos",
+            "Seguimiento de propuestas — recordatorio automático si una cotización o propuesta queda sin respuesta",
+            "Recordatorios de facturas y pagos — seguimiento automatizado de facturas sin pagar o vencidas",
+            "Secuencias de seguimiento multicanal — SMS, email y DMs coordinados en un solo flujo",
+            { section: "── VENTAS & REPUTACIÓN ──" },
+            "Calificación de prospectos con AI — clasifica automáticamente tus prospectos para que te enfoques primero en los más calientes",
+            "Pipeline de ventas completo — seguimiento visual de deals desde el primer contacto hasta el contrato firmado",
+            "Solicitudes de reseñas automatizadas — cada cliente recibe una invitación a reseñar tras su servicio",
+            "Alerta de reseña negativa — notificación inmediata si se deja una mala reseña en cualquier plataforma",
+            { section: "── REPORTES & SOPORTE ──" },
+            "Reporte mensual de rendimiento — prospectos, reservaciones, conversiones y actividad de automatizaciones",
+            "Llamadas estratégicas quincenales",
+            "Soporte prioritario — respuesta en 24h",
+          ] as Array<string | { section: string }>,
+        },
+        {
+          tier: "Growth",
+          tagline:
+            "Un AI que responde tus llamadas, habla con tu voz y agenda citas — con un equipo dedicado gestionando todo.",
+          setupLabel: "+ $5,997 implementación única",
+          priceSub: "/mes",
+          ideal: "Ideal para: Negocios que quieren el stack completo de AI — voz, automatización y gestión dedicada.",
+          badge: "Más Popular",
+          guarantee:
+            "🛡️ Garantía de ROI 90 días — resultados medibles o seguimos trabajando sin costo adicional.",
+          cta: "Agenda Tu Llamada Estratégica Gratuita",
+          features: [
+            "Todo lo de Pro, más:",
+            { section: "── AI VOICE ──" },
+            "Agente de voz con AI — responde llamadas entrantes, califica prospectos y agenda citas automáticamente",
+            "Tu voz, clonada con AI — el agente habla usando una réplica de tu propia voz",
+            "Llamadas salientes con AI — contacta proactivamente tu lista de prospectos y hace seguimiento sin marcar manualmente",
+            "Transcripciones y resúmenes de llamadas — cada llamada registrada, resumida y guardada en el CRM automáticamente",
+            "AI Video Avatar — una versión digital de ti para mensajes de video personalizados y seguimientos",
+            { section: "── INTELIGENCIA ──" },
+            "Enrutamiento avanzado de prospectos — los leads más calientes se priorizan y asignan automáticamente",
+            "Ecosistema completo de automatización — cada proceso de tu negocio mapeado y automatizado de extremo a extremo",
+            "Dashboard de analíticas avanzadas — visibilidad total de cada llamada, prospecto, conversión y métrica de ingresos",
+            { section: "── GESTIÓN DEDICADA ──" },
+            "Success Manager dedicado — una persona real asignada a tu cuenta, gestionando y optimizando tu sistema semanalmente",
+            "Llamadas semanales de estrategia y optimización",
+            "Mejoras proactivas — ajustes mensuales a automatizaciones basados en tus datos",
+            "Soporte prioritario el mismo día",
+            "Auditoría y actualización completa del sistema cada trimestre",
+          ] as Array<string | { section: string }>,
+        },
+        {
+          tier: "Enterprise",
+          tagline:
+            "Infraestructura de AI personalizada para agencias, franquicias y negocios con múltiples ubicaciones que operan a escala.",
+          setupLabel: "",
+          priceSub: "",
+          ideal: "Ideal para: Agencias, marcas con múltiples ubicaciones y operaciones de alto volumen que necesitan infraestructura completamente personalizada.",
+          badge: undefined as string | undefined,
+          guarantee:
+            "🛡️ SLA personalizado y garantías de rendimiento documentadas — o seguimos trabajando sin costo adicional.",
+          cta: "Solicitar Propuesta",
+          features: [
+            "Todo lo de Growth, más:",
+            { section: "── INFRAESTRUCTURA PERSONALIZADA ──" },
+            "Múltiples agentes de voz con AI — agentes de entrada y salida dedicados para diferentes campañas o ubicaciones",
+            "Integraciones de API personalizadas — conecta cualquier software, ERP, POS o plataforma interna que uses",
+            "Arquitectura de CRM multi-ubicación — gestiona todas tus sucursales y equipos desde un solo dashboard",
+            "Dashboards white-label — reportes con tu marca para tus clientes o liderazgo interno",
+            "Serie de videos con AI y suite completa de Voice Cloning — múltiples avatares y activos de voz con tu marca",
+            "Horas de desarrollo dedicadas cada mes — nuevas construcciones, automatizaciones personalizadas y actualizaciones continuas",
+            { section: "── SOPORTE PLATINUM ──" },
+            "Director Ejecutivo de Estrategia asignado a tu cuenta",
+            "Línea de soporte de emergencia 24/7",
+            "Revisión ejecutiva mensual del negocio con resultados documentados",
+            "SLA personalizado y garantías de rendimiento por escrito",
+          ] as Array<string | { section: string }>,
+        },
+      ],
+    },
+  }[lang ?? "en"];
+
+  // Static plan data (prices, hrefs, featured flags) stays here; only text comes from t
+  const plansMeta = [
+    { priceUSD: 497,  setupUSD: 2497, featured: false, ctaHref: STARTER_PAYMENT, setupFrom: false },
+    { priceUSD: 997,  setupUSD: 3997, featured: false, ctaHref: PRO_PAYMENT,     setupFrom: false },
+    { priceUSD: 1797, setupUSD: 5997, featured: true,  ctaHref: GROWTH_PAYMENT,  setupFrom: false },
+    { priceUSD: null, setupUSD: 8997, featured: false, ctaHref: BOOKING_URL,     setupFrom: true  },
+  ];
+
+  const plans: Plan[] = t.plans.map((p, i) => ({
+    tier:       p.tier,
+    tagline:    p.tagline,
+    priceUSD:   plansMeta[i].priceUSD,
+    setupUSD:   plansMeta[i].setupUSD,
+    setupLabel: p.setupLabel,
+    setupFrom:  plansMeta[i].setupFrom,
+    priceSub:   p.priceSub,
+    ideal:      p.ideal,
+    featured:   plansMeta[i].featured,
+    badge:      p.badge,
+    guarantee:  p.guarantee,
+    cta:        p.cta,
+    ctaHref:    plansMeta[i].ctaHref,
+    features:   p.features,
+  }));
 
   return (
     <section
@@ -295,24 +631,23 @@ export default function Pricing() {
               color: "var(--text-dim)",
               whiteSpace: "nowrap",
             }}>
-              Monthly Plans — Full Implementation
+              {t.dividerLabel}
             </span>
             <div style={{ flex: 1, height: 1, background: "linear-gradient(90deg, var(--border2), transparent)" }} />
           </div>
         </SectionReveal>
 
         <SectionReveal>
-          <div className="slabel">Investment</div>
+          <div className="slabel">{t.sectionLabel}</div>
           <h2
             className="section-title"
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
           >
-            <SplitText text="Enterprise Infrastructure" delay={0.05} />{" "}
-            <ShinyText text="at Every Budget" speed={4} />
+            <SplitText text={t.sectionTitle1} delay={0.05} />{" "}
+            <ShinyText text={t.sectionTitle2} speed={4} />
           </h2>
           <p className="section-desc">
-            Choose the level that fits where your business is today — and upgrade
-            as you grow. Every plan includes setup, configuration, and ongoing support.
+            {t.sectionDesc}
           </p>
 
           {/* Billing toggle */}
@@ -344,7 +679,7 @@ export default function Pricing() {
                   boxShadow: billing === "monthly" ? "0 2px 8px rgba(15,34,64,0.1)" : "none",
                 }}
               >
-                Monthly
+                {t.billingMonthly}
               </button>
               <button
                 onClick={() => setBilling("annual")}
@@ -365,7 +700,7 @@ export default function Pricing() {
                   gap: 8,
                 }}
               >
-                Annual
+                {t.billingAnnual}
                 <span
                   style={{
                     background: "linear-gradient(135deg, var(--blue), var(--gold))",
@@ -378,7 +713,7 @@ export default function Pricing() {
                     borderRadius: 100,
                   }}
                 >
-                  SAVE 25%
+                  {t.billingBadge}
                 </span>
               </button>
             </div>
@@ -394,14 +729,14 @@ export default function Pricing() {
                 marginBottom: 0,
               }}
             >
-              Annual pricing shown · billed as one yearly payment
+              {t.annualNote}
             </p>
           )}
 
           {/* Currency toggle */}
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 24, flexWrap: "wrap" }}>
             <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--text-dim)" }}>
-              Currency:
+              {t.currencyLabel}
             </span>
             <div style={{ display: "flex", border: "1px solid var(--border2)", borderRadius: 6, overflow: "hidden" }}>
               {(["USD", "COP", "MXN"] as Currency[]).map((c) => (
@@ -428,7 +763,7 @@ export default function Pricing() {
             </div>
             {currency !== "USD" && (
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.57rem", letterSpacing: "0.06em", color: "var(--text-dim)" }}>
-                ≈ Approximate · USD is the billing currency
+                {t.currencyApprox}
               </span>
             )}
           </div>
@@ -630,7 +965,7 @@ export default function Pricing() {
                       marginBottom: 6,
                     }}
                   >
-                    ✓ Billed annually · 25% saved
+                    {t.billedAnnually}
                   </div>
                 )}
                 </motion.div>
@@ -724,8 +1059,8 @@ export default function Pricing() {
                           }}
                         >
                           {isExpanded
-                            ? "↑ Show less"
-                            : `+ ${hiddenFeatureCount} more features`}
+                            ? t.showLess
+                            : t.moreFeatures(hiddenFeatureCount)}
                         </button>
                       )}
                     </>
@@ -762,10 +1097,10 @@ export default function Pricing() {
                   // Annual → always book a call (except Enterprise stays same)
                   const href    = !isEnterprise && billing === "annual" ? BOOKING_URL : plan.ctaHref;
                   const ctaText = isEnterprise
-                    ? "Request Proposal"
+                    ? t.ctaEnterprise
                     : billing === "annual"
-                    ? "Book My Strategy Call →"
-                    : MONTHLY_CTA[plan.tier] ?? "Get Started →";
+                    ? t.ctaAnnualBook
+                    : t.monthlyCTA[plan.tier] ?? t.ctaFallback;
 
                   if (isEnterprise) {
                     return (
@@ -867,9 +1202,7 @@ export default function Pricing() {
               lineHeight: 1.7,
             }}
           >
-            All plans include a free strategy call before you commit. No long-term
-            contracts — cancel anytime. Setup fee is paid once at the start — it covers
-            full system build, configuration, and launch.
+            {t.disclaimer}
           </p>
         </SectionReveal>
 
@@ -883,7 +1216,7 @@ export default function Pricing() {
             }}
           >
             <div style={{ marginBottom: 40 }}>
-              <div className="slabel">Optional Upgrades</div>
+              <div className="slabel">{t.addOnsLabel}</div>
               <h3
                 style={{
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -893,11 +1226,11 @@ export default function Pricing() {
                   marginBottom: 12,
                 }}
               >
-                <SplitText text="Add AI Capabilities to" delay={0.05} />{" "}
-                <ShinyText text="Any Plan" speed={3.2} />
+                <SplitText text={t.addOnsTitle1} delay={0.05} />{" "}
+                <ShinyText text={t.addOnsTitle2} speed={3.2} />
               </h3>
               <p style={{ fontSize: "0.92rem", color: "var(--text-muted)", lineHeight: 1.7, maxWidth: 540 }}>
-                Not ready for Growth? Add individual AI capabilities to your Starter or Pro plan — and upgrade to the full stack whenever you're ready.
+                {t.addOnsDesc}
               </p>
             </div>
 
@@ -908,35 +1241,7 @@ export default function Pricing() {
                 gap: 20,
               }}
             >
-              {[
-                {
-                  icon: "🎙️",
-                  name: "Voice AI Agent",
-                  desc: "An AI that answers your inbound calls, qualifies leads, and books appointments — automatically, around the clock.",
-                  setup: 1497,
-                  monthly: 497,
-                  available: "Available for Starter & Pro",
-                  highlight: true,
-                },
-                {
-                  icon: "🔊",
-                  name: "Voice Cloning",
-                  desc: "Your AI agent speaks in your own voice — cloned and branded. Every call sounds like you, even when you're not there.",
-                  setup: 497,
-                  monthly: 197,
-                  available: "Available for Starter & Pro",
-                  highlight: false,
-                },
-                {
-                  icon: "🎬",
-                  name: "AI Video Avatar",
-                  desc: "A digital version of you for personalized video messages, follow-ups, and automated outreach that feels human.",
-                  setup: 997,
-                  monthly: 297,
-                  available: "Available for Pro plan only",
-                  highlight: false,
-                },
-              ].map((addon, i) => (
+              {t.addOns.map((addon, i) => (
                 <div
                   key={i}
                   style={{
@@ -1002,12 +1307,12 @@ export default function Pricing() {
                     }}
                   >
                     <div>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.1em", color: addon.highlight ? "rgba(255,255,255,0.45)" : "var(--text-dim)", textTransform: "uppercase", marginBottom: 4 }}>One-time setup</div>
+                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.1em", color: addon.highlight ? "rgba(255,255,255,0.45)" : "var(--text-dim)", textTransform: "uppercase", marginBottom: 4 }}>{t.addOnOneTimeLabel}</div>
                       <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: "1.3rem", color: addon.highlight ? "var(--gold)" : "var(--text)", letterSpacing: "-0.02em" }}>${addon.setup.toLocaleString("en-US")}</div>
                     </div>
                     <div style={{ width: 1, background: addon.highlight ? "rgba(255,255,255,0.12)" : "var(--border)" }} />
                     <div>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.1em", color: addon.highlight ? "rgba(255,255,255,0.45)" : "var(--text-dim)", textTransform: "uppercase", marginBottom: 4 }}>Monthly</div>
+                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.1em", color: addon.highlight ? "rgba(255,255,255,0.45)" : "var(--text-dim)", textTransform: "uppercase", marginBottom: 4 }}>{t.addOnMonthlyLabel}</div>
                       <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: "1.3rem", color: addon.highlight ? "#FFFFFF" : "var(--text)", letterSpacing: "-0.02em" }}>${addon.monthly}<span style={{ fontSize: "0.75rem", fontWeight: 500, color: addon.highlight ? "rgba(255,255,255,0.5)" : "var(--text-dim)" }}>/mo</span></div>
                     </div>
                   </div>
@@ -1041,7 +1346,7 @@ export default function Pricing() {
                 lineHeight: 1.7,
               }}
             >
-              Add-ons are included by default in the Growth plan. Ask about bundling during your strategy call.
+              {t.addOnFootnote}
             </p>
           </div>
         </SectionReveal>
@@ -1057,7 +1362,7 @@ export default function Pricing() {
           >
             {/* Header */}
             <div style={{ marginBottom: 48 }}>
-              <div className="slabel">Strategic Services</div>
+              <div className="slabel">{t.strategicLabel}</div>
               <h3
                 style={{
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -1068,13 +1373,11 @@ export default function Pricing() {
                   color: "var(--text)",
                 }}
               >
-                Start with Strategy{" "}
-                <ShinyText text="Before You Commit" speed={3.5} />
+                {t.strategicTitle1}{" "}
+                <ShinyText text={t.strategicTitle2} speed={3.5} />
               </h3>
               <p style={{ fontSize: "0.95rem", color: "var(--text-muted)", lineHeight: 1.75, maxWidth: 600 }}>
-                Not every business should jump straight into implementation. If you need clarity first,
-                LPS offers strategic engagements to identify the right systems, automations, and AI
-                opportunities before building anything.
+                {t.strategicDesc}
               </p>
             </div>
 
@@ -1137,7 +1440,7 @@ export default function Pricing() {
                   gap: 8,
                 }}>
                   <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--gold)", flexShrink: 0 }} />
-                  Strategic Engagement
+                  {t.card1Tag}
                 </div>
 
                 <h4 style={{
@@ -1149,7 +1452,7 @@ export default function Pricing() {
                   lineHeight: 1.25,
                   marginBottom: 14,
                 }}>
-                  AI Growth Strategy Session
+                  {t.card1Title}
                 </h4>
 
                 <p style={{
@@ -1159,17 +1462,11 @@ export default function Pricing() {
                   marginBottom: 24,
                   flexGrow: 1,
                 }}>
-                  A focused strategic session designed to help you identify where AI, automation,
-                  CRM, and smarter systems can create the biggest impact in your business right now.
+                  {t.card1Desc}
                 </p>
 
                 <ul style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                  {[
-                    "60–90 minute strategy session",
-                    "Review of lead flow, follow-up, bottlenecks, and current systems",
-                    "Identification of quick wins and best-fit opportunities",
-                    "Clear recommendation on which LPS plan or next step makes the most sense",
-                  ].map((item, i) => (
+                  {t.card1Items.map((item, i) => (
                     <li key={i} style={{ display: "flex", gap: 10, fontSize: "0.83rem", color: "rgba(203,213,225,0.75)", lineHeight: 1.6, listStyle: "none" }}>
                       <span style={{ color: "var(--gold)", flexShrink: 0, marginTop: 2 }}>✓</span>
                       {item}
@@ -1185,8 +1482,7 @@ export default function Pricing() {
                   marginBottom: 24,
                   lineHeight: 1.6,
                 }}>
-                  Best for: Small businesses, service providers, and operators who want expert
-                  direction before committing to a larger build.
+                  {t.card1Ideal}
                 </div>
 
                 <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 20 }}>
@@ -1196,8 +1492,8 @@ export default function Pricing() {
                     fontSize: "2.2rem",
                     color: "var(--gold)",
                     letterSpacing: "-0.03em",
-                  }}>From $297</span>
-                  <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.4)" }}>one-time</span>
+                  }}>{t.card1Price}</span>
+                  <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.4)" }}>{t.card1PriceSub}</span>
                 </div>
 
                 <a
@@ -1235,7 +1531,7 @@ export default function Pricing() {
                     el.style.transform = "translateY(0)";
                   }}
                 >
-                  Book Strategy Session
+                  {t.card1CTA}
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
                   </svg>
@@ -1291,7 +1587,7 @@ export default function Pricing() {
                   gap: 8,
                 }}>
                   <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--blue-bright)", flexShrink: 0 }} />
-                  Deep Diagnostic
+                  {t.card2Tag}
                 </div>
 
                 <h4 style={{
@@ -1303,7 +1599,7 @@ export default function Pricing() {
                   lineHeight: 1.25,
                   marginBottom: 14,
                 }}>
-                  AI Business Audit
+                  {t.card2Title}
                 </h4>
 
                 <p style={{
@@ -1313,18 +1609,11 @@ export default function Pricing() {
                   marginBottom: 24,
                   flexGrow: 1,
                 }}>
-                  A deeper diagnostic engagement for businesses that already have leads, tools, teams,
-                  or workflows in place but need a clear roadmap for improvement, automation, and AI
-                  implementation.
+                  {t.card2Desc}
                 </p>
 
                 <ul style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                  {[
-                    "In-depth review of sales process, lead handling, follow-up, CRM, and automation",
-                    "Identification of inefficiencies, missed opportunities, and system gaps",
-                    "Strategic recommendations prioritized by impact",
-                    "Roadmap for implementation through LPS",
-                  ].map((item, i) => (
+                  {t.card2Items.map((item, i) => (
                     <li key={i} style={{ display: "flex", gap: 10, fontSize: "0.83rem", color: "rgba(203,213,225,0.75)", lineHeight: 1.6, listStyle: "none" }}>
                       <span style={{ color: "var(--blue-bright)", flexShrink: 0, marginTop: 2 }}>✓</span>
                       {item}
@@ -1340,8 +1629,7 @@ export default function Pricing() {
                   marginBottom: 24,
                   lineHeight: 1.6,
                 }}>
-                  Best for: Clinics, agencies, established businesses, and teams with more complex
-                  operations or multi-step sales processes.
+                  {t.card2Ideal}
                 </div>
 
                 <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 20 }}>
@@ -1351,8 +1639,8 @@ export default function Pricing() {
                     fontSize: "2.2rem",
                     color: "#FFFFFF",
                     letterSpacing: "-0.03em",
-                  }}>From $750</span>
-                  <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.4)" }}>one-time</span>
+                  }}>{t.card2Price}</span>
+                  <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.4)" }}>{t.card2PriceSub}</span>
                 </div>
 
                 <a
@@ -1390,7 +1678,7 @@ export default function Pricing() {
                     el.style.transform = "translateY(0)";
                   }}
                 >
-                  Request an Audit
+                  {t.card2CTA}
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
                   </svg>
@@ -1421,7 +1709,7 @@ export default function Pricing() {
                   color: "var(--text)",
                   marginBottom: 6,
                 }}>
-                  Ready for Execution?
+                  {t.bridgeTitle}
                 </div>
                 <div style={{
                   fontSize: "0.875rem",
@@ -1429,8 +1717,7 @@ export default function Pricing() {
                   lineHeight: 1.7,
                   maxWidth: 560,
                 }}>
-                  Once the strategy is clear, LPS can build and manage the implementation through
-                  your selected Pro, Growth, or Enterprise engagement.
+                  {t.bridgeDesc}
                 </div>
               </div>
               <a
@@ -1465,7 +1752,7 @@ export default function Pricing() {
                   el.style.transform = "translateY(0)";
                 }}
               >
-                Book a Free Call
+                {t.bridgeCTA}
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
                 </svg>
@@ -1492,5 +1779,41 @@ export default function Pricing() {
         }
       `}</style>
     </section>
+  );
+}
+
+function FeatureItem({ feat, featured }: { feat: string | { section: string }; featured: boolean }) {
+  if (typeof feat === "object") {
+    return (
+      <li
+        style={{
+          fontFamily: "'DM Mono', monospace",
+          fontSize: "0.65rem",
+          letterSpacing: "0.1em",
+          color: "var(--text-muted)",
+          padding: "12px 0 4px",
+          marginTop: 4,
+          listStyle: "none",
+          fontWeight: 500,
+        }}
+      >
+        {feat.section}
+      </li>
+    );
+  }
+  return (
+    <li
+      style={{
+        display: "flex",
+        gap: 10,
+        fontSize: "0.83rem",
+        color: "var(--text-muted)",
+        lineHeight: 1.6,
+        listStyle: "none",
+      }}
+    >
+      <span style={{ color: "#D4A53A", flexShrink: 0, marginTop: 2 }}>✓</span>
+      {feat}
+    </li>
   );
 }

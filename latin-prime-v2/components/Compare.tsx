@@ -3,30 +3,74 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import GradientText from "./GradientText";
 
-const rows = [
-  {
-    before: { label: "Leads call and nobody answers", sub: "They go to a competitor in minutes" },
-    after:  { label: "Every call answered instantly by AI", sub: "Qualified, booked, and logged — automatically" },
-  },
-  {
-    before: { label: "Manual follow-ups for days, then giving up", sub: "Your pipeline leaks at every stage" },
-    after:  { label: "AI agents follow up across SMS, email, and voice", sub: "Zero leads fall through — ever" },
-  },
-  {
-    before: { label: "Hours lost to data entry and spreadsheets", sub: "Your team is doing robot work" },
-    after:  { label: "Custom software built around your exact workflow", sub: "Dispatch, billing, inventory — automated end to end" },
-  },
-  {
-    before: { label: "No real-time visibility — managing by memory", sub: "Problems surface after they've already cost you" },
-    after:  { label: "A command center shows every KPI live", sub: "Leads, orders, ops, and finance — one screen, always accurate" },
-  },
-  {
-    before: { label: "Can't scale without adding headcount and cost", sub: "You become the bottleneck in your own growth" },
-    after:  { label: "One person runs what used to need a full team", sub: "Your business operates like a funded startup" },
-  },
-];
+type Lang = "en" | "es";
 
-export default function Compare() {
+interface CompareProps {
+  lang?: Lang;
+}
+
+export default function Compare({ lang = "en" }: CompareProps) {
+  const t = {
+    en: {
+      slabel: "The Difference",
+      headlineStatic: "Before Latin Prime.",
+      headlineGradient: "After Latin Prime.",
+      colBefore: "Without Us",
+      colAfter: "With Latin Prime Systems",
+      rows: [
+        {
+          before: { label: "Leads call and nobody answers", sub: "They go to a competitor in minutes" },
+          after:  { label: "Every call answered instantly by AI", sub: "Qualified, booked, and logged — automatically" },
+        },
+        {
+          before: { label: "Manual follow-ups for days, then giving up", sub: "Your pipeline leaks at every stage" },
+          after:  { label: "AI agents follow up across SMS, email, and voice", sub: "Zero leads fall through — ever" },
+        },
+        {
+          before: { label: "Hours lost to data entry and spreadsheets", sub: "Your team is doing robot work" },
+          after:  { label: "Custom software built around your exact workflow", sub: "Dispatch, billing, inventory — automated end to end" },
+        },
+        {
+          before: { label: "No real-time visibility — managing by memory", sub: "Problems surface after they've already cost you" },
+          after:  { label: "A command center shows every KPI live", sub: "Leads, orders, ops, and finance — one screen, always accurate" },
+        },
+        {
+          before: { label: "Can't scale without adding headcount and cost", sub: "You become the bottleneck in your own growth" },
+          after:  { label: "One person runs what used to need a full team", sub: "Your business operates like a funded startup" },
+        },
+      ],
+    },
+    es: {
+      slabel: "La Diferencia",
+      headlineStatic: "Antes de Latin Prime.",
+      headlineGradient: "Después de Latin Prime.",
+      colBefore: "Sin Nosotros",
+      colAfter: "Con Latin Prime Systems",
+      rows: [
+        {
+          before: { label: "Los prospectos llaman y nadie contesta", sub: "Se van con la competencia en minutos" },
+          after:  { label: "Cada llamada respondida al instante por AI", sub: "Calificado, agendado y registrado — automáticamente" },
+        },
+        {
+          before: { label: "Seguimientos manuales por días y luego se rinde", sub: "Tu pipeline pierde prospectos en cada etapa" },
+          after:  { label: "AI agents dan seguimiento por SMS, email y voz", sub: "Cero prospectos se pierden — nunca" },
+        },
+        {
+          before: { label: "Horas perdidas en captura de datos y hojas de cálculo", sub: "Tu equipo hace trabajo de robot" },
+          after:  { label: "Software personalizado construido para tu flujo exacto", sub: "Despacho, facturación, inventario — automatizado de extremo a extremo" },
+        },
+        {
+          before: { label: "Sin visibilidad en tiempo real — gestionas de memoria", sub: "Los problemas aparecen cuando ya te costaron" },
+          after:  { label: "Un command center muestra cada KPI en vivo", sub: "Prospectos, pedidos, operaciones y finanzas — una pantalla, siempre precisa" },
+        },
+        {
+          before: { label: "No puedes escalar sin contratar más gente y aumentar costos", sub: "Tú mismo te conviertes en el cuello de botella" },
+          after:  { label: "Una persona hace lo que antes necesitaba un equipo completo", sub: "Tu negocio opera como una startup bien financiada" },
+        },
+      ],
+    },
+  }[lang];
+
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -45,13 +89,13 @@ export default function Compare() {
           transition={{ duration: 0.55 }}
           style={{ marginBottom: 64 }}
         >
-          <div className="slabel">The Difference</div>
+          <div className="slabel">{t.slabel}</div>
           <h2
             className="section-title"
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", marginBottom: 0 }}
           >
-            Before Latin Prime.{" "}
-            <GradientText text="After Latin Prime." speed={4} />
+            {t.headlineStatic}{" "}
+            <GradientText text={t.headlineGradient} speed={4} />
           </h2>
         </motion.div>
 
@@ -79,7 +123,7 @@ export default function Compare() {
           }}>
             <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(220,50,47,0.5)", display: "inline-block" }} />
             <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(220,50,47,0.7)" }}>
-              Without Us
+              {t.colBefore}
             </span>
           </div>
           <div style={{ background: "var(--border)", width: 1, margin: "0 auto" }} />
@@ -100,14 +144,14 @@ export default function Compare() {
               animation: "dot-pulse 2s ease-in-out infinite",
             }} />
             <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--gold)" }}>
-              With Latin Prime Systems
+              {t.colAfter}
             </span>
           </div>
         </motion.div>
 
         {/* Comparison rows */}
         <div className="compare-rows">
-          {rows.map((row, i) => (
+          {t.rows.map((row, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 16 }}
@@ -116,7 +160,7 @@ export default function Compare() {
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr 40px 1fr",
-                borderBottom: i < rows.length - 1 ? "1px solid var(--border)" : "none",
+                borderBottom: i < t.rows.length - 1 ? "1px solid var(--border)" : "none",
               }}
               className="compare-row"
             >

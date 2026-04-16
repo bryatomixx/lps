@@ -3,18 +3,35 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
+type Lang = "en" | "es";
+
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
 
-const navLinks = [
-  { href: "#solutions", label: "Solutions" },
-  { href: "#who", label: "Who We Serve" },
-  { href: "#process", label: "How It Works" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#contact", label: "Contact" },
-];
+export default function Nav({ lang }: { lang?: Lang }) {
+  const t = {
+    en: {
+      navLinks: [
+        { href: "#solutions", label: "Solutions" },
+        { href: "#who", label: "Who We Serve" },
+        { href: "#process", label: "How It Works" },
+        { href: "#pricing", label: "Pricing" },
+        { href: "#contact", label: "Contact" },
+      ],
+      cta: "Book a Free Call",
+    },
+    es: {
+      navLinks: [
+        { href: "#solutions", label: "Soluciones" },
+        { href: "#who", label: "A Quién Servimos" },
+        { href: "#process", label: "Cómo Funciona" },
+        { href: "#pricing", label: "Precios" },
+        { href: "#contact", label: "Contacto" },
+      ],
+      cta: "Reserva una Llamada Gratis",
+    },
+  }[lang ?? "en"];
 
-export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -79,7 +96,7 @@ export default function Nav() {
           }}
           className="hidden md:flex"
         >
-          {navLinks.map((link) => (
+          {t.navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => handleNav(link.href)}
@@ -132,7 +149,7 @@ export default function Nav() {
               (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
             }}
           >
-            Book a Free Call
+            {t.cta}
           </a>
 
           {/* Hamburger */}
@@ -204,7 +221,7 @@ export default function Nav() {
               backdropFilter: "blur(20px)",
             }}
           >
-            {navLinks.map((link, i) => (
+            {t.navLinks.map((link, i) => (
               <motion.button
                 key={link.href}
                 initial={{ opacity: 0, x: -20 }}
@@ -247,7 +264,7 @@ export default function Nav() {
                 borderRadius: 8,
               }}
             >
-              Book a Free Call
+              {t.cta}
             </a>
           </motion.div>
         )}

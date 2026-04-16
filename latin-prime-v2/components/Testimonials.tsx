@@ -6,6 +6,8 @@ import SectionReveal from "./SectionReveal";
 import SplitText from "./SplitText";
 import ShinyText from "./ShinyText";
 
+type Lang = "en" | "es";
+
 const testimonials = [
   {
     name: "Jesús Martínez",
@@ -49,7 +51,26 @@ const testimonials = [
   },
 ];
 
-export default function Testimonials() {
+export default function Testimonials({ lang }: { lang?: Lang }) {
+  const t = {
+    en: {
+      sectionLabel: "Real Results",
+      headingPart1: "What Happens When",
+      headingPart2: "We Go to Work",
+      prevLabel: "Previous",
+      nextLabel: "Next",
+      dotLabel: (i: number) => `Go to testimonial ${i + 1}`,
+    },
+    es: {
+      sectionLabel: "Resultados Reales",
+      headingPart1: "Qué Pasa Cuando",
+      headingPart2: "Nos Ponemos a Trabajar",
+      prevLabel: "Anterior",
+      nextLabel: "Siguiente",
+      dotLabel: (i: number) => `Ir al testimonio ${i + 1}`,
+    },
+  }[lang ?? "en"];
+
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
 
@@ -70,7 +91,7 @@ export default function Testimonials() {
     return () => clearInterval(timer);
   }, [next]);
 
-  const t = testimonials[current];
+  const tm = testimonials[current];
 
   return (
     <section
@@ -79,13 +100,13 @@ export default function Testimonials() {
     >
       <div className="section-inner">
         <SectionReveal>
-          <div className="slabel">Real Results</div>
+          <div className="slabel">{t.sectionLabel}</div>
           <h2
             className="section-title"
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", maxWidth: 600 }}
           >
-            <SplitText text="What Happens When" delay={0.05} />{" "}
-            <ShinyText text="We Go to Work" speed={3.5} />
+            <SplitText text={t.headingPart1} delay={0.05} />{" "}
+            <ShinyText text={t.headingPart2} speed={3.5} />
           </h2>
         </SectionReveal>
 
@@ -159,7 +180,7 @@ export default function Testimonials() {
                     marginBottom: 28,
                   }}
                 >
-                  {t.quote}
+                  {tm.quote}
                 </p>
 
                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
@@ -175,8 +196,8 @@ export default function Testimonials() {
                     }}
                   >
                     <Image
-                      src={t.photo}
-                      alt={t.name}
+                      src={tm.photo}
+                      alt={tm.name}
                       fill
                       style={{ objectFit: "cover" }}
                     />
@@ -190,7 +211,7 @@ export default function Testimonials() {
                         color: "var(--text)",
                       }}
                     >
-                      {t.name}
+                      {tm.name}
                     </div>
                     <div
                       style={{
@@ -201,7 +222,7 @@ export default function Testimonials() {
                         marginTop: 2,
                       }}
                     >
-                      {t.role}
+                      {tm.role}
                     </div>
                   </div>
                   <div
@@ -217,7 +238,7 @@ export default function Testimonials() {
                       whiteSpace: "nowrap",
                     }}
                   >
-                    {t.result}
+                    {tm.result}
                   </div>
                 </div>
               </motion.div>
@@ -247,7 +268,7 @@ export default function Testimonials() {
                     transition: "all 0.3s",
                     padding: 0,
                   }}
-                  aria-label={`Go to testimonial ${i + 1}`}
+                  aria-label={t.dotLabel(i)}
                 />
               ))}
               <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
@@ -268,7 +289,7 @@ export default function Testimonials() {
                     justifyContent: "center",
                     transition: "all 0.2s",
                   }}
-                  aria-label="Previous"
+                  aria-label={t.prevLabel}
                 >
                   ←
                 </button>
@@ -287,7 +308,7 @@ export default function Testimonials() {
                     justifyContent: "center",
                     transition: "all 0.2s",
                   }}
-                  aria-label="Next"
+                  aria-label={t.nextLabel}
                 >
                   →
                 </button>
@@ -299,7 +320,7 @@ export default function Testimonials() {
           <div
             style={{ display: "flex", flexDirection: "column", gap: 24 }}
           >
-            {testimonials.map((tm, i) => (
+            {testimonials.map((item, i) => (
               <motion.button
                 key={i}
                 onClick={() => goTo(i)}
@@ -345,8 +366,8 @@ export default function Testimonials() {
                   }}
                 >
                   <Image
-                    src={tm.photo}
-                    alt={tm.name}
+                    src={item.photo}
+                    alt={item.name}
                     fill
                     style={{ objectFit: "cover" }}
                   />
@@ -361,7 +382,7 @@ export default function Testimonials() {
                       marginBottom: 2,
                     }}
                   >
-                    {tm.name}
+                    {item.name}
                   </div>
                   <div
                     style={{
@@ -371,7 +392,7 @@ export default function Testimonials() {
                       color: "var(--text-muted)",
                     }}
                   >
-                    {tm.role}
+                    {item.role}
                   </div>
                 </div>
                 <div
@@ -383,7 +404,7 @@ export default function Testimonials() {
                     flexShrink: 0,
                   }}
                 >
-                  {tm.result}
+                  {item.result}
                 </div>
               </motion.button>
             ))}
