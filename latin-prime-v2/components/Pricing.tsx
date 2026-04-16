@@ -282,6 +282,25 @@ export default function Pricing() {
       style={{ background: "var(--surface)" }}
     >
       <div className="section-inner">
+
+        {/* ── Divider ──────────────────────────────────────── */}
+        <SectionReveal delay={0.05}>
+          <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 48 }}>
+            <div style={{ flex: 1, height: 1, background: "linear-gradient(90deg, transparent, var(--border2))" }} />
+            <span style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: "0.6rem",
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "var(--text-dim)",
+              whiteSpace: "nowrap",
+            }}>
+              Monthly Plans — Full Implementation
+            </span>
+            <div style={{ flex: 1, height: 1, background: "linear-gradient(90deg, var(--border2), transparent)" }} />
+          </div>
+        </SectionReveal>
+
         <SectionReveal>
           <div className="slabel">Investment</div>
           <h2
@@ -1460,6 +1479,8 @@ export default function Pricing() {
         @media (max-width: 768px) {
           .strategic-grid { grid-template-columns: 1fr !important; }
           .strategic-bridge { flex-direction: column !important; align-items: flex-start !important; }
+          .strategy-grid { grid-template-columns: 1fr !important; }
+          .bridge-block { flex-direction: column !important; align-items: flex-start !important; }
         }
         .pricing-btn-gradient {
           background-image: linear-gradient(90deg, #1A5CA8 0%, #D4A53A 35%, #2B7FE0 65%, #1A5CA8 100%);

@@ -9,6 +9,7 @@ import TechStack from "@/components/TechStack";
 import ROICalculator from "@/components/ROICalculator";
 import Testimonials from "@/components/Testimonials";
 import Compare from "@/components/Compare";
+import CommandCenter from "@/components/CommandCenter";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import About from "@/components/About";
@@ -46,9 +47,9 @@ export default function Home() {
         <WhoWeServe />
         <div className="gdiv" />
 
-        {/* 6. Tech Stack — temporalmente oculto (iconos pendientes en negro) */}
-        {/* <TechStack /> */}
-        {/* <div className="gdiv" /> */}
+        {/* 6. Tech Stack */}
+        <TechStack />
+        <div className="gdiv" />
 
         {/* 6. ROI Calculator — cuantifica valor antes de mostrar precio */}
         <ROICalculator />
@@ -62,7 +63,11 @@ export default function Home() {
         <Compare />
         <div className="gdiv" />
 
-        {/* 10. Pricing — después de valor + prueba */}
+        {/* 10. Command Center — muestra el dashboard en vivo antes del precio */}
+        <CommandCenter />
+        <div className="gdiv" />
+
+        {/* 11. Pricing — después de valor + prueba */}
         <Pricing />
 
         {/* 11. FAQ — objections right after pricing */}
