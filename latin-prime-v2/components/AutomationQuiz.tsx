@@ -15,23 +15,23 @@ const TRANSLATIONS = {
     // Header
     sectionLabel: "Who We Serve",
     headline: "Built for Your Industry.",
-    headlineShiny: "Get Your Free Roadmap.",
-    headerDesc: "Pick your industry — see exactly what we'd automate for you. Then answer 2 more questions and get your free personalized automation roadmap.",
+    headlineShiny: "See Your Automation Opportunities.",
+    headerDesc: "Pick your industry — see exactly what we'd automate for you. Then answer 2 more questions and uncover the automation opportunities hiding in your business.",
 
     // Social proof
     socialBusinesses: "businesses",
-    socialThisMonth: "got their free roadmap this month",
+    socialThisMonth: "uncovered their automation opportunities this month",
 
     // Progress bar labels
     question2of3: "Question 2 of 3",
     question3of3: "Question 3 of 3",
     analyzing: "Analyzing your business...",
-    planReady: "Your plan is ready",
+    planReady: "Your opportunities are ready",
 
     // Q1
     step1of3: "Step 1 of 3",
     q1Title: "What type of business do you run?",
-    q1Desc: "Click your industry to see exactly what we'd automate — then continue for your free roadmap.",
+    q1Desc: "Click your industry to see exactly what we'd automate — then continue to uncover your biggest opportunities.",
     industrySelected1: "1 industry selected",
     industrySelectedMany: (n: number) => `${n} industries selected`,
     showFewerIndustries: "− Show fewer industries",
@@ -74,18 +74,18 @@ const TRANSLATIONS = {
     top3Label: "Top 3 Automations for Your Business",
     roiUnlockTitle: "Your estimated monthly revenue recovery is ready.",
     roiUnlockDesc: "Enter your info below to unlock your full breakdown — ROI projection, system roadmap, and exact automations we'd build first.",
-    unlockPlanTitle: "Unlock Your Free Automation Roadmap",
-    unlockPlanDesc: "Free — no sales pressure, no credit card. We'll send your personalized roadmap within 24 hours.",
+    unlockPlanTitle: "Unlock Your Automation Opportunities",
+    unlockPlanDesc: "Free — no sales pressure, no credit card. We'll send your full opportunity breakdown within 24 hours.",
     firstNameLabel: "First Name",
     firstNamePlaceholder: "Your name",
     emailLabel: "Business Email",
     emailPlaceholder: "you@business.com",
-    unlockCta: "Get My Free Automation Roadmap →",
+    unlockCta: "Show Me My Opportunities — It's Free →",
     noSpam: "No spam. No sales calls unless you book one.",
 
     // Thank you
     thankYouTitle: "You're on the list.",
-    thankYouDesc: "Your personalized automation roadmap is being put together. You'll receive it within 24 hours.",
+    thankYouDesc: "Your personalized automation opportunity breakdown is being put together. You'll receive it within 24 hours.",
     thankYouItems: [
       { icon: "📧", t: "Personalized plan sent to your inbox",       s: "Usually within 24 hours — often much faster" },
       { icon: "🎯", t: "Your top 3 high-impact automations",          s: "Specific to your industry and biggest bottleneck" },
@@ -377,23 +377,23 @@ const TRANSLATIONS = {
     // Header
     sectionLabel: "A Quién Servimos",
     headline: "Hecho para tu industria.",
-    headlineShiny: "Obtén tu diagnóstico gratis.",
-    headerDesc: "Selecciona tu industria y verás exactamente qué automatizaríamos para ti. Responde 2 preguntas más y recibe tu diagnóstico de automatización gratis.",
+    headlineShiny: "Descubre Tus Oportunidades de Automatización.",
+    headerDesc: "Selecciona tu industria y verás exactamente qué automatizaríamos para ti. Responde 2 preguntas más y descubre las oportunidades de automatización que tiene tu negocio.",
 
     // Social proof
     socialBusinesses: "negocios",
-    socialThisMonth: "recibieron su diagnóstico gratis este mes",
+    socialThisMonth: "descubrieron sus oportunidades de automatización este mes",
 
     // Progress bar labels
     question2of3: "Pregunta 2 de 3",
     question3of3: "Pregunta 3 de 3",
     analyzing: "Analizando tu negocio...",
-    planReady: "Tu plan está listo",
+    planReady: "Tus oportunidades están listas",
 
     // Q1
     step1of3: "Paso 1 de 3",
     q1Title: "¿Qué tipo de negocio tienes?",
-    q1Desc: "Haz clic en tu industria para ver qué automatizaríamos — luego continúa para obtener tu diagnóstico gratis.",
+    q1Desc: "Haz clic en tu industria para ver qué automatizaríamos — luego continúa para descubrir tus mayores oportunidades.",
     industrySelected1: "1 industria seleccionada",
     industrySelectedMany: (n: number) => `${n} industrias seleccionadas`,
     showFewerIndustries: "− Ver menos industrias",
@@ -436,18 +436,18 @@ const TRANSLATIONS = {
     top3Label: "Las 3 Principales Automatizaciones para Tu Negocio",
     roiUnlockTitle: "Tu estimado mensual de recuperación de ingresos está listo.",
     roiUnlockDesc: "Ingresa tu información para desbloquear el desglose completo — proyección ROI, hoja de ruta del sistema y las automatizaciones exactas que construiríamos primero.",
-    unlockPlanTitle: "Desbloquea Tu Diagnóstico de Automatización",
-    unlockPlanDesc: "Gratis — sin presión de ventas, sin tarjeta de crédito. Te enviaremos tu diagnóstico personalizado en 24 horas.",
+    unlockPlanTitle: "Desbloquea Tus Oportunidades de Automatización",
+    unlockPlanDesc: "Gratis — sin presión de ventas, sin tarjeta de crédito. Te enviamos el desglose completo de oportunidades en 24 horas.",
     firstNameLabel: "Nombre",
     firstNamePlaceholder: "Tu nombre",
     emailLabel: "Correo de Negocio",
     emailPlaceholder: "tu@negocio.com",
-    unlockCta: "Obtener Mi Diagnóstico Gratis →",
+    unlockCta: "Ver Mis Oportunidades — Es Gratis →",
     noSpam: "Sin spam. Sin llamadas de ventas a menos que tú las agendes.",
 
     // Thank you
     thankYouTitle: "Ya estás en la lista.",
-    thankYouDesc: "Tu diagnóstico de automatización personalizado está siendo preparado. Lo recibirás en 24 horas.",
+    thankYouDesc: "Tu desglose personalizado de oportunidades de automatización está siendo preparado. Lo recibirás en 24 horas.",
     thankYouItems: [
       { icon: "📧", t: "Plan personalizado enviado a tu correo",         s: "Generalmente en 24 horas — con frecuencia mucho antes" },
       { icon: "🎯", t: "Tus 3 automatizaciones de mayor impacto",        s: "Específicas para tu industria y tu mayor cuello de botella" },
