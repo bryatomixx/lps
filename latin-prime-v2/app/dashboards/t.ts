@@ -79,17 +79,17 @@ export const t = {
     comparisonKicker: "Two levels of visibility",
     comparisonHeadline: "Choose your level of control",
     comparisonDesc:
-      "Every LPS client gets a Basic Dashboard at no extra cost — included with your Starter, Pro, or Growth plan. Businesses that need deeper visibility across every corner of their operation can upgrade to the full Command Center.",
+      "Every LPS client gets a Essential Dashboard at no extra cost — included with your Starter, Pro, or Growth plan. Businesses that need deeper visibility across every corner of their operation can upgrade to the full Command Center.",
 
     // Comparison summary bar
-    comparisonSummaryIncluded: "Included with Growth Plan",
+    comparisonSummaryIncluded: "Essential Dashboard — Included with Growth Plan",
     comparisonSummaryIncludedSub: "No extra cost — available as add-on for other plans",
     comparisonSummaryPremium: "Command Center Pricing",
     comparisonSummarySetup: "Setup from $5k",
     comparisonSummaryMonthly: "from $750 / mo",
 
-    // Basic Dashboard card
-    basicKicker: "Basic Dashboard",
+    // Essential Dashboard card
+    basicKicker: "Essential Dashboard",
     basicHeadline: "Included",
     basicDesc:
       "A clear, simple view of your daily business movement. Comes with the Growth plan at no extra cost.",
@@ -97,7 +97,7 @@ export const t = {
     basicBadge2: "Available as add-on for other plans",
     basicCTA: "Get started with a plan",
 
-    // Basic Dashboard features
+    // Essential Dashboard features
     initialFeatures: [
       "Your business branding in the header",
       "Time filters: Today / This Month",
@@ -128,7 +128,7 @@ export const t = {
     premiumCTA: "Get the Command Center",
 
     premiumFeatures: [
-      "Everything in the Basic Dashboard",
+      "Everything in the Essential Dashboard",
       "Time filters: Today / Week / Month / Custom range",
       "KPI: Pending dues & revenue by closer",
       "Full appointment table with advanced columns",
@@ -256,17 +256,17 @@ export const t = {
     comparisonKicker: "Dos niveles de visibilidad",
     comparisonHeadline: "Elige tu nivel de control",
     comparisonDesc:
-      "Cada cliente LPS recibe un Dashboard Básico sin costo adicional — incluido con tu plan Starter, Pro o Growth. Los negocios que necesitan visibilidad más profunda en cada área de su operación pueden hacer upgrade al Command Center completo.",
+      "Cada cliente LPS recibe un Dashboard Esencial sin costo adicional — incluido con tu plan Starter, Pro o Growth. Los negocios que necesitan visibilidad más profunda en cada área de su operación pueden hacer upgrade al Command Center completo.",
 
     // Comparison summary bar
-    comparisonSummaryIncluded: "Incluido con el Plan Growth",
+    comparisonSummaryIncluded: "Dashboard Esencial — Incluido con el Plan Growth",
     comparisonSummaryIncludedSub: "Sin costo adicional — disponible como add-on en otros planes",
     comparisonSummaryPremium: "Precio del Command Center",
     comparisonSummarySetup: "Setup desde $5k",
     comparisonSummaryMonthly: "desde $750 / mes",
 
-    // Basic Dashboard card
-    basicKicker: "Dashboard Básico",
+    // Essential Dashboard card
+    basicKicker: "Dashboard Esencial",
     basicHeadline: "Incluido",
     basicDesc:
       "Una vista clara y simple del movimiento diario de tu negocio. Incluido con el plan Growth sin costo adicional.",
@@ -274,7 +274,7 @@ export const t = {
     basicBadge2: "Disponible como add-on para otros planes",
     basicCTA: "Empezar con un plan",
 
-    // Basic Dashboard features
+    // Essential Dashboard features
     initialFeatures: [
       "Tu marca en el encabezado",
       "Filtros de tiempo: Hoy / Este mes",
@@ -305,7 +305,7 @@ export const t = {
     premiumCTA: "Obtener el Command Center",
 
     premiumFeatures: [
-      "Todo lo del Dashboard Básico",
+      "Todo lo del Dashboard Esencial",
       "Filtros de tiempo: Hoy / Semana / Mes / Rango personalizado",
       "KPI: Deudas pendientes e ingresos por closer",
       "Tabla de citas completa con columnas avanzadas",
