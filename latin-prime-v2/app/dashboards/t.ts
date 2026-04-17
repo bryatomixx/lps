@@ -85,8 +85,8 @@ export const t = {
     comparisonSummaryIncluded: "Included with Growth Plan",
     comparisonSummaryIncludedSub: "No extra cost — available as add-on for other plans",
     comparisonSummaryPremium: "Command Center Pricing",
-    comparisonSummarySetup: "Setup: $5k – $10k+",
-    comparisonSummaryMonthly: "$750 – $1,500 / mo",
+    comparisonSummarySetup: "Setup from $5k",
+    comparisonSummaryMonthly: "from $750 / mo",
 
     // Basic Dashboard card
     basicKicker: "Basic Dashboard",
@@ -262,8 +262,8 @@ export const t = {
     comparisonSummaryIncluded: "Incluido con el Plan Growth",
     comparisonSummaryIncludedSub: "Sin costo adicional — disponible como add-on en otros planes",
     comparisonSummaryPremium: "Precio del Command Center",
-    comparisonSummarySetup: "Setup: $5k – $10k+",
-    comparisonSummaryMonthly: "$750 – $1,500 / mes",
+    comparisonSummarySetup: "Setup desde $5k",
+    comparisonSummaryMonthly: "desde $750 / mes",
 
     // Basic Dashboard card
     basicKicker: "Dashboard Básico",
