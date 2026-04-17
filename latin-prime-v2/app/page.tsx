@@ -1,4 +1,51 @@
+import type { Metadata } from "next";
 import Nav from "@/components/Nav";
+
+export const metadata: Metadata = {
+  title: "AI Automation Agency for Small Business | Latin Prime Systems",
+  description:
+    "Done-for-you AI systems: voice agents answer calls 24/7, automations follow up every lead, and custom software runs your business — live in 7–30 days. 90-Day ROI Guarantee.",
+  keywords: [
+    "AI automation agency",
+    "AI automation for small business",
+    "done-for-you AI automation",
+    "AI voice agent for business",
+    "automated lead follow-up",
+    "business process automation",
+    "CRM for service business",
+    "Latin Prime Systems",
+    "command center for business",
+    "scale business without hiring",
+    "stop missing calls small business",
+  ],
+  alternates: {
+    canonical: "https://latinprimesystems.com",
+    languages: {
+      en: "https://latinprimesystems.com",
+      es: "https://latinprimesystems.com/es",
+      "x-default": "https://latinprimesystems.com",
+    },
+  },
+  openGraph: {
+    type: "website",
+    url: "https://latinprimesystems.com",
+    siteName: "Latin Prime Systems",
+    title: "Stop Losing Leads. Your Business on Autopilot. | Latin Prime Systems",
+    description:
+      "AI voice agents answer every call. Automations follow up every lead. Custom software runs your business. Live in 7–30 days. 90-Day ROI Guarantee.",
+    images: [
+      {
+        url: "https://storage.googleapis.com/msgsndr/0EgKTcd9YvsDKkQqklPo/media/691b4d7d013f3138a3825fc0.webp",
+        width: 1200,
+        height: 630,
+        alt: "Latin Prime Systems — AI Automation Agency",
+        type: "image/webp",
+      },
+    ],
+    locale: "en_US",
+  },
+  robots: { index: true, follow: true },
+};
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
 import AutomationQuiz from "@/components/AutomationQuiz";
