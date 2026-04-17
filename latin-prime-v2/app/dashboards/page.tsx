@@ -1288,10 +1288,10 @@ export default function DashboardsPage({ lang = "en" }: { lang?: Lang }) {
               </div>
             </SectionReveal>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 18, maxWidth: 1000, margin: "0 auto" }} className="kpi-grid">
-              <StatCard label={copy.statLabels[0]} target={84}  suffix="%" color="var(--blue)"  delay={0}   triggered={kpiOn} />
-              <StatCard label={copy.statLabels[1]} target={78}  suffix="%" color="var(--gold)"  delay={0.1} triggered={kpiOn} />
-              <StatCard label={copy.statLabels[2]} target={142}            color="var(--green)"  delay={0.2} triggered={kpiOn} />
-              <StatCard label={copy.statLabels[3]} target={7}              color="#7C3AED"        delay={0.3} triggered={kpiOn} />
+              <StatCard label={copy.statLabels[0]} target={20}  suffix="+" color="var(--blue)"  delay={0}   triggered={kpiOn} />
+              <StatCard label={copy.statLabels[1]} target={3}   suffix="x" color="var(--gold)"  delay={0.1} triggered={kpiOn} />
+              <StatCard label={copy.statLabels[2]} target={8}   suffix=" hrs" color="var(--green)"  delay={0.2} triggered={kpiOn} />
+              <StatCard label={copy.statLabels[3]} target={40}  suffix="+" color="#7C3AED"        delay={0.3} triggered={kpiOn} />
             </div>
           </div>
         </section>

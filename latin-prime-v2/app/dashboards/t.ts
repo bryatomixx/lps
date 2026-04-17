@@ -144,13 +144,13 @@ export const t = {
     ],
 
     // KPI Stats section
-    statsKicker: "Results our clients see",
-    statsHeadline: "Numbers that speak for themselves",
+    statsKicker: "What your dashboard delivers",
+    statsHeadline: "Built to give you the edge",
     statLabels: [
-      "Average Show Rate",
-      "No-Show Reduction",
-      "Leads Tracked Daily",
-      "Days to Go Live",
+      "KPIs tracked in real time",
+      "Faster decisions when data is visible",
+      "Hours saved per week — no more manual reporting",
+      "Data sources we can connect",
     ],
 
     // Dashboard preview section
@@ -321,13 +321,13 @@ export const t = {
     ],
 
     // KPI Stats section
-    statsKicker: "Resultados que ven nuestros clientes",
-    statsHeadline: "Números que hablan por sí solos",
+    statsKicker: "Lo que tu dashboard entrega",
+    statsHeadline: "Diseñado para darte ventaja",
     statLabels: [
-      "Tasa de Asistencia Promedio",
-      "Reducción de No-Shows",
-      "Leads Rastreados al Día",
-      "Días para Estar en Vivo",
+      "KPIs rastreados en tiempo real",
+      "Decisiones más rápidas con datos visibles",
+      "Horas ahorradas por semana — sin reportes manuales",
+      "Fuentes de datos que podemos conectar",
     ],
 
     // Dashboard preview section
