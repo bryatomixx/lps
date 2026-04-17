@@ -1059,6 +1059,60 @@ export default function DashboardsPage({ lang = "en" }: { lang?: Lang }) {
               </div>
             </SectionReveal>
 
+            {/* Pricing summary bar */}
+            <div style={{
+              display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16,
+              maxWidth: 960, margin: "0 auto 40px",
+            }} className="comparison-grid">
+              {/* Basic — included pill */}
+              <div style={{
+                display: "flex", alignItems: "center", gap: 14,
+                background: "var(--blue-dim)", border: "1px solid rgba(26,92,168,0.2)",
+                borderRadius: 14, padding: "18px 22px",
+              }}>
+                <div style={{
+                  width: 36, height: 36, borderRadius: "50%", flexShrink: 0,
+                  background: "var(--blue)", display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8.5L6.5 12L13 5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div>
+                  <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "0.9rem", color: "var(--blue)", lineHeight: 1.3 }}>
+                    {copy.comparisonSummaryIncluded}
+                  </div>
+                  <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: 2 }}>
+                    {copy.comparisonSummaryIncludedSub}
+                  </div>
+                </div>
+              </div>
+
+              {/* Command Center — pricing pill */}
+              <div style={{
+                display: "flex", alignItems: "center", gap: 14,
+                background: "rgba(212,165,58,0.07)", border: "1px solid rgba(212,165,58,0.3)",
+                borderRadius: 14, padding: "18px 22px",
+              }}>
+                <div style={{
+                  width: 36, height: 36, borderRadius: "50%", flexShrink: 0,
+                  background: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <path d="M7.5 1v13M3.5 4.5h5a2 2 0 0 1 0 4h-4a2 2 0 0 0 0 4H10" stroke="var(--navy)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div>
+                  <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "0.9rem", color: "var(--gold)", lineHeight: 1.3 }}>
+                    {copy.comparisonSummaryPremium}
+                  </div>
+                  <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", marginTop: 2, fontFamily: "'DM Mono',monospace" }}>
+                    {copy.comparisonSummarySetup}&nbsp;&nbsp;·&nbsp;&nbsp;{copy.comparisonSummaryMonthly}
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, maxWidth: 960, margin: "0 auto" }} className="comparison-grid">
 
               {/* Basic — Included */}

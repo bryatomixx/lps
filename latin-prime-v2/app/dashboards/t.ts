@@ -81,6 +81,13 @@ export const t = {
     comparisonDesc:
       "Every LPS client gets a Basic Dashboard at no extra cost — included with your Starter, Pro, or Growth plan. Businesses that need deeper visibility across every corner of their operation can upgrade to the full Command Center.",
 
+    // Comparison summary bar
+    comparisonSummaryIncluded: "Included with Growth Plan",
+    comparisonSummaryIncludedSub: "No extra cost — available as add-on for other plans",
+    comparisonSummaryPremium: "Command Center Pricing",
+    comparisonSummarySetup: "Setup: $5k – $10k+",
+    comparisonSummaryMonthly: "$750 – $1,500 / mo",
+
     // Basic Dashboard card
     basicKicker: "Basic Dashboard",
     basicHeadline: "Included",
@@ -250,6 +257,13 @@ export const t = {
     comparisonHeadline: "Elige tu nivel de control",
     comparisonDesc:
       "Cada cliente LPS recibe un Dashboard Básico sin costo adicional — incluido con tu plan Starter, Pro o Growth. Los negocios que necesitan visibilidad más profunda en cada área de su operación pueden hacer upgrade al Command Center completo.",
+
+    // Comparison summary bar
+    comparisonSummaryIncluded: "Incluido con el Plan Growth",
+    comparisonSummaryIncludedSub: "Sin costo adicional — disponible como add-on en otros planes",
+    comparisonSummaryPremium: "Precio del Command Center",
+    comparisonSummarySetup: "Setup: $5k – $10k+",
+    comparisonSummaryMonthly: "$750 – $1,500 / mes",
 
     // Basic Dashboard card
     basicKicker: "Dashboard Básico",
