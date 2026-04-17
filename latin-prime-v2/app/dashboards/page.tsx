@@ -1236,24 +1236,6 @@ export default function DashboardsPage({ lang = "en" }: { lang?: Lang }) {
                       {copy.premiumDesc}
                     </p>
 
-                    <div style={{
-                      display: "flex", gap: 20, marginBottom: 28, padding: "14px 18px",
-                      background: "rgba(212,165,58,0.07)", border: "1px solid rgba(212,165,58,0.2)",
-                      borderRadius: 10,
-                    }}>
-                      <div>
-                        <div style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.55rem", color: "#8FA8C0", letterSpacing: "0.1em", marginBottom: 4 }}>{copy.premiumSetupLabel}</div>
-                        <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "1.4rem", color: "var(--gold)", letterSpacing: "-0.02em" }}>$5k – $10k+</div>
-                      </div>
-                      <div style={{ width: 1, background: "rgba(212,165,58,0.2)", alignSelf: "stretch" }} />
-                      <div>
-                        <div style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.55rem", color: "#8FA8C0", letterSpacing: "0.1em", marginBottom: 4 }}>{copy.premiumMonthlyLabel}</div>
-                        <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "1.4rem", color: "var(--gold)", letterSpacing: "-0.02em" }}>
-                          $750 – $1,500<span style={{ fontSize: "0.85rem", fontWeight: 600, color: "#7A96B2" }}>/mo</span>
-                        </div>
-                      </div>
-                    </div>
-
                     <div style={{ display: "flex", flexDirection: "column", gap: 11, marginBottom: 28 }}>
                       {premiumFeatures.map((f, i) => (
                         <motion.div key={f}
