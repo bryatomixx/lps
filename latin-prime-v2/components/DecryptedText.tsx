@@ -36,12 +36,15 @@ export default function DecryptedText({
   clickMode = 'once',
   ...props
 }) {
+  const [mounted, setMounted] = useState(false);
   const [displayText, setDisplayText] = useState(text);
   const [isAnimating, setIsAnimating] = useState(false);
   const [revealedIndices, setRevealedIndices] = useState(new Set());
   const [hasAnimated, setHasAnimated] = useState(false);
   const [isDecrypted, setIsDecrypted] = useState(animateOn !== 'click');
   const [direction, setDirection] = useState('forward');
+
+  useEffect(() => { setMounted(true); }, []);
 
   const containerRef = useRef(null);
   const orderRef = useRef([]);
@@ -265,14 +268,18 @@ export default function DecryptedText({
       ? { onMouseEnter: triggerHoverDecrypt, onMouseLeave: resetToPlainText }
       : animateOn === 'click' ? { onClick: handleClick } : {};
 
+  if (!mounted) {
+    return <span className={`${parentClassName} ${className}`}>{text}</span>;
+  }
+
   return (
-    <motion.span className={parentClassName} ref={containerRef} style={styles.wrapper} {...animateProps} {...props} suppressHydrationWarning>
+    <motion.span className={parentClassName} ref={containerRef} style={styles.wrapper} {...animateProps} {...props}>
       <span style={styles.srOnly}>{displayText}</span>
-      <span aria-hidden="true" suppressHydrationWarning>
+      <span aria-hidden="true">
         {displayText.split('').map((char, index) => {
           const isRevealedOrDone = revealedIndices.has(index) || (!isAnimating && isDecrypted);
           return (
-            <span key={index} className={isRevealedOrDone ? className : encryptedClassName} suppressHydrationWarning>
+            <span key={index} className={isRevealedOrDone ? className : encryptedClassName}>
               {char}
             </span>
           );
