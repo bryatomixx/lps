@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import SectionReveal from "@/components/SectionReveal";
 import DashMockup from "@/components/DashMockup";
 import { t, Lang } from "./t";
+import DecryptedText from "@/components/DecryptedText";
 
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
@@ -826,11 +827,13 @@ export default function DashboardsPage({ lang = "en" }: { lang?: Lang }) {
               className="section-title"
               style={{ fontSize: "clamp(2.8rem,5.5vw,4.8rem)", marginBottom: 24 }}
             >
-              {copy.heroHeadline1}<br />
+              <DecryptedText text={copy.heroHeadline1} animateOn="inView" speed={60} sequential revealDirection="start" className="inherit" encryptedClassName="encrypted" /><br />
               <span style={{
                 background: "linear-gradient(120deg,var(--blue),var(--gold))",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-              }}>{copy.heroHeadline2}</span>
+              }}>
+                <DecryptedText text={copy.heroHeadline2} animateOn="inView" speed={60} sequential revealDirection="start" className="inherit" encryptedClassName="encrypted" />
+              </span>
             </motion.h1>
 
             <motion.p
@@ -943,11 +946,13 @@ export default function DashboardsPage({ lang = "en" }: { lang?: Lang }) {
               <div style={{ textAlign: "center", marginBottom: 64 }}>
                 <div className="slabel" style={{ justifyContent: "center", marginBottom: 16 }}>{copy.useCasesKicker}</div>
                 <h2 className="section-title" style={{ marginBottom: 20 }}>
-                  {copy.useCasesHeadline1}<br />
+                  <DecryptedText text={copy.useCasesHeadline1} animateOn="inView" speed={55} sequential revealDirection="start" className="inherit" encryptedClassName="encrypted" /><br />
                   <span style={{
                     background: "linear-gradient(120deg,var(--blue),var(--gold))",
                     WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                  }}>{copy.useCasesHeadline2}</span>
+                  }}>
+                    <DecryptedText text={copy.useCasesHeadline2} animateOn="inView" speed={55} sequential revealDirection="start" className="inherit" encryptedClassName="encrypted" />
+                  </span>
                 </h2>
                 <p className="section-desc" style={{ margin: "0 auto", maxWidth: 580 }}>
                   {copy.useCasesDesc}
@@ -1052,7 +1057,9 @@ export default function DashboardsPage({ lang = "en" }: { lang?: Lang }) {
             <SectionReveal>
               <div style={{ textAlign: "center", marginBottom: 64 }}>
                 <div className="slabel" style={{ justifyContent: "center", marginBottom: 16 }}>{copy.comparisonKicker}</div>
-                <h2 className="section-title">{copy.comparisonHeadline}</h2>
+                <h2 className="section-title">
+                  <DecryptedText text={copy.comparisonHeadline} animateOn="inView" speed={55} sequential revealDirection="start" className="inherit" encryptedClassName="encrypted" />
+                </h2>
                 <p className="section-desc" style={{ margin: "0 auto" }}>
                   {copy.comparisonDesc}
                 </p>
@@ -1293,7 +1300,9 @@ export default function DashboardsPage({ lang = "en" }: { lang?: Lang }) {
             <SectionReveal>
               <div style={{ textAlign: "center", marginBottom: 56 }}>
                 <div className="slabel" style={{ justifyContent: "center", marginBottom: 14 }}>{copy.statsKicker}</div>
-                <h2 className="section-title">{copy.statsHeadline}</h2>
+                <h2 className="section-title">
+                  <DecryptedText text={copy.statsHeadline} animateOn="inView" speed={55} sequential revealDirection="start" className="inherit" encryptedClassName="encrypted" />
+                </h2>
               </div>
             </SectionReveal>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 18, maxWidth: 1000, margin: "0 auto" }} className="kpi-grid">
@@ -1330,7 +1339,9 @@ export default function DashboardsPage({ lang = "en" }: { lang?: Lang }) {
                 fontFamily: "'Plus Jakarta Sans',sans-serif",
                 fontSize: "clamp(2rem,4vw,3.2rem)", fontWeight: 800,
                 color: "#E8F0FA", letterSpacing: "-0.03em", marginBottom: 16,
-              }}>{copy.previewHeadline}</h2>
+              }}>
+                <DecryptedText text={copy.previewHeadline} animateOn="inView" speed={55} sequential revealDirection="start" className="inherit" encryptedClassName="encrypted" />
+              </h2>
               <p style={{ fontSize: "1rem", color: "#7A96B2", maxWidth: 520, margin: "0 auto", lineHeight: 1.75 }}>
                 {copy.previewDesc}
               </p>
@@ -1390,11 +1401,13 @@ export default function DashboardsPage({ lang = "en" }: { lang?: Lang }) {
             <SectionReveal>
               <div className="slabel" style={{ justifyContent: "center", marginBottom: 20 }}>{copy.ctaKicker}</div>
               <h2 className="section-title" style={{ marginBottom: 20 }}>
-                {copy.ctaHeadline1}{" "}
+                <DecryptedText text={copy.ctaHeadline1} animateOn="inView" speed={55} sequential revealDirection="start" className="inherit" encryptedClassName="encrypted" />{" "}
                 <span style={{
                   background: "linear-gradient(120deg,var(--blue-bright),var(--gold))",
                   WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                }}>{copy.ctaHeadline2}</span>
+                }}>
+                  <DecryptedText text={copy.ctaHeadline2} animateOn="inView" speed={55} sequential revealDirection="start" className="inherit" encryptedClassName="encrypted" />
+                </span>
               </h2>
               <p className="section-desc" style={{ margin: "0 auto 40px" }}>
                 {copy.ctaDesc}
