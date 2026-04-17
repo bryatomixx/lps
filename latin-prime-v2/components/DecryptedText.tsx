@@ -266,13 +266,13 @@ export default function DecryptedText({
       : animateOn === 'click' ? { onClick: handleClick } : {};
 
   return (
-    <motion.span className={parentClassName} ref={containerRef} style={styles.wrapper} {...animateProps} {...props}>
+    <motion.span className={parentClassName} ref={containerRef} style={styles.wrapper} {...animateProps} {...props} suppressHydrationWarning>
       <span style={styles.srOnly}>{displayText}</span>
-      <span aria-hidden="true">
+      <span aria-hidden="true" suppressHydrationWarning>
         {displayText.split('').map((char, index) => {
           const isRevealedOrDone = revealedIndices.has(index) || (!isAnimating && isDecrypted);
           return (
-            <span key={index} className={isRevealedOrDone ? className : encryptedClassName}>
+            <span key={index} className={isRevealedOrDone ? className : encryptedClassName} suppressHydrationWarning>
               {char}
             </span>
           );
