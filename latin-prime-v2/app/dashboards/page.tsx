@@ -7,6 +7,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SectionReveal from "@/components/SectionReveal";
 import DashMockup from "@/components/DashMockup";
+import { t, Lang } from "./t";
 
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
@@ -751,7 +752,8 @@ function SchoolsMockup() {
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
-export default function DashboardsPage() {
+export default function DashboardsPage({ lang = "en" }: { lang?: Lang }) {
+  const copy = t[lang];
   const kpiRef = useRef<HTMLDivElement>(null);
   const [kpiOn, setKpiOn] = useState(false);
   const [dashTab, setDashTab] = useState(0);
@@ -766,40 +768,10 @@ export default function DashboardsPage() {
     return () => obs.disconnect();
   }, []);
 
-  // ─── Feature lists (from PDF) ─────────────────────────────────────────────
-  const initialFeatures = [
-    "Your business branding in the header",
-    "Time filters: Today / This Month",
-    "KPI: Monthly revenue",
-    "KPI: Appointments today",
-    "KPI: Pending follow-ups",
-    "KPI: Show-up rate",
-    "KPI: No-shows",
-    "Appointments table — basic view",
-    "Clean, professional design",
-  ];
-  const initialMissing = [
-    "Closer rankings",
-    "Conversion by closer / campaign",
-    "Pipeline funnel by stage",
-    "Historical comparisons",
-    "Role-based views (owner vs manager)",
-  ];
-  const premiumFeatures = [
-    "Everything in the Basic Dashboard",
-    "Time filters: Today / Week / Month / Custom range",
-    "KPI: Pending dues & revenue by closer",
-    "Full appointment table with advanced columns",
-    "Closer rankings with performance metrics",
-    "Conversion rate by closer",
-    "Conversion rate by campaign",
-    "Pipeline funnel by stage",
-    "Historical comparisons",
-    "Advanced filters by campaign / role / manager",
-    "Role-based views — owner vs manager",
-    "Deep design customization",
-    "Full command center design",
-  ];
+  // ─── Feature lists (from translations) ───────────────────────────────────
+  const initialFeatures = copy.initialFeatures as readonly string[];
+  const initialMissing = copy.initialMissing as readonly string[];
+  const premiumFeatures = copy.premiumFeatures as readonly string[];
 
   return (
     <>
@@ -843,7 +815,7 @@ export default function DashboardsPage() {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <div className="slabel" style={{ marginBottom: 24 }}>
-                Business Intelligence Dashboards
+                {copy.heroKicker}
               </div>
             </motion.div>
 
@@ -854,11 +826,11 @@ export default function DashboardsPage() {
               className="section-title"
               style={{ fontSize: "clamp(2.8rem,5.5vw,4.8rem)", marginBottom: 24 }}
             >
-              Your business.<br />
+              {copy.heroHeadline1}<br />
               <span style={{
                 background: "linear-gradient(120deg,var(--blue),var(--gold))",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-              }}>Fully visible.</span>
+              }}>{copy.heroHeadline2}</span>
             </motion.h1>
 
             <motion.p
@@ -868,9 +840,7 @@ export default function DashboardsPage() {
               className="section-desc"
               style={{ marginBottom: 36 }}
             >
-              Every number that moves your business — on one screen.
-              If it happens in your operation, we track it, visualize it, and put it
-              in front of you in real time. No spreadsheets. No guessing.
+              {copy.heroDesc}
             </motion.p>
 
             <motion.div
@@ -879,11 +849,7 @@ export default function DashboardsPage() {
               transition={{ duration: 0.5, delay: 0.42 }}
               style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 36 }}
             >
-              {[
-                "Included in every LPS plan",
-                "Command Center upgrade available",
-                "Live in days, not weeks",
-              ].map(chip => (
+              {copy.heroChips.map(chip => (
                 <div key={chip} style={{
                   display: "flex", alignItems: "center", gap: 8,
                   background: "var(--surface)", border: "1px solid var(--border2)",
@@ -917,7 +883,7 @@ export default function DashboardsPage() {
                 onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = "var(--orange-hover)"; el.style.boxShadow = "0 6px 28px rgba(212,165,58,0.4)"; }}
                 onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = "var(--orange)"; el.style.boxShadow = "0 4px 20px rgba(13,27,42,0.22)"; }}
               >
-                Book a Free Strategy Call <Arrow />
+                {copy.heroCTA} <Arrow />
               </motion.a>
               <a
                 href="#comparison"
@@ -934,7 +900,7 @@ export default function DashboardsPage() {
                 onMouseEnter={e => ((e.currentTarget as HTMLElement).style.borderColor = "var(--blue)")}
                 onMouseLeave={e => ((e.currentTarget as HTMLElement).style.borderColor = "var(--border2)")}
               >
-                See what's included
+                {copy.heroSecondary}
               </a>
             </motion.div>
           </div>
@@ -961,17 +927,7 @@ export default function DashboardsPage() {
           background: "var(--surface)", padding: "13px 0", overflow: "hidden",
         }}>
           <div style={{ display: "flex", width: "max-content", animation: "ticker-scroll 36s linear infinite" }}>
-            {[...[
-              "Sales & revenue","Team performance","Marketing campaigns",
-              "Inventory & orders","Appointment pipelines","Franchise locations",
-              "Real estate pipeline","Service & delivery","Custom operations",
-              "Any data your business generates","Live. Not yesterday.",
-            ],[
-              "Sales & revenue","Team performance","Marketing campaigns",
-              "Inventory & orders","Appointment pipelines","Franchise locations",
-              "Real estate pipeline","Service & delivery","Custom operations",
-              "Any data your business generates","Live. Not yesterday.",
-            ]].map((item,i) => (
+            {[...copy.tickerItems, ...copy.tickerItems].map((item,i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
                 <span style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.62rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-dim)", whiteSpace: "nowrap", padding: "0 22px" }}>{item}</span>
                 <span style={{ color: "var(--gold)", fontSize: "0.45rem" }}>◆</span>
@@ -985,18 +941,16 @@ export default function DashboardsPage() {
           <div className="section-inner">
             <SectionReveal>
               <div style={{ textAlign: "center", marginBottom: 64 }}>
-                <div className="slabel" style={{ justifyContent: "center", marginBottom: 16 }}>Built for every type of business</div>
+                <div className="slabel" style={{ justifyContent: "center", marginBottom: 16 }}>{copy.useCasesKicker}</div>
                 <h2 className="section-title" style={{ marginBottom: 20 }}>
-                  If it moves in your business,<br />
+                  {copy.useCasesHeadline1}<br />
                   <span style={{
                     background: "linear-gradient(120deg,var(--blue),var(--gold))",
                     WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                  }}>it can live on your dashboard.</span>
+                  }}>{copy.useCasesHeadline2}</span>
                 </h2>
                 <p className="section-desc" style={{ margin: "0 auto", maxWidth: 580 }}>
-                  We&apos;ve built dashboards for clinics, agencies, real estate teams, franchises,
-                  e-commerce stores, and more. Whatever your business tracks — we can show it,
-                  in real time, branded to you.
+                  {copy.useCasesDesc}
                 </p>
               </div>
             </SectionReveal>
@@ -1009,96 +963,18 @@ export default function DashboardsPage() {
               margin: "0 auto",
             }} className="usecase-grid">
               {[
-                {
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  ),
-                  title: "Sales & Revenue",
-                  items: ["Closed deals per rep", "Monthly revenue targets", "Revenue by product line"],
-                  color: "var(--blue)",
-                },
-                {
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  ),
-                  title: "Team Performance",
-                  items: ["Top performers ranked", "Conversion rate by rep", "Task completion rate"],
-                  color: "var(--gold)",
-                },
-                {
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  ),
-                  title: "Marketing Campaigns",
-                  items: ["Leads per channel", "Cost per acquisition", "Ad spend vs. results"],
-                  color: "var(--blue)",
-                },
-                {
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  ),
-                  title: "Inventory & Orders",
-                  items: ["Stock levels by SKU", "Fulfillment rate", "Pending & overdue orders"],
-                  color: "var(--gold)",
-                },
-                {
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-                      <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-                      <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-                    </svg>
-                  ),
-                  title: "Appointments & Bookings",
-                  items: ["Show rate & no-shows", "Daily appointment load", "Follow-up status"],
-                  color: "var(--blue)",
-                },
-                {
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  ),
-                  title: "Franchise & Multi-Location",
-                  items: ["Revenue by location", "Performance ranking", "Compliance by branch"],
-                  color: "var(--gold)",
-                },
-                {
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.8"/>
-                      <polyline points="12 6 12 12 16 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  ),
-                  title: "Service & Delivery",
-                  items: ["Jobs completed on time", "On-time delivery rate", "Open tickets & SLAs"],
-                  color: "var(--blue)",
-                },
-                {
-                  icon: (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  ),
-                  title: "Any Operation",
-                  items: ["Whatever your business tracks", "Any source, any metric", "We build it to fit you"],
-                  color: "var(--gold)",
-                },
-              ].map((uc, i) => (
-                <SectionReveal key={uc.title} delay={i * 0.06} variant="scale">
+                { icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>), color: "var(--blue)" },
+                { icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>), color: "var(--gold)" },
+                { icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>), color: "var(--blue)" },
+                { icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>), color: "var(--gold)" },
+                { icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/><line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>), color: "var(--blue)" },
+                { icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>), color: "var(--gold)" },
+                { icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.8"/><polyline points="12 6 12 12 16 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>), color: "var(--blue)" },
+                { icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>), color: "var(--gold)" },
+              ].map((ucMeta, i) => {
+                const uc = copy.useCases[i];
+                return (
+                <SectionReveal key={i} delay={i * 0.06} variant="scale">
                   <div style={{
                     background: "#fff",
                     border: "1px solid var(--border)",
@@ -1112,7 +988,7 @@ export default function DashboardsPage() {
                     onMouseEnter={e => {
                       const el = e.currentTarget as HTMLElement;
                       el.style.boxShadow = "0 6px 28px rgba(13,27,42,0.1)";
-                      el.style.borderColor = uc.color === "var(--blue)" ? "rgba(26,92,168,0.3)" : "rgba(212,165,58,0.35)";
+                      el.style.borderColor = ucMeta.color === "var(--blue)" ? "rgba(26,92,168,0.3)" : "rgba(212,165,58,0.35)";
                     }}
                     onMouseLeave={e => {
                       const el = e.currentTarget as HTMLElement;
@@ -1122,12 +998,12 @@ export default function DashboardsPage() {
                   >
                     <div style={{
                       width: 44, height: 44, borderRadius: 12,
-                      background: uc.color === "var(--blue)" ? "var(--blue-dim)" : "rgba(212,165,58,0.08)",
-                      border: `1px solid ${uc.color === "var(--blue)" ? "rgba(26,92,168,0.2)" : "rgba(212,165,58,0.2)"}`,
+                      background: ucMeta.color === "var(--blue)" ? "var(--blue-dim)" : "rgba(212,165,58,0.08)",
+                      border: `1px solid ${ucMeta.color === "var(--blue)" ? "rgba(26,92,168,0.2)" : "rgba(212,165,58,0.2)"}`,
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      color: uc.color, marginBottom: 16,
+                      color: ucMeta.color, marginBottom: 16,
                     }}>
-                      {uc.icon}
+                      {ucMeta.icon}
                     </div>
                     <div style={{
                       fontFamily: "'Plus Jakarta Sans',sans-serif",
@@ -1135,13 +1011,13 @@ export default function DashboardsPage() {
                       color: "var(--text)", marginBottom: 12, lineHeight: 1.3,
                     }}>{uc.title}</div>
                     <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                      {uc.items.map(item => (
+                      {(uc.items as readonly string[]).map(item => (
                         <div key={item} style={{
                           display: "flex", alignItems: "flex-start", gap: 7,
                         }}>
                           <div style={{
                             width: 4, height: 4, borderRadius: "50%",
-                            background: uc.color, flexShrink: 0, marginTop: 6,
+                            background: ucMeta.color, flexShrink: 0, marginTop: 6,
                           }} />
                           <span style={{
                             fontSize: "0.78rem", color: "var(--text-muted)", lineHeight: 1.5,
@@ -1151,7 +1027,8 @@ export default function DashboardsPage() {
                     </div>
                   </div>
                 </SectionReveal>
-              ))}
+                );
+              })}
             </div>
 
             {/* Bottom tagline */}
@@ -1162,7 +1039,7 @@ export default function DashboardsPage() {
                   letterSpacing: "0.12em", textTransform: "uppercase",
                   color: "var(--text-dim)",
                 }}>
-                  If your business generates data — we can put it on a screen.
+                  {copy.useCasesTagline}
                 </p>
               </div>
             </SectionReveal>
@@ -1174,12 +1051,10 @@ export default function DashboardsPage() {
           <div className="section-inner">
             <SectionReveal>
               <div style={{ textAlign: "center", marginBottom: 64 }}>
-                <div className="slabel" style={{ justifyContent: "center", marginBottom: 16 }}>Two levels of visibility</div>
-                <h2 className="section-title">Choose your level of control</h2>
+                <div className="slabel" style={{ justifyContent: "center", marginBottom: 16 }}>{copy.comparisonKicker}</div>
+                <h2 className="section-title">{copy.comparisonHeadline}</h2>
                 <p className="section-desc" style={{ margin: "0 auto" }}>
-                  Every LPS client gets a Basic Dashboard at no extra cost — included with
-                  your Starter, Pro, or Growth plan. Businesses that need deeper visibility
-                  across every corner of their operation can upgrade to the full Command Center.
+                  {copy.comparisonDesc}
                 </p>
               </div>
             </SectionReveal>
@@ -1193,14 +1068,13 @@ export default function DashboardsPage() {
                   borderRadius: 20, padding: "36px 32px", height: "100%",
                   boxShadow: "0 2px 16px rgba(13,27,42,0.05)",
                 }}>
-                  <div className="slabel" style={{ marginBottom: 10 }}>Basic Dashboard</div>
+                  <div className="slabel" style={{ marginBottom: 10 }}>{copy.basicKicker}</div>
                   <h3 style={{
                     fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800,
                     fontSize: "1.7rem", color: "var(--text)", marginBottom: 8, letterSpacing: "-0.025em",
-                  }}>Included</h3>
+                  }}>{copy.basicHeadline}</h3>
                   <p style={{ fontSize: "0.87rem", color: "var(--text-muted)", marginBottom: 24, lineHeight: 1.7 }}>
-                    A clear, simple view of your daily business movement.
-                    Comes with the Growth plan at no extra cost.
+                    {copy.basicDesc}
                   </p>
 
                   {/* Plan badge */}
@@ -1211,14 +1085,14 @@ export default function DashboardsPage() {
                       padding: "5px 12px", borderRadius: 20,
                       background: "var(--blue-dim)", border: "1px solid rgba(26,92,168,0.2)",
                       color: "var(--blue)",
-                    }}>Growth</div>
+                    }}>{copy.basicBadge1}</div>
                     <div style={{
                       fontFamily: "'DM Mono',monospace", fontSize: "0.58rem",
                       letterSpacing: "0.1em", textTransform: "uppercase",
                       padding: "5px 12px", borderRadius: 20,
                       background: "rgba(13,27,42,0.04)", border: "1px solid var(--border)",
                       color: "var(--text-dim)",
-                    }}>Available as add-on for other plans</div>
+                    }}>{copy.basicBadge2}</div>
                   </div>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: 11, marginBottom: 28 }}>
@@ -1257,7 +1131,7 @@ export default function DashboardsPage() {
                     onMouseEnter={e => ((e.currentTarget as HTMLElement).style.background = "var(--blue-dim)")}
                     onMouseLeave={e => ((e.currentTarget as HTMLElement).style.background = "transparent")}
                   >
-                    Get started with a plan <Arrow />
+                    {copy.basicCTA} <Arrow />
                   </motion.a>
                 </div>
               </SectionReveal>
@@ -1284,23 +1158,21 @@ export default function DashboardsPage() {
                   <div style={{ position: "relative", zIndex: 1 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
                       <div style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.58rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--gold)" }}>
-                        Command Center
+                        {copy.premiumKicker}
                       </div>
                       <div style={{
                         fontFamily: "'DM Mono',monospace", fontSize: "0.55rem", letterSpacing: "0.1em",
                         textTransform: "uppercase", color: "var(--navy)", background: "var(--gold)",
                         padding: "4px 10px", borderRadius: 20,
-                      }}>UPGRADE</div>
+                      }}>{copy.premiumBadge}</div>
                     </div>
 
                     <h3 style={{
                       fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800,
                       fontSize: "1.7rem", color: "#E8F0FA", marginBottom: 8, letterSpacing: "-0.025em",
-                    }}>Full Control</h3>
+                    }}>{copy.premiumHeadline}</h3>
                     <p style={{ fontSize: "0.87rem", color: "#7A96B2", marginBottom: 24, lineHeight: 1.7 }}>
-                      For owners and managers who need complete operational visibility —
-                      custom-built for your specific operation, pulling from every data source
-                      your business uses, and designed to show exactly what matters to your team.
+                      {copy.premiumDesc}
                     </p>
 
                     <div style={{
@@ -1309,12 +1181,12 @@ export default function DashboardsPage() {
                       borderRadius: 10,
                     }}>
                       <div>
-                        <div style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.55rem", color: "#8FA8C0", letterSpacing: "0.1em", marginBottom: 4 }}>ONE-TIME SETUP</div>
+                        <div style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.55rem", color: "#8FA8C0", letterSpacing: "0.1em", marginBottom: 4 }}>{copy.premiumSetupLabel}</div>
                         <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "1.4rem", color: "var(--gold)", letterSpacing: "-0.02em" }}>$5k – $10k+</div>
                       </div>
                       <div style={{ width: 1, background: "rgba(212,165,58,0.2)", alignSelf: "stretch" }} />
                       <div>
-                        <div style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.55rem", color: "#8FA8C0", letterSpacing: "0.1em", marginBottom: 4 }}>MONTHLY</div>
+                        <div style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.55rem", color: "#8FA8C0", letterSpacing: "0.1em", marginBottom: 4 }}>{copy.premiumMonthlyLabel}</div>
                         <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "1.4rem", color: "var(--gold)", letterSpacing: "-0.02em" }}>
                           $750 – $1,500<span style={{ fontSize: "0.85rem", fontWeight: 600, color: "#7A96B2" }}>/mo</span>
                         </div>
@@ -1352,7 +1224,7 @@ export default function DashboardsPage() {
                       onMouseEnter={e => ((e.currentTarget as HTMLElement).style.boxShadow = "0 8px 36px rgba(212,165,58,0.5)")}
                       onMouseLeave={e => ((e.currentTarget as HTMLElement).style.boxShadow = "0 4px 24px rgba(212,165,58,0.3)")}
                     >
-                      Get the Command Center <Arrow />
+                      {copy.premiumCTA} <Arrow />
                     </motion.a>
                   </div>
                 </div>
@@ -1366,15 +1238,15 @@ export default function DashboardsPage() {
           <div className="section-inner">
             <SectionReveal>
               <div style={{ textAlign: "center", marginBottom: 56 }}>
-                <div className="slabel" style={{ justifyContent: "center", marginBottom: 14 }}>Results our clients see</div>
-                <h2 className="section-title">Numbers that speak for themselves</h2>
+                <div className="slabel" style={{ justifyContent: "center", marginBottom: 14 }}>{copy.statsKicker}</div>
+                <h2 className="section-title">{copy.statsHeadline}</h2>
               </div>
             </SectionReveal>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 18, maxWidth: 1000, margin: "0 auto" }} className="kpi-grid">
-              <StatCard label="Average Show Rate"     target={84}  suffix="%" color="var(--blue)"  delay={0}   triggered={kpiOn} />
-              <StatCard label="No-Show Reduction"     target={78}  suffix="%" color="var(--gold)"  delay={0.1} triggered={kpiOn} />
-              <StatCard label="Leads Tracked Daily"   target={142}            color="var(--green)"  delay={0.2} triggered={kpiOn} />
-              <StatCard label="Days to Go Live"       target={7}              color="#7C3AED"        delay={0.3} triggered={kpiOn} />
+              <StatCard label={copy.statLabels[0]} target={84}  suffix="%" color="var(--blue)"  delay={0}   triggered={kpiOn} />
+              <StatCard label={copy.statLabels[1]} target={78}  suffix="%" color="var(--gold)"  delay={0.1} triggered={kpiOn} />
+              <StatCard label={copy.statLabels[2]} target={142}            color="var(--green)"  delay={0.2} triggered={kpiOn} />
+              <StatCard label={copy.statLabels[3]} target={7}              color="#7C3AED"        delay={0.3} triggered={kpiOn} />
             </div>
           </div>
         </section>
@@ -1397,17 +1269,16 @@ export default function DashboardsPage() {
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
               }}>
                 <div style={{ width: 28, height: 1, background: "linear-gradient(90deg,transparent,var(--gold))" }} />
-                Command Center in action
+                {copy.previewKicker}
                 <div style={{ width: 28, height: 1, background: "linear-gradient(90deg,var(--gold),transparent)" }} />
               </div>
               <h2 style={{
                 fontFamily: "'Plus Jakarta Sans',sans-serif",
                 fontSize: "clamp(2rem,4vw,3.2rem)", fontWeight: 800,
                 color: "#E8F0FA", letterSpacing: "-0.03em", marginBottom: 16,
-              }}>What your business looks like inside</h2>
+              }}>{copy.previewHeadline}</h2>
               <p style={{ fontSize: "1rem", color: "#7A96B2", maxWidth: 520, margin: "0 auto", lineHeight: 1.75 }}>
-                Custom-branded, real-time data, designed for how your business actually works.
-                Three examples — three completely different operations.
+                {copy.previewDesc}
               </p>
             </div>
           </SectionReveal>
@@ -1416,30 +1287,33 @@ export default function DashboardsPage() {
           <SectionReveal delay={0.08}>
             <div style={{ display: "flex", justifyContent: "center", gap: 6, marginBottom: 32, flexWrap: "wrap" }}>
               {[
-                { label: "CRM & Sales",    sub: "Appts · Revenue · Team",      c: "#2B7FE0" },
-                { label: "Social Media",   sub: "Followers · Reach · Eng",      c: "#A855F7" },
-                { label: "Accounting",     sub: "Revenue · Expenses · P&L",     c: "#16A34A" },
-                { label: "Real Estate",    sub: "Pipeline · Listings · Agents",  c: "#0FCFB0" },
-                { label: "E-commerce",     sub: "Orders · Products · Revenue",   c: "#F97316" },
-                { label: "Schools",        sub: "Grades · Attendance · Classes", c: "#818CF8" },
-              ].map((tab, i) => (
+                { c: "#2B7FE0" },
+                { c: "#A855F7" },
+                { c: "#16A34A" },
+                { c: "#0FCFB0" },
+                { c: "#F97316" },
+                { c: "#818CF8" },
+              ].map((tabMeta, i) => {
+                const tab = copy.dashTabs[i];
+                return (
                 <button key={i} onClick={() => setDashTab(i)} style={{
                   fontFamily: "'Plus Jakarta Sans',sans-serif",
                   fontWeight: dashTab === i ? 700 : 500,
                   fontSize: "0.78rem",
                   padding: "10px 18px",
                   borderRadius: 10,
-                  border: dashTab === i ? `1px solid ${tab.c}55` : "1px solid rgba(255,255,255,0.08)",
-                  background: dashTab === i ? `${tab.c}18` : "rgba(255,255,255,0.03)",
-                  color: dashTab === i ? tab.c : "#7A96B2",
+                  border: dashTab === i ? `1px solid ${tabMeta.c}55` : "1px solid rgba(255,255,255,0.08)",
+                  background: dashTab === i ? `${tabMeta.c}18` : "rgba(255,255,255,0.03)",
+                  color: dashTab === i ? tabMeta.c : "#7A96B2",
                   cursor: "pointer",
                   transition: "all 0.2s",
                   display: "flex", flexDirection: "column", alignItems: "center", gap: 3,
                 }}>
                   <span>{tab.label}</span>
-                  <span style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.5rem", letterSpacing: "0.06em", color: dashTab === i ? `${tab.c}CC` : "rgba(122,150,178,0.65)" }}>{tab.sub}</span>
+                  <span style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.5rem", letterSpacing: "0.06em", color: dashTab === i ? `${tabMeta.c}CC` : "rgba(122,150,178,0.65)" }}>{tab.sub}</span>
                 </button>
-              ))}
+                );
+              })}
             </div>
           </SectionReveal>
 
@@ -1460,17 +1334,16 @@ export default function DashboardsPage() {
         <section className="section-wrap" style={{ background: "var(--bg)" }}>
           <div className="section-inner" style={{ textAlign: "center", maxWidth: 680, margin: "0 auto" }}>
             <SectionReveal>
-              <div className="slabel" style={{ justifyContent: "center", marginBottom: 20 }}>Your business, completely visible</div>
+              <div className="slabel" style={{ justifyContent: "center", marginBottom: 20 }}>{copy.ctaKicker}</div>
               <h2 className="section-title" style={{ marginBottom: 20 }}>
-                Stop flying blind.{" "}
+                {copy.ctaHeadline1}{" "}
                 <span style={{
                   background: "linear-gradient(120deg,var(--blue-bright),var(--gold))",
                   WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                }}>Start today.</span>
+                }}>{copy.ctaHeadline2}</span>
               </h2>
               <p className="section-desc" style={{ margin: "0 auto 40px" }}>
-                A dashboard isn&apos;t a luxury — it&apos;s the difference between owners
-                who know what&apos;s happening and those who find out when it&apos;s already too late.
+                {copy.ctaDesc}
               </p>
               <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
                 <motion.a
@@ -1488,7 +1361,7 @@ export default function DashboardsPage() {
                   onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = "var(--orange-hover)"; el.style.boxShadow = "0 8px 36px rgba(212,165,58,0.45)"; }}
                   onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = "var(--orange)"; el.style.boxShadow = "0 4px 20px rgba(13,27,42,0.22)"; }}
                 >
-                  Book a Free Strategy Call <Arrow />
+                  {copy.ctaPrimary} <Arrow />
                 </motion.a>
                 <a href="/" style={{
                   display: "inline-flex", alignItems: "center", gap: 8,
@@ -1500,11 +1373,11 @@ export default function DashboardsPage() {
                   onMouseEnter={e => ((e.currentTarget as HTMLElement).style.borderColor = "var(--blue)")}
                   onMouseLeave={e => ((e.currentTarget as HTMLElement).style.borderColor = "var(--border2)")}
                 >
-                  See all LPS services
+                  {copy.ctaSecondary}
                 </a>
               </div>
               <p style={{ fontFamily: "'DM Mono',monospace", fontSize: "0.57rem", letterSpacing: "0.08em", color: "var(--text-dim)", marginTop: 20 }}>
-                🛡️ 90-Day ROI Guarantee — results or we work free
+                {copy.ctaGuarantee}
               </p>
             </SectionReveal>
           </div>
