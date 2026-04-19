@@ -114,22 +114,40 @@ Three new React Bits–style components to add to `/components/`:
 
 ---
 
-## File Structure
+## Project Structure
+
+Standalone Next.js app at `lps-digital/` — same stack as `latin-prime-v2` (Next.js 16, React 19, framer-motion, Tailwind v4, TypeScript).
 
 ```
-app/
-  digital-departments/
-    page.tsx          ← metadata + page shell
-components/
-  RotatingText.tsx    ← new
-  StarBorder.tsx      ← new
-  ClickSpark.tsx      ← new
-  sections/           ← (optional subfolder, or flat in /components)
-    DigitalDepts/
-      DDHero.tsx
-      DDHowItWorks.tsx
-      DDDepartmentCards.tsx
-      DDWaitlistForm.tsx
+lps-digital/
+  package.json
+  next.config.ts
+  tsconfig.json
+  postcss.config.mjs
+  .gitignore
+  app/
+    layout.tsx         ← shared Nav + Footer, global CSS
+    page.tsx           ← metadata + page shell (the digital-departments page)
+    globals.css        ← copy design tokens from latin-prime-v2
+    icon.png
+  components/
+    Nav.tsx            ← adapted from latin-prime-v2 Nav
+    Footer.tsx         ← adapted from latin-prime-v2 Footer
+    SectionReveal.tsx  ← copy from latin-prime-v2
+    Threads.tsx        ← copy from latin-prime-v2
+    SplitText.tsx      ← copy from latin-prime-v2
+    DecryptedText.tsx  ← copy from latin-prime-v2
+    ShinyText.tsx      ← copy from latin-prime-v2
+    GradientText.tsx   ← copy from latin-prime-v2
+    RotatingText.tsx   ← NEW
+    StarBorder.tsx     ← NEW
+    ClickSpark.tsx     ← NEW
+    DDHero.tsx
+    DDHowItWorks.tsx
+    DDDepartmentCards.tsx
+    DDWaitlistForm.tsx
+  public/
+    (logo, favicon)
 ```
 
 ---
