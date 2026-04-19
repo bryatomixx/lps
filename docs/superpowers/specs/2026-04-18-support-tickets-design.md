@@ -78,7 +78,7 @@ App → GET /api/tickets/list (no account_id filter or account_id=all) → n8n �
 ### Internal View (`role=internal`)
 
 **`/` — New Ticket Form**
-- Same as client form but includes an extra dropdown: **"Cuenta"** — a list of known accounts (populated from n8n) so the internal team can open tickets on behalf of any client account. Defaults to their own `account_id`.
+- Same as client form. To open a ticket on behalf of a client account, the internal team opens the iframe from within that client's GHL account — the `account_id` is passed automatically.
 
 **`/tickets` — Account Ticket History**
 - Same as client view but for the internal account's own tickets
