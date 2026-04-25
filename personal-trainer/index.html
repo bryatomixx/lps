@@ -16,9 +16,9 @@
     :root {
       --black: #040404;
       --white: #F2EDE6;
-      --gold: #C8962E;
-      --gold-light: #E8B84B;
-      --fire: #FF4D1A;
+      --gold: #D9232E;
+      --gold-light: #F03040;
+      --fire: #B01020;
       --gray: #111111;
       --gray-mid: #2a2a2a;
       --gray-light: #777777;
@@ -174,7 +174,7 @@
     }
     .orb-gold {
       width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(200,150,46,0.13) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(217,35,46,0.13) 0%, transparent 65%);
       top: -150px; right: -100px;
     }
     .orb-fire {
@@ -186,8 +186,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(200,150,46,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,150,46,0.025) 1px, transparent 1px);
+        linear-gradient(rgba(217,35,46,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(217,35,46,0.025) 1px, transparent 1px);
       background-size: 88px 88px;
       mask-image: radial-gradient(ellipse at 50% 60%, black 10%, transparent 75%);
     }
@@ -485,7 +485,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(200,150,46,0.06) 0%, transparent 60%);
+      background: linear-gradient(135deg, rgba(217,35,46,0.06) 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.4s;
     }
@@ -499,7 +499,7 @@
       margin-bottom: auto;
       transition: color 0.4s;
     }
-    .pillar:hover .pillar-num { color: rgba(200,150,46,0.15); }
+    .pillar:hover .pillar-num { color: rgba(217,35,46,0.15); }
     .pillar-icon { font-size: 2.2rem; margin-bottom: 20px; }
     .pillar h3 {
       font-family: var(--font-display);
@@ -655,7 +655,7 @@
       transform: translate(-50%, -50%);
       font-family: var(--font-display);
       font-size: clamp(130px, 18vw, 240px);
-      color: rgba(200,150,46,0.025);
+      color: rgba(217,35,46,0.025);
       white-space: nowrap;
       pointer-events: none;
       user-select: none;
@@ -796,10 +796,10 @@
     .shape-after {
       width: 110px;
       height: 220px;
-      background: linear-gradient(to bottom, rgba(200,150,46,0.12) 0%, rgba(200,150,46,0.06) 100%);
+      background: linear-gradient(to bottom, rgba(217,35,46,0.12) 0%, rgba(217,35,46,0.06) 100%);
       border-radius: 55px 55px 35px 35px;
       position: relative;
-      border: 1px solid rgba(200,150,46,0.15);
+      border: 1px solid rgba(217,35,46,0.15);
     }
     .shape-after::before {
       content: '';
@@ -807,9 +807,9 @@
       top: -52px; left: 50%;
       transform: translateX(-50%);
       width: 64px; height: 64px;
-      background: rgba(200,150,46,0.1);
+      background: rgba(217,35,46,0.1);
       border-radius: 50%;
-      border: 1px solid rgba(200,150,46,0.15);
+      border: 1px solid rgba(217,35,46,0.15);
     }
     /* "Muscle definition" lines on after shape */
     .shape-after::after {
@@ -819,8 +819,8 @@
       transform: translateX(-50%);
       width: 60%;
       height: 2px;
-      background: rgba(200,150,46,0.25);
-      box-shadow: 0 24px 0 rgba(200,150,46,0.15), 0 48px 0 rgba(200,150,46,0.1);
+      background: rgba(217,35,46,0.25);
+      box-shadow: 0 24px 0 rgba(217,35,46,0.15), 0 48px 0 rgba(217,35,46,0.1);
     }
 
     .ba-handle {
@@ -846,7 +846,7 @@
       color: var(--black);
       font-size: 1rem;
       font-weight: 700;
-      box-shadow: 0 0 0 6px rgba(200,150,46,0.15);
+      box-shadow: 0 0 0 6px rgba(217,35,46,0.15);
     }
 
     /* ─── PROCESS ─── */
@@ -967,7 +967,7 @@
       top: -24px; left: 28px;
       font-family: var(--font-serif);
       font-size: 110px;
-      color: rgba(200,150,46,0.07);
+      color: rgba(217,35,46,0.07);
       line-height: 1;
     }
     .t-stars { color: var(--gold); letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 18px; }
@@ -1009,7 +1009,7 @@
       top: -60px; right: 56px;
       font-family: var(--font-serif);
       font-size: 280px;
-      color: rgba(200,150,46,0.035);
+      color: rgba(217,35,46,0.035);
       line-height: 1;
     }
     .fq-text {
@@ -1059,13 +1059,13 @@
     .cta-glow {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,150,46,0.1) 0%, transparent 65%);
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(217,35,46,0.1) 0%, transparent 65%);
     }
     .cta-grid {
       position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(200,150,46,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,150,46,0.035) 1px, transparent 1px);
+        linear-gradient(rgba(217,35,46,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(217,35,46,0.035) 1px, transparent 1px);
       background-size: 56px 56px;
     }
     #cta .section-tag { justify-content: center; margin-bottom: 24px; position: relative; z-index: 1; }
@@ -1111,7 +1111,7 @@
       transition: border-color 0.3s;
     }
     .cta-input::placeholder { color: var(--gray-light); }
-    .cta-input:focus { border-color: rgba(200,150,46,0.5); }
+    .cta-input:focus { border-color: rgba(217,35,46,0.5); }
     .cta-btn {
       padding: 18px 32px;
       background: var(--gold);
@@ -1226,7 +1226,11 @@
 
 <!-- NAV -->
 <nav id="main-nav">
-  <a href="#" class="nav-logo">MIGUEL<em>·</em>ZÚÑIGA</a>
+  <!-- LOGO: reemplazar img src con el archivo del logo real -->
+  <a href="#" class="nav-logo" id="nav-logo-wrap">
+    <img src="logo.png" alt="MZ Trainer" style="height:38px;width:auto;object-fit:contain;display:block" onerror="this.style.display='none';document.getElementById('nav-logo-txt').style.display='block'">
+    <span id="nav-logo-txt" style="display:none">MZ<em>·</em>TRAINER</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#philosophy">Método</a></li>
     <li><a href="#programs">Programas</a></li>
@@ -1252,7 +1256,7 @@
       <div class="lbl">Vidas transformadas</div>
     </div>
     <div class="float-stat">
-      <div class="num">10<em>+</em></div>
+      <div class="num">6<em>+</em></div>
       <div class="lbl">Años de experiencia</div>
     </div>
     <div class="float-stat">
@@ -1266,10 +1270,9 @@
   </div>
 
   <h1 class="hero-h1">
-    <span class="h1-line"><span class="h1-inner">TRANSFORMA</span></span>
-    <span class="h1-line"><span class="h1-inner h1-outline">TU CUERPO.</span></span>
-    <span class="h1-line"><span class="h1-inner">DOMINA</span></span>
-    <span class="h1-line"><span class="h1-inner">TU MENTE.</span></span>
+    <span class="h1-line"><span class="h1-inner">TRANSFORMO</span></span>
+    <span class="h1-line"><span class="h1-inner h1-outline">CUERPOS</span></span>
+    <span class="h1-line"><span class="h1-inner">Y MENTALIDADES.</span></span>
   </h1>
 
   <div class="hero-row" id="hero-row">
@@ -1356,7 +1359,7 @@
         <div class="bc-tag">Programa Estrella</div>
         <h3>TRANSFORMACIÓN<br>TOTAL 12 SEM.</h3>
         <p>El sistema completo: entrenamiento, nutrición, mentalidad y seguimiento diario. Para quienes van en serio.</p>
-        <div class="bc-price">$4,800 <small>/programa</small></div>
+        <div class="bc-price">Consultar <small>· presencial</small></div>
       </div>
     </div>
 
@@ -1367,7 +1370,7 @@
         <div class="bc-tag">Fuerza & Músculo</div>
         <h3>HIPERTROFIA<br>ELITE</h3>
         <p>Construye el físico que siempre quisiste con ciencia real detrás de cada rep.</p>
-        <div class="bc-price">$2,400 <small>/8 semanas</small></div>
+        <div class="bc-price">Consultar <small>· presencial</small></div>
       </div>
     </div>
 
@@ -1378,7 +1381,7 @@
         <div class="bc-tag">Fat Loss</div>
         <h3>LEAN<br>PROTOCOL</h3>
         <p>Quema grasa, preserva músculo. Período.</p>
-        <div class="bc-price">$1,800 <small>/6 semanas</small></div>
+        <div class="bc-price">Consultar <small>· presencial</small></div>
       </div>
     </div>
 
@@ -1389,7 +1392,7 @@
         <div class="bc-tag">100% Online</div>
         <h3>COACHING<br>REMOTO</h3>
         <p>Todo el sistema desde cualquier lugar del mundo.</p>
-        <div class="bc-price">$800 <small>/mes</small></div>
+        <div class="bc-price">Consultar <small>· online</small></div>
       </div>
     </div>
 
@@ -1400,7 +1403,7 @@
         <div class="bc-tag">VIP · Exclusivo</div>
         <h3>ENTRENAMIENTO<br>1:1 PRESENCIAL</h3>
         <p>Máxima atención. Máximos resultados. Disponibilidad muy limitada.</p>
-        <div class="bc-price">$500 <small>/sesión</small></div>
+        <div class="bc-price">Consultar <small>· online</small></div>
       </div>
     </div>
   </div>
@@ -1413,7 +1416,7 @@
     <div class="results-left">
       <div class="section-tag">Resultados</div>
       <h2 class="sr">NÚMEROS QUE<br><em>HABLAN SOLOS</em></h2>
-      <p class="sr">Más de una década transformando cuerpos y mentes. No vendemos motivación; entregamos sistemas probados con métricas reales.</p>
+      <p class="sr">Más de 6 años transformando cuerpos y mentes. No vendemos motivación; entregamos sistemas probados con métricas reales.</p>
       <div class="stats-3">
         <div class="stat-box sr">
           <div class="stat-big"><span class="cnt" data-to="500">0</span><em>+</em></div>
@@ -1424,7 +1427,7 @@
           <div class="stat-lbl">Tasa de éxito</div>
         </div>
         <div class="stat-box sr">
-          <div class="stat-big"><span class="cnt" data-to="10">0</span><em>+</em></div>
+          <div class="stat-big"><span class="cnt" data-to="6">0</span><em>+</em></div>
           <div class="stat-lbl">Años exp.</div>
         </div>
       </div>
@@ -1524,7 +1527,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-logo">MIGUEL<em>·</em>ZÚÑIGA</div>
+  <!-- LOGO: reemplazar con img real cuando esté disponible -->
+  <div class="foot-logo">MZ<em>·</em>TRAINER</div>
   <ul class="foot-links">
     <li><a href="#">Método</a></li>
     <li><a href="#">Programas</a></li>
@@ -1533,10 +1537,9 @@
     <li><a href="#">Privacidad</a></li>
   </ul>
   <div class="foot-social">
-    <a href="#" class="soc-link">IG</a>
-    <a href="#" class="soc-link">YT</a>
-    <a href="#" class="soc-link">TK</a>
-    <a href="#" class="soc-link">WA</a>
+    <a href="https://www.instagram.com/mztrainerr?igsh=d3Nzdm8zaHUwY3dp&utm_source=qr" target="_blank" class="soc-link">IG</a>
+    <a href="https://www.tiktok.com/@mztrainer?_r=1&_t=ZS-95oWSJP5N6y" target="_blank" class="soc-link">TK</a>
+    <a href="https://www.facebook.com/share/1AYgGXib2N/?mibextid=wwXIfr" target="_blank" class="soc-link">FB</a>
   </div>
 </footer>
 
@@ -1578,7 +1581,7 @@
   const tData = [
     { n: '+500', l: 'Clientes Transformados' },
     { n: '92%',  l: 'Tasa de Éxito'          },
-    { n: '10+',  l: 'Años de Experiencia'    },
+    { n: '6+',   l: 'Años de Experiencia'     },
     { n: '−22kg',l: 'Mejor Transformación'   },
     { n: '4.9★', l: 'Calificación Promedio'  },
     { n: '100%', l: 'Planes Personalizados'  },
