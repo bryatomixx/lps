@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import SectionReveal from "./SectionReveal";
 
 type Lang = "en" | "es";
@@ -14,7 +15,7 @@ const t = {
     bio3: "His broader entrepreneurial path also includes leading Latin Prime Financial Group, where his public-facing mission emphasizes education, transparency, and empowering the Hispanic community with clear guidance and responsible solutions. That same commitment to clarity, trust, and long-term value is now embedded into Latin Prime Systems.",
     stats: [
       { value: "10+", label: "Industries Served" },
-      { value: "2", label: "Countries" },
+      { value: "5+", label: "Countries" },
       { value: "90", label: "Day ROI Guarantee" },
     ],
   },
@@ -27,7 +28,7 @@ const t = {
     bio3: "Su trayectoria emprendedora también incluye la dirección de Latin Prime Financial Group, donde su misión pública enfatiza la educación, la transparencia y el empoderamiento de la comunidad hispana con orientación clara y soluciones responsables. Ese mismo compromiso con la claridad, la confianza y el valor a largo plazo está ahora integrado en Latin Prime Systems.",
     stats: [
       { value: "10+", label: "Industrias Atendidas" },
-      { value: "2", label: "Países" },
+      { value: "5+", label: "Países" },
       { value: "90", label: "Días de Garantía ROI" },
     ],
   },
@@ -42,166 +43,329 @@ export default function About({ lang = "en" }: { lang?: Lang }) {
       className="section-wrap"
       style={{ background: "var(--bg)", position: "relative", overflow: "hidden" }}
     >
+      {/* Grid overlay */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background:
-            "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(26,127,212,0.04), transparent)",
+          backgroundImage:
+            "linear-gradient(rgba(26,127,212,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26,127,212,0.04) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+          pointerEvents: "none",
+        }}
+      />
+      {/* Ambient glow — left */}
+      <div
+        style={{
+          position: "absolute",
+          top: "10%",
+          left: "-10%",
+          width: "55vw",
+          height: "55vw",
+          maxWidth: 700,
+          maxHeight: 700,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(26,127,212,0.07) 0%, transparent 70%)",
+          filter: "blur(70px)",
+          pointerEvents: "none",
+        }}
+      />
+      {/* Ambient glow — right */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "0%",
+          right: "-5%",
+          width: "40vw",
+          height: "40vw",
+          maxWidth: 500,
+          maxHeight: 500,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(200,148,26,0.06) 0%, transparent 70%)",
+          filter: "blur(60px)",
           pointerEvents: "none",
         }}
       />
 
       <div className="section-inner" style={{ position: "relative", zIndex: 1 }}>
         <div
+          className="about-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: 64,
+            gap: "clamp(40px, 6vw, 96px)",
             alignItems: "center",
           }}
-          className="about-grid"
         >
-          {/* Image */}
+          {/* ── Photo panel ── */}
           <SectionReveal>
-            <div style={{ position: "relative" }}>
+            <div style={{ position: "relative", display: "flex", justifyContent: "center" }}>
+
+              {/* Outer decorative ring */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                style={{
+                  position: "absolute",
+                  inset: -20,
+                  borderRadius: 32,
+                  border: "1px solid rgba(212,165,58,0.15)",
+                  pointerEvents: "none",
+                }}
+              />
+
+              {/* Photo frame with gradient border */}
               <div
                 style={{
-                  width: "100%",
-                  aspectRatio: "4/5",
-                  background: "var(--surface)",
-                  border: "1px solid var(--border)",
-                  overflow: "hidden",
                   position: "relative",
+                  width: "100%",
+                  maxWidth: 420,
+                  padding: 2,
+                  borderRadius: 24,
+                  background: "linear-gradient(145deg, rgba(212,165,58,0.5), rgba(26,92,168,0.3), rgba(212,165,58,0.1))",
+                  boxShadow: "0 24px 80px rgba(13,27,42,0.6), 0 0 40px rgba(26,127,212,0.12)",
                 }}
               >
-                <Image
-                  src="https://latinprimefg.com/wp-content/uploads/2022/03/latin-prime_president-carlos.jpg"
-                  alt="Carlos J. Torres — Founder, Latin Prime Systems"
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "center top" }}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+                {/* Inner photo container */}
+                <div
+                  style={{
+                    width: "100%",
+                    aspectRatio: "3/4",
+                    borderRadius: 22,
+                    overflow: "hidden",
+                    position: "relative",
+                    background: "var(--surface)",
+                  }}
+                >
+                  <Image
+                    src="https://latinprimefg.com/wp-content/uploads/2022/03/latin-prime_president-carlos.jpg"
+                    alt="Carlos J. Torres — Founder, Latin Prime Systems"
+                    fill
+                    style={{ objectFit: "cover", objectPosition: "center top" }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+
+                  {/* Bottom gradient fade */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: "45%",
+                      background: "linear-gradient(to top, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.4) 60%, transparent 100%)",
+                      pointerEvents: "none",
+                    }}
+                  />
+
+                  {/* Name + title overlay */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      padding: "24px 28px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontWeight: 800,
+                        fontSize: "1.2rem",
+                        color: "#ffffff",
+                        marginBottom: 5,
+                        letterSpacing: "-0.02em",
+                      }}
+                    >
+                      {copy.name}
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
+                      }}
+                    >
+                      <span
+                        style={{
+                          width: 5,
+                          height: 5,
+                          borderRadius: "50%",
+                          background: "var(--gold)",
+                          flexShrink: 0,
+                        }}
+                      />
+                      <span
+                        style={{
+                          fontFamily: "'DM Mono', monospace",
+                          fontSize: "0.6rem",
+                          letterSpacing: "0.12em",
+                          textTransform: "uppercase",
+                          color: "var(--gold)",
+                        }}
+                      >
+                        {copy.title}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
+
+              {/* Vertical gold accent bar */}
               <div
                 style={{
                   position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: 4,
-                  background: "linear-gradient(90deg, var(--blue), var(--gold))",
+                  left: -4,
+                  top: "15%",
+                  bottom: "15%",
+                  width: 3,
+                  background: "linear-gradient(180deg, transparent, var(--gold) 40%, var(--gold) 60%, transparent)",
+                  borderRadius: 4,
+                  opacity: 0.7,
+                }}
+              />
+
+              {/* Corner dot — top right */}
+              <motion.div
+                animate={{ opacity: [0.4, 1, 0.4] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                style={{
+                  position: "absolute",
+                  top: 12,
+                  right: 12,
+                  width: 8,
+                  height: 8,
+                  borderRadius: "50%",
+                  background: "var(--blue)",
+                  boxShadow: "0 0 12px var(--blue)",
                 }}
               />
             </div>
           </SectionReveal>
 
-          {/* Text */}
-          <SectionReveal delay={0.15}>
-            <div
-              style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: "0.62rem",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "var(--gold)",
-                marginBottom: 6,
-              }}
-            >
-              {copy.eyebrow}
-            </div>
-            <h2
-              style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 800,
-                fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
-                marginBottom: 4,
-              }}
-            >
-              {copy.name}
-            </h2>
-            <div
-              style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: "0.72rem",
-                letterSpacing: "0.1em",
-                color: "var(--text-muted)",
-                marginBottom: 28,
-              }}
-            >
-              {copy.title}
-            </div>
-
-            <p
-              style={{
-                fontSize: "0.95rem",
-                color: "var(--text-muted)",
-                lineHeight: 1.8,
-                marginBottom: 20,
-              }}
-            >
-              {copy.bio1}
-            </p>
-            <p
-              style={{
-                fontSize: "0.95rem",
-                color: "var(--text-muted)",
-                lineHeight: 1.8,
-                marginBottom: 20,
-              }}
-            >
-              {copy.bio2}
-            </p>
-            <p
-              style={{
-                fontSize: "0.95rem",
-                color: "var(--text-muted)",
-                lineHeight: 1.8,
-                marginBottom: 32,
-              }}
-            >
-              {copy.bio3}
-            </p>
-
-            {/* Stats */}
-            <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-              {[
-                { ...copy.stats[0], color: "var(--gold)" },
-                { ...copy.stats[1], color: "var(--blue)" },
-                { ...copy.stats[2], color: "var(--green)" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
+          {/* ── Text panel ── */}
+          <SectionReveal delay={0.2}>
+            <div>
+              {/* Eyebrow */}
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  background: "rgba(212,165,58,0.08)",
+                  border: "1px solid rgba(212,165,58,0.25)",
+                  padding: "6px 14px",
+                  marginBottom: 24,
+                }}
+              >
+                <span
                   style={{
-                    borderLeft: `2px solid ${stat.color}`,
-                    paddingLeft: 14,
+                    width: 5,
+                    height: 5,
+                    borderRadius: "50%",
+                    background: "var(--gold)",
+                    flexShrink: 0,
+                  }}
+                />
+                <span
+                  style={{
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    color: "var(--gold)",
+                    fontWeight: 600,
                   }}
                 >
+                  {copy.eyebrow}
+                </span>
+              </div>
+
+              {/* Bio */}
+              <p
+                style={{
+                  fontSize: "0.93rem",
+                  color: "var(--text-muted)",
+                  lineHeight: 1.82,
+                  marginBottom: 18,
+                }}
+              >
+                {copy.bio1}
+              </p>
+              <p
+                style={{
+                  fontSize: "0.93rem",
+                  color: "var(--text-muted)",
+                  lineHeight: 1.82,
+                  marginBottom: 18,
+                }}
+              >
+                {copy.bio2}
+              </p>
+              <p
+                style={{
+                  fontSize: "0.93rem",
+                  color: "var(--text-muted)",
+                  lineHeight: 1.82,
+                  marginBottom: 36,
+                }}
+              >
+                {copy.bio3}
+              </p>
+
+              {/* Stats row */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: 0,
+                  border: "1px solid var(--border2)",
+                  overflow: "hidden",
+                }}
+              >
+                {[
+                  { ...copy.stats[0], color: "var(--gold)", accent: "rgba(212,165,58,0.08)" },
+                  { ...copy.stats[1], color: "var(--blue)", accent: "rgba(26,127,212,0.08)" },
+                  { ...copy.stats[2], color: "var(--green)", accent: "rgba(0,229,122,0.08)" },
+                ].map((stat, i) => (
                   <div
+                    key={stat.label}
                     style={{
-                      fontFamily: "'Plus Jakarta Sans', sans-serif",
-                      fontWeight: 900,
-                      fontSize: "1.6rem",
-                      color: stat.color,
-                      lineHeight: 1.1,
+                      flex: 1,
+                      padding: "20px 18px",
+                      background: stat.accent,
+                      borderRight: i < 2 ? "1px solid var(--border2)" : "none",
+                      textAlign: "center",
                     }}
                   >
-                    {stat.value}
+                    <div
+                      style={{
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontWeight: 900,
+                        fontSize: "1.8rem",
+                        color: stat.color,
+                        lineHeight: 1,
+                        marginBottom: 6,
+                        letterSpacing: "-0.03em",
+                      }}
+                    >
+                      {stat.value}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "'DM Mono', monospace",
+                        fontSize: "0.55rem",
+                        letterSpacing: "0.1em",
+                        color: "var(--text-dim)",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {stat.label}
+                    </div>
                   </div>
-                  <div
-                    style={{
-                      fontFamily: "'DM Mono', monospace",
-                      fontSize: "0.58rem",
-                      letterSpacing: "0.12em",
-                      color: "var(--text-dim)",
-                      textTransform: "uppercase",
-                      marginTop: 3,
-                    }}
-                  >
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </SectionReveal>
         </div>
@@ -211,7 +375,7 @@ export default function About({ lang = "en" }: { lang?: Lang }) {
         @media (max-width: 768px) {
           .about-grid {
             grid-template-columns: 1fr !important;
-            gap: 32px !important;
+            gap: 40px !important;
           }
         }
       `}</style>
