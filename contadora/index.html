@@ -17,8 +17,8 @@
       --ink:      #0A1628;
       --mid:      #4A5568;
       --light:    #A0AEC0;
-      --teal:     #7A20B0;
-      --teal-bg:  #F3EAFA;
+      --purple:   #7A20B0;
+      --purple-bg:#F3EAFA;
       --copper:   #B8722E;
       --border:   #E2E8F0;
       --serif:    'Cormorant Garamond', serif;
@@ -27,24 +27,41 @@
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: var(--white); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--sans); background: var(--white); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     img { display: block; width: 100%; object-fit: cover; }
     a { text-decoration: none; color: inherit; }
     .container { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
 
+    /* ── PROGRESS BAR ── */
+    #progress {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      height: 2px; width: 0%;
+      background: linear-gradient(to right, var(--purple), #B060F0);
+      transition: width 0.06s linear;
+      pointer-events: none;
+    }
+
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: var(--white); border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border);
       height: 68px; display: flex; align-items: center;
       padding: 0 48px; justify-content: space-between;
+      backdrop-filter: blur(16px);
+      transition: box-shadow 0.3s;
+      opacity: 0; transform: translateY(-8px);
     }
+    nav.visible { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
     .nav-logo { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); }
-    .nav-logo span { color: var(--teal); }
+    .nav-logo span { color: var(--purple); }
     .nav-links { display: flex; gap: 32px; list-style: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--mid); }
-    .nav-links a:hover { color: var(--teal); }
-    .nav-cta { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: var(--teal); color: #fff; padding: 10px 22px; border-radius: 4px; transition: background 0.2s; }
-    .nav-cta:hover { background: #6518A0; }
+    .nav-links a { position: relative; transition: color 0.2s; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--purple); transition: width 0.3s; }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: var(--purple); color: #fff; padding: 10px 22px; border-radius: 4px; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: #6518A0; transform: translateY(-1px); }
 
     /* ── HERO ── */
     .hero {
@@ -54,49 +71,76 @@
     }
     .hero-text {
       display: flex; flex-direction: column; justify-content: center;
-      padding: 80px 64px 80px 0; padding-left: 0;
+      padding: 80px 64px 80px max(48px, calc((100vw - 1180px)/2 + 48px));
       background: var(--white);
     }
     .hero-eyebrow {
       font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 22px;
+      color: var(--purple); margin-bottom: 22px;
       display: flex; align-items: center; gap: 12px;
+      opacity: 0; transform: translateY(10px);
     }
-    .hero-eyebrow::after { content: ''; width: 36px; height: 1px; background: var(--teal); }
-    .hero-h1 {
-      font-family: var(--serif); font-size: clamp(2.8rem, 4vw, 4rem);
-      font-weight: 600; line-height: 1.1; color: var(--ink); margin-bottom: 24px;
+    .hero-eyebrow::after { content: ''; width: 36px; height: 1px; background: var(--purple); }
+
+    .hero-h1 { font-family: var(--serif); font-size: clamp(2.8rem, 4vw, 4rem); font-weight: 600; line-height: 1.1; color: var(--ink); margin-bottom: 24px; }
+    .h1-line { display: block; overflow: hidden; }
+    .h1-inner { display: block; transform: translateY(110%); will-change: transform; }
+    .h1-inner em { font-style: italic; color: var(--purple); }
+
+    .hero-sub { font-size: 0.97rem; color: var(--mid); line-height: 1.75; max-width: 420px; margin-bottom: 40px; opacity: 0; }
+    .hero-actions { display: flex; gap: 20px; align-items: center; margin-bottom: 52px; opacity: 0; }
+
+    .btn-primary {
+      background: var(--purple); color: #fff; padding: 14px 30px; border-radius: 4px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      position: relative; overflow: hidden; transition: transform 0.2s;
     }
-    .hero-h1 em { font-style: italic; color: var(--teal); }
-    .hero-sub { font-size: 0.97rem; color: var(--mid); line-height: 1.75; max-width: 420px; margin-bottom: 40px; }
-    .hero-actions { display: flex; gap: 20px; align-items: center; margin-bottom: 52px; }
-    .btn-primary { background: var(--teal); color: #fff; padding: 14px 30px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.2s; }
-    .btn-primary:hover { background: #6518A0; }
-    .btn-link { font-size: 0.82rem; font-weight: 500; color: var(--mid); display: flex; align-items: center; gap: 6px; }
-    .btn-link:hover { color: var(--teal); }
-    .btn-link::after { content: '→'; }
-    .hero-creds { border-top: 1px solid var(--border); padding-top: 28px; display: flex; gap: 36px; }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: #6518A0; transform: translateX(-101%); transition: transform 0.35s ease; }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary span { position: relative; z-index: 1; }
+
+    .btn-link { font-size: 0.82rem; font-weight: 500; color: var(--mid); display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .btn-link:hover { color: var(--purple); }
+    .btn-link::after { content: '→'; transition: transform 0.2s; }
+    .btn-link:hover::after { transform: translateX(4px); }
+
+    .hero-creds { border-top: 1px solid var(--border); padding-top: 28px; display: flex; gap: 36px; opacity: 0; }
     .cred-label { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); margin-bottom: 4px; }
     .cred-val { font-size: 0.84rem; font-weight: 500; color: var(--mid); }
 
-    .hero-visual { position: relative; overflow: hidden; background: var(--teal-bg); }
-    .hero-photo { width: 100%; height: 100%; object-fit: cover; filter: grayscale(10%); }
+    .hero-visual { position: relative; overflow: hidden; background: var(--purple-bg); }
+    .hero-photo { width: 100%; height: 100%; object-fit: cover; filter: grayscale(10%); will-change: transform; }
     .hero-strip {
       position: absolute; bottom: 0; left: 0; right: 0;
       background: rgba(10,22,40,0.88); backdrop-filter: blur(12px);
-      border-top: 2px solid var(--teal);
+      border-top: 2px solid var(--purple);
       display: grid; grid-template-columns: 1fr 1fr;
     }
     .hs { padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.08); }
     .hs:last-child { border: none; }
     .hs-n { font-family: var(--num); font-size: 2.2rem; color: #fff; line-height: 1; }
-    .hs-n em { font-family: var(--sans); font-size: 1.1rem; font-style: normal; color: var(--teal); }
+    .hs-n em { font-family: var(--sans); font-size: 1.1rem; font-style: normal; color: var(--purple); }
     .hs-l { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 4px; }
 
+    /* ── TICKER ── */
+    .ticker-wrap {
+      overflow: hidden; padding: 14px 0;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: var(--ink);
+    }
+    .ticker-track { display: flex; width: max-content; animation: ticker 30s linear infinite; }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .tick-item { display: flex; align-items: center; gap: 20px; padding: 0 36px; white-space: nowrap; }
+    .tick-num { font-family: var(--num); font-size: 1.5rem; color: var(--purple); letter-spacing: 0.05em; }
+    .tick-lbl { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .tick-sep { width: 4px; height: 4px; background: var(--purple); border-radius: 50%; opacity: 0.5; }
+
     /* ── SECTION SHARED ── */
-    .section-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .section-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
     .section-title { font-family: var(--serif); font-size: clamp(2rem, 3.2vw, 2.8rem); font-weight: 600; line-height: 1.2; color: var(--ink); }
-    .section-title em { font-style: italic; color: var(--teal); }
+    .section-title em { font-style: italic; color: var(--purple); }
     .section-sub { font-size: 0.93rem; color: var(--mid); max-width: 500px; margin-top: 14px; line-height: 1.7; }
     .section-header { margin-bottom: 56px; }
 
@@ -107,42 +151,62 @@
       border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
     }
     .srv-card {
-      padding: 40px 36px;
+      padding: 40px 36px; cursor: default;
       border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      background: var(--white); transition: background 0.25s;
+      background: var(--white); transition: background 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden;
     }
-    .srv-card:hover { background: var(--teal-bg); }
+    .srv-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(122,32,176,0.05) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.35s;
+    }
+    .srv-card:hover { background: var(--purple-bg); }
+    .srv-card:hover::before { opacity: 1; }
     .srv-card:nth-child(3n) { border-right: none; }
     .srv-card:nth-child(4), .srv-card:nth-child(5), .srv-card:nth-child(6) { border-bottom: none; }
     .srv-ico {
       width: 44px; height: 44px; border-radius: 8px;
-      background: var(--teal-bg); border: 1px solid rgba(122,32,176,0.2);
+      background: var(--purple-bg); border: 1px solid rgba(122,32,176,0.2);
       display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+      transition: transform 0.3s, background 0.3s;
     }
-    .srv-ico svg { width: 20px; height: 20px; stroke: var(--teal); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-    .srv-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; line-height: 1.25; }
-    .srv-desc { font-size: 0.87rem; color: var(--mid); line-height: 1.65; }
+    .srv-card:hover .srv-ico { transform: scale(1.1) rotate(-4deg); background: rgba(122,32,176,0.15); }
+    .srv-ico svg { width: 20px; height: 20px; stroke: var(--purple); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .srv-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; line-height: 1.25; position: relative; z-index: 1; }
+    .srv-desc { font-size: 0.87rem; color: var(--mid); line-height: 1.65; position: relative; z-index: 1; }
 
     /* ── ABOUT ── */
-    .about { padding: 100px 0; background: var(--off); }
+    .about { padding: 100px 0; background: var(--off); overflow: hidden; }
     .about-grid { display: grid; grid-template-columns: 5fr 6fr; gap: 80px; align-items: center; }
     .about-photo-wrap { position: relative; }
-    .about-photo { aspect-ratio: 4/5; border-radius: 6px; object-fit: cover; }
+    .about-photo { aspect-ratio: 4/5; border-radius: 6px; object-fit: cover; will-change: transform; }
     .about-badge {
       position: absolute; bottom: -20px; right: -20px;
-      background: var(--teal); color: #fff; padding: 22px 26px; border-radius: 4px; text-align: center;
+      background: var(--purple); color: #fff; padding: 22px 26px; border-radius: 4px; text-align: center;
     }
     .about-badge-n { font-family: var(--num); font-size: 2.2rem; line-height: 1; }
     .about-badge-l { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75; margin-top: 4px; }
     .about-bio { font-size: 0.94rem; color: var(--mid); line-height: 1.75; margin-bottom: 20px; }
     .about-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0; }
-    .tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; border: 1px solid var(--border); color: var(--mid); }
-    .about-reg { padding: 18px 22px; border-left: 3px solid var(--teal); background: var(--teal-bg); border-radius: 0 4px 4px 0; font-size: 0.87rem; color: var(--mid); }
+    .tag {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 100px; border: 1px solid var(--border); color: var(--mid);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      cursor: default;
+    }
+    .tag:hover { border-color: var(--purple); color: var(--purple); background: var(--purple-bg); }
+    .about-reg { padding: 18px 22px; border-left: 3px solid var(--purple); background: var(--purple-bg); border-radius: 0 4px 4px 0; font-size: 0.87rem; color: var(--mid); }
     .about-reg strong { display: block; color: var(--ink); margin-bottom: 3px; font-size: 0.9rem; }
 
     /* ── NUMBERS ── */
-    .numbers { padding: 72px 0; background: var(--teal); }
-    .num-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .numbers { padding: 72px 0; background: var(--purple); position: relative; overflow: hidden; }
+    .numbers-ghost {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-family: var(--num); font-size: clamp(80px, 14vw, 180px);
+      color: rgba(255,255,255,0.04); white-space: nowrap; pointer-events: none; user-select: none;
+    }
+    .num-grid { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; z-index: 1; }
     .num-item { text-align: center; padding: 36px 20px; border-right: 1px solid rgba(255,255,255,0.15); }
     .num-item:last-child { border: none; }
     .num-val { font-family: var(--num); font-size: 3.2rem; color: #fff; line-height: 1; margin-bottom: 8px; }
@@ -152,22 +216,42 @@
     /* ── PROCESS ── */
     .process { padding: 100px 0; background: var(--white); }
     .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; position: relative; }
-    .process-steps::before { content: ''; position: absolute; top: 21px; left: calc(12.5%); right: calc(12.5%); height: 1px; background: var(--border); }
+    .process-line {
+      position: absolute; top: 21px; left: calc(12.5%); right: calc(12.5%); height: 1px;
+      background: var(--border); overflow: hidden;
+    }
+    .process-line-fill {
+      height: 100%; width: 0%; background: var(--purple);
+      transition: width 1.2s ease;
+    }
     .step { text-align: center; }
-    .step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--teal); color: #fff; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; position: relative; z-index: 1; }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%; background: var(--white);
+      border: 2px solid var(--border); color: var(--mid);
+      font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px; position: relative; z-index: 1;
+      transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.3s;
+    }
+    .step.active .step-num { background: var(--purple); border-color: var(--purple); color: #fff; transform: scale(1.15); }
     .step-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
     .step-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.65; }
 
     /* ── TESTIMONIALS ── */
-    .testimonials { padding: 100px 0; background: var(--off); }
-    .t-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
-    .t-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 36px 30px; }
-    .t-card.dark { background: var(--ink); border-color: var(--ink); }
-    .t-stars { color: var(--copper); font-size: 0.85rem; margin-bottom: 16px; letter-spacing: 2px; }
-    .t-quote { font-family: var(--serif); font-size: 1.08rem; line-height: 1.65; color: var(--ink); margin-bottom: 24px; }
-    .t-card.dark .t-quote { color: rgba(255,255,255,0.9); font-size: 1.18rem; }
+    .testimonials { padding: 100px 0; background: var(--off); overflow: hidden; }
+    .testi-head { padding: 0 48px; margin-bottom: 60px; display: flex; align-items: flex-end; justify-content: space-between; }
+    .marquee-wrap { overflow: hidden; }
+    .marquee-track { display: flex; gap: 20px; width: max-content; animation: marquee 34s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .t-card { flex-shrink: 0; width: 340px; background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 32px 28px; transition: border-color 0.3s, transform 0.3s; }
+    .t-card:hover { border-color: var(--purple); transform: translateY(-4px); }
+    .t-card.dark { background: var(--ink); border-color: var(--ink); width: 380px; }
+    .t-card.dark:hover { border-color: var(--purple); }
+    .t-stars { color: var(--copper); font-size: 0.85rem; margin-bottom: 14px; letter-spacing: 2px; }
+    .t-quote { font-family: var(--serif); font-size: 1.05rem; line-height: 1.65; color: var(--ink); margin-bottom: 22px; }
+    .t-card.dark .t-quote { color: rgba(255,255,255,0.88); }
     .t-author { display: flex; align-items: center; gap: 12px; }
-    .t-av { width: 38px; height: 38px; border-radius: 50%; background: var(--teal-bg); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 0.95rem; color: var(--teal); flex-shrink: 0; font-weight: 600; }
+    .t-av { width: 36px; height: 36px; border-radius: 50%; background: var(--purple-bg); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 0.9rem; color: var(--purple); flex-shrink: 0; font-weight: 600; }
     .t-card.dark .t-av { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
     .t-name { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
     .t-card.dark .t-name { color: #fff; }
@@ -179,8 +263,9 @@
     .contact-sub { font-size: 0.94rem; color: var(--mid); line-height: 1.7; margin: 16px 0 36px; }
     .ci-list { display: flex; flex-direction: column; gap: 20px; }
     .ci { display: flex; align-items: flex-start; gap: 14px; }
-    .ci-ico { width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .ci-ico svg { width: 17px; height: 17px; stroke: var(--teal); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .ci-ico { width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.2s, background 0.2s; }
+    .ci:hover .ci-ico { border-color: var(--purple); background: var(--purple-bg); }
+    .ci-ico svg { width: 17px; height: 17px; stroke: var(--purple); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
     .ci-lbl { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--light); margin-bottom: 3px; }
     .ci-val { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
@@ -188,21 +273,29 @@
     label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 7px; }
     input, select, textarea {
       width: 100%; padding: 12px 15px; border: 1px solid var(--border); border-radius: 4px;
-      font-family: var(--sans); font-size: 0.89rem; color: var(--ink); background: var(--white); outline: none; transition: border-color 0.2s;
+      font-family: var(--sans); font-size: 0.89rem; color: var(--ink); background: var(--white); outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    input:focus, select:focus, textarea:focus { border-color: var(--teal); }
+    input:focus, select:focus, textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(122,32,176,0.08); }
     textarea { height: 116px; resize: none; }
-    .form-btn { width: 100%; padding: 15px; background: var(--teal); color: #fff; border: none; border-radius: 4px; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; margin-top: 8px; transition: background 0.2s; }
-    .form-btn:hover { background: #6518A0; }
+    .form-btn {
+      width: 100%; padding: 15px; background: var(--purple); color: #fff; border: none; border-radius: 4px;
+      font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; margin-top: 8px; position: relative; overflow: hidden; transition: transform 0.2s;
+    }
+    .form-btn::before { content: ''; position: absolute; inset: 0; background: #6518A0; transform: translateX(-101%); transition: transform 0.35s ease; }
+    .form-btn:hover { transform: translateY(-1px); }
+    .form-btn:hover::before { transform: translateX(0); }
+    .form-btn span { position: relative; z-index: 1; }
 
     /* ── FOOTER ── */
     footer { background: var(--ink); padding: 44px 0; }
     .foot { display: flex; align-items: center; justify-content: space-between; }
     .foot-logo { font-family: var(--serif); font-size: 1rem; color: #fff; }
-    .foot-logo span { color: var(--teal); }
+    .foot-logo span { color: var(--purple); }
     .foot-copy { font-size: 0.76rem; color: rgba(255,255,255,0.35); }
     .foot-links { display: flex; gap: 24px; font-size: 0.76rem; color: rgba(255,255,255,0.35); }
-    .foot-links a:hover { color: #fff; }
+    .foot-links a:hover { color: var(--purple); }
 
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); }
@@ -222,8 +315,8 @@
       .srv-card:last-child { border-bottom: none !important; }
       .num-grid { grid-template-columns: 1fr 1fr; }
       .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .process-steps::before { display: none; }
-      .t-grid { grid-template-columns: 1fr; }
+      .process-line { display: none; }
+      .testi-head { padding: 0 24px; flex-direction: column; align-items: flex-start; gap: 24px; }
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }
       .form-row { grid-template-columns: 1fr; }
       .form-full { grid-column: span 1; }
@@ -233,8 +326,10 @@
 </head>
 <body>
 
+<div id="progress"></div>
+
 <!-- NAV -->
-<nav>
+<nav id="main-nav">
   <div class="nav-logo">Naydis <span>Rodriguez</span></div>
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
@@ -247,45 +342,52 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="container" style="display:contents">
-    <div class="hero-text" style="padding-left: max(48px, calc((100vw - 1180px)/2 + 48px));">
-      <div class="hero-eyebrow">Contadora Pública · TP 148392-T</div>
-      <h1 class="hero-h1">Finanzas claras.<br><em>Decisiones</em><br>inteligentes.</h1>
-      <p class="hero-sub">Acompañamos a empresas y personas naturales en Colombia con contabilidad precisa, cumplimiento tributario y asesoría financiera estratégica.</p>
-      <div class="hero-actions">
-        <a href="#contacto" class="btn-primary">Agendar consulta</a>
-        <a href="#servicios" class="btn-link">Ver servicios</a>
+  <div class="hero-text">
+    <div class="hero-eyebrow" id="hero-eyebrow">Contadora Pública · TP 148392-T</div>
+    <h1 class="hero-h1">
+      <span class="h1-line"><span class="h1-inner">Finanzas claras.</span></span>
+      <span class="h1-line"><span class="h1-inner"><em>Decisiones</em></span></span>
+      <span class="h1-line"><span class="h1-inner">inteligentes.</span></span>
+    </h1>
+    <p class="hero-sub" id="hero-sub">Acompañamos a empresas y personas naturales en Colombia con contabilidad precisa, cumplimiento tributario y asesoría financiera estratégica.</p>
+    <div class="hero-actions" id="hero-actions">
+      <a href="#contacto" class="btn-primary"><span>Agendar consulta</span></a>
+      <a href="#servicios" class="btn-link">Ver servicios</a>
+    </div>
+    <div class="hero-creds" id="hero-creds">
+      <div>
+        <div class="cred-label">Registro profesional</div>
+        <div class="cred-val">TP 148392-T · JCE</div>
       </div>
-      <div class="hero-creds">
-        <div>
-          <div class="cred-label">Registro profesional</div>
-          <div class="cred-val">TP 148392-T · JCE</div>
-        </div>
-        <div>
-          <div class="cred-label">Formación</div>
-          <div class="cred-val">Universidad de Antioquia</div>
-        </div>
-        <div>
-          <div class="cred-label">Estándar</div>
-          <div class="cred-val">NIIF / IASB</div>
-        </div>
+      <div>
+        <div class="cred-label">Formación</div>
+        <div class="cred-val">Universidad de Antioquia</div>
+      </div>
+      <div>
+        <div class="cred-label">Estándar</div>
+        <div class="cred-val">NIIF / IASB</div>
       </div>
     </div>
-    <div class="hero-visual">
-      <img class="hero-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80&fit=crop&crop=faces,top" alt="Naydis Rodriguez · Contadora Pública">
-      <div class="hero-strip">
-        <div class="hs">
-          <div class="hs-n">180<em>+</em></div>
-          <div class="hs-l">Clientes activos</div>
-        </div>
-        <div class="hs">
-          <div class="hs-n">12 <em>años</em></div>
-          <div class="hs-l">De experiencia</div>
-        </div>
+  </div>
+  <div class="hero-visual">
+    <img class="hero-photo" id="hero-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80&fit=crop&crop=faces,top" alt="Naydis Rodriguez · Contadora Pública">
+    <div class="hero-strip">
+      <div class="hs">
+        <div class="hs-n">180<em>+</em></div>
+        <div class="hs-l">Clientes activos</div>
+      </div>
+      <div class="hs">
+        <div class="hs-n">12 <em>años</em></div>
+        <div class="hs-l">De experiencia</div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track"></div>
+</div>
 
 <!-- SERVICES -->
 <section class="services" id="servicios">
@@ -297,44 +399,32 @@
     </div>
     <div class="srv-grid">
       <div class="srv-card reveal">
-        <div class="srv-ico">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        </div>
+        <div class="srv-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
         <div class="srv-name">Contabilidad General</div>
         <div class="srv-desc">Registro, clasificación y análisis de operaciones contables bajo estándares NIIF para Pymes o plenas, con reportes periódicos y estados financieros completos.</div>
       </div>
       <div class="srv-card reveal">
-        <div class="srv-ico">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
+        <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
         <div class="srv-name">Declaración de Renta</div>
         <div class="srv-desc">Preparación y presentación de declaraciones para personas naturales y jurídicas, con planificación tributaria para optimizar la carga fiscal dentro del marco legal.</div>
       </div>
       <div class="srv-card reveal">
-        <div class="srv-ico">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        </div>
+        <div class="srv-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
         <div class="srv-name">Asesoría DIAN</div>
         <div class="srv-desc">Representación ante la DIAN en procesos de fiscalización, respuesta a requerimientos ordinarios y especiales, y corrección de declaraciones con criterio técnico.</div>
       </div>
       <div class="srv-card reveal">
-        <div class="srv-ico">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
+        <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
         <div class="srv-name">Implementación NIIF</div>
         <div class="srv-desc">Migración y adopción de Normas Internacionales de Información Financiera, diagnóstico de brechas y acompañamiento completo en la transición contable.</div>
       </div>
       <div class="srv-card reveal">
-        <div class="srv-ico">
-          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
+        <div class="srv-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
         <div class="srv-name">Nómina y Seguridad Social</div>
         <div class="srv-desc">Liquidación de nómina, aportes parafiscales y seguridad social, manejo de novedades de incapacidad, vacaciones y certificados laborales.</div>
       </div>
       <div class="srv-card reveal">
-        <div class="srv-ico">
-          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
+        <div class="srv-ico"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
         <div class="srv-name">Revisoría Fiscal</div>
         <div class="srv-desc">Control, vigilancia e inspección de las operaciones económicas con informe a la asamblea de socios, según los requerimientos del Código de Comercio.</div>
       </div>
@@ -347,7 +437,7 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-photo-wrap reveal">
-        <img class="about-photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=700&q=80&fit=crop&crop=faces,top" alt="Naydis Rodriguez">
+        <img class="about-photo" id="about-photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=700&q=80&fit=crop&crop=faces,top" alt="Naydis Rodriguez">
         <div class="about-badge">
           <div class="about-badge-n">12</div>
           <div class="about-badge-l">años de<br>experiencia</div>
@@ -377,6 +467,7 @@
 
 <!-- NUMBERS -->
 <section class="numbers">
+  <div class="numbers-ghost">180 · 12 · 98%</div>
   <div class="container">
     <div class="num-grid">
       <div class="num-item reveal">
@@ -407,23 +498,24 @@
       <h2 class="section-title">Un proceso <em>transparente</em></h2>
       <p class="section-sub" style="margin: 14px auto 0;">Sin sorpresas. Cada paso es claro y predecible desde el primer día.</p>
     </div>
-    <div class="process-steps">
-      <div class="step reveal">
+    <div class="process-steps" id="process-steps">
+      <div class="process-line"><div class="process-line-fill" id="process-line-fill"></div></div>
+      <div class="step reveal" id="step-1">
         <div class="step-num">01</div>
         <div class="step-title">Diagnóstico inicial</div>
         <div class="step-desc">Revisamos su situación contable y tributaria actual, identificamos riesgos y oportunidades de mejora.</div>
       </div>
-      <div class="step reveal">
+      <div class="step reveal" id="step-2">
         <div class="step-num">02</div>
         <div class="step-title">Propuesta a medida</div>
         <div class="step-desc">Diseñamos un plan de trabajo ajustado a las necesidades reales de su empresa o actividad económica.</div>
       </div>
-      <div class="step reveal">
+      <div class="step reveal" id="step-3">
         <div class="step-num">03</div>
         <div class="step-title">Ejecución continua</div>
         <div class="step-desc">Mantenemos su contabilidad al día con entregas puntuales, informes periódicos y calendario tributario.</div>
       </div>
-      <div class="step reveal">
+      <div class="step reveal" id="step-4">
         <div class="step-num">04</div>
         <div class="step-title">Asesoría permanente</div>
         <div class="step-desc">Disponibilidad para resolver dudas y apoyar decisiones financieras importantes en cualquier momento.</div>
@@ -434,46 +526,15 @@
 
 <!-- TESTIMONIALS -->
 <section class="testimonials">
-  <div class="container">
-    <div class="section-header reveal">
+  <div class="testi-head reveal">
+    <div>
       <div class="section-tag">Testimonios</div>
       <h2 class="section-title">Lo que dicen <em>los clientes</em></h2>
     </div>
-    <div class="t-grid">
-      <div class="t-card dark reveal">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-quote">"Llevamos tres años con Naydis y la tranquilidad de saber que todo está en orden no tiene precio. Detectó un error en declaraciones anteriores que nos ahorró más de $18 millones."</p>
-        <div class="t-author">
-          <div class="t-av">CR</div>
-          <div>
-            <div class="t-name">Carlos Restrepo</div>
-            <div class="t-role">Gerente · Importadora Restrepo & Hijos · Medellín</div>
-          </div>
-        </div>
-      </div>
-      <div class="t-card reveal">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-quote">"La implementación NIIF fue impecable. Cumplimos con todo sin traumatismos y con claridad en cada paso del proceso. Siempre dispuesta a explicar."</p>
-        <div class="t-author">
-          <div class="t-av">MP</div>
-          <div>
-            <div class="t-name">María Paula Jiménez</div>
-            <div class="t-role">Directora Financiera · Constructora Andina · Medellín</div>
-          </div>
-        </div>
-      </div>
-      <div class="t-card reveal">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-quote">"Como médico independiente siempre temí la renta. Con Naydis el proceso es simple y siempre termino pagando menos de lo que esperaba, dentro de la legalidad."</p>
-        <div class="t-author">
-          <div class="t-av">AF</div>
-          <div>
-            <div class="t-name">Andrés Felipe Mora</div>
-            <div class="t-role">Médico independiente · Cali</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <a href="#contacto" class="btn-primary reveal"><span>Agendar consulta</span></a>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marquee-track"></div>
   </div>
 </section>
 
@@ -487,31 +548,16 @@
         <p class="contact-sub">La primera consulta no tiene costo. Cuéntenos su situación y le decimos exactamente cómo podemos ayudarle.</p>
         <div class="ci-list">
           <div class="ci">
-            <div class="ci-ico">
-              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 5.53 5.53l.36-.36a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 20.5 16a2 2 0 0 1 1.5.92z"/></svg>
-            </div>
-            <div>
-              <div class="ci-lbl">WhatsApp</div>
-              <div class="ci-val">+57 314 782 9014</div>
-            </div>
+            <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 5.53 5.53l.36-.36a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 20.5 16a2 2 0 0 1 1.5.92z"/></svg></div>
+            <div><div class="ci-lbl">WhatsApp</div><div class="ci-val">+57 314 782 9014</div></div>
           </div>
           <div class="ci">
-            <div class="ci-ico">
-              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div>
-              <div class="ci-lbl">Correo electrónico</div>
-              <div class="ci-val">naydis@nrcontaduria.co</div>
-            </div>
+            <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div class="ci-lbl">Correo electrónico</div><div class="ci-val">naydis@nrcontaduria.co</div></div>
           </div>
           <div class="ci">
-            <div class="ci-ico">
-              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <div class="ci-lbl">Ubicación</div>
-              <div class="ci-val">Medellín · Colombia</div>
-            </div>
+            <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="ci-lbl">Ubicación</div><div class="ci-val">Medellín · Colombia</div></div>
           </div>
         </div>
       </div>
@@ -542,7 +588,7 @@
             <label>Mensaje</label>
             <textarea placeholder="Cuéntenos brevemente su situación o consulta..."></textarea>
           </div>
-          <button class="form-btn">Enviar solicitud</button>
+          <button class="form-btn" type="submit"><span>Enviar solicitud</span></button>
         </form>
       </div>
     </div>
@@ -567,25 +613,151 @@
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
+/* ── PROGRESS BAR ── */
+const prog = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  prog.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+});
+
+/* ── NAV ── */
+const nav = document.getElementById('main-nav');
+setTimeout(() => nav.classList.add('visible'), 200);
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+/* ── HERO ENTRANCE ── */
+const heroTl = gsap.timeline({ delay: 0.3 });
+heroTl
+  .to('#hero-eyebrow', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' })
+  .to('.h1-inner',     { y: '0%', duration: 1.0, stagger: 0.12, ease: 'power4.out' }, '-=0.3')
+  .to('#hero-sub',     { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.4')
+  .to('#hero-actions', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+  .to('#hero-creds',   { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+
+/* ── HERO PHOTO PARALLAX ── */
+window.addEventListener('scroll', () => {
+  const ph = document.getElementById('hero-photo');
+  if (ph) ph.style.transform = `translateY(${window.scrollY * 0.15}px) scale(1.05)`;
+});
+
+/* ── ABOUT PHOTO PARALLAX ── */
+ScrollTrigger.create({
+  trigger: '.about',
+  start: 'top bottom', end: 'bottom top',
+  onUpdate: (self) => {
+    const ph = document.getElementById('about-photo');
+    if (ph) ph.style.transform = `translateY(${(self.progress - 0.5) * -30}px)`;
+  }
+});
+
+/* ── TICKER ── */
+const tickData = [
+  { n: 'TP 148392-T', l: 'Tarjeta Profesional' },
+  { n: '180+',        l: 'Clientes activos'    },
+  { n: 'NIIF',        l: 'Estándar contable'   },
+  { n: '12 años',     l: 'De experiencia'      },
+  { n: '98%',         l: 'Tasa de retención'   },
+  { n: 'DIAN',        l: 'Asesoría especializada'},
+  { n: 'U. Antioquia',l: 'Formación académica' },
+  { n: '$2.400M+',    l: 'En activos gestionados'},
+];
+const tEl = document.getElementById('ticker-track');
+let tHTML = '';
+for (let i = 0; i < 3; i++) {
+  tickData.forEach(d => {
+    tHTML += `<div class="tick-item"><span class="tick-num">${d.n}</span><span class="tick-lbl">${d.l}</span><span class="tick-sep"></span></div>`;
+  });
+}
+tEl.innerHTML = tHTML;
+
+/* ── SCROLL REVEALS ── */
 gsap.utils.toArray('.reveal').forEach(el => {
   gsap.fromTo(el,
     { opacity: 0, y: 28 },
-    { opacity: 1, y: 0, duration: 0.75, ease: 'power2.out',
+    { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
       scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' } }
   );
 });
 
+/* ── SERVICE CARD 3D TILT ── */
+document.querySelectorAll('.srv-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width  - 0.5;
+    const y = (e.clientY - r.top)  / r.height - 0.5;
+    card.style.transform = `perspective(800px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateZ(4px)`;
+    card.style.transition = 'none';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.transition = 'background 0.25s, box-shadow 0.25s, transform 0.5s ease';
+  });
+});
+
+/* ── COUNTERS ── */
 gsap.utils.toArray('.counter').forEach(el => {
   const target = parseInt(el.dataset.target);
   ScrollTrigger.create({
     trigger: el, start: 'top 82%',
     onEnter: () => {
       gsap.to({ v: 0 }, {
-        v: target, duration: 2, ease: 'power2.out',
+        v: target, duration: 2.2, ease: 'power2.out',
         onUpdate: function() { el.textContent = Math.round(this.targets()[0].v).toLocaleString('es-CO'); }
       });
     }
   });
+});
+
+/* ── PROCESS LINE DRAW ── */
+ScrollTrigger.create({
+  trigger: '#process-steps',
+  start: 'top 70%',
+  onEnter: () => {
+    document.getElementById('process-line-fill').style.width = '100%';
+    ['step-1','step-2','step-3','step-4'].forEach((id, i) => {
+      setTimeout(() => document.getElementById(id)?.classList.add('active'), i * 280);
+    });
+  }
+});
+
+/* ── TESTIMONIALS MARQUEE ── */
+const reviews = [
+  { initials:'CR', name:'Carlos Restrepo',     role:'Gerente · Importadora Restrepo & Hijos · Medellín', dark: true,
+    text: '"Llevamos tres años con Naydis y la tranquilidad de saber que todo está en orden no tiene precio. Detectó un error en declaraciones anteriores que nos ahorró más de $18 millones."' },
+  { initials:'MP', name:'María Paula Jiménez', role:'Directora Financiera · Constructora Andina · Medellín',
+    text: '"La implementación NIIF fue impecable. Cumplimos con todo sin traumatismos y con claridad en cada paso del proceso."' },
+  { initials:'AF', name:'Andrés Felipe Mora',  role:'Médico independiente · Cali',
+    text: '"Como médico independiente siempre temí la renta. Con Naydis el proceso es simple y siempre termino pagando menos de lo esperado."' },
+  { initials:'DL', name:'Diana López',         role:'Gerente · Agencia DL Comunicaciones · Medellín',
+    text: '"Nos acompañó en la transición a persona jurídica. Fue un proceso complejo y lo manejó con una claridad impresionante."' },
+  { initials:'JM', name:'Jorge Martínez',      role:'Socio · Firma de Arquitectura · Bogotá',
+    text: '"La asesoría ante la DIAN fue crucial. Respondió el requerimiento en tiempo récord y con argumentos técnicos sólidos."' },
+];
+const mq = document.getElementById('marquee-track');
+let mHTML = '';
+for (let i = 0; i < 2; i++) {
+  reviews.forEach(r => {
+    mHTML += `
+      <div class="t-card${r.dark ? ' dark' : ''}">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">${r.text}</p>
+        <div class="t-author">
+          <div class="t-av">${r.initials}</div>
+          <div><div class="t-name">${r.name}</div><div class="t-role">${r.role}</div></div>
+        </div>
+      </div>`;
+  });
+}
+mq.innerHTML = mHTML;
+
+/* ── MAGNETIC BUTTONS ── */
+document.querySelectorAll('.btn-primary, .nav-cta').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r = btn.getBoundingClientRect();
+    const x = (e.clientX - r.left - r.width  / 2) * 0.2;
+    const y = (e.clientY - r.top  - r.height / 2) * 0.25;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+  });
+  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
 });
 </script>
 </body>
