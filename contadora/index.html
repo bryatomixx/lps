@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Naydis Rodriguez · Contadora Pública · Barranquilla</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="preload" as="image" href="doc-images/image1.jpeg" fetchpriority="high">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -80,16 +82,17 @@
       color: var(--purple); margin-bottom: 22px;
       display: flex; align-items: center; gap: 12px;
       opacity: 0; transform: translateY(10px);
+      will-change: opacity, transform;
     }
     .hero-eyebrow::after { content: ''; width: 36px; height: 1px; background: var(--purple); }
 
     .hero-h1 { font-family: var(--serif); font-size: clamp(2.8rem, 4vw, 4rem); font-weight: 600; line-height: 1.1; color: var(--ink); margin-bottom: 24px; }
     .h1-line { display: block; overflow: hidden; }
-    .h1-inner { display: block; transform: translateY(110%); will-change: transform; }
+    .h1-inner { display: block; transform: translateY(110%); will-change: transform; backface-visibility: hidden; }
     .h1-inner em { font-style: italic; color: var(--purple); }
 
-    .hero-sub { font-size: 0.97rem; color: var(--mid); line-height: 1.75; max-width: 420px; margin-bottom: 40px; opacity: 0; }
-    .hero-actions { display: flex; gap: 20px; align-items: center; margin-bottom: 52px; opacity: 0; }
+    .hero-sub { font-size: 0.97rem; color: var(--mid); line-height: 1.75; max-width: 420px; margin-bottom: 40px; opacity: 0; will-change: opacity; }
+    .hero-actions { display: flex; gap: 20px; align-items: center; margin-bottom: 52px; opacity: 0; will-change: opacity; }
 
     .btn-primary {
       background: var(--purple); color: #fff; padding: 14px 30px; border-radius: 4px;
@@ -106,7 +109,7 @@
     .btn-link::after { content: '→'; transition: transform 0.2s; }
     .btn-link:hover::after { transform: translateX(4px); }
 
-    .hero-creds { border-top: 1px solid var(--border); padding-top: 28px; display: flex; gap: 36px; opacity: 0; }
+    .hero-creds { border-top: 1px solid var(--border); padding-top: 28px; display: flex; gap: 36px; opacity: 0; will-change: opacity; }
     .cred-label { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); margin-bottom: 4px; }
     .cred-val { font-size: 0.84rem; font-weight: 500; color: var(--mid); }
 
@@ -354,6 +357,12 @@
     }
     .soc-pill:hover { border-color: var(--purple); color: var(--purple); background: var(--purple-bg); }
 
+    /* ── BELOW-FOLD PAINT DEFERRAL ── */
+    .services, .about, .numbers, .process, .recursos, .testimonials, .contact {
+      content-visibility: auto;
+      contain-intrinsic-size: 0 600px;
+    }
+
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); }
 
@@ -428,7 +437,7 @@
     </div>
   </div>
   <div class="hero-visual">
-    <img class="hero-photo" id="hero-photo" src="doc-images/image1.jpeg" alt="Naydis Rodriguez · Contadora Pública">
+    <img class="hero-photo" id="hero-photo" src="doc-images/image1.jpeg" alt="Naydis Rodriguez · Contadora Pública" fetchpriority="high" decoding="async">
     <div class="hero-strip">
       <div class="hs">
         <div class="hs-n">180<em>+</em></div>
@@ -757,33 +766,44 @@
 </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
 gsap.registerPlugin(ScrollTrigger);
 
 /* ── PROGRESS BAR ── */
 const prog = document.getElementById('progress');
 window.addEventListener('scroll', () => {
   prog.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
-});
+}, { passive: true });
 
 /* ── NAV ── */
 const nav = document.getElementById('main-nav');
 setTimeout(() => nav.classList.add('visible'), 200);
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
 
-/* ── HERO ENTRANCE ── */
-const heroTl = gsap.timeline({ delay: 0.3 });
-heroTl
-  .to('#hero-eyebrow', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' })
-  .to('.h1-inner',     { y: '0%', duration: 1.0, stagger: 0.12, ease: 'power4.out' }, '-=0.3')
-  .to('#hero-sub',     { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.4')
-  .to('#hero-actions', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.4')
-  .to('#hero-creds',   { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+/* ── HERO ENTRANCE — wait for image decode so animation is jank-free ── */
+const heroImg = document.getElementById('hero-photo');
+const runHeroAnim = () => {
+  requestAnimationFrame(() => {
+    const heroTl = gsap.timeline({ delay: 0.15 });
+    heroTl
+      .to('#hero-eyebrow', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' })
+      .to('.h1-inner',     { y: '0%', duration: 1.0, stagger: 0.12, ease: 'power4.out' }, '-=0.3')
+      .to('#hero-sub',     { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.4')
+      .to('#hero-actions', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+      .to('#hero-creds',   { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+  });
+};
+if (heroImg.complete) {
+  runHeroAnim();
+} else {
+  heroImg.decode().then(runHeroAnim).catch(runHeroAnim);
+}
 
 /* ── HERO PHOTO PARALLAX ── */
+const heroPhEl = document.getElementById('hero-photo');
 window.addEventListener('scroll', () => {
-  const ph = document.getElementById('hero-photo');
-  if (ph) ph.style.transform = `translateY(${window.scrollY * 0.15}px) scale(1.05)`;
-});
+  heroPhEl.style.transform = `translateY(${window.scrollY * 0.15}px) scale(1.05)`;
+}, { passive: true });
 
 /* ── ABOUT PHOTO PARALLAX ── */
 ScrollTrigger.create({
@@ -915,6 +935,8 @@ document.querySelectorAll('.btn-primary, .nav-cta').forEach(btn => {
   });
   btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
 });
+
+}); // DOMContentLoaded
 </script>
 </body>
 </html>
