@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Naydis Rodriguez · Contadora Pública · Medellín</title>
+  <title>Naydis Rodriguez · Contadora Pública · Barranquilla</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -17,8 +17,8 @@
       --ink:      #0A1628;
       --mid:      #4A5568;
       --light:    #A0AEC0;
-      --purple:   #7A20B0;
-      --purple-bg:#F3EAFA;
+      --purple:   #8951FD;
+      --purple-bg:#F0EAFF;
       --copper:   #B8722E;
       --border:   #E2E8F0;
       --serif:    'Cormorant Garamond', serif;
@@ -36,7 +36,7 @@
     #progress {
       position: fixed; top: 0; left: 0; z-index: 9999;
       height: 2px; width: 0%;
-      background: linear-gradient(to right, var(--purple), #B060F0);
+      background: linear-gradient(to right, var(--purple), #B080FF);
       transition: width 0.06s linear;
       pointer-events: none;
     }
@@ -53,7 +53,8 @@
     }
     nav.visible { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s; }
     nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
-    .nav-logo { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); }
+    .nav-logo img { height: 36px; width: 36px; border-radius: 50%; object-fit: cover; }
     .nav-logo span { color: var(--purple); }
     .nav-links { display: flex; gap: 32px; list-style: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--mid); }
     .nav-links a { position: relative; transition: color 0.2s; }
@@ -61,7 +62,7 @@
     .nav-links a:hover { color: var(--purple); }
     .nav-links a:hover::after { width: 100%; }
     .nav-cta { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: var(--purple); color: #fff; padding: 10px 22px; border-radius: 4px; transition: background 0.2s, transform 0.2s; }
-    .nav-cta:hover { background: #6518A0; transform: translateY(-1px); }
+    .nav-cta:hover { background: #7040E0; transform: translateY(-1px); }
 
     /* ── HERO ── */
     .hero {
@@ -95,7 +96,7 @@
       font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
       position: relative; overflow: hidden; transition: transform 0.2s;
     }
-    .btn-primary::before { content: ''; position: absolute; inset: 0; background: #6518A0; transform: translateX(-101%); transition: transform 0.35s ease; }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: #7040E0; transform: translateX(-101%); transition: transform 0.35s ease; }
     .btn-primary:hover { transform: translateY(-2px); }
     .btn-primary:hover::before { transform: translateX(0); }
     .btn-primary span { position: relative; z-index: 1; }
@@ -158,7 +159,7 @@
     }
     .srv-card::before {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(122,32,176,0.05) 0%, transparent 60%);
+      background: linear-gradient(135deg, rgba(137,81,253,0.05) 0%, transparent 60%);
       opacity: 0; transition: opacity 0.35s;
     }
     .srv-card:hover { background: var(--purple-bg); }
@@ -167,11 +168,11 @@
     .srv-card:nth-child(4), .srv-card:nth-child(5), .srv-card:nth-child(6) { border-bottom: none; }
     .srv-ico {
       width: 44px; height: 44px; border-radius: 8px;
-      background: var(--purple-bg); border: 1px solid rgba(122,32,176,0.2);
+      background: var(--purple-bg); border: 1px solid rgba(137,81,253,0.2);
       display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
       transition: transform 0.3s, background 0.3s;
     }
-    .srv-card:hover .srv-ico { transform: scale(1.1) rotate(-4deg); background: rgba(122,32,176,0.15); }
+    .srv-card:hover .srv-ico { transform: scale(1.1) rotate(-4deg); background: rgba(137,81,253,0.15); }
     .srv-ico svg { width: 20px; height: 20px; stroke: var(--purple); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
     .srv-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; line-height: 1.25; position: relative; z-index: 1; }
     .srv-desc { font-size: 0.87rem; color: var(--mid); line-height: 1.65; position: relative; z-index: 1; }
@@ -276,14 +277,14 @@
       font-family: var(--sans); font-size: 0.89rem; color: var(--ink); background: var(--white); outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-    input:focus, select:focus, textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(122,32,176,0.08); }
+    input:focus, select:focus, textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(137,81,253,0.08); }
     textarea { height: 116px; resize: none; }
     .form-btn {
       width: 100%; padding: 15px; background: var(--purple); color: #fff; border: none; border-radius: 4px;
       font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
       cursor: pointer; margin-top: 8px; position: relative; overflow: hidden; transition: transform 0.2s;
     }
-    .form-btn::before { content: ''; position: absolute; inset: 0; background: #6518A0; transform: translateX(-101%); transition: transform 0.35s ease; }
+    .form-btn::before { content: ''; position: absolute; inset: 0; background: #7040E0; transform: translateX(-101%); transition: transform 0.35s ease; }
     .form-btn:hover { transform: translateY(-1px); }
     .form-btn:hover::before { transform: translateX(0); }
     .form-btn span { position: relative; z-index: 1; }
@@ -318,17 +319,17 @@
 
     /* ── RECURSOS ── */
     .recursos { padding: 100px 0; background: var(--ink); }
-    .recursos .section-tag { color: rgba(122,32,176,0.9); }
+    .recursos .section-tag { color: rgba(137,81,253,0.9); }
     .recursos .section-title { color: #fff; }
     .rec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .rec-card {
       background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
       padding: 36px 30px; transition: background 0.25s, border-color 0.25s, transform 0.25s;
     }
-    .rec-card:hover { background: rgba(122,32,176,0.12); border-color: rgba(122,32,176,0.4); transform: translateY(-4px); }
+    .rec-card:hover { background: rgba(137,81,253,0.12); border-color: rgba(137,81,253,0.4); transform: translateY(-4px); }
     .rec-ico {
       width: 44px; height: 44px; border-radius: 8px;
-      background: rgba(122,32,176,0.2); border: 1px solid rgba(122,32,176,0.3);
+      background: rgba(137,81,253,0.2); border: 1px solid rgba(137,81,253,0.3);
       display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
     }
     .rec-ico svg { width: 20px; height: 20px; stroke: var(--purple); }
@@ -386,7 +387,7 @@
 
 <!-- NAV -->
 <nav id="main-nav">
-  <div class="nav-logo">Naydis <span>Rodriguez</span></div>
+  <div class="nav-logo"><img src="logo.png" alt="NR">Naydis <span>Rodriguez</span></div>
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -545,7 +546,7 @@
         </div>
         <div class="about-reg">
           <strong>Tarjeta Profesional No. 304087-T</strong>
-          Expedida por la Junta Central de Contadores — vigente · Medellín.
+          Expedida por la Junta Central de Contadores — vigente · Barranquilla.
         </div>
       </div>
     </div>
@@ -686,7 +687,7 @@
           </div>
           <div class="ci">
             <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div><div class="ci-lbl">Ubicación</div><div class="ci-val">Medellín · Colombia</div></div>
+            <div><div class="ci-lbl">Ubicación</div><div class="ci-val">Barranquilla · Colombia</div></div>
           </div>
           <div class="ci-social">
             <a href="https://www.tiktok.com/@naydis_contadora" target="_blank" rel="noopener" class="soc-pill">
@@ -742,8 +743,8 @@
 <footer>
   <div class="container">
     <div class="foot">
-      <div class="foot-logo">Naydis <span>Rodriguez</span></div>
-      <div class="foot-copy">© 2025 · TP 304087-T · Medellín, Colombia</div>
+      <div class="foot-logo" style="display:flex;align-items:center;gap:9px;"><img src="logo.png" alt="NR" style="height:28px;width:28px;border-radius:50%;object-fit:cover;">Naydis <span>Rodriguez</span></div>
+      <div class="foot-copy">© 2025 · TP 304087-T · Barranquilla, Colombia</div>
       <div class="foot-links">
         <a href="#servicios">Servicios</a>
         <a href="#recursos">Recursos</a>
@@ -866,13 +867,13 @@ ScrollTrigger.create({
 
 /* ── TESTIMONIALS MARQUEE ── */
 const reviews = [
-  { initials:'CR', name:'Carlos Restrepo',     role:'Gerente · Importadora Restrepo & Hijos · Medellín', dark: true,
+  { initials:'CR', name:'Carlos Restrepo',     role:'Gerente · Importadora Restrepo & Hijos · Barranquilla', dark: true,
     text: '"Llevamos tres años con Naydis y la tranquilidad de saber que todo está en orden no tiene precio. Detectó un error en declaraciones anteriores que nos ahorró más de $18 millones."' },
-  { initials:'MP', name:'María Paula Jiménez', role:'Directora Financiera · Constructora Andina · Medellín',
+  { initials:'MP', name:'María Paula Jiménez', role:'Directora Financiera · Constructora Andina · Barranquilla',
     text: '"La implementación NIIF fue impecable. Cumplimos con todo sin traumatismos y con claridad en cada paso del proceso."' },
   { initials:'AF', name:'Andrés Felipe Mora',  role:'Médico independiente · Cali',
     text: '"Como médico independiente siempre temí la renta. Con Naydis el proceso es simple y siempre termino pagando menos de lo esperado."' },
-  { initials:'DL', name:'Diana López',         role:'Gerente · Agencia DL Comunicaciones · Medellín',
+  { initials:'DL', name:'Diana López',         role:'Gerente · Agencia DL Comunicaciones · Barranquilla',
     text: '"Nos acompañó en la transición a persona jurídica. Fue un proceso complejo y lo manejó con una claridad impresionante."' },
   { initials:'JM', name:'Jorge Martínez',      role:'Socio · Firma de Arquitectura · Bogotá',
     text: '"La asesoría ante la DIAN fue crucial. Respondió el requerimiento en tiempo récord y con argumentos técnicos sólidos."' },
