@@ -297,6 +297,62 @@
     .foot-links { display: flex; gap: 24px; font-size: 0.76rem; color: rgba(255,255,255,0.35); }
     .foot-links a:hover { color: var(--purple); }
 
+    /* ── SERVICE TABS ── */
+    .srv-tabs { display: flex; gap: 8px; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 0; }
+    .srv-tab {
+      padding: 12px 28px; border: none; background: none; cursor: pointer;
+      font-family: var(--sans); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--light); border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .srv-tab span { font-weight: 400; text-transform: none; letter-spacing: 0; }
+    .srv-tab.active { color: var(--purple); border-bottom-color: var(--purple); }
+    .srv-tab:hover:not(.active) { color: var(--mid); }
+    .srv-panel { display: none; }
+    .srv-panel.active { display: block; }
+    .srv-grid-6 { grid-template-columns: repeat(3, 1fr); }
+    .srv-grid-4 { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 960px) {
+      .srv-grid-4 { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── RECURSOS ── */
+    .recursos { padding: 100px 0; background: var(--ink); }
+    .recursos .section-tag { color: rgba(122,32,176,0.9); }
+    .recursos .section-title { color: #fff; }
+    .rec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .rec-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+      padding: 36px 30px; transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .rec-card:hover { background: rgba(122,32,176,0.12); border-color: rgba(122,32,176,0.4); transform: translateY(-4px); }
+    .rec-ico {
+      width: 44px; height: 44px; border-radius: 8px;
+      background: rgba(122,32,176,0.2); border: 1px solid rgba(122,32,176,0.3);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
+    }
+    .rec-ico svg { width: 20px; height: 20px; stroke: var(--purple); }
+    .rec-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple); margin-bottom: 10px; }
+    .rec-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 12px; line-height: 1.35; }
+    .rec-desc { font-size: 0.86rem; color: rgba(255,255,255,0.5); line-height: 1.68; margin-bottom: 24px; }
+    .rec-link { font-size: 0.8rem; font-weight: 600; color: var(--purple); transition: letter-spacing 0.2s; display: inline-block; }
+    .rec-link:hover { letter-spacing: 0.04em; }
+    @media (max-width: 960px) {
+      .rec-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── SOCIAL PILLS ── */
+    .ci-social { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+    .soc-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 100px;
+      border: 1px solid var(--border); color: var(--mid);
+      font-size: 0.78rem; font-weight: 500;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      width: fit-content;
+    }
+    .soc-pill:hover { border-color: var(--purple); color: var(--purple); background: var(--purple-bg); }
+
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); }
 
@@ -335,6 +391,7 @@
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#sobre-mi">Sobre mí</a></li>
     <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#recursos">Recursos</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <a href="#contacto" class="nav-cta">Consulta gratuita</a>
@@ -343,7 +400,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <div class="hero-eyebrow" id="hero-eyebrow">Contadora Pública · TP 148392-T</div>
+    <div class="hero-eyebrow" id="hero-eyebrow">Contadora Pública · TP 304087-T</div>
     <h1 class="hero-h1">
       <span class="h1-line"><span class="h1-inner">Finanzas claras.</span></span>
       <span class="h1-line"><span class="h1-inner"><em>Decisiones</em></span></span>
@@ -357,11 +414,11 @@
     <div class="hero-creds" id="hero-creds">
       <div>
         <div class="cred-label">Registro profesional</div>
-        <div class="cred-val">TP 148392-T · JCE</div>
+        <div class="cred-val">TP 304087-T · JCE</div>
       </div>
       <div>
         <div class="cred-label">Formación</div>
-        <div class="cred-val">Universidad de Antioquia</div>
+        <div class="cred-val">CUES · Salamanca</div>
       </div>
       <div>
         <div class="cred-label">Estándar</div>
@@ -370,14 +427,14 @@
     </div>
   </div>
   <div class="hero-visual">
-    <img class="hero-photo" id="hero-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80&fit=crop&crop=faces,top" alt="Naydis Rodriguez · Contadora Pública">
+    <img class="hero-photo" id="hero-photo" src="doc-images/image1.jpeg" alt="Naydis Rodriguez · Contadora Pública">
     <div class="hero-strip">
       <div class="hs">
         <div class="hs-n">180<em>+</em></div>
         <div class="hs-l">Clientes activos</div>
       </div>
       <div class="hs">
-        <div class="hs-n">12 <em>años</em></div>
+        <div class="hs-n">7 <em>años</em></div>
         <div class="hs-l">De experiencia</div>
       </div>
     </div>
@@ -395,38 +452,68 @@
     <div class="section-header reveal">
       <div class="section-tag">Área de práctica</div>
       <h2 class="section-title">Servicios <em>especializados</em></h2>
-      <p class="section-sub">Soluciones contables y tributarias diseñadas para el contexto empresarial colombiano.</p>
+      <p class="section-sub">Soluciones contables y tributarias diseñadas para cada perfil — persona natural o empresa.</p>
     </div>
-    <div class="srv-grid">
-      <div class="srv-card reveal">
-        <div class="srv-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <div class="srv-name">Contabilidad General</div>
-        <div class="srv-desc">Registro, clasificación y análisis de operaciones contables bajo estándares NIIF para Pymes o plenas, con reportes periódicos y estados financieros completos.</div>
+    <div class="srv-tabs reveal">
+      <button class="srv-tab active" data-tab="pymes">Pymes <span>&amp; Empresas</span></button>
+      <button class="srv-tab" data-tab="natural">Persona <span>Natural</span></button>
+    </div>
+    <div class="srv-panel active" id="panel-pymes">
+      <div class="srv-grid srv-grid-6">
+        <div class="srv-card">
+          <div class="srv-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div class="srv-name">Asesoría Contable Integral</div>
+          <div class="srv-desc">Registro, control y análisis de la información contable de tu negocio.</div>
+        </div>
+        <div class="srv-card">
+          <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div class="srv-name">Declaración de Impuestos</div>
+          <div class="srv-desc">Elaboración y presentación de declaraciones fiscales mensuales y anuales.</div>
+        </div>
+        <div class="srv-card">
+          <div class="srv-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div class="srv-name">Gestión Fiscal y Tributaria</div>
+          <div class="srv-desc">Planeación fiscal y cumplimiento de obligaciones tributarias.</div>
+        </div>
+        <div class="srv-card">
+          <div class="srv-ico"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="srv-name">Elaboración de Estados Financieros</div>
+          <div class="srv-desc">Preparación y análisis de estados financieros para la toma de decisiones.</div>
+        </div>
+        <div class="srv-card">
+          <div class="srv-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="srv-name">Nómina y Obligaciones Laborales</div>
+          <div class="srv-desc">Cálculo de nómina, prestaciones y presentación de reportes ante las autoridades.</div>
+        </div>
+        <div class="srv-card">
+          <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <div class="srv-name">Constitución y Formalización</div>
+          <div class="srv-desc">Asesoría en la creación de nuevas empresas y trámites legales correspondientes.</div>
+        </div>
       </div>
-      <div class="srv-card reveal">
-        <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
-        <div class="srv-name">Declaración de Renta</div>
-        <div class="srv-desc">Preparación y presentación de declaraciones para personas naturales y jurídicas, con planificación tributaria para optimizar la carga fiscal dentro del marco legal.</div>
-      </div>
-      <div class="srv-card reveal">
-        <div class="srv-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-        <div class="srv-name">Asesoría DIAN</div>
-        <div class="srv-desc">Representación ante la DIAN en procesos de fiscalización, respuesta a requerimientos ordinarios y especiales, y corrección de declaraciones con criterio técnico.</div>
-      </div>
-      <div class="srv-card reveal">
-        <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <div class="srv-name">Implementación NIIF</div>
-        <div class="srv-desc">Migración y adopción de Normas Internacionales de Información Financiera, diagnóstico de brechas y acompañamiento completo en la transición contable.</div>
-      </div>
-      <div class="srv-card reveal">
-        <div class="srv-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <div class="srv-name">Nómina y Seguridad Social</div>
-        <div class="srv-desc">Liquidación de nómina, aportes parafiscales y seguridad social, manejo de novedades de incapacidad, vacaciones y certificados laborales.</div>
-      </div>
-      <div class="srv-card reveal">
-        <div class="srv-ico"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div class="srv-name">Revisoría Fiscal</div>
-        <div class="srv-desc">Control, vigilancia e inspección de las operaciones económicas con informe a la asamblea de socios, según los requerimientos del Código de Comercio.</div>
+    </div>
+    <div class="srv-panel" id="panel-natural">
+      <div class="srv-grid srv-grid-4">
+        <div class="srv-card">
+          <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div class="srv-name">Declaración Anual de Impuestos</div>
+          <div class="srv-desc">Presentación de declaraciones de persona natural de forma correcta y puntual.</div>
+        </div>
+        <div class="srv-card">
+          <div class="srv-ico"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="srv-name">Análisis de Ingresos y Gastos</div>
+          <div class="srv-desc">Para tomar mejores decisiones sobre tu dinero y optimizar tu situación financiera.</div>
+        </div>
+        <div class="srv-card">
+          <div class="srv-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="srv-name">Gestión de Deudas</div>
+          <div class="srv-desc">Planes para salir de deudas o refinanciarlas con mejores condiciones.</div>
+        </div>
+        <div class="srv-card">
+          <div class="srv-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div class="srv-name">Planeación Financiera</div>
+          <div class="srv-desc">Organiza tu flujo de caja, cotiza a seguridad social y prepárate para declarar renta.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -437,27 +524,27 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-photo-wrap reveal">
-        <img class="about-photo" id="about-photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=700&q=80&fit=crop&crop=faces,top" alt="Naydis Rodriguez">
+        <img class="about-photo" id="about-photo" src="doc-images/image9.jpeg" alt="Naydis Rodriguez">
         <div class="about-badge">
-          <div class="about-badge-n">12</div>
+          <div class="about-badge-n">7</div>
           <div class="about-badge-l">años de<br>experiencia</div>
         </div>
       </div>
       <div class="reveal">
         <div class="section-tag">Sobre mí</div>
-        <h2 class="section-title" style="margin-bottom:20px;">Precisión técnica.<br><em>Compromiso</em> real.</h2>
-        <p class="about-bio">Soy Contadora Pública egresada de la Universidad de Antioquia con especialización en Gerencia Tributaria de EAFIT. Durante más de doce años he acompañado a empresas de distintos sectores — comercio, servicios, construcción y salud — en la gestión de su información financiera con rigor técnico y orientación estratégica desde Medellín.</p>
-        <p class="about-bio">Mi trabajo no se limita a registrar operaciones: analizo, anticipo y propongo. Porque una contabilidad bien llevada no solo cumple con la ley — le da a su negocio una base sólida para crecer.</p>
+        <h2 class="section-title" style="margin-bottom:20px;">Soluciones claras.<br><em>Resultados</em> concretos.</h2>
+        <p class="about-bio">Soy contadora pública y me especializo en brindar asesoría contable, fiscal y financiera a emprendedores, profesionales independientes y empresas. Mi compromiso es ofrecer soluciones claras y prácticas que ayuden a optimizar recursos, cumplir con las obligaciones legales y fortalecer el crecimiento de cada negocio.</p>
+        <p class="about-bio">Acompaño a mis clientes en cada etapa, para que tomen decisiones informadas y seguras.</p>
         <div class="about-tags">
           <span class="tag">NIIF Plenas</span>
           <span class="tag">NIIF Pymes</span>
-          <span class="tag">Gerencia Tributaria</span>
-          <span class="tag">INCP</span>
-          <span class="tag">IASB</span>
-          <span class="tag">Revisoría Fiscal</span>
+          <span class="tag">Gestión Tributaria</span>
+          <span class="tag">DIAN</span>
+          <span class="tag">Nómina</span>
+          <span class="tag">Estados Financieros</span>
         </div>
         <div class="about-reg">
-          <strong>Tarjeta Profesional No. 148392-T</strong>
+          <strong>Tarjeta Profesional No. 304087-T</strong>
           Expedida por la Junta Central de Contadores — vigente · Medellín.
         </div>
       </div>
@@ -467,7 +554,7 @@
 
 <!-- NUMBERS -->
 <section class="numbers">
-  <div class="numbers-ghost">180 · 12 · 98%</div>
+  <div class="numbers-ghost">180 · 7 · 98%</div>
   <div class="container">
     <div class="num-grid">
       <div class="num-item reveal">
@@ -475,7 +562,7 @@
         <div class="num-lbl">Clientes activos</div>
       </div>
       <div class="num-item reveal">
-        <div class="num-val"><span class="counter" data-target="12">0</span></div>
+        <div class="num-val"><span class="counter" data-target="7">0</span></div>
         <div class="num-lbl">Años de experiencia</div>
       </div>
       <div class="num-item reveal">
@@ -524,6 +611,48 @@
   </div>
 </section>
 
+<!-- RECURSOS -->
+<section class="recursos" id="recursos">
+  <div class="container">
+    <div class="section-header reveal" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+      <div>
+        <div class="section-tag">Recursos gratuitos</div>
+        <h2 class="section-title">Aprende a <em>manejar</em><br>tus finanzas</h2>
+      </div>
+      <a href="https://www.tiktok.com/@naydis_contadora" target="_blank" rel="noopener" class="btn-primary"><span>Ver todos en TikTok</span></a>
+    </div>
+    <div class="rec-grid">
+      <div class="rec-card reveal">
+        <div class="rec-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="rec-tag">Plantilla</div>
+        <div class="rec-title">Control de gastos mensual</div>
+        <div class="rec-desc">Hoja de cálculo para registrar ingresos y egresos y conocer tu flujo real de caja cada mes.</div>
+        <a href="#contacto" class="rec-link">Solicitar gratis →</a>
+      </div>
+      <div class="rec-card reveal">
+        <div class="rec-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="rec-tag">Guía</div>
+        <div class="rec-title">Cómo declarar renta como independiente</div>
+        <div class="rec-desc">Paso a paso para trabajadores independientes que deben presentar declaración de renta ante la DIAN.</div>
+        <a href="#contacto" class="rec-link">Solicitar gratis →</a>
+      </div>
+      <div class="rec-card reveal">
+        <div class="rec-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="rec-tag">Cartilla</div>
+        <div class="rec-title">Obligaciones tributarias para Pymes</div>
+        <div class="rec-desc">Resumen de las principales fechas y responsabilidades tributarias que toda empresa debe cumplir en Colombia.</div>
+        <a href="#contacto" class="rec-link">Solicitar gratis →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="testimonials">
   <div class="testi-head reveal">
@@ -549,15 +678,25 @@
         <div class="ci-list">
           <div class="ci">
             <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 5.53 5.53l.36-.36a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 20.5 16a2 2 0 0 1 1.5.92z"/></svg></div>
-            <div><div class="ci-lbl">WhatsApp</div><div class="ci-val">+57 314 782 9014</div></div>
+            <div><div class="ci-lbl">WhatsApp</div><div class="ci-val">+57 3011929063</div></div>
           </div>
           <div class="ci">
             <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><div class="ci-lbl">Correo electrónico</div><div class="ci-val">naydis@nrcontaduria.co</div></div>
+            <div><div class="ci-lbl">Correo electrónico</div><div class="ci-val">Naydisrodriguez@gmail.com</div></div>
           </div>
           <div class="ci">
             <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
             <div><div class="ci-lbl">Ubicación</div><div class="ci-val">Medellín · Colombia</div></div>
+          </div>
+          <div class="ci-social">
+            <a href="https://www.tiktok.com/@naydis_contadora" target="_blank" rel="noopener" class="soc-pill">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34v-7.4a8.16 8.16 0 0 0 4.77 1.52V5.97a4.85 4.85 0 0 1-1-.28z"/></svg>
+              @naydis_contadora
+            </a>
+            <a href="https://www.instagram.com/naydisrodriguez_contadora" target="_blank" rel="noopener" class="soc-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              @naydisrodriguez_contadora
+            </a>
           </div>
         </div>
       </div>
@@ -575,12 +714,16 @@
             <label>Tipo de servicio</label>
             <select>
               <option value="">Seleccione un servicio</option>
-              <option>Contabilidad General</option>
-              <option>Declaración de Renta</option>
-              <option>Asesoría DIAN</option>
-              <option>Implementación NIIF</option>
-              <option>Nómina y Seguridad Social</option>
-              <option>Revisoría Fiscal</option>
+              <option>Asesoría Contable Integral (Pyme)</option>
+              <option>Declaración de Impuestos (Pyme)</option>
+              <option>Gestión Fiscal y Tributaria</option>
+              <option>Estados Financieros</option>
+              <option>Nómina y Obligaciones Laborales</option>
+              <option>Constitución de Empresa</option>
+              <option>Declaración Anual (Persona Natural)</option>
+              <option>Análisis de Ingresos y Gastos</option>
+              <option>Gestión de Deudas</option>
+              <option>Planeación Financiera Independientes</option>
               <option>Otro</option>
             </select>
           </div>
@@ -600,10 +743,12 @@
   <div class="container">
     <div class="foot">
       <div class="foot-logo">Naydis <span>Rodriguez</span></div>
-      <div class="foot-copy">© 2025 · TP 148392-T · Medellín, Colombia</div>
+      <div class="foot-copy">© 2025 · TP 304087-T · Medellín, Colombia</div>
       <div class="foot-links">
         <a href="#servicios">Servicios</a>
-        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#recursos">Recursos</a>
+        <a href="https://www.tiktok.com/@naydis_contadora" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.instagram.com/naydisrodriguez_contadora" target="_blank" rel="noopener">Instagram</a>
         <a href="#contacto">Contacto</a>
       </div>
     </div>
@@ -651,13 +796,13 @@ ScrollTrigger.create({
 
 /* ── TICKER ── */
 const tickData = [
-  { n: 'TP 148392-T', l: 'Tarjeta Profesional' },
+  { n: 'TP 304087-T', l: 'Tarjeta Profesional' },
   { n: '180+',        l: 'Clientes activos'    },
   { n: 'NIIF',        l: 'Estándar contable'   },
-  { n: '12 años',     l: 'De experiencia'      },
+  { n: '7 años',      l: 'De experiencia'      },
   { n: '98%',         l: 'Tasa de retención'   },
   { n: 'DIAN',        l: 'Asesoría especializada'},
-  { n: 'U. Antioquia',l: 'Formación académica' },
+  { n: 'CUES',        l: 'Formación académica' },
   { n: '$2.400M+',    l: 'En activos gestionados'},
 ];
 const tEl = document.getElementById('ticker-track');
@@ -748,6 +893,16 @@ for (let i = 0; i < 2; i++) {
   });
 }
 mq.innerHTML = mHTML;
+
+/* ── SERVICE TABS ── */
+document.querySelectorAll('.srv-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.srv-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.srv-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
 
 /* ── MAGNETIC BUTTONS ── */
 document.querySelectorAll('.btn-primary, .nav-cta').forEach(btn => {
