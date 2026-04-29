@@ -345,17 +345,29 @@
       .rec-grid { grid-template-columns: 1fr; }
     }
 
-    /* ── SOCIAL PILLS ── */
-    .ci-social { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
-    .soc-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 16px; border-radius: 100px;
-      border: 1px solid var(--border); color: var(--mid);
-      font-size: 0.78rem; font-weight: 500;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-      width: fit-content;
+    /* ── SOCIAL ICONS ── */
+    .ci-social { display: flex; gap: 12px; margin-top: 8px; align-items: center; }
+    .soc-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: transform 0.22s, box-shadow 0.22s;
+      text-decoration: none;
     }
-    .soc-pill:hover { border-color: var(--purple); color: var(--purple); background: var(--purple-bg); }
+    .soc-icon:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+    .soc-icon svg { display: block; }
+    .soc-icon-tiktok { background: #010101; }
+    .soc-icon-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+    /* Footer social icons (smaller, on dark bg) */
+    .foot-social { display: flex; gap: 10px; align-items: center; }
+    .foot-soc {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: transform 0.2s, opacity 0.2s;
+      text-decoration: none; opacity: 0.85;
+    }
+    .foot-soc:hover { transform: translateY(-2px); opacity: 1; }
+    .foot-soc-tiktok { background: #010101; border: 1px solid rgba(255,255,255,0.12); }
+    .foot-soc-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
 
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); }
@@ -696,14 +708,16 @@
             <div><div class="ci-lbl">Ubicación</div><div class="ci-val">Barranquilla · Colombia</div></div>
           </div>
           <div class="ci-social">
-            <a href="https://www.tiktok.com/@naydis_contadora" target="_blank" rel="noopener" class="soc-pill">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34v-7.4a8.16 8.16 0 0 0 4.77 1.52V5.97a4.85 4.85 0 0 1-1-.28z"/></svg>
-              @naydis_contadora
+            <a href="https://www.tiktok.com/@naydis_contadora" target="_blank" rel="noopener" class="soc-icon soc-icon-tiktok" title="@naydis_contadora">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34v-7.4a8.16 8.16 0 0 0 4.77 1.52V5.97a4.85 4.85 0 0 1-1-.28z"/></svg>
             </a>
-            <a href="https://www.instagram.com/naydisrodriguez_contadora" target="_blank" rel="noopener" class="soc-pill">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-              @naydisrodriguez_contadora
+            <a href="https://www.instagram.com/naydisrodriguez_contadora" target="_blank" rel="noopener" class="soc-icon soc-icon-instagram" title="@naydisrodriguez_contadora">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
+            <div style="font-size:0.76rem;color:var(--light);line-height:1.5;">
+              <div>@naydis_contadora</div>
+              <div>@naydisrodriguez_contadora</div>
+            </div>
           </div>
         </div>
       </div>
@@ -751,11 +765,17 @@
     <div class="foot">
       <div class="foot-logo" style="display:flex;align-items:center;gap:9px;"><img src="logo.png" alt="NR" style="height:28px;width:28px;border-radius:50%;object-fit:cover;">Naydis <span>Rodriguez</span></div>
       <div class="foot-copy">© 2025 · TP 304087-T · Barranquilla, Colombia</div>
+      <div class="foot-social">
+        <a href="https://www.tiktok.com/@naydis_contadora" target="_blank" rel="noopener" class="foot-soc foot-soc-tiktok" title="@naydis_contadora">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34v-7.4a8.16 8.16 0 0 0 4.77 1.52V5.97a4.85 4.85 0 0 1-1-.28z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/naydisrodriguez_contadora" target="_blank" rel="noopener" class="foot-soc foot-soc-instagram" title="@naydisrodriguez_contadora">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
       <div class="foot-links">
         <a href="#servicios">Servicios</a>
         <a href="#recursos">Recursos</a>
-        <a href="https://www.tiktok.com/@naydis_contadora" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.instagram.com/naydisrodriguez_contadora" target="_blank" rel="noopener">Instagram</a>
         <a href="#contacto">Contacto</a>
       </div>
     </div>
