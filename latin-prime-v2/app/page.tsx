@@ -52,7 +52,6 @@ import AutomationQuiz from "@/components/AutomationQuiz";
 import Solutions from "@/components/Solutions";
 import Process from "@/components/Process";
 import BeforeAfter from "@/components/BeforeAfter";
-import FeaturedTestimonial from "@/components/FeaturedTestimonial";
 import HowWeThink from "@/components/HowWeThink";
 import WhoWeServe from "@/components/WhoWeServe";
 import TechStack from "@/components/TechStack";
@@ -98,11 +97,7 @@ export default function Home() {
         <BeforeAfter />
         <div className="gdiv" />
 
-        {/* 5c. Featured testimonial — single bold proof */}
-        <FeaturedTestimonial />
-        <div className="gdiv" />
-
-        {/* 5d. How we think — methodology / strategic positioning */}
+        {/* 5c. How we think — methodology / strategic positioning */}
         <HowWeThink />
         <div className="gdiv" />
 
