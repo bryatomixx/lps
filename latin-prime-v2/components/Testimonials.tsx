@@ -119,6 +119,7 @@ const testimonials: Testimonial[] = [
       en: "Built for Colombian tax regulation",
       es: "Construida para la regulación tributaria colombiana",
     },
+    photo: "/testimonials/naidys-rodriguez.jpeg",
     initials: "NR",
   },
 
@@ -135,6 +136,7 @@ const testimonials: Testimonial[] = [
       es: "Soy entrenador personal y llegué con nada más que mi experiencia. El equipo de LPS me construyó un website completo, una plataforma para mis cursos de entrenamiento online y una app a la medida de entrenamiento y nutrición para mis clientes. Ya tengo dos clientes nuevos firmados — directo del nuevo sistema. Pasé de ser solo un entrenador a tener un verdadero negocio de coaching, en semanas.",
     },
     result: { en: "2 new clients in weeks", es: "2 nuevos clientes en semanas" },
+    photo: "/testimonials/miguel-zuniga.jpeg",
     initials: "MZ",
   },
 ];
