@@ -23,9 +23,9 @@ import Footer from "@/components/Footer";
 import InternalDiagnostic from "@/components/InternalDiagnostic";
 
 export const metadata = {
-  title: "Agencia de Automatización con IA para Negocios | Latin Prime Systems",
+  title: "Agencia de Automatización con IA para Pequeñas Empresas | Latin Prime Systems",
   description:
-    "Sistemas de IA listos para usar: agentes de voz que responden llamadas 24/7, automatizaciones que hacen seguimiento a cada lead, y software personalizado que opera tu negocio. En vivo en 7–30 días. Garantía de ROI de 90 días.",
+    "Consultoría e implementación de IA bilingüe para pequeñas y medianas empresas. Recupera horas, captura cada lead y opera en piloto automático — en 90 días o no pagas.",
   keywords: [
     "automatización IA negocios",
     "agencia automatización inteligencia artificial",
@@ -56,9 +56,9 @@ export const metadata = {
     url: "https://latinprimesystems.com/es",
     siteName: "Latin Prime Systems",
     title:
-      "Para de Perder Leads. Tu Negocio en Piloto Automático. | Latin Prime Systems",
+      "Agencia de Automatización con IA para Pequeñas Empresas | Latin Prime Systems",
     description:
-      "Agentes de voz IA responden cada llamada. Las automatizaciones hacen seguimiento a cada lead. Software personalizado opera tu negocio. Sistemas listos en 7–30 días. Garantía de ROI de 90 días.",
+      "Consultoría e implementación de IA bilingüe para pequeñas y medianas empresas. Recupera horas, captura cada lead y opera en piloto automático — en 90 días o no pagas.",
     images: [
       {
         url: "https://storage.googleapis.com/msgsndr/0EgKTcd9YvsDKkQqklPo/media/691b4d7d013f3138a3825fc0.webp",
@@ -68,7 +68,20 @@ export const metadata = {
         type: "image/webp",
       },
     ],
-    locale: "es_MX",
+    locale: "es_ES",
+    alternateLocale: ["en_US"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@latinprimesys",
+    creator: "@latinprimesys",
+    title:
+      "Agencia de Automatización con IA para Pequeñas Empresas | Latin Prime Systems",
+    description:
+      "Consultoría e implementación de IA bilingüe para pequeñas y medianas empresas. Recupera horas, captura cada lead y opera en piloto automático — en 90 días o no pagas.",
+    images: [
+      "https://storage.googleapis.com/msgsndr/0EgKTcd9YvsDKkQqklPo/media/691b4d7d013f3138a3825fc0.webp",
+    ],
   },
   robots: { index: true, follow: true },
 };

@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 export const metadata: Metadata = {
   title: "AI Automation Agency for Small Business | Latin Prime Systems",
   description:
-    "Done-for-you AI systems: voice agents answer calls 24/7, automations follow up every lead, and custom software runs your business — live in 7–30 days. 90-Day ROI Guarantee.",
+    "Bilingual AI consulting and automation for small and mid-sized businesses. Recover hours, capture every lead, and run your operation on autopilot — in 90 days or you don't pay.",
   keywords: [
     "AI automation agency",
     "AI automation for small business",
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://latinprimesystems.com",
     siteName: "Latin Prime Systems",
-    title: "Stop Losing Leads. Your Business on Autopilot. | Latin Prime Systems",
+    title: "AI Automation Agency for Small Business | Latin Prime Systems",
     description:
-      "AI voice agents answer every call. Automations follow up every lead. Custom software runs your business. Live in 7–30 days. 90-Day ROI Guarantee.",
+      "Bilingual AI consulting and automation for small and mid-sized businesses. Recover hours, capture every lead, and run your operation on autopilot — in 90 days or you don't pay.",
     images: [
       {
         url: "https://storage.googleapis.com/msgsndr/0EgKTcd9YvsDKkQqklPo/media/691b4d7d013f3138a3825fc0.webp",
@@ -43,6 +43,18 @@ export const metadata: Metadata = {
       },
     ],
     locale: "en_US",
+    alternateLocale: ["es_ES"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@latinprimesys",
+    creator: "@latinprimesys",
+    title: "AI Automation Agency for Small Business | Latin Prime Systems",
+    description:
+      "Bilingual AI consulting and automation for small and mid-sized businesses. Recover hours, capture every lead, and run your operation on autopilot — in 90 days or you don't pay.",
+    images: [
+      "https://storage.googleapis.com/msgsndr/0EgKTcd9YvsDKkQqklPo/media/691b4d7d013f3138a3825fc0.webp",
+    ],
   },
   robots: { index: true, follow: true },
 };
