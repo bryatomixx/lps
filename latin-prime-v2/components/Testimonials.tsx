@@ -8,50 +8,184 @@ import ShinyText from "./ShinyText";
 
 type Lang = "en" | "es";
 
-const testimonials = [
-  {
-    name: "Jesús Martínez",
-    role: "Insurance Agency Owner",
-    photo: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/693c4c63078883d9c5ac7d06.jpeg",
-    quote:
-      "Since we set up the AI voice agent, we haven't missed a single lead. It answers every call, qualifies the client, and books the appointment — even at 11pm. Our close rate went up 40% in the first two months.",
-    result: "+40% close rate",
-  },
-  {
-    name: "Joshua Plaza",
-    role: "Barbershop Owner",
-    photo: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/693ca110cfdc2f1c3a6253b3.jpeg",
-    quote:
-      "I used to spend 2 hours a day just confirming appointments and chasing no-shows. Now the system handles it all automatically. My chair is full every day and I didn't hire anyone.",
-    result: "2 hrs/day saved",
-  },
+interface Testimonial {
+  name: string;
+  role: { en: string; es: string };
+  industry: { en: string; es: string };
+  quote: { en: string; es: string };
+  result: { en: string; es: string };
+  photo?: string;
+  initials: string;
+}
+
+const testimonials: Testimonial[] = [
+  // 1 — Berta Viloria, second case (custom accounting automation)
   {
     name: "Berta Viloria",
-    role: "Accountant & Tax Advisor",
-    photo: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/693c4c9fe91800719e64f8d4.jpeg",
-    quote:
-      "Tax season used to be chaos. Now document collection, client reminders, and follow-ups all happen automatically. I handled 30% more clients this year with the same staff. That's pure profit.",
-    result: "+30% clients served",
+    role: { en: "Accountant & Tax Advisor", es: "Contadora y Asesora Tributaria" },
+    industry: {
+      en: "Tax & Accounting · Medellín, Colombia",
+      es: "Contabilidad e Impuestos · Medellín, Colombia",
+    },
+    quote: {
+      en: "There was one accounting process that used to take me days every month — manual, repetitive, exhausting. The LPS team built me a custom automation and now it runs in under three minutes. Days of work, gone. I didn't even know this kind of thing was possible for a firm my size.",
+      es: "Había un proceso contable que me tomaba días cada mes — manual, repetitivo, agotador. El equipo de LPS me construyó una automatización a la medida y ahora corre en menos de tres minutos. Días de trabajo, eliminados. Yo ni sabía que esto era posible para una firma de mi tamaño.",
+    },
+    result: {
+      en: "From days to <3 minutes",
+      es: "De días a menos de 3 minutos",
+    },
+    photo:
+      "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/693c4c9fe91800719e64f8d4.jpeg",
+    initials: "BV",
   },
+
+  // 2 — Jesús Martínez
+  {
+    name: "Jesús Martínez",
+    role: { en: "Insurance Agency Owner", es: "Dueño de Agencia de Seguros" },
+    industry: { en: "Insurance", es: "Seguros" },
+    quote: {
+      en: "Since we set up the AI voice agent, we haven't missed a single lead. It answers every call, qualifies the client, and books the appointment — even at 11pm. Our close rate went up 40% in the first two months.",
+      es: "Desde que pusimos el agente de voz con IA, no hemos perdido ni un solo prospecto. Contesta cada llamada, califica al cliente y agenda la cita — incluso a las 11pm. Nuestra tasa de cierre subió 40% en los primeros dos meses.",
+    },
+    result: { en: "+40% close rate", es: "+40% tasa de cierre" },
+    photo:
+      "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/693c4c63078883d9c5ac7d06.jpeg",
+    initials: "JM",
+  },
+
+  // 3 — Pedro Rivera
   {
     name: "Pedro Rivera",
-    role: "CabinetWorkx — Contractor",
-    photo: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/693c4cbe8bbf4a4527df2ec0.jpeg",
-    quote:
-      "I'm always on job sites and can't answer my phone. With the missed-call text-back, every missed call gets a response in seconds. I've recovered deals I would have completely lost before.",
-    result: "Never miss a lead",
+    role: { en: "CabinetWorkx — Contractor", es: "CabinetWorkx — Contratista" },
+    industry: {
+      en: "Contractor & Home Services",
+      es: "Contratista y Servicios para el Hogar",
+    },
+    quote: {
+      en: "I'm always on job sites and can't answer my phone. With the missed-call text-back, every missed call gets a response in seconds. I've recovered deals I would have completely lost before.",
+      es: "Siempre estoy en obra y no puedo contestar el teléfono. Con el SMS automático a llamadas perdidas, cada llamada perdida recibe respuesta en segundos. He recuperado trabajos que antes habría perdido por completo.",
+    },
+    result: { en: "Never miss a lead", es: "Cero leads perdidos" },
+    photo:
+      "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/693c4cbe8bbf4a4527df2ec0.jpeg",
+    initials: "PR",
   },
+
+  // 4 — Joshua Plaza
+  {
+    name: "Joshua Plaza",
+    role: { en: "Barbershop Owner", es: "Dueño de Barbería" },
+    industry: { en: "Salon & Barbershop", es: "Salón y Barbería" },
+    quote: {
+      en: "I used to spend 2 hours a day just confirming appointments and chasing no-shows. Now the system handles it all automatically. My chair is full every day and I didn't hire anyone.",
+      es: "Antes gastaba 2 horas al día solo confirmando citas y persiguiendo no-shows. Ahora el sistema lo maneja todo automáticamente. Mi silla está llena todos los días y no contraté a nadie.",
+    },
+    result: { en: "2 hrs/day saved", es: "2 hrs/día ahorradas" },
+    photo:
+      "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/693ca110cfdc2f1c3a6253b3.jpeg",
+    initials: "JP",
+  },
+
+  // 5 — Kerwin Iglesias
   {
     name: "Kerwin Iglesias",
-    role: "Insurance Agency Owner",
-    photo: "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/693c4d003165d977033d76e4.jpeg",
-    quote:
-      "I was skeptical at first. But within 30 days, the system had already recovered $4,200 in policies from dormant leads we thought were dead. The ROI was obvious in the first month.",
-    result: "$4,200 recovered",
+    role: { en: "Insurance Agency Owner", es: "Dueño de Agencia de Seguros" },
+    industry: { en: "Insurance", es: "Seguros" },
+    quote: {
+      en: "I was skeptical at first. But within 30 days, the system had already recovered $4,200 in policies from dormant leads we thought were dead. The ROI was obvious in the first month.",
+      es: "Al principio era escéptico. Pero a los 30 días, el sistema ya había recuperado $4,200 en pólizas de prospectos dormidos que dábamos por perdidos. El ROI fue obvio desde el primer mes.",
+    },
+    result: { en: "$4,200 recovered", es: "$4,200 recuperados" },
+    photo:
+      "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/693c4d003165d977033d76e4.jpeg",
+    initials: "KI",
+  },
+
+  // 6 — Naidys Rodríguez
+  {
+    name: "Naidys Rodríguez",
+    role: { en: "Accountant", es: "Contadora" },
+    industry: {
+      en: "Tax & Accounting · Colombia",
+      es: "Contabilidad e Impuestos · Colombia",
+    },
+    quote: {
+      en: "I'm a Colombian accountant managing dozens of clients with constant tax deadlines. The LPS team built me an automation specifically for our Colombian tax calendar — not a generic template — and from the first weeks the mental load lifted off my shoulders. They actually understood the regulation, the deadlines, and how we work here.",
+      es: "Soy contadora en Colombia manejando decenas de clientes con vencimientos tributarios constantes. El equipo de LPS me construyó una automatización específica para nuestro calendario tributario colombiano — no un template genérico — y desde las primeras semanas la carga mental se me quitó de los hombros. Realmente entendieron la regulación, los vencimientos y cómo trabajamos acá.",
+    },
+    result: {
+      en: "Built for Colombian tax regulation",
+      es: "Construida para la regulación tributaria colombiana",
+    },
+    initials: "NR",
+  },
+
+  // 7 — Miguel Zuñiga
+  {
+    name: "Miguel Zuñiga",
+    role: { en: "Personal Trainer", es: "Entrenador Personal" },
+    industry: {
+      en: "Personal Training & Coaching · Colombia",
+      es: "Entrenamiento Personal y Coaching · Colombia",
+    },
+    quote: {
+      en: "I'm a personal trainer and I came in with nothing but my expertise. The LPS team built me a complete website, a platform for my online training courses, and a custom training and nutrition app for my clients. Two new clients signed up already — directly from the new system. I went from being just a trainer to running a real coaching business, in weeks.",
+      es: "Soy entrenador personal y llegué con nada más que mi experiencia. El equipo de LPS me construyó un website completo, una plataforma para mis cursos de entrenamiento online y una app a la medida de entrenamiento y nutrición para mis clientes. Ya tengo dos clientes nuevos firmados — directo del nuevo sistema. Pasé de ser solo un entrenador a tener un verdadero negocio de coaching, en semanas.",
+    },
+    result: { en: "2 new clients in weeks", es: "2 nuevos clientes en semanas" },
+    initials: "MZ",
   },
 ];
 
-export default function Testimonials({ lang }: { lang?: Lang }) {
+// Avatar — uses photo when available, otherwise gradient initials.
+function Avatar({ tm, size }: { tm: Testimonial; size: number }) {
+  if (tm.photo) {
+    return (
+      <div
+        style={{
+          width: size,
+          height: size,
+          borderRadius: "50%",
+          overflow: "hidden",
+          flexShrink: 0,
+          border: size >= 48 ? "2px solid var(--border2)" : undefined,
+          position: "relative",
+        }}
+      >
+        <Image src={tm.photo} alt={tm.name} fill style={{ objectFit: "cover" }} />
+      </div>
+    );
+  }
+
+  const fontSize = Math.round(size * 0.36);
+  return (
+    <div
+      style={{
+        width: size,
+        height: size,
+        borderRadius: "50%",
+        flexShrink: 0,
+        border: size >= 48 ? "2px solid var(--border2)" : undefined,
+        background: "linear-gradient(135deg, var(--blue), var(--gold))",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "white",
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        fontWeight: 800,
+        fontSize,
+        letterSpacing: "0.02em",
+      }}
+      aria-label={tm.name}
+    >
+      {tm.initials}
+    </div>
+  );
+}
+
+export default function Testimonials({ lang = "en" }: { lang?: Lang }) {
   const t = {
     en: {
       sectionLabel: "Real Results",
@@ -180,29 +314,12 @@ export default function Testimonials({ lang }: { lang?: Lang }) {
                     marginBottom: 28,
                   }}
                 >
-                  {tm.quote}
+                  {tm.quote[lang]}
                 </p>
 
                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  <div
-                    style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      flexShrink: 0,
-                      border: "2px solid var(--border2)",
-                      position: "relative",
-                    }}
-                  >
-                    <Image
-                      src={tm.photo}
-                      alt={tm.name}
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
-                  </div>
-                  <div>
+                  <Avatar tm={tm} size={48} />
+                  <div style={{ minWidth: 0 }}>
                     <div
                       style={{
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -216,13 +333,30 @@ export default function Testimonials({ lang }: { lang?: Lang }) {
                     <div
                       style={{
                         fontFamily: "'DM Mono', monospace",
-                        fontSize: "0.75rem",
+                        fontSize: "0.72rem",
                         letterSpacing: "0.04em",
                         color: "var(--text-muted)",
                         marginTop: 2,
                       }}
                     >
-                      {tm.role}
+                      {tm.role[lang]}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "'DM Mono', monospace",
+                        fontSize: "0.6rem",
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                        color: "var(--gold)",
+                        background: "rgba(212,165,58,0.1)",
+                        padding: "3px 8px",
+                        borderRadius: 4,
+                        marginTop: 6,
+                        display: "inline-block",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {tm.industry[lang]}
                     </div>
                   </div>
                   <div
@@ -236,9 +370,11 @@ export default function Testimonials({ lang }: { lang?: Lang }) {
                       letterSpacing: "0.06em",
                       color: "var(--green)",
                       whiteSpace: "nowrap",
+                      flexShrink: 0,
+                      alignSelf: "flex-start",
                     }}
                   >
-                    {tm.result}
+                    {tm.result[lang]}
                   </div>
                 </div>
               </motion.div>
@@ -317,9 +453,7 @@ export default function Testimonials({ lang }: { lang?: Lang }) {
           </div>
 
           {/* Right — Thumbnail list */}
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: 24 }}
-          >
+          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             {testimonials.map((item, i) => (
               <motion.button
                 key={i}
@@ -354,25 +488,10 @@ export default function Testimonials({ lang }: { lang?: Lang }) {
                     }}
                   />
                 )}
-                <div
-                  style={{
-                    width: 40,
-                    height: 40,
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                    flexShrink: 0,
-                    position: "relative",
-                    opacity: i === current ? 1 : 0.6,
-                  }}
-                >
-                  <Image
-                    src={item.photo}
-                    alt={item.name}
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
+                <div style={{ opacity: i === current ? 1 : 0.6 }}>
+                  <Avatar tm={item} size={40} />
                 </div>
-                <div style={{ flex: 1, overflow: "hidden" }}>
+                <div style={{ flex: 1, overflow: "hidden", minWidth: 0 }}>
                   <div
                     style={{
                       fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -390,21 +509,27 @@ export default function Testimonials({ lang }: { lang?: Lang }) {
                       fontSize: "0.72rem",
                       letterSpacing: "0.05em",
                       color: "var(--text-muted)",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
                     }}
                   >
-                    {item.role}
+                    {item.role[lang]}
                   </div>
                 </div>
                 <div
                   style={{
                     fontFamily: "'DM Mono', monospace",
-                    fontSize: "0.72rem",
-                    letterSpacing: "0.05em",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.04em",
                     color: "var(--green)",
                     flexShrink: 0,
+                    textAlign: "right",
+                    maxWidth: 140,
+                    lineHeight: 1.3,
                   }}
                 >
-                  {item.result}
+                  {item.result[lang]}
                 </div>
               </motion.button>
             ))}
