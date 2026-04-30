@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://mztrainer.com/</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://mztrainer.com/logo.webp</image:loc>
+      <image:title>MZTrainer · Miguel Zúñiga</image:title>
+      <image:caption>Logo de Miguel Zúñiga, entrenador personal en Medellín</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mztrainer.com/miguel-method.jpeg</image:loc>
+      <image:title>Miguel Zúñiga entrenando en gimnasio de Medellín</image:title>
+      <image:caption>Miguel Zúñiga, entrenador personal certificado, en su gimnasio en Medellín</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mztrainer.com/miguel-cta.jpeg</image:loc>
+      <image:title>Miguel Zúñiga, entrenador personal de élite</image:title>
+      <image:caption>Más de 6 años transformando cuerpos y mentalidades</image:caption>
+    </image:image>
+  </url>
+</urlset>
