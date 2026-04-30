@@ -1,5 +1,5 @@
 # MZTrainer · Miguel Zúñiga · Entrenador Personal en Medellín
-# https://mztrainer.com/
+# https://mztrainer.co/
 
 User-agent: *
 Allow: /
@@ -50,4 +50,4 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://mztrainer.com/sitemap.xml
+Sitemap: https://mztrainer.co/sitemap.xml
