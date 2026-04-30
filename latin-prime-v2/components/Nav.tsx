@@ -12,7 +12,7 @@ type Lang = "en" | "es";
 
 // Paths that exist only in EN today (no ES counterpart).
 // Toggling to ES from these falls back to /es.
-const EN_ONLY_PATHS = new Set<string>(["/starter", "/pro"]);
+const EN_ONLY_PATHS = new Set<string>(["/pro"]);
 
 function getToggleHref(currentPath: string, currentLang: Lang): string {
   if (currentLang === "es") {
@@ -42,7 +42,7 @@ function localizedLinks(lang: Lang) {
       {
         label: "Planes",
         dropdown: [
-          { href: "/es#pricing", label: "Starter — $497/mes", desc: "Tu primer sistema real. En vivo en 7–14 días." },
+          { href: "/es/starter", label: "Starter — $497/mes", desc: "Tu primer sistema real. En vivo en 7–14 días." },
           { href: "/es#pricing", label: "Pro — $997/mes",     desc: "Motor de cierre + reactivación. En vivo en 14–21 días." },
         ],
       },
@@ -118,7 +118,7 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
 
   const isActive = (href: string) => pathname === href;
   const plansActivePaths = lang === "es"
-    ? new Set(["/es#pricing"])
+    ? new Set(["/es/starter", "/es#pricing"])
     : new Set(["/starter", "/pro"]);
   const isPlansActive = plansActivePaths.has(pathname);
 
