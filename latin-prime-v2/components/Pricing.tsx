@@ -124,6 +124,8 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
         Enterprise: "Request Proposal",
       } as Record<string, string>,
       ctaFallback: "Get Started →",
+      viewDetails: "See full Starter details →",
+      detailsHref: "/starter",
       // Add-ons section
       addOnsLabel: "Optional Upgrades",
       addOnsTitle1: "Add AI Capabilities to",
@@ -375,6 +377,8 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
         Enterprise: "Solicitar Propuesta",
       } as Record<string, string>,
       ctaFallback: "Comenzar →",
+      viewDetails: "Ver todos los detalles del Starter →",
+      detailsHref: "/es/starter",
       // Add-ons section
       addOnsLabel: "Mejoras Opcionales",
       addOnsTitle1: "Agrega Capacidades de AI a",
@@ -1207,6 +1211,38 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
                   );
                 })()}
                 </motion.div>
+
+                {plan.tier === "Starter" && (
+                  <a
+                    href={t.detailsHref}
+                    style={{
+                      display: "block",
+                      textAlign: "center",
+                      marginTop: 10,
+                      padding: "8px 12px",
+                      fontFamily: "'DM Mono', monospace",
+                      fontSize: "0.62rem",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      color: "var(--text-muted)",
+                      textDecoration: "none",
+                      borderBottom: "1px dashed var(--border2)",
+                      transition: "color 0.2s, border-color 0.2s",
+                    }}
+                    onMouseEnter={(e) => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "var(--text)";
+                      el.style.borderBottomColor = "var(--gold)";
+                    }}
+                    onMouseLeave={(e) => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "var(--text-muted)";
+                      el.style.borderBottomColor = "var(--border2)";
+                    }}
+                  >
+                    {t.viewDetails}
+                  </a>
+                )}
               </div>
             </SectionReveal>
           ))}
