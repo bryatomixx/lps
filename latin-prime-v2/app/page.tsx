@@ -51,6 +51,9 @@ import Problem from "@/components/Problem";
 import AutomationQuiz from "@/components/AutomationQuiz";
 import Solutions from "@/components/Solutions";
 import Process from "@/components/Process";
+import BeforeAfter from "@/components/BeforeAfter";
+import FeaturedTestimonial from "@/components/FeaturedTestimonial";
+import HowWeThink from "@/components/HowWeThink";
 import WhoWeServe from "@/components/WhoWeServe";
 import TechStack from "@/components/TechStack";
 import ROICalculator from "@/components/ROICalculator";
@@ -58,6 +61,7 @@ import Testimonials from "@/components/Testimonials";
 import Compare from "@/components/Compare";
 import CommandCenter from "@/components/CommandCenter";
 import Pricing from "@/components/Pricing";
+import BilingualBanner from "@/components/BilingualBanner";
 import FAQ from "@/components/FAQ";
 import About from "@/components/About";
 import CTA from "@/components/CTA";
@@ -90,6 +94,18 @@ export default function Home() {
         <Solutions />
         <div className="gdiv" />
 
+        {/* 5b. Before/After — visual transformation */}
+        <BeforeAfter />
+        <div className="gdiv" />
+
+        {/* 5c. Featured testimonial — single bold proof */}
+        <FeaturedTestimonial />
+        <div className="gdiv" />
+
+        {/* 5d. How we think — methodology / strategic positioning */}
+        <HowWeThink />
+        <div className="gdiv" />
+
         {/* 6. Who We Serve — segmentación de audiencia */}
         <WhoWeServe />
         <div className="gdiv" />
@@ -117,7 +133,10 @@ export default function Home() {
         {/* 11. Pricing — después de valor + prueba */}
         <Pricing />
 
-        {/* 11. FAQ — objections right after pricing */}
+        {/* 11b. Bilingual differentiator banner */}
+        <BilingualBanner />
+
+        {/* 11c. FAQ — objections right after pricing */}
         <FAQ />
         <div className="gdiv" />
 

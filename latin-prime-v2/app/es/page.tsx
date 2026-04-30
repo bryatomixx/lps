@@ -4,6 +4,9 @@ import Problem from "@/components/Problem";
 import AutomationQuiz from "@/components/AutomationQuiz";
 import Solutions from "@/components/Solutions";
 import Process from "@/components/Process";
+import BeforeAfter from "@/components/BeforeAfter";
+import FeaturedTestimonial from "@/components/FeaturedTestimonial";
+import HowWeThink from "@/components/HowWeThink";
 import WhoWeServe from "@/components/WhoWeServe";
 import TechStack from "@/components/TechStack";
 import ROICalculator from "@/components/ROICalculator";
@@ -11,6 +14,7 @@ import Testimonials from "@/components/Testimonials";
 import Compare from "@/components/Compare";
 import CommandCenter from "@/components/CommandCenter";
 import Pricing from "@/components/Pricing";
+import BilingualBanner from "@/components/BilingualBanner";
 import FAQ from "@/components/FAQ";
 import About from "@/components/About";
 import CTA from "@/components/CTA";
@@ -94,6 +98,18 @@ export default function HomeEs() {
         <Solutions lang="es" />
         <div className="gdiv" />
 
+        {/* 5b. Antes / Después — transformación visual */}
+        <BeforeAfter lang="es" />
+        <div className="gdiv" />
+
+        {/* 5c. Testimonio destacado */}
+        <FeaturedTestimonial lang="es" />
+        <div className="gdiv" />
+
+        {/* 5d. Cómo pensamos — metodología */}
+        <HowWeThink lang="es" />
+        <div className="gdiv" />
+
         {/* 6. Who We Serve */}
         <WhoWeServe lang="es" />
         <div className="gdiv" />
@@ -120,6 +136,9 @@ export default function HomeEs() {
 
         {/* 12. Pricing */}
         <Pricing lang="es" />
+
+        {/* 12b. Banner bilingüe */}
+        <BilingualBanner lang="es" />
 
         {/* 13. FAQ */}
         <FAQ lang="es" />

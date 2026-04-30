@@ -19,19 +19,20 @@ export default function Hero({ lang = "en" }: HeroProps) {
   const t = {
     en: {
       kickerText: "AI · Automation · CRM · Business Infrastructure",
-      h1Lines: ["Stop Running", "Your Business.", "Start Growing It."],
-      h1Line2Gradient: "Your Business.",
-      h1Line3Start: "Start",
-      h1Line3Shiny: "Growing It.",
-      desc: "LPS is your strategic partner for AI, automation, CRM, and business infrastructure. We organize your operation, capture every lead, automate your follow-up, and build the systems that let your business grow — without it all depending on you.",
+      h1Lines: ["AI changed more in the", "last 6 months", "than in the last 3 years."],
+      h1Line2Gradient: "last 6 months",
+      h1Line3Start: "than in the last",
+      h1Line3Shiny: "3 years.",
+      desc: "Most small businesses are still doing things the old way. We fix that — in 90 days or you don't pay.",
       proofChips: [
         "AI + Automation + CRM",
         "Bilingual — English & Spanish",
         "Live in 7–30 days",
       ],
-      ctaPrimary: "Book Your Free Strategy Call",
-      ctaSecondary: "See How It Works",
-      guarantee: "🛡️ 90-Day ROI Guarantee — results or we work free",
+      ctaPrimary: "Book Free Strategy Session",
+      ctaSecondary: "Take the 2-min AI Readiness Quiz",
+      credibility: "Trusted by 6+ businesses across 10 industries · Bilingual EN/ES",
+      guarantee: "✓ 90-Day ROI Guarantee — results or you don't pay",
       tickerItems: [
         "Zero leads fall through the cracks",
         "Follow-ups sent in seconds, not days",
@@ -45,19 +46,20 @@ export default function Hero({ lang = "en" }: HeroProps) {
     },
     es: {
       kickerText: "AI · Automatización · CRM · Infraestructura Empresarial",
-      h1Lines: ["Deja de Operar", "Tu Negocio.", "Empieza a Escalarlo."],
-      h1Line2Gradient: "Tu Negocio.",
-      h1Line3Start: "Empieza a",
-      h1Line3Shiny: "Escalarlo.",
-      desc: "LPS es tu socio estratégico en AI, automatización, CRM e infraestructura empresarial. Organizamos tu operación, capturamos cada prospecto, automatizamos tu seguimiento y construimos los sistemas que hacen crecer tu negocio — sin que todo dependa de ti.",
+      h1Lines: ["La IA cambió más en los", "últimos 6 meses", "que en los últimos 3 años."],
+      h1Line2Gradient: "últimos 6 meses",
+      h1Line3Start: "que en los últimos",
+      h1Line3Shiny: "3 años.",
+      desc: "La mayoría de las pequeñas empresas siguen haciendo todo a la antigua. Nosotros lo arreglamos — en 90 días o no pagas.",
       proofChips: [
         "AI + Automatización + CRM",
         "Bilingüe — Inglés y Español",
         "En funcionamiento en 7–30 días",
       ],
-      ctaPrimary: "Agenda tu Llamada Estratégica Gratis",
-      ctaSecondary: "Ver Cómo Funciona",
-      guarantee: "🛡️ Garantía de ROI a 90 días — resultados o trabajamos gratis",
+      ctaPrimary: "Agenda tu Sesión Estratégica Gratis",
+      ctaSecondary: "Haz el Quiz de IA en 2 minutos",
+      credibility: "Más de 6 empresas en 10 industrias confían en nosotros · Bilingüe EN/ES",
+      guarantee: "✓ Garantía ROI de 90 días — resultados o no pagas",
       tickerItems: [
         "Cero prospectos perdidos",
         "Seguimientos enviados en segundos, no días",
@@ -401,18 +403,47 @@ export default function Hero({ lang = "en" }: HeroProps) {
                   {t.ctaSecondary}
                 </motion.a>
               </div>
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.95 }}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "8px 14px",
+                  background: "rgba(212,165,58,0.08)",
+                  border: "1px solid rgba(212,165,58,0.45)",
+                  borderRadius: 999,
+                  marginTop: 4,
+                  boxShadow: "0 0 24px rgba(212,165,58,0.18)",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontSize: "0.78rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.01em",
+                    color: "var(--gold)",
+                  }}
+                >
+                  {t.guarantee}
+                </span>
+              </motion.div>
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1 }}
+                transition={{ delay: 1.05 }}
                 style={{
                   fontFamily: "'DM Mono', monospace",
-                  fontSize: "0.57rem",
+                  fontSize: "0.6rem",
                   letterSpacing: "0.08em",
                   color: "var(--text-dim)",
+                  marginTop: 4,
                 }}
               >
-                {t.guarantee}
+                {t.credibility}
               </motion.span>
             </motion.div>
           </div>

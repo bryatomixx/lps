@@ -56,6 +56,7 @@ function formatSetup(usd: number | null, currency: Currency, label: string, from
 
 interface Plan {
   tier: string;
+  outcome: string;
   tagline: string;
   priceUSD: number | null;
   setupUSD: number | null;
@@ -209,6 +210,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       plans: [
         {
           tier: "Starter",
+          outcome: "Recover 10+ hours per week on repetitive tasks.",
           tagline:
             "Your business organized, automated, and capturing every lead — without hiring anyone new.",
           setupLabel: "+ $2,497 one-time setup",
@@ -244,6 +246,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
         },
         {
           tier: "Pro",
+          outcome: "Replace 1–2 manual processes with AI workflows.",
           tagline:
             "Your full operation on autopilot — leads, sales, reputation, and a professional website. All connected.",
           setupLabel: "+ $3,997 one-time setup",
@@ -278,6 +281,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
         },
         {
           tier: "Growth",
+          outcome: "Build your AI operations layer across 3+ departments.",
           tagline:
             "Your system fully managed — AI voice, custom integrations, and a dedicated team optimizing everything for you.",
           setupLabel: "+ $5,997 one-time setup",
@@ -309,6 +313,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
         },
         {
           tier: "Enterprise",
+          outcome: "Custom AI infrastructure designed around your business.",
           tagline:
             "Your infrastructure, built from scratch. No templates. No defaults. Everything scoped and priced for your specific operation.",
           setupLabel: "",
@@ -456,6 +461,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       plans: [
         {
           tier: "Starter",
+          outcome: "Recupera más de 10 horas a la semana en tareas repetitivas.",
           tagline:
             "Tu negocio organizado, automatizado y capturando cada prospecto — sin contratar a nadie nuevo.",
           setupLabel: "+ $2,497 implementación única",
@@ -491,6 +497,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
         },
         {
           tier: "Pro",
+          outcome: "Reemplaza 1–2 procesos manuales con flujos de IA.",
           tagline:
             "Tu operación completa en piloto automático — prospectos, ventas, reputación y un sitio web profesional. Todo conectado.",
           setupLabel: "+ $3,997 implementación única",
@@ -525,6 +532,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
         },
         {
           tier: "Growth",
+          outcome: "Construye tu capa de operaciones con IA en 3+ departamentos.",
           tagline:
             "Tu sistema completamente gestionado — voz con AI, integraciones personalizadas y un equipo dedicado optimizando todo.",
           setupLabel: "+ $5,997 implementación única",
@@ -556,6 +564,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
         },
         {
           tier: "Enterprise",
+          outcome: "Infraestructura de IA diseñada a la medida de tu negocio.",
           tagline:
             "Tu infraestructura, construida desde cero. Sin plantillas. Sin defaults. Todo cotizado y diseñado para tu operación específica.",
           setupLabel: "",
@@ -594,6 +603,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
 
   const plans: Plan[] = t.plans.map((p, i) => ({
     tier:       p.tier,
+    outcome:    p.outcome,
     tagline:    p.tagline,
     priceUSD:   plansMeta[i].priceUSD,
     setupUSD:   plansMeta[i].setupUSD,
@@ -878,6 +888,20 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
                     to={plan.featured ? "#2B7FE0" : "#2B7FE0"}
                   />
                 </h3>
+
+                <p
+                  style={{
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontSize: "0.95rem",
+                    fontWeight: 700,
+                    color: "var(--gold)",
+                    lineHeight: 1.4,
+                    marginBottom: 14,
+                    letterSpacing: "-0.005em",
+                  }}
+                >
+                  {plan.outcome}
+                </p>
 
                 <p
                   style={{
