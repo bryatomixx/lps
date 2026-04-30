@@ -2562,14 +2562,25 @@
     .to('#hero-floats', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.8');
 
   /* ─── PARALLAX ─── */
+  const _orbGold  = document.querySelector('.orb-gold');
+  const _orbFire  = document.querySelector('.orb-fire');
+  const _heroGrid = document.querySelector('.hero-grid');
+  const _heroPh   = document.getElementById('hero-photo');
+  let _heroTicking = false;
   window.addEventListener('scroll', () => {
-    const s = window.scrollY;
-    document.querySelector('.orb-gold').style.transform = `translateY(${s * 0.28}px)`;
-    document.querySelector('.orb-fire').style.transform = `translateY(${s * -0.18}px)`;
-    document.querySelector('.hero-grid').style.transform = `translateY(${s * 0.09}px)`;
-    const ph = document.getElementById('hero-photo');
-    if (ph) ph.style.transform = `translateY(${s * 0.18}px) scale(1.05)`;
-  });
+    if (_heroTicking) return;
+    _heroTicking = true;
+    requestAnimationFrame(() => {
+      const s = window.scrollY;
+      if (s < window.innerHeight * 1.2) {
+        if (_orbGold)  _orbGold.style.transform  = `translate3d(0, ${s * 0.28}px, 0)`;
+        if (_orbFire)  _orbFire.style.transform  = `translate3d(0, ${s * -0.18}px, 0)`;
+        if (_heroGrid) _heroGrid.style.transform = `translate3d(0, ${s * 0.09}px, 0)`;
+        if (_heroPh)   _heroPh.style.transform   = `translate3d(0, ${s * 0.18}px, 0) scale(1.05)`;
+      }
+      _heroTicking = false;
+    });
+  }, { passive: true });
 
   /* ─── TICKER ─── */
   const tData = [
@@ -2606,11 +2617,18 @@
           scrub: 1,
           pin: true,
           anticipatePin: 1,
+          invalidateOnRefresh: true,
         }
       });
     }
   }
   setupPillarScroll();
+
+  /* Re-measure ScrollTrigger after images finish loading so pillars/hero
+     positions are accurate (background images can shift layout timings). */
+  window.addEventListener('load', () => {
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  });
 
   /* ─── SCROLL REVEAL ─── */
   gsap.utils.toArray('.sr').forEach(el => {
