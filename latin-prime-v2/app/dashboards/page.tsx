@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     languages: {
       en: "https://latinprimesystems.com/dashboards",
       es: "https://latinprimesystems.com/es/dashboards",
+      "x-default": "https://latinprimesystems.com/dashboards",
     },
   },
   openGraph: {
@@ -34,6 +35,14 @@ export const metadata: Metadata = {
     description:
       "Every number that moves your business — on one screen. Real-time KPIs, pipeline, team performance, and revenue. Essential Dashboard included with Growth. Full Command Center available.",
     locale: "en_US",
+    alternateLocale: ["es_ES"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@latinprimesys",
+    title: "Business Dashboards & Command Center | Latin Prime Systems",
+    description:
+      "See every KPI that moves your business on one real-time screen. Essential Dashboard included with Growth.",
   },
   robots: { index: true, follow: true },
 };

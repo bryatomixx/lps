@@ -93,6 +93,7 @@ export const metadata: Metadata = {
       },
     ],
     locale: "en_US",
+    alternateLocale: ["es_ES"],
   },
   twitter: {
     card: "summary_large_image",
