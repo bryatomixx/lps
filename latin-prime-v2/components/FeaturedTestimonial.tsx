@@ -15,20 +15,23 @@ export interface FeaturedTestimonialData {
   initials?: string;
 }
 
-// Replace this with the real client data (or wire to a CMS / JSON fetch later).
+// Berta Viloria — confirmed real client. Same quote also appears in the
+// "What Happens When We Go to Work" carousel.
 const PLACEHOLDER: FeaturedTestimonialData = {
-  name: "Andrea Vargas",
-  role: "CEO",
-  industry: { en: "Insurance Agency", es: "Agencia de Seguros" },
+  name: "Berta Viloria",
+  role: "Accountant & Tax Advisor",
+  industry: { en: "Tax & Accounting", es: "Impuestos y Contabilidad" },
   quote: {
-    en: "LPS rebuilt our follow-up from scratch. We stopped losing leads in week two.",
-    es: "LPS reconstruyó nuestro seguimiento desde cero. Dejamos de perder prospectos en la segunda semana.",
+    en: "Tax season used to be chaos. Now document collection, client reminders, and follow-ups all happen automatically. I handled 30% more clients this year with the same staff.",
+    es: "La temporada de taxes era un caos. Ahora la recolección de documentos, recordatorios y seguimientos se hacen solos. Atendí 30% más clientes este año con el mismo equipo.",
   },
   metric: {
-    value: "15h/wk",
-    label: { en: "Saved every week", es: "Ahorradas cada semana" },
+    value: "+30%",
+    label: { en: "Clients served", es: "Clientes atendidos" },
   },
-  initials: "AV",
+  photoUrl:
+    "https://assets.cdn.filesafe.space/0EgKTcd9YvsDKkQqklPo/media/693c4c9fe91800719e64f8d4.jpeg",
+  initials: "BV",
 };
 
 interface FeaturedTestimonialProps {

@@ -133,7 +133,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://latinprimesystems.com"),
   alternates: {
     canonical: "/es",
-    languages: { "en": "/", "es": "/es" },
+    languages: { "en": "/", "es": "/es", "x-default": "/" },
   },
   openGraph: {
     type: "website",
@@ -150,7 +150,8 @@ export const metadata: Metadata = {
         alt: "Latin Prime Systems — Automatización IA para Negocios",
       },
     ],
-    locale: "es_LA",
+    locale: "es_ES",
+    alternateLocale: ["en_US"],
   },
   twitter: {
     card: "summary_large_image",

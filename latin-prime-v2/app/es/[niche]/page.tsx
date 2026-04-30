@@ -24,7 +24,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: niche.keywordsEs,
     alternates: {
       canonical: `/es/${slug}`,
-      languages: { en: `/${slug}`, es: `/es/${slug}` },
+      languages: {
+        en: `/${slug}`,
+        es: `/es/${slug}`,
+        "x-default": `/${slug}`,
+      },
     },
     openGraph: {
       type: "website",
@@ -32,7 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: "Latin Prime Systems",
       title: niche.metaTitleEs,
       description: niche.metaDescEs,
-      locale: "es_LA",
+      locale: "es_ES",
+      alternateLocale: ["en_US"],
       images: [
         {
           url: "https://storage.googleapis.com/msgsndr/0EgKTcd9YvsDKkQqklPo/media/691b4d7d013f3138a3825fc0.webp",

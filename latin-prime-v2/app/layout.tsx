@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Latin Prime Systems",
   },
   description:
-    "Done-for-you AI automation for service businesses. AI voice agents answer calls 24/7, automations follow up every lead, and custom software runs your ops — live in 7–30 days. 90-Day ROI Guarantee.",
+    "Bilingual AI consulting and automation for small and mid-sized businesses. Recover hours, capture every lead, and run your operation on autopilot — in 90 days or you don't pay.",
   keywords: [
     // Core service keywords
     "AI automation agency",
@@ -93,6 +93,7 @@ export const metadata: Metadata = {
       },
     ],
     locale: "en_US",
+    alternateLocale: ["es_ES"],
   },
   twitter: {
     card: "summary_large_image",
@@ -254,17 +255,17 @@ const jsonLd = [
       {
         "@type": "Review",
         reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-        author: { "@type": "Person", name: "Marco Delgado" },
+        author: { "@type": "Person", name: "Joshua Plaza" },
         reviewBody:
-          "We went from answering maybe 60% of calls to 100%. The AI books appointments while I sleep. I don't know how I ran without this.",
+          "I used to spend 2 hours a day confirming appointments and chasing no-shows. Now the system handles it all automatically. My chair is full every day and I didn't hire anyone.",
         datePublished: "2025-07-01",
       },
       {
         "@type": "Review",
         reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-        author: { "@type": "Person", name: "Adriana Fuentes" },
+        author: { "@type": "Person", name: "Pedro Rivera" },
         reviewBody:
-          "The command center alone was worth it. I finally know what's happening in my business in real time — leads, revenue, follow-ups, everything on one screen.",
+          "I'm always on job sites and can't answer my phone. With the missed-call text-back, every missed call gets a response in seconds. I've recovered deals I would have completely lost before.",
         datePublished: "2025-08-01",
       },
     ],

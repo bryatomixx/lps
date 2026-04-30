@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     languages: {
       en: "https://latinprimesystems.com/dashboards",
       es: "https://latinprimesystems.com/es/dashboards",
+      "x-default": "https://latinprimesystems.com/dashboards",
     },
   },
   openGraph: {
@@ -19,7 +20,15 @@ export const metadata: Metadata = {
     title: "Dashboards y Command Center en Tiempo Real | Latin Prime Systems",
     description:
       "Cada cliente de LPS tiene acceso a un Command Center personalizado con KPIs, pipeline, equipo e ingresos — actualizados en tiempo real.",
-    locale: "es_MX",
+    locale: "es_ES",
+    alternateLocale: ["en_US"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@latinprimesys",
+    title: "Dashboards y Command Center | Latin Prime Systems",
+    description:
+      "Tu negocio entero en una sola pantalla — KPIs, pipeline, ingresos y equipo en tiempo real.",
   },
 };
 
