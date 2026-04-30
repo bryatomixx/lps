@@ -7,7 +7,7 @@ type Lang = "en" | "es";
 export interface FeaturedTestimonialData {
   name: string;
   role: string;
-  company: string;
+  company?: string;
   industry: { en: string; es: string };
   quote: { en: string; es: string };
   metric: { value: string; label: { en: string; es: string } };
@@ -17,9 +17,8 @@ export interface FeaturedTestimonialData {
 
 // Replace this with the real client data (or wire to a CMS / JSON fetch later).
 const PLACEHOLDER: FeaturedTestimonialData = {
-  name: "Client Name",
-  role: "Founder & CEO",
-  company: "Client Company",
+  name: "Andrea Vargas",
+  role: "CEO",
   industry: { en: "Insurance Agency", es: "Agencia de Seguros" },
   quote: {
     en: "LPS rebuilt our follow-up from scratch. We stopped losing leads in week two.",
@@ -29,7 +28,7 @@ const PLACEHOLDER: FeaturedTestimonialData = {
     value: "15h/wk",
     label: { en: "Saved every week", es: "Ahorradas cada semana" },
   },
-  initials: "CN",
+  initials: "AV",
 };
 
 interface FeaturedTestimonialProps {
@@ -42,19 +41,9 @@ export default function FeaturedTestimonial({
   data = PLACEHOLDER,
 }: FeaturedTestimonialProps) {
   const t = {
-    en: {
-      slabel: "Real Results",
-      placeholderNote:
-        "✦ Featured client testimonial — real quote loading soon.",
-    },
-    es: {
-      slabel: "Resultados Reales",
-      placeholderNote:
-        "✦ Testimonio destacado de cliente — cita real próximamente.",
-    },
+    en: { slabel: "Real Results" },
+    es: { slabel: "Resultados Reales" },
   }[lang];
-
-  const isPlaceholder = data === PLACEHOLDER;
 
   return (
     <section
@@ -186,7 +175,7 @@ export default function FeaturedTestimonial({
                       color: "var(--text-muted)",
                     }}
                   >
-                    — {data.role}, {data.company}
+                    — {data.role}{data.company ? `, ${data.company}` : ""}
                   </span>
                   <span
                     style={{
@@ -247,23 +236,6 @@ export default function FeaturedTestimonial({
                 </div>
               </div>
             </div>
-
-            {isPlaceholder && (
-              <div
-                style={{
-                  marginTop: 24,
-                  paddingTop: 20,
-                  borderTop: "1px dashed var(--border)",
-                  fontFamily: "'DM Mono', monospace",
-                  fontSize: "0.6rem",
-                  letterSpacing: "0.1em",
-                  color: "var(--text-dim)",
-                  textAlign: "center",
-                }}
-              >
-                {t.placeholderNote}
-              </div>
-            )}
           </motion.div>
         </SectionReveal>
       </div>
