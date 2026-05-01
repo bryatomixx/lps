@@ -386,7 +386,7 @@ const T = {
     finalH1Part1: "Deja de Forzar tu Negocio",
     finalH1Gradient: "al Software de Alguien Más.",
     finalDesc:
-      "Cuéntanos lo que realmente necesitas. Te decimos qué se necesita para construirlo, cuánto cuesta y cuánto se va a tardar. Sin paja.",
+      "Cuéntanos lo que realmente necesitas. Te decimos qué se necesita para construirlo, cuánto cuesta y cuánto se va a tardar. Sin rodeos.",
     finalCtaPrimary: "Solicitar Propuesta Personalizada",
     finalCtaSecondary: "Agendar Llamada de Diagnóstico",
     finalGuarantee: "🛡️ SLA documentado · Garantías personalizadas por escrito · Tú eres dueño de todo",
