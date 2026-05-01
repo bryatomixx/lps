@@ -122,6 +122,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    // ─── New tier pages (Despegue / Pulso / Órbita / Constelación) ──────────
+    ...(["despegue", "pulso", "orbita", "constelacion"] as const).flatMap(
+      (tier) => [
+        {
+          url: `${base}/${tier}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.75,
+          alternates: {
+            languages: {
+              en: `${base}/${tier}`,
+              es: `${base}/es/${tier}`,
+              "x-default": `${base}/${tier}`,
+            },
+          },
+        },
+        {
+          url: `${base}/es/${tier}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.7,
+          alternates: {
+            languages: {
+              en: `${base}/${tier}`,
+              es: `${base}/es/${tier}`,
+              "x-default": `${base}/${tier}`,
+            },
+          },
+        },
+      ]
+    ),
     {
       url: `${base}/custom`,
       lastModified: now,
