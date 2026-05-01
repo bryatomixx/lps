@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Constelación — Latin Prime Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A1B33;--navy-2:#11264A;--navy-3:#1A3260;
+    --gold:#C9A961;--gold-2:#D9BE7A;--gold-soft:#F4E9C9;
+    --cream:#FAF7F0;--ink:#0A1019;--ink-2:#2A3447;--ink-3:#5A6478;
+    --line:#E6DFD1;--green:#1E7C5A;--red:#B23A3A;--amber:#B8860B;
+    --shadow:0 30px 80px -30px rgba(10,27,51,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;line-height:1.55}
+  h1,h2,h3,h4{font-weight:700;letter-spacing:-.02em;line-height:1.15;margin:0 0 .5em}
+  h1{font-size:clamp(2.4rem,5.2vw,4.2rem);font-weight:800;letter-spacing:-.03em}
+  h2{font-size:clamp(1.8rem,3.4vw,2.8rem)}
+  h3{font-size:clamp(1.2rem,2vw,1.5rem)}
+  p{margin:0 0 1em}
+  a{color:inherit}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px}
+  .container-narrow{max-width:880px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+  .serif{font-family:'Playfair Display',serif;font-style:italic;font-weight:500}
+  .proposal-banner{background:#FFF8E5;border-bottom:2px dashed var(--amber);color:#5A4A10;font-family:'JetBrains Mono',monospace;font-size:.78rem;padding:10px 24px;text-align:center}
+  .proposal-banner strong{color:var(--red);letter-spacing:.05em}
+  .invented{color:var(--red);font-weight:600}
+  .invented::before{content:"⚑ ";font-size:.85em;opacity:.6}
+  nav.top{position:sticky;top:0;z-index:50;background:rgba(10,27,51,.96);backdrop-filter:blur(12px);color:#fff;border-bottom:1px solid rgba(201,169,97,.2)}
+  nav.top .row{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:20px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:-.01em}
+  .brand-mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);display:grid;place-items:center;color:var(--navy);font-weight:800;font-size:1.05rem}
+  nav.top .nav-right{display:flex;gap:18px;align-items:center}
+  nav.top a.nav-link{color:#9CA9C0;text-decoration:none;font-size:.9rem;transition:color .15s ease}
+  nav.top a.nav-link:hover{color:#fff}
+  nav.top a.cta{background:var(--gold);color:var(--navy);padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:600;font-size:.9rem;transition:transform .15s ease}
+  nav.top a.cta:hover{transform:translateY(-1px)}
+  /* Hero — más austero, menos vendedor */
+  .hero{position:relative;background:linear-gradient(180deg,#070F1F 0%,var(--navy) 100%);color:#fff;overflow:hidden;padding:110px 0 130px}
+  .hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle 1.5px,rgba(201,169,97,.25) 1px,transparent 1px);background-size:120px 120px;mask:radial-gradient(ellipse at 50% 50%,black 30%,transparent 75%);pointer-events:none}
+  .hero::after{content:"";position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,97,.1) 0%,transparent 70%);top:-200px;right:-100px;pointer-events:none}
+  .hero .container{position:relative;z-index:2}
+  .hero .eyebrow{margin-bottom:24px;display:inline-block}
+  .hero h1{max-width:14ch;margin-bottom:24px}
+  .hero h1 .accent{background:linear-gradient(120deg,var(--gold) 0%,var(--gold-2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .lede{font-size:clamp(1.05rem,1.4vw,1.25rem);color:#C8D2E2;max-width:62ch;margin-bottom:36px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:8px;font-weight:600;text-decoration:none;transition:all .2s ease;font-size:.98rem;border:none;cursor:pointer}
+  .btn-primary{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:var(--navy);box-shadow:0 14px 30px -10px rgba(201,169,97,.4)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 40px -10px rgba(201,169,97,.5)}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+  .btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.4)}
+  .arrow{font-size:1.1em;transition:transform .2s}
+  .btn:hover .arrow{transform:translateX(3px)}
+  .trust-strip{display:flex;flex-wrap:wrap;gap:30px;margin-top:54px;padding-top:30px;border-top:1px solid rgba(255,255,255,.1);color:#9CA9C0;font-size:.85rem}
+  .trust-item{display:flex;gap:8px;align-items:center}
+  .trust-item .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+  section{padding:90px 0}
+  .section-head{max-width:760px;margin-bottom:54px}
+  .section-head .eyebrow{margin-bottom:14px;display:inline-block}
+  .section-head h2{margin-bottom:14px}
+  .section-head .lede{color:var(--ink-3);font-size:1.08rem}
+
+  /* ───── ICP FILTER (qué Constelación NO es) ───── */
+  .icp-section{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .icp-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  @media(max-width:780px){.icp-grid{grid-template-columns:1fr}}
+  .icp-card{padding:32px;border-radius:14px}
+  .icp-card.yes{background:linear-gradient(160deg,#F4F9F4 0%,#fff 100%);border:1px solid #C8E1CC}
+  .icp-card.no{background:linear-gradient(160deg,#FAF6F4 0%,#fff 100%);border:1px solid #E5D4CC}
+  .icp-card h3{font-size:1.2rem;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .icp-card.yes h3{color:#1E5635}
+  .icp-card.no h3{color:#7A3A20}
+  .icp-card .icon{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:1rem}
+  .icp-card.yes .icon{background:#C8E1CC;color:#1E5635}
+  .icp-card.no .icon{background:#E5D4CC;color:#7A3A20}
+  .icp-list{list-style:none;padding:0;margin:0;font-size:.95rem;color:var(--ink-2)}
+  .icp-list li{padding:10px 0;border-bottom:1px dashed var(--line);line-height:1.55}
+  .icp-list li:last-child{border:none}
+  .icp-list strong{color:var(--ink)}
+
+  /* ───── TESTIMONIAL / CLIENT FEATURE ───── */
+  .client-section{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .client-card{
+    max-width:980px;margin:0 auto;
+    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);
+    color:#fff;border-radius:18px;padding:48px;
+    border:1px solid var(--gold);box-shadow:0 30px 80px -30px rgba(10,27,51,.5);
+    position:relative;overflow:hidden;
+  }
+  .client-card::before{
+    content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;
+    background:radial-gradient(circle,rgba(201,169,97,.15) 0%,transparent 70%);
+    pointer-events:none
+  }
+  .client-grid{display:grid;grid-template-columns:auto 1fr;gap:42px;align-items:start;position:relative;z-index:2}
+  @media(max-width:780px){.client-grid{grid-template-columns:1fr}}
+  .client-logo{
+    width:280px;height:220px;border-radius:14px;
+    background:rgba(255,255,255,.04);border:1px solid rgba(201,169,97,.3);
+    display:grid;place-items:center;padding:12px;flex-shrink:0;
+  }
+  .client-logo img{width:100%;height:100%;object-fit:contain;display:block}
+  @media(max-width:780px){
+    .client-logo{width:100%;max-width:340px;height:200px;margin:0 auto}
+  }
+  .client-logo-fallback{color:var(--gold);font-weight:800;font-size:.85rem;letter-spacing:.1em;text-align:center;line-height:1.3}
+  .client-content .eyebrow{margin-bottom:14px;display:inline-block}
+  .client-content h3{color:#fff;font-size:1.6rem;margin-bottom:10px}
+  .client-content .meta{color:#9CA9C0;font-size:.92rem;margin-bottom:24px;font-family:'JetBrains Mono',monospace;letter-spacing:.02em}
+  .client-quote{
+    font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
+    color:#E8EDF6;font-size:1.18rem;line-height:1.55;
+    border-left:3px solid var(--gold);padding-left:20px;margin:24px 0;
+  }
+  .client-attr{color:var(--gold-2);font-weight:600;font-size:.92rem;font-style:normal;margin-top:12px}
+  .client-scope{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:30px}
+  .scope-item{padding:14px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,97,.2)}
+  .scope-item .label{color:#9CA9C0;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+  .scope-item .val{color:#fff;font-weight:600;font-size:.95rem}
+  .client-disclosure{
+    margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);
+    color:#9CA9C0;font-size:.78rem;line-height:1.55;font-family:'JetBrains Mono',monospace
+  }
+
+  /* ───── STACK COMPARISON ───── */
+  .stack-section{background:linear-gradient(180deg,#F4F0E5 0%,#fff 100%)}
+  .stack-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:32px;align-items:stretch}
+  @media(max-width:900px){.stack-grid{grid-template-columns:1fr}}
+  .stack-card{border-radius:14px;padding:28px;background:var(--cream);border:1px solid var(--line);position:relative}
+  .stack-card.fragmented{background:#FFF7F4;border-color:#F0CDC0}
+  .stack-card.unified{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;border:1px solid var(--gold);box-shadow:0 30px 80px -30px rgba(10,27,51,.5)}
+  .stack-card h3{font-size:1rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:18px;font-weight:700}
+  .stack-card.fragmented h3{color:#A04323}
+  .stack-card.unified h3{color:var(--gold)}
+  .stack-line{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:8px;background:#fff;border:1px solid var(--line);margin-bottom:8px;font-size:.92rem}
+  .stack-line .label{font-weight:500}
+  .stack-line .price{font-family:'JetBrains Mono',monospace;color:var(--ink-3);font-size:.85rem}
+  .stack-card.unified .stack-line{background:rgba(255,255,255,.06);border-color:rgba(201,169,97,.25);color:#E8EDF6}
+  .stack-card.unified .stack-line .price{color:var(--gold-2)}
+  .stack-total{margin-top:18px;padding:16px;border-radius:8px;background:rgba(176,68,40,.08);border:2px dashed #C66B49;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:600;color:#A04323}
+  .stack-card.unified .stack-total{background:rgba(201,169,97,.12);border-color:var(--gold);color:var(--gold)}
+  .vs{align-self:center;font-family:'Playfair Display',serif;font-style:italic;font-size:2rem;color:var(--ink-3);text-align:center}
+  @media(max-width:900px){.vs{transform:rotate(90deg);padding:10px 0}}
+  .stack-savings{margin-top:34px;padding:22px 28px;border-radius:12px;background:linear-gradient(90deg,var(--gold-soft) 0%,#FFF7E1 100%);border:1px solid var(--gold);text-align:center;font-size:1.05rem}
+
+  /* ───── FEATURES GRID ───── */
+  .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .feature-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;transition:transform .2s ease, box-shadow .2s ease}
+  .feature-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .feature-icon{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--gold-soft) 0%,#FFF1CF 100%);border:1px solid var(--gold);display:grid;place-items:center;margin-bottom:18px;color:var(--navy);font-weight:700;font-size:1.1rem}
+  .feature-card h3{margin-bottom:8px;font-size:1.08rem}
+  .feature-card p{color:var(--ink-3);font-size:.94rem;margin:0}
+  .feature-card .core-tag{display:inline-block;padding:3px 10px;border-radius:12px;background:var(--navy);color:var(--gold);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-left:8px;vertical-align:middle}
+
+  /* ───── COMPARATIVE TABLE ───── */
+  .table-wrap{background:#fff;border-radius:14px;border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow)}
+  .table-scroll{overflow-x:auto}
+  table.compare{width:100%;border-collapse:collapse;font-size:.92rem;min-width:880px}
+  table.compare thead th{background:var(--navy);color:#fff;text-align:left;padding:18px 18px;font-weight:600;font-size:.85rem;letter-spacing:.04em}
+  table.compare thead th.featured{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:var(--navy)}
+  table.compare tbody td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+  table.compare tbody tr:last-child td{border-bottom:none}
+  table.compare td.feat{font-weight:600;color:var(--ink);width:24%}
+  table.compare td.featured{background:rgba(201,169,97,.06);font-weight:500;color:var(--ink)}
+  .check{color:var(--green);font-weight:700}
+  .cross{color:var(--red);opacity:.7}
+  .partial{color:var(--amber)}
+  .table-foot{padding:14px 20px;background:var(--cream);font-size:.78rem;color:var(--ink-3);border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace}
+
+  /* ───── ORIGIN PATH ───── */
+  .origin-section{background:#F4F0E5;border-top:1px solid var(--line)}
+  .origin-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:stretch;max-width:980px;margin:0 auto}
+  @media(max-width:900px){.origin-grid{grid-template-columns:1fr}}
+  .origin-card{background:#fff;border-radius:16px;padding:30px;border:1px solid var(--line);position:relative}
+  .origin-card.from{border-color:var(--line);opacity:.92}
+  .origin-card.now{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;border:1px solid var(--gold)}
+  .origin-tag{display:inline-block;padding:5px 12px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+  .origin-card.from .origin-tag{background:var(--cream);color:var(--ink-3);border:1px solid var(--line)}
+  .origin-card.now .origin-tag{background:rgba(201,169,97,.18);color:var(--gold)}
+  .origin-card h3{font-size:1.5rem;margin-bottom:6px}
+  .origin-card.now h3{color:#fff}
+  .origin-card .price-tag{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1rem;color:var(--ink-3);margin-bottom:14px}
+  .origin-card.now .price-tag{color:var(--gold-2)}
+  .origin-card p{font-size:.92rem;color:var(--ink-3);margin:0 0 14px}
+  .origin-card.now p{color:#C8D2E2}
+  .origin-card a.link{color:var(--gold);font-weight:600;font-size:.9rem;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px}
+  .origin-card.from a.link{color:var(--navy);border-color:var(--navy)}
+  .origin-arrow{align-self:center;font-family:'Playfair Display',serif;font-weight:700;font-size:2rem;color:var(--gold);text-align:center}
+  @media(max-width:900px){.origin-arrow{transform:rotate(90deg);padding:14px 0}}
+
+  /* ───── DISCOVERY FORM (replaces pricing card) ───── */
+  .discovery-section{background:linear-gradient(180deg,var(--cream) 0%,#fff 100%)}
+  .discovery-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:42px;align-items:start}
+  @media(max-width:900px){.discovery-grid{grid-template-columns:1fr}}
+  .discovery-intro{position:sticky;top:120px}
+  .discovery-intro h2{margin-bottom:16px}
+  .discovery-intro p{color:var(--ink-3);font-size:1rem;line-height:1.7}
+  .discovery-intro ul{list-style:none;padding:0;margin:24px 0;font-size:.95rem;color:var(--ink-2)}
+  .discovery-intro ul li{padding:8px 0;display:flex;gap:10px;align-items:flex-start}
+  .discovery-intro ul li::before{content:"→";color:var(--gold);font-weight:700;flex-shrink:0}
+  .discovery-form{background:#fff;border-radius:18px;padding:42px;border:2px solid var(--gold);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .discovery-form::before{content:"";position:absolute;top:0;right:0;width:160px;height:160px;background:radial-gradient(circle at top right,var(--gold-soft) 0%,transparent 70%);pointer-events:none}
+  .discovery-form h3{font-size:1.4rem;margin-bottom:8px;position:relative}
+  .discovery-form .form-sub{color:var(--ink-3);font-size:.95rem;margin-bottom:28px;position:relative}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;position:relative}
+  @media(max-width:540px){.form-row{grid-template-columns:1fr}}
+  .form-field{display:flex;flex-direction:column;gap:6px}
+  .form-field label{font-size:.82rem;font-weight:600;color:var(--ink-2)}
+  .form-field input,.form-field select,.form-field textarea{padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.95rem;color:var(--ink);background:#fff;transition:border-color .15s ease}
+  .form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--gold)}
+  .form-field textarea{min-height:100px;resize:vertical}
+  .form-field.full{grid-column:1/-1}
+  .form-submit{width:100%;margin-top:20px;justify-content:center;font-size:1rem;padding:18px}
+  .form-foot{margin-top:18px;color:var(--ink-3);font-size:.82rem;text-align:center;line-height:1.5}
+
+  /* ───── COMMITMENT (in lieu of guarantee — different angle for enterprise) ───── */
+  .commitment-section{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .commitment-section::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 30%,rgba(201,169,97,.15) 0%,transparent 60%);pointer-events:none}
+  .commitment-section .container{position:relative}
+  .commitment-section h2{color:#fff}
+  .commitment-section .section-head .lede{color:#9CA9C0}
+  .commit-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+  @media(max-width:900px){.commit-grid{grid-template-columns:1fr}}
+  .commit-card{background:rgba(255,255,255,.04);border:1px solid rgba(201,169,97,.3);border-radius:14px;padding:28px;backdrop-filter:blur(10px)}
+  .commit-card .num{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:var(--navy);font-weight:800;font-size:1.1rem;display:grid;place-items:center;margin-bottom:18px}
+  .commit-card h3{color:#fff;margin-bottom:10px;font-size:1.15rem}
+  .commit-card p{color:#C8D2E2;font-size:.94rem;margin:0}
+
+  /* ───── PHILOSOPHY ───── */
+  .philosophy{background:#fff;border-top:1px solid var(--line)}
+  .philo-quote{max-width:780px;margin:0 auto;text-align:center;padding:20px 0}
+  .philo-quote .serif{color:var(--ink-3);font-size:1.15rem;line-height:1.6;margin-bottom:24px;display:block}
+  .philo-quote h3{color:var(--navy);font-size:1.6rem;margin-bottom:18px}
+  .philo-quote p{color:var(--ink-2);font-size:1.02rem;max-width:62ch;margin:0 auto 1em}
+
+  /* ───── FAQ ───── */
+  .faq-section{background:var(--cream)}
+  .faq-list{display:flex;flex-direction:column;gap:10px;max-width:820px;margin:0 auto}
+  details.faq{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 22px;transition:border-color .15s ease}
+  details.faq[open]{border-color:var(--gold)}
+  details.faq summary{cursor:pointer;font-weight:600;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:1rem}
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary::after{content:"+";font-size:1.5rem;color:var(--gold);font-weight:300;transition:transform .2s}
+  details.faq[open] summary::after{content:"−"}
+  details.faq .body{padding-top:14px;color:var(--ink-2);font-size:.96rem;line-height:1.65}
+
+  /* ───── CTA FINAL ───── */
+  .cta-final{background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,169,97,.2) 0%,transparent 60%),linear-gradient(180deg,var(--navy-2) 0%,var(--navy) 100%);color:#fff;text-align:center}
+  .cta-final h2{color:#fff;margin-bottom:18px}
+  .cta-final .lede{color:#C8D2E2;max-width:54ch;margin:0 auto 38px;font-size:1.08rem}
+
+  footer{background:var(--navy);color:#9CA9C0;padding:40px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+  footer .row{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:center}
+  footer .small{font-size:.82rem}
+  footer a{color:var(--gold-2);text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="proposal-banner">
+  <strong>BORRADOR DE PROPUESTA</strong> — los textos marcados en
+  <span class="invented" style="display:inline">rojo</span>
+  son copy compuesto por mí; valida o corrige antes de publicar.
+</div>
+
+<nav class="top">
+  <div class="container row">
+    <div class="brand">
+      <div class="brand-mark">L</div>
+      <div>Latin Prime <span style="color:var(--gold)">Systems</span></div>
+    </div>
+    <div class="nav-right">
+      <a href="nucleo-landing-es.html" class="nav-link">Núcleo</a>
+      <a href="pulso-landing-es.html" class="nav-link">Pulso</a>
+      <a href="orbita-landing-es.html" class="nav-link">Órbita</a>
+      <a href="#discovery" class="cta">Discovery call</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Plan Constelación · Tier 4 · Custom · Multi-ubicación hispana</div>
+    <h1>El sistema diseñado <span class="accent">alrededor de tu operación</span> — no al revés.</h1>
+    <p class="lede">
+      <span class="invented">Para operadores hispanos con 3+ sucursales, equipos de 25+ personas, o operaciones que ya superaron Órbita.
+      Constelación es un plan custom: el architecto define cupos, integraciones y arquitectura contigo —
+      no eliges un paquete de columna.</span>
+    </p>
+    <div class="hero-cta">
+      <a href="#discovery" class="btn btn-primary">Agendar discovery call <span class="arrow">→</span></a>
+      <a href="#fit" class="btn btn-ghost">¿Es Constelación para mí?</a>
+    </div>
+    <div class="trust-strip">
+      <div class="trust-item"><span class="dot"></span> Custom — pricing definido en discovery call</div>
+      <div class="trust-item"><span class="dot"></span> Bilingüe nativo · CSM dedicado en español</div>
+      <div class="trust-item"><span class="dot"></span> Multi-ubicación · multi-brand · custom dev</div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ ICP FILTER (auto-cualifica) ═══════════════ -->
+<section class="icp-section" id="fit">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">¿Es Constelación para ti?</span>
+      <h2>Te decimos honestamente cuándo este plan tiene sentido — y cuándo no.</h2>
+      <p class="lede">No queremos venderte algo que no necesitas. Constelación es overkill para 90% de operadores —
+        está diseñado para el 10% que tiene complejidad real.</p>
+    </div>
+
+    <div class="icp-grid">
+      <div class="icp-card yes">
+        <h3><span class="icon">✓</span> Constelación es para ti si…</h3>
+        <ul class="icp-list">
+          <li><strong>Operas 3+ sucursales</strong> o ubicaciones físicas con datos que necesitan vivir separados pero rolar al holding.</li>
+          <li><strong>Tienes 25+ empleados</strong> en pipeline activo (ventas, ops, soporte) y necesitas roles/permisos sofisticados.</li>
+          <li><strong>Atiendes mercado hispano y anglo</strong> simultáneamente y necesitas un CSM que entienda ambos sin traducir.</li>
+          <li><strong>Tu operación tiene integraciones legacy</strong> (sistema de policy management, EHR, MLS, software contable propio) que necesitan conectar al CRM.</li>
+          <li><strong>Considerases Salesforce o HubSpot Enterprise</strong> pero el setup de $30k–$150k te detuvo o el soporte gringo no te resuena.</li>
+          <li><strong>Tienes un equipo de marketing/ops interno</strong> que va a usar el sistema profesionalmente, no solo "el dueño revisándolo a veces".</li>
+        </ul>
+      </div>
+
+      <div class="icp-card no">
+        <h3><span class="icon">✗</span> Constelación NO es para ti si…</h3>
+        <ul class="icp-list">
+          <li><strong>Apenas estás empezando.</strong> Núcleo o Pulso te darán más valor por menos inversión. Hablamos en 18 meses.</li>
+          <li><strong>Operas una sola ubicación con menos de 10 empleados.</strong> Órbita tiene de sobra para ti.</li>
+          <li><strong>Quieres "todo lo posible por el mejor precio".</strong> Constelación no compite por precio — compite por arquitectura específica para tu negocio.</li>
+          <li><strong>No tienes un decision-maker técnico</strong> o alguien que pueda dirigir un build de 30–60 días con nuestro equipo.</li>
+          <li><strong>Tu operación va a cambiar fundamentalmente en 3 meses.</strong> Esperemos a que estabilices, después construimos sobre algo sólido.</li>
+          <li><strong>Solo necesitas un CRM.</strong> Constelación es CRM + voice + chatbot + automation + custom dev + CSM bilingüe. Si solo necesitas CRM, hay opciones más eficientes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CLIENT FEATURE: NBG Latino ═══════════════ -->
+<section class="client-section">
+  <div class="container">
+    <div class="section-head" style="text-align:center;margin:0 auto 40px">
+      <span class="eyebrow">Cliente Constelación</span>
+      <h2>Una arquitectura que ya está corriendo en producción.</h2>
+      <p class="lede">No vendemos Constelación en frío — lo construimos primero con un cliente real para probar la arquitectura.</p>
+    </div>
+
+    <div class="client-card">
+      <div class="client-grid">
+        <div class="client-logo">
+          <img src="nbg-latino-logo.png" alt="NBG Latino — National Brokers Group Latino" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=&quot;client-logo-fallback&quot;>NBG LATINO</div>'" />
+        </div>
+
+        <div class="client-content">
+          <span class="eyebrow">Cliente · Constelación</span>
+          <h3>NBG Latino</h3>
+          <p class="meta">National Brokers Group Latino · Red nacional de brokers hispanos · Seguros + servicios financieros</p>
+
+          <div class="client-quote">
+            "Coordinar una red de agentes hispanos en múltiples estados no es problema de CRM — es problema de infraestructura completa. Necesitábamos sitio web multi-brand para cada producto, dashboard ejecutivo con KPIs por estado y por agente en tiempo real, app móvil con nuestra identidad para que los agentes vivan dentro del sistema, y academia integrada para onboarding y certificaciones continuas. LPS lo entregó todo bajo un solo techo, con voice agent bilingüe que califica leads 24/7 y un specialist que entiende seguros hispanos sin que tengamos que traducir cada conversación."
+            <div class="client-attr">— Marco Conde · CEO, NBG Latino</div>
+          </div>
+
+          <div class="client-scope">
+            <div class="scope-item">
+              <div class="label">Vertical</div>
+              <div class="val">Seguros + servicios financieros</div>
+            </div>
+            <div class="scope-item">
+              <div class="label">Cobertura</div>
+              <div class="val">50 estados</div>
+            </div>
+            <div class="scope-item">
+              <div class="label">Red de agentes</div>
+              <div class="val">50 agentes activos</div>
+            </div>
+            <div class="scope-item">
+              <div class="label">Implementación</div>
+              <div class="val">CRM + Voice + Web + Dashboard + App + Academia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ STACK COMPARISON ═══════════════ -->
+<section class="stack-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Tu alternativa enterprise hoy</span>
+      <h2>Lo que Salesforce o HubSpot Enterprise te cobrarían — sin el componente bilingüe.</h2>
+      <p class="lede">Operadores que llegan a este nivel normalmente comparan contra Salesforce ($30k–$150k implementación) o
+        HubSpot Enterprise multi-hub ($7k–$25k onboarding + $150/seat). El gap real con Constelación no está en precio puro —
+        está en quién te resuelve los problemas en español.</p>
+    </div>
+
+    <div class="stack-grid">
+      <div class="stack-card fragmented">
+        <h3>Salesforce Enterprise mid-market</h3>
+        <div class="stack-line"><span class="label">Sales Cloud Enterprise (25 users)</span><span class="price">$4,375/mes</span></div>
+        <div class="stack-line"><span class="label">Service Cloud (15 users)</span><span class="price">$2,625/mes</span></div>
+        <div class="stack-line"><span class="label">Implementación profesional</span><span class="price">$30k–$150k</span></div>
+        <div class="stack-line"><span class="label">Voice AI (custom build)</span><span class="price">$40k–$70k anual</span></div>
+        <div class="stack-line"><span class="label">CSM (gringo, no bilingüe)</span><span class="price">incluido</span></div>
+        <div class="stack-total">
+          ≈ $7,000+/mes + $30k–$150k setup<br>
+          <span style="font-weight:400;font-size:.8rem;letter-spacing:.05em">Soporte en inglés · sin voice AI nativo · sin CSM hispano</span>
+        </div>
+      </div>
+
+      <div class="vs">vs</div>
+
+      <div class="stack-card unified">
+        <h3>Plan Constelación</h3>
+        <div class="stack-line"><span class="label">Plataforma + CRM multi-brand multi-branch</span><span class="price">incluido</span></div>
+        <div class="stack-line"><span class="label">Voice + chatbot bilingüe (volumen custom)</span><span class="price">incluido</span></div>
+        <div class="stack-line"><span class="label">Sitio web custom multi-brand</span><span class="price">incluido</span></div>
+        <div class="stack-line"><span class="label">Dashboard premium custom</span><span class="price">incluido</span></div>
+        <div class="stack-line"><span class="label">App móvil branded (iOS + Android)</span><span class="price">incluido</span></div>
+        <div class="stack-line"><span class="label">Academia de agentes integrada</span><span class="price">incluido</span></div>
+        <div class="stack-line"><span class="label">CSM bilingüe dedicado · QBR · canal directo</span><span class="price">incluido</span></div>
+        <div class="stack-total">
+          Custom — definido en discovery call<br>
+          <span style="font-weight:400;font-size:.8rem;letter-spacing:.05em">Bilingüe nativo · arquitectura diseñada contigo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-savings">
+      <strong>Lo que verdaderamente te ahorra Constelación:</strong> el costo de tener un equipo Salesforce que no entiende
+      cómo opera un broker hispano de seguros multi-estado. Ese gap no se mide en dólares — se mide en proyectos que se atrasan
+      6 meses porque nadie en el implementación team habla cómo trabajan tus operadores.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FEATURES ═══════════════ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Lo que incluye Constelación</span>
+      <h2>Custom no significa "todo gratis" — significa "diseñado para tu operación específica".</h2>
+      <p class="lede">Estos son los componentes core que están en cada implementación Constelación.
+        Volúmenes (minutos voice, conversaciones chatbot, usuarios, horas de dev) se definen en el discovery call según tu operación.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">◆</div>
+        <h3>CSM bilingüe dedicado <span class="core-tag">Diferenciador</span></h3>
+        <p>Una persona senior en español e inglés, asignada exclusivamente a tu cuenta. Te conoce, conoce tu operación, y no rota cada 6 meses como pasa en Salesforce/HubSpot.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◇</div>
+        <h3>Multi-business-unit / multi-brand</h3>
+        <p>Sucursales con datos independientes que rolean al holding. Cada brand con su propia identidad, voice agent, números, equipos — todo gobernado desde una sola consola.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◈</div>
+        <h3>Voice + chatbot — volumen custom</h3>
+        <p>Cupos definidos a tu volumen real. Sin tope artificial. Multiple voice agents bilingues con personalidades configuradas para diferentes brands o sucursales.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◊</div>
+        <h3>Custom integrations + dev hours</h3>
+        <p>Conexiones a tu policy management, EHR, MLS, sistema contable, software legacy. Horas de desarrollo bundled cada mes — no por proyecto cobrado aparte.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◉</div>
+        <h3>White-label / multi-brand front-end</h3>
+        <p>Si revendes o tienes multiple brands, cada una con su propia identidad visual. Aplicación móvil con tu logo, no con Latin Prime Systems.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">●</div>
+        <h3>Enterprise security</h3>
+        <p>SSO + RBAC + MFA + encriptación en reposo y tránsito + audit logs. Sandbox/staging para probar cambios sin tocar producción.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◐</div>
+        <h3>Quarterly Business Reviews</h3>
+        <p>Cada 90 días, sesión de 90 min con un senior LPS. Revisión de KPIs, roadmap del próximo trimestre, identificación de fricciones, decisiones de inversión.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◑</div>
+        <h3>Canal Slack/WhatsApp dedicado</h3>
+        <p>Tu equipo y el nuestro hablando en tiempo real, no por tickets. Para operaciones que necesitan respuesta inmediata sin abrir formulario.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◒</div>
+        <h3>SLA de servicio mejorado</h3>
+        <p class="invented">Respuesta en menos de 2 horas hábiles — la mitad del SLA de Núcleo/Pulso/Órbita. Para operaciones que no pueden esperar 4 horas con el sistema down.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◓</div>
+        <h3>Sitio web custom multi-brand <span class="core-tag">Constelación</span></h3>
+        <p>Un sitio principal del holding + sub-sites por brand o sucursal con identidad propia. Diseño custom, no template. Cada uno conectado al CRM con tagging por origen.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◔</div>
+        <h3>Dashboard premium custom <span class="core-tag">Constelación</span></h3>
+        <p>Dashboard ejecutivo con KPIs por brand, por sucursal, por agente. Real-time. Revenue attribution cruzando voice, chatbot, email, sitio. Diseñado para tus reportes de junta directiva, no para "ver actividad".</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◕</div>
+        <h3>App móvil branded <span class="core-tag">Constelación</span></h3>
+        <p>Aplicación iOS y Android con tu identidad visual — tus agentes ven tu logo, no el de LPS. Acceso a pipeline, llamadas grabadas, transcripts, mensajería interna y notificaciones push de leads nuevos.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◖</div>
+        <h3>Academia de agentes integrada <span class="core-tag">Constelación</span></h3>
+        <p>LMS con módulos de training, certificaciones, evaluaciones, y gamification — todo conectado al CRM. Cuando un agente nuevo entra al pipeline, su progreso de academia se ve junto a sus métricas de venta. Onboarding sistematizado, certificaciones continuas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ COMPARATIVE TABLE ═══════════════ -->
+<section style="background:#F4F0E5">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Constelación vs. enterprise tradicional</span>
+      <h2>Lo que Salesforce, HubSpot y HighLevel Enterprise sí hacen, lo que no, y lo que solo nosotros.</h2>
+      <p class="lede">Precios verificados mayo 2026. Lo que es "contact sales" lo marcamos así.</p>
+    </div>
+
+    <div class="table-wrap">
+      <div class="table-scroll">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Salesforce<br>Sales Enterprise</th>
+            <th>HubSpot<br>Sales Enterprise</th>
+            <th>HighLevel<br>Enterprise</th>
+            <th>Bitrix24<br>Enterprise</th>
+            <th class="featured">Constelación LPS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feat">Precio mensual</td>
+            <td>$175/user (25 = $4,375)</td>
+            <td>$150/seat (25 = $3,750)</td>
+            <td>Contact sales</td>
+            <td>$350–$499 (250 users flat)</td>
+            <td class="featured">Custom · discovery call</td>
+          </tr>
+          <tr>
+            <td class="feat">Setup / implementación</td>
+            <td><span class="cross">$30k–$150k</span></td>
+            <td>$3,500–$25,000</td>
+            <td>Contact sales</td>
+            <td>No publicado</td>
+            <td class="featured">Custom · discovery call</td>
+          </tr>
+          <tr>
+            <td class="feat">Voice AI bilingüe nativo</td>
+            <td><span class="cross">No · custom build $40k+</span></td>
+            <td><span class="cross">No</span></td>
+            <td><span class="partial">Add-on</span></td>
+            <td><span class="cross">No</span></td>
+            <td class="featured"><span class="check">✓ Incluido · volumen custom</span></td>
+          </tr>
+          <tr>
+            <td class="feat">CSM bilingüe dedicado</td>
+            <td><span class="cross">No nombrado bilingüe</span></td>
+            <td><span class="cross">No nombrado bilingüe</span></td>
+            <td><span class="cross">No nombrado bilingüe</span></td>
+            <td><span class="cross">No</span></td>
+            <td class="featured"><span class="check">✓ Diferenciador único</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Multi-business-unit / multi-brand</td>
+            <td><span class="check">Sí</span></td>
+            <td><span class="check">Sí</span></td>
+            <td><span class="check">Sub-cuentas ilimitadas</span></td>
+            <td><span class="check">Multi-branch</span></td>
+            <td class="featured"><span class="check">✓ Sí</span></td>
+          </tr>
+          <tr>
+            <td class="feat">White-label / multi-brand front</td>
+            <td><span class="cross">Limitado</span></td>
+            <td><span class="cross">Limitado</span></td>
+            <td><span class="check">App móvil white-label</span></td>
+            <td><span class="cross">Limitado</span></td>
+            <td class="featured"><span class="check">✓ Sí</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Custom dev hours bundled</td>
+            <td><span class="cross">Add-on / consultor</span></td>
+            <td><span class="cross">Add-on / consultor</span></td>
+            <td><span class="check">Sí</span></td>
+            <td><span class="cross">No</span></td>
+            <td class="featured"><span class="check">✓ Sí · cantidad custom</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Quarterly Business Reviews</td>
+            <td><span class="check">Sí</span></td>
+            <td><span class="check">Sí</span></td>
+            <td><span class="check">Sí</span></td>
+            <td><span class="cross">No</span></td>
+            <td class="featured"><span class="check">✓ Sí · 90 min con senior LPS</span></td>
+          </tr>
+          <tr>
+            <td class="feat">SSO / RBAC / Audit logs</td>
+            <td><span class="check">Sí</span></td>
+            <td><span class="check">Sí</span></td>
+            <td><span class="check">Sí</span></td>
+            <td><span class="check">Sí</span></td>
+            <td class="featured"><span class="check">✓ Sí</span></td>
+          </tr>
+          <tr>
+            <td class="feat">HIPAA / SOC2</td>
+            <td><span class="check">Sí</span></td>
+            <td><span class="check">Sí</span></td>
+            <td><span class="partial">HIPAA add-on $297/mo</span></td>
+            <td><span class="check">Sí</span></td>
+            <td class="featured"><span class="cross">Roadmap futuro</span></td>
+          </tr>
+          <tr>
+            <td class="feat">Modelo de precio</td>
+            <td>Lista pública</td>
+            <td>Lista pública</td>
+            <td>Contact sales</td>
+            <td>Lista pública</td>
+            <td class="featured">Contact sales</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="table-foot">
+        Precios oficiales mayo 2026 — fuentes: salesforce.com/pricing · hubspot.com/pricing · gohighlevel.com/pricing · bitrix24.com/prices
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ORIGIN PATH ═══════════════ -->
+<section class="origin-section">
+  <div class="container">
+    <div class="section-head" style="text-align:center;margin:0 auto 40px">
+      <span class="eyebrow">¿Vienes de Órbita o de otro tier?</span>
+      <h2>Constelación es el cuarto paso. Hay tres antes — y casi siempre vale la pena pasar por ellos.</h2>
+      <p class="lede">A menos que ya tengas operación enterprise activa hoy (3+ sucursales, 25+ empleados, integraciones legacy),
+        empezar en Órbita y graduarte a Constelación cuando llegue el momento es más sano para tu negocio que arrancar
+        en custom desde cero.</p>
+    </div>
+
+    <div class="origin-grid">
+      <div class="origin-card from">
+        <span class="origin-tag">Si todavía no estás aquí</span>
+        <h3>Órbita</h3>
+        <div class="price-tag">$2,997 setup · $1,797/mes</div>
+        <p>Voice 700 min, chatbot 6,000 conv, 15 usuarios, automatizaciones ilimitadas, email + SMS, revenue attribution avanzado, número dedicado, A/B testing. Para operaciones de un solo brand creciendo.</p>
+        <a href="orbita-landing-es.html" class="link">Ver Órbita →</a>
+      </div>
+
+      <div class="origin-arrow">→</div>
+
+      <div class="origin-card now">
+        <span class="origin-tag">Aquí</span>
+        <h3>Constelación</h3>
+        <div class="price-tag">Custom · discovery call</div>
+        <p>Para cuando un solo brand ya no alcanza — multi-ubicación, multi-business unit, custom dev, CSM bilingüe dedicado, integraciones legacy. Diseñado contigo, no para ti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DISCOVERY FORM ═══════════════ -->
+<section class="discovery-section" id="discovery">
+  <div class="container">
+    <div class="discovery-grid">
+      <div class="discovery-intro">
+        <span class="eyebrow">Discovery call</span>
+        <h2>Hablemos 30 minutos.</h2>
+        <p>El propósito de la discovery call no es venderte Constelación — es entender si tiene sentido para tu operación,
+          y si lo tiene, cómo se ve la implementación específica para ti.</p>
+        <ul>
+          <li>Revisamos tu operación actual y los pain points</li>
+          <li>Te decimos honestamente si Constelación es lo correcto, o si Órbita resuelve mejor</li>
+          <li>Si avanzamos, te entregamos cotización detallada en 5 días hábiles</li>
+          <li>Sin compromiso, sin tarjeta, sin "te seguimos llamando 6 meses"</li>
+        </ul>
+        <p style="font-size:.88rem;color:var(--ink-3);margin-top:24px">
+          <strong>Tiempo total para decisión:</strong> normalmente 2–3 calls + 1 propuesta escrita. Sales cycle típico: 4–6 semanas desde primera llamada.
+        </p>
+      </div>
+
+      <form class="discovery-form" onsubmit="return false">
+        <h3>Cuéntanos sobre tu operación</h3>
+        <p class="form-sub">5 campos. Te respondemos en menos de 24 horas hábiles para agendar la call.</p>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+          <div class="form-field">
+            <label for="empresa">Nombre de tu empresa</label>
+            <input type="text" id="empresa" name="empresa" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="email">Email de trabajo</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-field">
+            <label for="telefono">Teléfono / WhatsApp</label>
+            <input type="tel" id="telefono" name="telefono">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="industria">Industria</label>
+            <select id="industria" name="industria" required>
+              <option value="">Selecciona…</option>
+              <option>Seguros (P&C / auto / vida)</option>
+              <option>Mortgage / hipotecas</option>
+              <option>Healthcare / clínicas</option>
+              <option>Real estate / brokerage</option>
+              <option>Tax / contabilidad</option>
+              <option>Servicios financieros</option>
+              <option>Legal</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="sucursales"># Sucursales / ubicaciones</label>
+            <select id="sucursales" name="sucursales" required>
+              <option value="">Selecciona…</option>
+              <option>1 (probablemente Órbita es mejor)</option>
+              <option>2</option>
+              <option>3 a 5</option>
+              <option>6 a 10</option>
+              <option>11+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="empleados"># Empleados en pipeline activo</label>
+            <select id="empleados" name="empleados" required>
+              <option value="">Selecciona…</option>
+              <option>Menos de 10</option>
+              <option>10 a 25</option>
+              <option>25 a 50</option>
+              <option>50 a 100</option>
+              <option>100+</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="cuando">¿Cuándo planeas implementar?</label>
+            <select id="cuando" name="cuando" required>
+              <option value="">Selecciona…</option>
+              <option>Necesito empezar en menos de 30 días</option>
+              <option>30–60 días</option>
+              <option>60–90 días</option>
+              <option>3–6 meses</option>
+              <option>Solo explorando, sin urgencia</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field full">
+            <label for="contexto">Contexto opcional — ¿qué te trajo a buscar Constelación?</label>
+            <textarea id="contexto" name="contexto" placeholder="Ejemplo: Estamos en HubSpot Enterprise, el soporte gringo no entiende cómo operan nuestras 4 sucursales en TX. O: Recién compramos 2 brokerages más y necesitamos consolidar todo bajo un sistema."></textarea>
+          </div>
+        </div>
+
+        <button class="btn btn-primary form-submit">
+          Solicitar discovery call <span class="arrow">→</span>
+        </button>
+        <p class="form-foot">
+          Te respondemos en &lt;24h hábiles para agendar. Si en la call concluimos que Constelación no es para ti,
+          te recomendamos la opción correcta — incluyendo competidores si aplica.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ COMMITMENT (3 capas en lugar de garantía cerrada) ═══════════════ -->
+<section class="commitment-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Compromiso Constelación</span>
+      <h2>Tres compromisos que cumplimos durante todo el ciclo de vida del cliente.</h2>
+      <p class="lede">No hay garantía cerrada con un cheque al final — porque cada Constelación es diferente. Lo que sí hay son tres compromisos verificables.</p>
+    </div>
+
+    <div class="commit-grid">
+      <div class="commit-card">
+        <div class="num">1</div>
+        <h3>Honestidad en la discovery call</h3>
+        <p>Si en la call concluimos que Constelación no es lo correcto para ti — te lo decimos. Te recomendamos Órbita, otro plan, o un competidor si hace mejor sentido. No vendemos algo que no necesitas.</p>
+      </div>
+
+      <div class="commit-card">
+        <div class="num">2</div>
+        <h3>SLA <span class="invented">&lt;2h hábiles</span> · CSM nombrado</h3>
+        <p class="invented">Tu specialist es una persona con nombre, asignada antes de firmar contrato. Si tu specialist no responde en menos de 2 horas hábiles o no entrega tu QBR trimestral, ese mes recibes 50% de crédito.</p>
+      </div>
+
+      <div class="commit-card">
+        <div class="num">3</div>
+        <h3>Roadmap transparente</h3>
+        <p>Cada quarter te entregamos un roadmap escrito con prioridades, fechas, y dependencias. Si algo se mueve, te avisamos antes — no después. Tu equipo no se entera por sorpresa de cambios en el sistema.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PHILOSOPHY ═══════════════ -->
+<section class="philosophy">
+  <div class="container philo-quote">
+    <span class="eyebrow">Cómo manejamos las fallas</span>
+    <span class="serif">"En operaciones enterprise, lo que cae no es 'una automatización' — es un proceso del que dependen 25 personas. Nuestra responsabilidad escala con la tuya."</span>
+    <h3>Canal directo. Acción inmediata. Postmortem documentado.</h3>
+    <p>
+      Tu equipo y el nuestro tienen un canal Slack o WhatsApp dedicado. Cuando algo falla, lo escribes ahí —
+      tu CSM y el equipo técnico están alertados al mismo tiempo. Sin tickets, sin colas.
+    </p>
+    <p>
+      Después de cada incidente: postmortem documentado en menos de 48h con root cause, cambios implementados, y prevención.
+      Tu equipo de ops sabe qué pasó y qué hicimos.
+    </p>
+    <p style="color:var(--gold);font-weight:600;font-style:italic">
+      Es parte de tener al equipo Constelación de tu lado.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-head" style="text-align:center;margin:0 auto 40px">
+      <span class="eyebrow">Preguntas honestas</span>
+      <h2>Lo que probablemente estás pensando ahora.</h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq">
+        <summary>¿Por qué no publican el precio de Constelación?</summary>
+        <div class="body">
+          Porque cada implementación es diferente. El precio depende de número de sucursales, integraciones legacy,
+          horas de custom dev, volumen de voice/chatbot, y customización del white-label. Cotizar sin entender estas variables
+          es regalar números que después tenemos que corregir — preferimos discovery call de 30 minutos y darte un número real.
+          <br><br>
+          Es el patrón estándar en enterprise: HighLevel Enterprise, Kommo Enterprise, Salesforce mid-market, Vapi Enterprise — todos siguen este modelo.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>¿Cuándo me conviene Constelación vs Órbita?</summary>
+        <div class="body">
+          <strong>Órbita</strong> está diseñado para operaciones de un solo brand creciendo (un broker, una clínica, una agencia).
+          Te alcanza si tienes hasta 15 usuarios, una identidad de marca, y operación en una sola ubicación principal.
+          <br><br>
+          <strong>Constelación</strong> entra cuando operas <em>múltiples brands o sucursales que necesitan datos independientes</em>,
+          tienes 25+ empleados activos, integraciones legacy a sistemas viejos, o ya estás en Salesforce/HubSpot Enterprise y el soporte gringo no entiende tu operación.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>¿Cuánto tarda una implementación Constelación?</summary>
+        <div class="body invented">
+          Típicamente <strong>30–60 días</strong> para tener el sistema vivo. Implementaciones con muchas integraciones legacy
+          (5+ sistemas externos) pueden extenderse a 60–90 días. La discovery call y propuesta toman 1–2 semanas adicionales antes de empezar el build.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>¿Tienen casos de éxito de clientes Constelación?</summary>
+        <div class="body">
+          Sí — <strong>NBG Latino</strong> (National Brokers Group Latino), red multi-estado de brokers hispanos
+          en seguros y servicios financieros, es nuestro cliente Constelación de referencia. Implementación incluye CRM multi-agente,
+          voice agent bilingüe, chatbot, integraciones específicas para mercado de seguros hispano, y CSM bilingüe asignado.
+          <br><br>
+          En la discovery call podemos compartir más detalles de la arquitectura, casos de uso específicos, y conectarte con su equipo si lo solicitas.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>¿Tienen HIPAA o SOC2?</summary>
+        <div class="body">
+          <strong>No hoy.</strong> Si tu operación requiere HIPAA o SOC2 hard-stop, te lo decimos directamente y te recomendamos Salesforce Health Cloud o HubSpot Enterprise.
+          <br><br>
+          Sí entregamos: SSO, RBAC, MFA, encriptación en reposo y tránsito, audit logs. Para muchas operaciones hispanas en P&C insurance, mortgage, real estate — esto es suficiente.
+          <br><br>
+          HIPAA/SOC2 están en roadmap futuro pero no prometemos timeline.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>¿Pueden integrarse con [mi sistema legacy]?</summary>
+        <div class="body">
+          La mayoría de las veces, sí — pero depende del sistema. En la discovery call traes los nombres específicos
+          (policy management, EHR, MLS, ERP, contabilidad) y te decimos honestamente si es:
+          <br>(1) integración nativa que ya tenemos hecha,
+          <br>(2) custom integration que construimos como parte del setup,
+          <br>(3) sistema cerrado sin API que requiere workaround manual,
+          <br>(4) o algo que no podemos hacer sin que tu vendor del legacy abra acceso.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>¿Tengo que dejar mi stack actual completamente?</summary>
+        <div class="body">
+          No necesariamente. Constelación se diseña <em>alrededor</em> de tu operación, no sobre las ruinas de tu stack viejo.
+          Sistemas que están funcionando bien (contabilidad, ERP, herramientas específicas de tu industria) los integramos en lugar de reemplazarlos.
+          Lo que sí reemplazamos: CRM genéricos, voice AI inglés-only, herramientas de email aisladas, dashboards que nadie revisa.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>¿Hay compromiso anual obligatorio?</summary>
+        <div class="body invented">
+          Para Constelación, sí — compromiso mínimo de <strong>12 meses</strong>. La razón es que el build cuesta 30–60 días de
+          trabajo intensivo de nuestro equipo, integraciones legacy son inversión específica para ti que no podemos reciclar,
+          y un CSM bilingüe dedicado es asignación de tiempo real. Mensualmente solo aplica para Núcleo/Pulso/Órbita.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>¿Qué pasa si necesito multi-país o multi-currency?</summary>
+        <div class="body">
+          Constelación soporta multi-currency en pricing y reportes. Multi-país (operaciones en US + México + Colombia, etc.)
+          se hace pero requiere consideraciones adicionales de compliance local. En la discovery call mapeamos qué países y qué regulaciones aplican.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA FINAL ═══════════════ -->
+<section class="cta-final">
+  <div class="container">
+    <h2>Una sola decisión: ¿hablamos 30 minutos?</h2>
+    <p class="lede">
+      Si después de la call concluimos que Constelación no es lo correcto para ti, te lo decimos sin rodeos —
+      y te recomendamos lo que sí lo sea. No perdiste nada. Si avanzamos, en 5 días tienes propuesta detallada en mano.
+    </p>
+    <a href="#discovery" class="btn btn-primary" style="font-size:1.1rem;padding:20px 36px">
+      Solicitar discovery call <span class="arrow">→</span>
+    </a>
+    <p style="margin-top:30px;color:#9CA9C0;font-size:.85rem">
+      <a href="nucleo-landing-es.html" style="color:var(--gold-2);text-decoration:none">Núcleo →</a>
+      &nbsp;·&nbsp;
+      <a href="pulso-landing-es.html" style="color:var(--gold-2);text-decoration:none">Pulso →</a>
+      &nbsp;·&nbsp;
+      <a href="orbita-landing-es.html" style="color:var(--gold-2);text-decoration:none">Órbita →</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="brand" style="color:#fff">
+        <div class="brand-mark">L</div>
+        <div>Latin Prime <span style="color:var(--gold)">Systems</span></div>
+      </div>
+      <div class="small">
+        © 2026 Latin Prime Systems. Carlos J. Torres, CEO. ·
+        <a href="mailto:hola@latinprimesystems.com">hola@latinprimesystems.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

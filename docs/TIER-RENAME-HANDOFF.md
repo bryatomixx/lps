@@ -140,16 +140,29 @@ git mv latin-prime-v2/app/es/starter latin-prime-v2/app/es/nucleo
 
 **PR 3 — Constelación enterprise:**
 - Discovery form en lugar de pricing card
-- Testimonio NBG Latino (logo en `/public/`, quote autorizado por Marco Conde)
+- Testimonio NBG Latino (logo en `/public/`, quote autorizado por Marco Conde · CEO)
 - Stack comparison vs Salesforce/HubSpot Enterprise
 - Bilingual CSM como diferenciador
 - Página dedicada en `app/constelacion/` (y `app/es/constelacion/`)
 
-Carlos tiene los 4 landings de referencia como HTML standalone en `~/Desktop/Latin Pirme Systems/`:
-- `nucleo-landing-es.html`
-- `pulso-landing-es.html`
-- `orbita-landing-es.html`
-- `constelacion-landing-es.html`
+**PR 4 — Despegue (nuevo tier de entrada):**
+- Tier de $297/mo · sin setup · plataforma + soporte para beginners hispanos
+- Banner separado debajo del ladder principal (no 5ta columna)
+- Path de upgrade a Núcleo sin pagar setup
+- **Ver handoff doc específico: [`DESPEGUE-NEW-TIER-HANDOFF.md`](DESPEGUE-NEW-TIER-HANDOFF.md)**
+
+## Previews visuales
+
+Los 5 previews HTML standalone que Carlos validó están en [`docs/previews/`](previews/):
+
+- `pricing-comparison-preview.html` — comparativa principal con los 4 tiers + Despegue
+- `nucleo-landing-es.html` — página dedicada Núcleo
+- `pulso-landing-es.html` — página dedicada Pulso
+- `orbita-landing-es.html` — página dedicada Órbita
+- `constelacion-landing-es.html` — página dedicada Constelación (con testimonio NBG Latino)
+- `nbg-latino-logo.png` — logo del cliente Constelación de referencia
+
+Abrí cualquiera en el browser para ver el diseño visual exacto que necesitas portar a Next.js.
 
 ---
 
