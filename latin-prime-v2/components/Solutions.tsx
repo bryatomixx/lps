@@ -47,6 +47,13 @@ export default function Solutions({ lang = "en" }: SolutionsProps) {
           tag: "Full-stack AI infrastructure · scalable by design",
           color: "var(--gold)",
         },
+        {
+          badge: "Website + Apps + Platforms",
+          title: "Your Complete Digital Operation",
+          body: "When your business needs more than automation, we build the full stack: custom websites, online course platforms, training and client apps, member portals \u2014 all integrated and branded as yours. From idea to launch in weeks, not quarters.",
+          tag: "Next.js \u00b7 Custom Apps \u00b7 Course Platforms \u00b7 Mobile-First",
+          color: "var(--blue)",
+        },
       ],
       ctaHeadline: "There\u2019s more under the hood.",
       ctaBody: "Voice AI, WhatsApp automation, CRM pipelines, reputation systems, custom integrations — built for your specific operation.",
@@ -86,6 +93,13 @@ export default function Solutions({ lang = "en" }: SolutionsProps) {
           body: "La misma infraestructura que startups financiadas pagan $500K/año en ingenieros para construir — desplegada en tu negocio en semanas. Maneja 5× el volumen sin aumentar personal.",
           tag: "Infraestructura AI full-stack · escalable por diseño",
           color: "var(--gold)",
+        },
+        {
+          badge: "Website + Apps + Plataformas",
+          title: "Tu Operación Digital Completa",
+          body: "Cuando tu negocio necesita más que automatización, construimos el stack completo: websites a la medida, plataformas de cursos online, apps de entrenamiento y de cliente, portales de miembros — todo integrado y con tu marca. De la idea al lanzamiento en semanas, no en trimestres.",
+          tag: "Next.js · Apps a la medida · Plataformas de cursos · Mobile-First",
+          color: "var(--blue)",
         },
       ],
       ctaHeadline: "Hay mucho más por descubrir.",
@@ -163,7 +177,12 @@ export default function Solutions({ lang = "en" }: SolutionsProps) {
           }}
         >
           {t.outcomes.map((out, i) => (
-            <SectionReveal key={i} delay={i * 0.1} variant="scale">
+            <SectionReveal
+              key={i}
+              delay={i * 0.1}
+              variant="scale"
+              style={i === 4 ? { gridColumn: "1 / -1" } : undefined}
+            >
               <SpotlightCard
                 spotlightColor={`${out.color}22`}
                 style={{

@@ -317,7 +317,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
         },
         {
           tier: "Enterprise",
-          outcome: "Custom AI infrastructure designed around your business.",
+          outcome: "Custom AI infrastructure + full-stack digital products designed around your business. Websites, custom apps, course platforms, proprietary systems — anything your operation needs, built from scratch.",
           tagline:
             "Your infrastructure, built from scratch. No templates. No defaults. Everything scoped and priced for your specific operation.",
           setupLabel: "",
@@ -572,7 +572,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
         },
         {
           tier: "Enterprise",
-          outcome: "Infraestructura de IA diseñada a la medida de tu negocio.",
+          outcome: "Infraestructura de IA a la medida + productos digitales full-stack diseñados para tu negocio. Websites, apps personalizadas, plataformas de cursos, sistemas propios — lo que tu operación necesite, construido desde cero.",
           tagline:
             "Tu infraestructura, construida desde cero. Sin plantillas. Sin defaults. Todo cotizado y diseñado para tu operación específica.",
           setupLabel: "",

@@ -31,7 +31,7 @@ export default function Hero({ lang = "en" }: HeroProps) {
       ],
       ctaPrimary: "Book Free Strategy Session",
       ctaSecondary: "Take the 2-min AI Readiness Quiz",
-      credibility: "Trusted by 6+ businesses across 10 industries · Bilingual EN/ES",
+      credibility: "Trusted by businesses across the U.S., Colombia, and Mexico · 10+ industries · Bilingual EN/ES",
       guarantee: "✓ 90-Day ROI Guarantee — results or you don't pay",
       tickerItems: [
         "Zero leads fall through the cracks",
@@ -58,7 +58,7 @@ export default function Hero({ lang = "en" }: HeroProps) {
       ],
       ctaPrimary: "Agenda tu Sesión Estratégica Gratis",
       ctaSecondary: "Haz el Quiz de IA en 2 minutos",
-      credibility: "Más de 6 empresas en 10 industrias confían en nosotros · Bilingüe EN/ES",
+      credibility: "Empresas en Estados Unidos, Colombia y México confían en nosotros · Más de 10 industrias · Bilingüe EN/ES",
       guarantee: "✓ Garantía ROI de 90 días — resultados o no pagas",
       tickerItems: [
         "Cero prospectos perdidos",
