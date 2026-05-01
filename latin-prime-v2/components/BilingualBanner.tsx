@@ -12,18 +12,18 @@ export default function BilingualBanner({ lang = "en" }: BilingualBannerProps) {
     en: {
       headline: "We work in English and Spanish.",
       body:
-        "Bilingual implementation, bilingual training, bilingual support — at no extra cost.",
+        "We work in English and Spanish — bilingual implementation, bilingual training, bilingual support. We've built systems for businesses in the U.S., Colombia, and Mexico, with local context: regional regulations, regional tax calendars, regional customer behavior. Not generic templates.",
       pillEN: "EN",
       pillES: "ES",
-      tag: "Bilingual EN / ES",
+      tag: "Bilingual EN / ES · Built for Latin America and the U.S. Hispanic market",
     },
     es: {
       headline: "Trabajamos en inglés y español.",
       body:
-        "Implementación bilingüe, capacitación bilingüe, soporte bilingüe — sin costo adicional.",
+        "Trabajamos en inglés y español — implementación bilingüe, capacitación bilingüe, soporte bilingüe. Hemos construido sistemas para empresas en Estados Unidos, Colombia y México, con contexto local: regulaciones regionales, calendarios tributarios regionales, comportamiento real del cliente regional. No son templates genéricos.",
       pillEN: "EN",
       pillES: "ES",
-      tag: "Bilingüe EN / ES",
+      tag: "Bilingüe EN / ES · Hecho para Latinoamérica y el mercado hispano de Estados Unidos",
     },
   }[lang];
 

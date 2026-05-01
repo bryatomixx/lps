@@ -19,6 +19,7 @@ export default function WhoWeServe({ lang = "en" }: WhoWeServeProps) {
       slabel: "Who This Is For",
       splitText: "Any Business That Wants to",
       shinyText: "Operate Smarter",
+      regionalNote: "Serving service businesses across the U.S., Colombia, and Mexico. Pick your industry.",
       desc: "This used to be only for companies with million-dollar tech budgets. Not anymore.",
       seeWhat: "See what we can do →",
       dedicatedPage: "Dedicated page ↗",
@@ -214,6 +215,7 @@ export default function WhoWeServe({ lang = "en" }: WhoWeServeProps) {
       slabel: "Para Quién Es Esto",
       splitText: "Cualquier Negocio que Quiera",
       shinyText: "Operar con Más Inteligencia",
+      regionalNote: "Atendemos negocios de servicios en Estados Unidos, Colombia y México. Selecciona tu industria.",
       desc: "Antes esto era solo para empresas con presupuestos tecnológicos millonarios. Ya no.",
       seeWhat: "Ver qué podemos hacer →",
       dedicatedPage: "Página dedicada ↗",
@@ -427,6 +429,20 @@ export default function WhoWeServe({ lang = "en" }: WhoWeServeProps) {
               <SplitText text={t.splitText} delay={0.05} />{" "}
               <ShinyText text={t.shinyText} speed={3.5} />
             </h2>
+            <p
+              style={{
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)",
+                fontWeight: 600,
+                color: "var(--text)",
+                lineHeight: 1.5,
+                marginTop: 16,
+                marginBottom: 12,
+                maxWidth: 720,
+              }}
+            >
+              {t.regionalNote}
+            </p>
             <p className="section-desc">
               {t.desc}
             </p>
