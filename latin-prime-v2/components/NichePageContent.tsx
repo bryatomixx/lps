@@ -80,6 +80,19 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
   return (
     <main>
       {/* ── HERO ─────────────────────────────────────────── */}
+      <style>{`
+        @media (max-width: 900px) {
+          .niche-hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .niche-hero-robot {
+            order: -1;
+            max-width: 280px;
+            margin: 0 auto;
+          }
+        }
+      `}</style>
       <section
         style={{
           position: "relative",
@@ -157,14 +170,21 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
         />
 
         <div
+          className="niche-hero-grid"
           style={{
             position: "relative",
             zIndex: 1,
-            maxWidth: 800,
+            maxWidth: 1200,
             margin: "0 auto",
             width: "100%",
+            display: "grid",
+            gridTemplateColumns: "1.1fr 1fr",
+            gap: "clamp(32px, 5vw, 80px)",
+            alignItems: "center",
           }}
         >
+          {/* Left — copy */}
+          <div>
           <Link
             href={homeUrl}
             style={{
@@ -318,6 +338,89 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
             >
               {pricingLabel}
             </Link>
+          </motion.div>
+          </div>
+
+          {/* Right — Niche robot mascot */}
+          <motion.div
+            className="niche-hero-robot"
+            initial={{ opacity: 0, x: 60, scale: 0.85 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              willChange: "transform",
+            }}
+          >
+            {/* Glow rings */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              style={{
+                position: "absolute",
+                width: "78%",
+                height: "78%",
+                borderRadius: "50%",
+                border: "1px solid rgba(26,127,212,0.18)",
+                pointerEvents: "none",
+                animation: "glow-pulse 4s ease-in-out infinite",
+              }}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              style={{
+                position: "absolute",
+                width: "92%",
+                height: "92%",
+                borderRadius: "50%",
+                border: "1px solid rgba(212,165,58,0.14)",
+                pointerEvents: "none",
+                animation: "glow-pulse 4s ease-in-out infinite 0.5s",
+              }}
+            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              style={{
+                position: "absolute",
+                width: "70%",
+                height: "70%",
+                borderRadius: "50%",
+                background:
+                  "radial-gradient(circle, rgba(26,127,212,0.22) 0%, rgba(26,127,212,0.06) 50%, transparent 70%)",
+                filter: "blur(25px)",
+              }}
+            />
+            <div
+              style={{
+                position: "relative",
+                animation: "float 6s ease-in-out infinite",
+                width: "100%",
+                maxWidth: 460,
+              }}
+            >
+              <Image
+                src={niche.img}
+                alt={`${name} — Latin Prime Systems AI assistant`}
+                width={460}
+                height={460}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "contain",
+                  filter:
+                    "drop-shadow(0 20px 60px rgba(26,127,212,0.45)) drop-shadow(0 0 30px rgba(26,127,212,0.25))",
+                }}
+                priority
+              />
+            </div>
           </motion.div>
         </div>
       </section>
