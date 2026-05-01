@@ -5,7 +5,30 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import NicheAutomationFlow from "./NicheAutomationFlow";
 import SectionReveal from "./SectionReveal";
+import ShinyText from "./ShinyText";
+import GradientText from "./GradientText";
+import SplitText from "./SplitText";
 import type { NicheData } from "@/lib/niches";
+
+// Split a hero title like "AI Automation for Insurance Agencies" into a
+// plain-text prefix and a highlight half (after " for " in EN, " para " in ES).
+// The highlight gets a ShinyText shimmer to mirror the home-page hero.
+function splitHeroTitle(title: string, isEs: boolean): { prefix: string; highlight: string } {
+  const sep = isEs ? " para " : " for ";
+  const idx = title.toLowerCase().indexOf(sep);
+  if (idx === -1) {
+    // Fallback: highlight the last 3 words
+    const words = title.trim().split(/\s+/);
+    if (words.length <= 3) return { prefix: "", highlight: title };
+    const tail = words.slice(-3).join(" ");
+    const head = words.slice(0, -3).join(" ");
+    return { prefix: head, highlight: tail };
+  }
+  return {
+    prefix: title.slice(0, idx + sep.length).trim(),
+    highlight: title.slice(idx + sep.length).trim(),
+  };
+}
 
 const BOOKING_URL = "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
 
@@ -47,14 +70,12 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
     ? "Trabajamos con las herramientas que tu industria ya usa. Si tu plataforma no está aquí pero tiene API, también la conectamos."
     : "We work with the tools your industry already uses. If your platform isn't listed but exposes an API, we connect it too.";
   const faqLabel = isEs ? "Preguntas Frecuentes" : "Frequently Asked Questions";
-  const ctaTitle = isEs
-    ? `¿Listo para automatizar tu ${name.toLowerCase()}?`
-    : `Ready to automate your ${name.toLowerCase()}?`;
   const ctaSub = isEs
     ? "Agenda una llamada gratuita de 30 minutos. Te mostramos exactamente cómo funciona para tu negocio — sin compromisos."
     : "Book a free 30-minute strategy call. We'll show you exactly how this works for your business — no commitment required.";
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const heroTitleParts = splitHeroTitle(heroTitle, isEs);
 
   return (
     <main>
@@ -75,20 +96,62 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
             position: "absolute",
             inset: 0,
             backgroundImage:
-              "linear-gradient(rgba(26,127,212,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26,127,212,0.04) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
+              "linear-gradient(rgba(26,127,212,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(26,127,212,0.06) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
             zIndex: 0,
           }}
         />
+        {/* Dot grid with mask — same vibe as home hero */}
         <div
           style={{
             position: "absolute",
-            top: "20%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: 600,
-            height: 300,
-            background: "radial-gradient(ellipse, rgba(26,127,212,0.07) 0%, transparent 70%)",
+            inset: 0,
+            backgroundImage:
+              "radial-gradient(circle, rgba(26,127,212,0.32) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+            pointerEvents: "none",
+            maskImage:
+              "radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 80%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 80%)",
+            zIndex: 0,
+          }}
+        />
+        {/* Blue glow */}
+        <div
+          style={{
+            position: "absolute",
+            top: "8%",
+            left: "5%",
+            width: "55vw",
+            height: "55vw",
+            maxWidth: 700,
+            maxHeight: 700,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(26,127,212,0.12) 0%, transparent 70%)",
+            filter: "blur(60px)",
+            pointerEvents: "none",
+            animation: "glow-pulse 6s ease-in-out infinite",
+            zIndex: 0,
+          }}
+        />
+        {/* Gold glow */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "5%",
+            right: "3%",
+            width: "40vw",
+            height: "40vw",
+            maxWidth: 500,
+            maxHeight: 500,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(212,165,58,0.1) 0%, transparent 70%)",
+            filter: "blur(50px)",
+            pointerEvents: "none",
+            animation: "glow-pulse 8s ease-in-out infinite 1s",
             zIndex: 0,
           }}
         />
@@ -161,9 +224,21 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
               color: "var(--text)",
               marginBottom: 24,
               maxWidth: 720,
+              letterSpacing: "-0.025em",
             }}
           >
-            {heroTitle}
+            {heroTitleParts.prefix && (
+              <>
+                {heroTitleParts.prefix}{" "}
+              </>
+            )}
+            <ShinyText
+              text={heroTitleParts.highlight}
+              speed={3.5}
+              fromColor="#1A5CA8"
+              toColor="#D4A53A"
+              style={{ "--st-style": "normal" } as React.CSSProperties}
+            />
           </motion.h1>
 
           <motion.p
@@ -429,7 +504,13 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
               className="section-title"
               style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", maxWidth: 540 }}
             >
-              {isEs ? "Todo listo en 7–30 días." : "Everything live in 7–30 days."}
+              {isEs ? "Todo " : "Everything "}
+              <ShinyText
+                text={isEs ? "listo en 7–30 días." : "live in 7–30 days."}
+                speed={3.5}
+                fromColor="#1A5CA8"
+                toColor="#D4A53A"
+              />
             </h2>
           </SectionReveal>
           <div
@@ -494,7 +575,16 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
                 className="section-title"
                 style={{ fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", maxWidth: 580 }}
               >
-                {beforeAfterTitle}
+                {isEs ? "Cómo cambia tu " : "How your "}
+                <GradientText
+                  text={isEs ? "día a día" : "day-to-day"}
+                  speed={5}
+                  from="#1A5CA8"
+                  mid="#D4A53A"
+                  to="#2B7FE0"
+                  style={{ fontWeight: 800 }}
+                />
+                {isEs ? "" : " changes"}
               </h2>
             </SectionReveal>
             <div
@@ -1105,7 +1195,13 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
                 margin: "0 auto 20px",
               }}
             >
-              {ctaTitle}
+              {isEs ? `¿Listo para automatizar tu ` : `Ready to automate your `}
+              <ShinyText
+                text={`${name.toLowerCase()}${isEs ? "?" : "?"}`}
+                speed={3.2}
+                fromColor="#1A5CA8"
+                toColor="#D4A53A"
+              />
             </h2>
             <p
               className="section-desc"
