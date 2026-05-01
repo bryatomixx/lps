@@ -44,6 +44,7 @@ function localizedLinks(lang: Lang) {
         dropdown: [
           { href: "/es/starter", label: "Starter — $497/mes", desc: "Tu primer sistema real. En vivo en 7–14 días." },
           { href: "/es#pricing", label: "Pro — $997/mes",     desc: "Motor de cierre + reactivación. En vivo en 14–21 días." },
+          { href: "/es/custom",  label: "Custom — Cotizado",   desc: "Lo que tu negocio necesite. Diseñado a la medida." },
         ],
       },
       { href: `${prefix}/dashboards`, label: "Command Center" },
@@ -57,6 +58,7 @@ function localizedLinks(lang: Lang) {
       dropdown: [
         { href: planHref("/starter"), label: "Starter — $497/mo", desc: "Your first real system. Live in 7–14 days." },
         { href: planHref("/pro"),     label: "Pro — $997/mo",     desc: "Closing engine + reactivation. Live in 14–21 days." },
+        { href: "/custom",            label: "Custom — Quoted",    desc: "Whatever your business needs. Built end to end." },
       ],
     },
     { href: `${prefix}/dashboards`, label: "Command Center" },
@@ -118,8 +120,8 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
 
   const isActive = (href: string) => pathname === href;
   const plansActivePaths = lang === "es"
-    ? new Set(["/es/starter", "/es#pricing"])
-    : new Set(["/starter", "/pro"]);
+    ? new Set(["/es/starter", "/es#pricing", "/es/custom"])
+    : new Set(["/starter", "/pro", "/custom"]);
   const isPlansActive = plansActivePaths.has(pathname);
 
   const handleToggle = (target: Lang) => {

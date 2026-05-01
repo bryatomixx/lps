@@ -122,6 +122,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: `${base}/custom`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+      alternates: {
+        languages: {
+          en: `${base}/custom`,
+          es: `${base}/es/custom`,
+          "x-default": `${base}/custom`,
+        },
+      },
+    },
+    {
+      url: `${base}/es/custom`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+      alternates: {
+        languages: {
+          en: `${base}/custom`,
+          es: `${base}/es/custom`,
+          "x-default": `${base}/custom`,
+        },
+      },
+    },
     ...nichePages,
   ];
 }
