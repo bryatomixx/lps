@@ -430,9 +430,22 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
         className="section-wrap"
         style={{ background: "var(--surface)", borderTop: "1px solid var(--border)" }}
       >
-        <div className="section-inner" style={{ maxWidth: 800 }}>
+        <div className="section-inner" style={{ maxWidth: 820 }}>
           <SectionReveal>
             <div className="slabel">{problemLabel}</div>
+            <h2
+              className="section-title"
+              style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", marginBottom: 22, maxWidth: 720 }}
+            >
+              {isEs ? "Dónde " : "Where "}
+              <ShinyText
+                text={isEs ? `${name} pierden ingresos` : `${name} lose revenue`}
+                speed={3.5}
+                fromColor="#1A5CA8"
+                toColor="#D4A53A"
+              />
+              {isEs ? " todos los días." : " every day."}
+            </h2>
             <p
               style={{
                 fontSize: "clamp(1rem, 1.6vw, 1.15rem)",
@@ -451,8 +464,30 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
         <div className="section-inner">
           <SectionReveal>
             <div className="slabel">{automationLabel}</div>
+            <h2
+              className="section-title"
+              style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", marginBottom: 36, maxWidth: 820 }}
+            >
+              {(() => {
+                const colon = automationTitle.indexOf(":");
+                if (colon === -1) {
+                  return <ShinyText text={automationTitle} speed={3.5} fromColor="#1A5CA8" toColor="#D4A53A" />;
+                }
+                return (
+                  <>
+                    {automationTitle.slice(0, colon + 1)}{" "}
+                    <ShinyText
+                      text={automationTitle.slice(colon + 1).trim()}
+                      speed={3.5}
+                      fromColor="#1A5CA8"
+                      toColor="#D4A53A"
+                    />
+                  </>
+                );
+              })()}
+            </h2>
           </SectionReveal>
-          <NicheAutomationFlow nodes={flowNodes} title={automationTitle} />
+          <NicheAutomationFlow nodes={flowNodes} title="" />
         </div>
       </section>
 
@@ -465,6 +500,19 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
           <div className="section-inner">
             <SectionReveal>
               <div className="slabel">{useCasesLabel}</div>
+              <h2
+                className="section-title"
+                style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", marginBottom: 16, maxWidth: 720 }}
+              >
+                {isEs ? "Más " : "More "}
+                <ShinyText
+                  text={isEs ? "flujos automatizados" : "automated flows"}
+                  speed={3.5}
+                  fromColor="#1A5CA8"
+                  toColor="#D4A53A"
+                />
+                {isEs ? ` para ${name.toLowerCase()}.` : ` for ${name.toLowerCase()}.`}
+              </h2>
               <p
                 style={{
                   fontSize: "0.95rem",

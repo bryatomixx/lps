@@ -172,22 +172,24 @@ export default function NicheAutomationFlow({ nodes, title }: NicheAutomationFlo
 
   return (
     <div ref={ref}>
-      {/* Title */}
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-        transition={{ duration: 0.4 }}
-        style={{
-          fontFamily: "'DM Mono', monospace",
-          fontSize: "0.6rem",
-          letterSpacing: "0.18em",
-          textTransform: "uppercase",
-          color: "var(--gold)",
-          marginBottom: 20,
-        }}
-      >
-        {title}
-      </motion.div>
+      {/* Optional secondary title (skipped when caller renders its own h2) */}
+      {title && (
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+          transition={{ duration: 0.4 }}
+          style={{
+            fontFamily: "'DM Mono', monospace",
+            fontSize: "0.6rem",
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            color: "var(--gold)",
+            marginBottom: 20,
+          }}
+        >
+          {title}
+        </motion.div>
+      )}
 
       {/* Flow row — scrollable on mobile */}
       <div
