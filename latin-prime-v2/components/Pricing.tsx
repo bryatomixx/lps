@@ -8,11 +8,11 @@ import GradientText from "./GradientText";
 
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
-const STARTER_PAYMENT =
+const NUCLEO_PAYMENT =
   "https://link.latinprimesystems.com/payment-link/692e34bda611824d7675e7f0";
-const PRO_PAYMENT =
+const PULSO_PAYMENT =
   "https://link.latinprimesystems.com/payment-link/69cc6409c6a0e600f4d06bd2";
-const GROWTH_PAYMENT =
+const ORBITA_PAYMENT =
   "https://link.latinprimesystems.com/payment-link/692e3647d8c1a8022cff08f1";
 
 type Lang = "en" | "es";
@@ -95,7 +95,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       dividerLabel: "Monthly Plans — Full Implementation",
       // Section header
       sectionLabel: "Investment",
-      sectionTitle1: "Enterprise Infrastructure",
+      sectionTitle1: "Constelación Infrastructure",
       sectionTitle2: "at Every Budget",
       sectionDesc:
         "Choose the level that fits where your business is today — and upgrade as you grow. Every plan includes setup, configuration, and ongoing support.",
@@ -115,17 +115,17 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       disclaimer:
         "All plans include a free strategy call before you commit. No long-term contracts — cancel anytime. Setup fee is paid once at the start — it covers full system build, configuration, and launch.",
       // CTA logic
-      ctaEnterprise: "Request Proposal",
+      ctaConstelación: "Request Proposal",
       ctaAnnualBook: "Book My Strategy Call →",
       monthlyCTA: {
-        Starter:    "Get My Starter System →",
-        Pro:        "Get My Pro System →",
-        Growth:     "Get My AI Stack →",
-        Enterprise: "Request Proposal",
+        Núcleo:    "Get My Núcleo System →",
+        Pulso:      "Get My Pulso System →",
+        Órbita:     "Get My AI Stack →",
+        Constelación: "Request Proposal",
       } as Record<string, string>,
       ctaFallback: "Get Started →",
-      viewDetails: "See full Starter details →",
-      detailsHref: "/starter",
+      viewDetails: "See full Núcleo details →",
+      detailsHref: "/nucleo",
       customViewDetails: "See everything Custom can do →",
       customDetailsHref: "/custom",
       // Add-ons section
@@ -133,11 +133,11 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       addOnsTitle1: "Add AI Capabilities to",
       addOnsTitle2: "Any Plan",
       addOnsDesc:
-        "Not ready for Growth? Add individual AI capabilities to your Starter or Pro plan — and upgrade to the full stack whenever you're ready.",
+        "Not ready for Órbita? Add individual AI capabilities to your Núcleo or Pulso plan — and upgrade to the full stack whenever you're ready.",
       addOnOneTimeLabel: "One-time setup",
       addOnMonthlyLabel: "Monthly",
       addOnFootnote:
-        "Add-ons are included by default in the Growth plan. Ask about bundling during your strategy call.",
+        "Add-ons are included by default in the Órbita plan. Ask about bundling during your strategy call.",
       addOns: [
         {
           icon: "🎙️",
@@ -145,7 +145,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
           desc: "An AI that answers your inbound calls, qualifies leads, and books appointments — automatically, around the clock.",
           setup: 1497,
           monthly: 497,
-          available: "Available for Starter & Pro",
+          available: "Available for Núcleo & Pulso",
           highlight: true,
         },
         {
@@ -154,7 +154,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
           desc: "Your AI agent speaks in your own voice — cloned and branded. Every call sounds like you, even when you're not there.",
           setup: 497,
           monthly: 197,
-          available: "Available for Starter & Pro",
+          available: "Available for Núcleo & Pulso",
           highlight: false,
         },
         {
@@ -163,7 +163,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
           desc: "A digital version of you for personalized video messages, follow-ups, and automated outreach that feels human.",
           setup: 997,
           monthly: 297,
-          available: "Available for Pro plan only",
+          available: "Available for Pulso plan only",
           highlight: false,
         },
       ],
@@ -173,9 +173,9 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       strategicTitle2: "Before You Commit",
       strategicDesc:
         "Not every business should jump straight into implementation. If you need clarity first, LPS offers strategic engagements to identify the right systems, automations, and AI opportunities before building anything.",
-      // Card 1 — AI Growth Strategy Session
+      // Card 1 — AI Órbita Strategy Session
       card1Tag: "Strategic Engagement",
-      card1Title: "AI Growth Strategy Session",
+      card1Title: "AI Órbita Strategy Session",
       card1Desc:
         "A focused strategic session designed to help you identify where AI, automation, CRM, and smarter systems can create the biggest impact in your business right now.",
       card1Items: [
@@ -208,16 +208,16 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       // Bridge block
       bridgeTitle: "Ready for Execution?",
       bridgeDesc:
-        "Once the strategy is clear, LPS can build and manage the implementation through your selected Pro, Growth, or Enterprise engagement.",
+        "Once the strategy is clear, LPS can build and manage the implementation through your selected Pulso, Órbita, or Constelación engagement.",
       bridgeCTA: "Book a Free Call",
       // Plans
       plans: [
         {
-          tier: "Starter",
+          tier: "Núcleo",
           outcome: "Recover 10+ hours per week on repetitive tasks.",
           tagline:
             "Your business organized, automated, and capturing every lead — without hiring anyone new.",
-          setupLabel: "+ $2,497 one-time setup",
+          setupLabel: "+ $1,497 one-time setup",
           priceSub: "/mo",
           ideal: "Best for: Solo operators and small teams running their business without a real system.",
           badge: undefined as string | undefined,
@@ -249,11 +249,11 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
           ] as Array<string | { section: string }>,
         },
         {
-          tier: "Pro",
+          tier: "Pulso",
           outcome: "Replace 1–2 manual processes with AI workflows.",
           tagline:
             "Your full operation on autopilot — leads, sales, reputation, and a professional website. All connected.",
-          setupLabel: "+ $3,997 one-time setup",
+          setupLabel: "+ $1,997 one-time setup",
           priceSub: "/mo",
           ideal: "Best for: Growing businesses ready to replace manual processes with automated systems.",
           badge: "Best Value",
@@ -261,7 +261,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
             "🛡️ 90-Day ROI Guarantee — measurable results or we keep working at no extra cost.",
           cta: "Book Your Free Strategy Call",
           features: [
-            "Everything in Starter, plus:",
+            "Everything in Núcleo, plus:",
             { section: "── WEBSITE ──" },
             "Full website — all the pages your business needs, custom designed, built, and connected to your CRM. Live in 7 days",
             "Website hosting & maintenance — included every month, no extra cost",
@@ -284,11 +284,11 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
           ] as Array<string | { section: string }>,
         },
         {
-          tier: "Growth",
+          tier: "Órbita",
           outcome: "Build your AI operations layer across 3+ departments.",
           tagline:
             "Your system fully managed — AI voice, custom integrations, and a dedicated team optimizing everything for you.",
-          setupLabel: "+ $5,997 one-time setup",
+          setupLabel: "+ $2,997 one-time setup",
           priceSub: "/mo",
           ideal: "Best for: Businesses ready to hand off system management entirely and connect any tool they use.",
           badge: "Most Popular",
@@ -296,7 +296,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
             "🛡️ 90-Day ROI Guarantee — measurable results or we keep working at no extra cost.",
           cta: "Book Your Free Strategy Call",
           features: [
-            "Everything in Pro, plus:",
+            "Everything in Pulso, plus:",
             { section: "── AI VOICE ──" },
             "AI voice agent — answers inbound calls, qualifies leads, and books appointments automatically",
             "Call transcripts & summaries — every call automatically logged, summarized, and saved to the CRM",
@@ -316,7 +316,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
           ] as Array<string | { section: string }>,
         },
         {
-          tier: "Enterprise",
+          tier: "Constelación",
           outcome: "Custom AI infrastructure + full-stack digital products designed around your business. Websites, custom apps, course platforms, proprietary systems — anything your operation needs, built from scratch.",
           tagline:
             "Your infrastructure, built from scratch. No templates. No defaults. Everything scoped and priced for your specific operation.",
@@ -350,7 +350,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       dividerLabel: "Planes Mensuales — Implementación Completa",
       // Section header
       sectionLabel: "Inversión",
-      sectionTitle1: "Infraestructura Enterprise",
+      sectionTitle1: "Infraestructura Constelación",
       sectionTitle2: "para Cada Presupuesto",
       sectionDesc:
         "Elige el nivel que se adapta a donde está tu negocio hoy — y escala cuando estés listo. Cada plan incluye configuración, implementación y soporte continuo.",
@@ -370,17 +370,17 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       disclaimer:
         "Todos los planes incluyen una llamada estratégica gratuita antes de comprometerte. Sin contratos a largo plazo — cancela cuando quieras. La cuota de implementación se paga una sola vez al inicio — cubre la construcción completa del sistema, configuración y lanzamiento.",
       // CTA logic
-      ctaEnterprise: "Solicitar Propuesta",
+      ctaConstelación: "Solicitar Propuesta",
       ctaAnnualBook: "Agendar Mi Llamada Estratégica →",
       monthlyCTA: {
-        Starter:    "Obtener Mi Sistema Starter →",
-        Pro:        "Obtener Mi Sistema Pro →",
-        Growth:     "Obtener Mi Stack de AI →",
-        Enterprise: "Solicitar Propuesta",
+        Núcleo:    "Obtener Mi Sistema Núcleo →",
+        Pulso:      "Obtener Mi Sistema Pulso →",
+        Órbita:     "Obtener Mi Stack de AI →",
+        Constelación: "Solicitar Propuesta",
       } as Record<string, string>,
       ctaFallback: "Comenzar →",
-      viewDetails: "Ver todos los detalles del Starter →",
-      detailsHref: "/es/starter",
+      viewDetails: "Ver todos los detalles del Núcleo →",
+      detailsHref: "/es/nucleo",
       customViewDetails: "Ver todo lo que Custom puede hacer →",
       customDetailsHref: "/es/custom",
       // Add-ons section
@@ -388,11 +388,11 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       addOnsTitle1: "Agrega Capacidades de AI a",
       addOnsTitle2: "Cualquier Plan",
       addOnsDesc:
-        "¿No estás listo para Growth? Agrega capacidades individuales de AI a tu plan Starter o Pro — y actualiza al stack completo cuando estés listo.",
+        "¿No estás listo para Órbita? Agrega capacidades individuales de AI a tu plan Núcleo o Pulso — y actualiza al stack completo cuando estés listo.",
       addOnOneTimeLabel: "Implementación única",
       addOnMonthlyLabel: "Mensual",
       addOnFootnote:
-        "Los add-ons están incluidos por defecto en el plan Growth. Pregunta por paquetes combinados durante tu llamada estratégica.",
+        "Los add-ons están incluidos por defecto en el plan Órbita. Pregunta por paquetes combinados durante tu llamada estratégica.",
       addOns: [
         {
           icon: "🎙️",
@@ -400,7 +400,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
           desc: "Un AI que responde tus llamadas entrantes, califica prospectos y agenda citas — de forma automática, las 24 horas.",
           setup: 1497,
           monthly: 497,
-          available: "Disponible para Starter & Pro",
+          available: "Disponible para Núcleo & Pulso",
           highlight: true,
         },
         {
@@ -409,7 +409,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
           desc: "Tu agente AI habla con tu propia voz — clonada y personalizada. Cada llamada suena como tú, incluso cuando no estás disponible.",
           setup: 497,
           monthly: 197,
-          available: "Disponible para Starter & Pro",
+          available: "Disponible para Núcleo & Pulso",
           highlight: false,
         },
         {
@@ -418,7 +418,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
           desc: "Una versión digital de ti para mensajes de video personalizados, seguimientos y outreach automatizado que se siente humano.",
           setup: 997,
           monthly: 297,
-          available: "Disponible solo para el plan Pro",
+          available: "Disponible solo para el plan Pulso",
           highlight: false,
         },
       ],
@@ -463,16 +463,16 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       // Bridge block
       bridgeTitle: "¿Listo para la Ejecución?",
       bridgeDesc:
-        "Una vez que la estrategia es clara, LPS puede construir y gestionar la implementación a través de tu plan Pro, Growth o Enterprise seleccionado.",
+        "Una vez que la estrategia es clara, LPS puede construir y gestionar la implementación a través de tu plan Pulso, Órbita o Constelación seleccionado.",
       bridgeCTA: "Agendar una Llamada Gratuita",
       // Plans
       plans: [
         {
-          tier: "Starter",
+          tier: "Núcleo",
           outcome: "Recupera más de 10 horas a la semana en tareas repetitivas.",
           tagline:
             "Tu negocio organizado, automatizado y capturando cada prospecto — sin contratar a nadie nuevo.",
-          setupLabel: "+ $2,497 implementación única",
+          setupLabel: "+ $1,497 implementación única",
           priceSub: "/mes",
           ideal: "Ideal para: Operadores independientes y equipos pequeños que gestionan su negocio sin un sistema real.",
           badge: undefined as string | undefined,
@@ -504,11 +504,11 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
           ] as Array<string | { section: string }>,
         },
         {
-          tier: "Pro",
+          tier: "Pulso",
           outcome: "Reemplaza 1–2 procesos manuales con flujos de IA.",
           tagline:
             "Tu operación completa en piloto automático — prospectos, ventas, reputación y un sitio web profesional. Todo conectado.",
-          setupLabel: "+ $3,997 implementación única",
+          setupLabel: "+ $1,997 implementación única",
           priceSub: "/mes",
           ideal: "Ideal para: Negocios en crecimiento listos para reemplazar procesos manuales con sistemas automatizados.",
           badge: "Mejor Valor",
@@ -516,7 +516,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
             "🛡️ Garantía de ROI 90 días — resultados medibles o seguimos trabajando sin costo adicional.",
           cta: "Agenda Tu Llamada Estratégica Gratuita",
           features: [
-            "Todo lo de Starter, más:",
+            "Todo lo de Núcleo, más:",
             { section: "── SITIO WEB ──" },
             "Sitio web completo — todas las páginas que necesita tu negocio, diseño personalizado, construido y conectado a tu CRM. En vivo en 7 días",
             "Hosting y mantenimiento del sitio web — incluido cada mes, sin costo adicional",
@@ -539,11 +539,11 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
           ] as Array<string | { section: string }>,
         },
         {
-          tier: "Growth",
+          tier: "Órbita",
           outcome: "Construye tu capa de operaciones con IA en 3+ departamentos.",
           tagline:
             "Tu sistema completamente gestionado — voz con AI, integraciones personalizadas y un equipo dedicado optimizando todo.",
-          setupLabel: "+ $5,997 implementación única",
+          setupLabel: "+ $2,997 implementación única",
           priceSub: "/mes",
           ideal: "Ideal para: Negocios listos para delegar la gestión del sistema y conectar cualquier herramienta que usen.",
           badge: "Más Popular",
@@ -551,7 +551,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
             "🛡️ Garantía de ROI 90 días — resultados medibles o seguimos trabajando sin costo adicional.",
           cta: "Agenda Tu Llamada Estratégica Gratuita",
           features: [
-            "Todo lo de Pro, más:",
+            "Todo lo de Pulso, más:",
             { section: "── AI VOICE ──" },
             "Agente de voz con AI — responde llamadas entrantes, califica prospectos y agenda citas automáticamente",
             "Transcripciones y resúmenes de llamadas — cada llamada registrada, resumida y guardada en el CRM automáticamente",
@@ -571,7 +571,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
           ] as Array<string | { section: string }>,
         },
         {
-          tier: "Enterprise",
+          tier: "Constelación",
           outcome: "Infraestructura de IA a la medida + productos digitales full-stack diseñados para tu negocio. Websites, apps personalizadas, plataformas de cursos, sistemas propios — lo que tu operación necesite, construido desde cero.",
           tagline:
             "Tu infraestructura, construida desde cero. Sin plantillas. Sin defaults. Todo cotizado y diseñado para tu operación específica.",
@@ -603,10 +603,10 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
 
   // Static plan data (prices, hrefs, featured flags) stays here; only text comes from t
   const plansMeta = [
-    { priceUSD: 497,  setupUSD: 2497, featured: false, ctaHref: STARTER_PAYMENT, setupFrom: false },
-    { priceUSD: 997,  setupUSD: 3997, featured: false, ctaHref: PRO_PAYMENT,     setupFrom: false },
-    { priceUSD: 1797, setupUSD: 5997, featured: true,  ctaHref: GROWTH_PAYMENT,  setupFrom: false },
-    { priceUSD: null, setupUSD: 8997, featured: false, ctaHref: BOOKING_URL,     setupFrom: true  },
+    { priceUSD: 497,  setupUSD: 1497, featured: false, ctaHref: NUCLEO_PAYMENT, setupFrom: false },
+    { priceUSD: 997,  setupUSD: 1997, featured: false, ctaHref: PULSO_PAYMENT,  setupFrom: false },
+    { priceUSD: 1797, setupUSD: 2997, featured: true,  ctaHref: ORBITA_PAYMENT, setupFrom: false },
+    { priceUSD: null, setupUSD: 8997, featured: false, ctaHref: BOOKING_URL,    setupFrom: true  },
   ];
 
   const plans: Plan[] = t.plans.map((p, i) => ({
@@ -1120,19 +1120,19 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
                   transition={{ duration: 0.18, delay: 0.04 }}
                 >
                 {(() => {
-                  const isEnterprise = plan.tier === "Enterprise";
-                  const isPro        = plan.tier === "Pro";
-                  const isGrowth     = plan.tier === "Growth";
+                  const isConstelación = plan.tier === "Constelación";
+                  const isPro        = plan.tier === "Pulso";
+                  const isÓrbita     = plan.tier === "Órbita";
 
-                  // Annual → always book a call (except Enterprise stays same)
-                  const href    = !isEnterprise && billing === "annual" ? BOOKING_URL : plan.ctaHref;
-                  const ctaText = isEnterprise
-                    ? t.ctaEnterprise
+                  // Annual → always book a call (except Constelación stays same)
+                  const href    = !isConstelación && billing === "annual" ? BOOKING_URL : plan.ctaHref;
+                  const ctaText = isConstelación
+                    ? t.ctaConstelación
                     : billing === "annual"
                     ? t.ctaAnnualBook
                     : t.monthlyCTA[plan.tier] ?? t.ctaFallback;
 
-                  if (isEnterprise) {
+                  if (isConstelación) {
                     return (
                       <a
                         href={href}
@@ -1169,12 +1169,12 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
                     );
                   }
 
-                  const bg      = isPro ? "#D4A53A" : isGrowth ? "#0D1B2A" : "#1A5CA8";
-                  const bgHover = isPro ? "#C49A30" : isGrowth ? "#132238" : "#154d8f";
+                  const bg      = isPro ? "#D4A53A" : isÓrbita ? "#0D1B2A" : "#1A5CA8";
+                  const bgHover = isPro ? "#C49A30" : isÓrbita ? "#132238" : "#154d8f";
                   const txtColor = isPro ? "#0D1B2A" : "white";
                   const shadow   = isPro
                     ? "0 4px 16px rgba(212,165,58,0.45)"
-                    : isGrowth
+                    : isÓrbita
                     ? "0 4px 16px rgba(13,27,42,0.35)"
                     : "0 4px 16px rgba(26,92,168,0.25)";
 
@@ -1216,9 +1216,9 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
                 })()}
                 </motion.div>
 
-                {(plan.tier === "Starter" || plan.tier === "Enterprise") && (
+                {(plan.tier === "Núcleo" || plan.tier === "Constelación") && (
                   <a
-                    href={plan.tier === "Enterprise" ? t.customDetailsHref : t.detailsHref}
+                    href={plan.tier === "Constelación" ? t.customDetailsHref : t.detailsHref}
                     style={{
                       display: "block",
                       textAlign: "center",
@@ -1244,7 +1244,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
                       el.style.borderBottomColor = "var(--border2)";
                     }}
                   >
-                    {plan.tier === "Enterprise" ? t.customViewDetails : t.viewDetails}
+                    {plan.tier === "Constelación" ? t.customViewDetails : t.viewDetails}
                   </a>
                 )}
               </div>
@@ -1453,7 +1453,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
                 marginBottom: 28,
               }}
             >
-              {/* Card 1 — AI Growth Strategy Session */}
+              {/* Card 1 — AI Órbita Strategy Session */}
               <div
                 style={{
                   background: "var(--navy)",

@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pricing Comparison Preview — Latin Prime Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEEFF2;
+    --bg-card:#FFFFFF;
+    --navy:#0E1A2E;
+    --navy-soft:#2A3852;
+    --ink:#0F1626;
+    --ink-2:#3A4458;
+    --ink-3:#6B7488;
+    --line:#E1E4EA;
+    --gold:#C9A961;
+    --gold-2:#D9BE7A;
+    --gold-soft:#F4E9C9;
+    --blue-light:#5B8AC9;
+    --blue-mid:#3463A8;
+    --shadow:0 8px 28px -16px rgba(14,26,46,.18);
+    --shadow-lg:0 24px 48px -24px rgba(14,26,46,.24);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);font-family:'Inter',system-ui,sans-serif;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{margin:0;letter-spacing:-.02em;line-height:1.1}
+
+  /* Preview banner */
+  .preview-banner{
+    background:#0E1A2E;color:#fff;padding:10px 24px;text-align:center;
+    font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.05em
+  }
+  .preview-banner strong{color:var(--gold)}
+
+  .container{max-width:1280px;margin:0 auto;padding:0 32px}
+
+  /* Header */
+  .pricing-header{padding:80px 0 50px}
+  .eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:14px;margin-bottom:32px}
+  .eyebrow::before{content:"";width:32px;height:1px;background:var(--gold)}
+  h1.title{
+    font-size:clamp(3rem,6vw,5rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;
+    color:#000;margin-bottom:30px;max-width:18ch
+  }
+  h1.title .accent{
+    font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
+    background:linear-gradient(90deg,var(--gold) 0%,var(--gold-2) 25%,#A6B5C9 75%,#5876A0 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .lede{font-size:1.05rem;color:var(--ink-2);max-width:60ch;line-height:1.65}
+  .lede p{margin:0 0 6px}
+
+  /* Toggle + Currency row */
+  .controls-row{display:flex;justify-content:center;align-items:center;gap:24px;margin:38px 0 28px;flex-wrap:wrap}
+  .billing-toggle{
+    display:inline-flex;background:#E1E4EA;border-radius:36px;padding:5px;gap:0;align-items:center;
+  }
+  .billing-toggle button{
+    border:0;background:transparent;padding:11px 22px;border-radius:32px;font-size:.92rem;font-weight:600;
+    color:var(--ink-2);cursor:pointer;transition:all .15s ease;display:inline-flex;align-items:center;gap:10px
+  }
+  .billing-toggle button.active{background:#fff;color:var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.08)}
+  .save-badge{background:var(--navy);color:var(--gold);font-size:.65rem;font-weight:700;letter-spacing:.08em;padding:4px 9px;border-radius:14px}
+
+  /* Currency selector */
+  .currency-row{padding:14px 0 30px;display:flex;align-items:center;gap:16px}
+  .currency-label{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+  .currency-tabs{display:inline-flex;background:#fff;border-radius:14px;padding:5px;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .currency-tabs button{
+    border:0;background:transparent;padding:10px 18px;border-radius:10px;font-size:.85rem;font-weight:600;color:var(--ink-2);cursor:pointer;
+    display:inline-flex;align-items:center;gap:8px;transition:all .15s ease
+  }
+  .currency-tabs button.active{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:var(--navy)}
+
+  /* Cards grid */
+  .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:50px}
+  @media(max-width:1100px){.pricing-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:640px){.pricing-grid{grid-template-columns:1fr}}
+
+  .plan-card{
+    background:#fff;border-radius:16px;padding:30px 28px;border:1px solid transparent;
+    box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column;
+  }
+  .plan-card.featured{border-color:var(--blue-mid);box-shadow:var(--shadow-lg)}
+
+  .ribbon{
+    position:absolute;top:-1px;left:-1px;right:-1px;
+    padding:9px 18px;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    border-radius:16px 16px 0 0;text-align:left
+  }
+  .ribbon.best{background:#FFF4DC;color:#7A5A12}
+  .ribbon.popular{background:#E8EEF7;color:#1F3460}
+
+  .plan-tier-name{
+    font-size:1.7rem;font-weight:800;letter-spacing:-.02em;margin:14px 0 18px;
+  }
+  .plan-tier-name.nucleo{color:var(--blue-light)}
+  .plan-tier-name.pulso{color:var(--blue-mid)}
+  .plan-tier-name.orbita{color:var(--navy-soft)}
+  .plan-tier-name.constelacion{color:var(--gold)}
+
+  .plan-outcome{font-size:.92rem;font-weight:600;color:var(--gold);line-height:1.45;margin-bottom:12px}
+  .plan-tagline{font-size:.88rem;color:var(--ink-3);line-height:1.55;margin-bottom:22px}
+
+  .plan-price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+  .plan-price{font-size:2.4rem;font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1}
+  .plan-price.nucleo{color:var(--blue-light)}
+  .plan-price.pulso{color:var(--blue-mid)}
+  .plan-price.orbita{color:var(--blue-mid)}
+  .plan-price.custom{color:var(--ink);font-size:2.2rem}
+  .plan-per{color:var(--ink-3);font-size:.95rem}
+
+  .plan-setup{font-size:.78rem;color:var(--ink-3);font-family:'JetBrains Mono',monospace;margin-bottom:14px}
+  .plan-best-for{font-size:.85rem;color:var(--ink-2);line-height:1.55;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  .plan-best-for strong{font-weight:700}
+
+  .plan-features{list-style:none;padding:0;margin:0;font-size:.86rem;color:var(--ink-2);line-height:1.55}
+  .plan-features li{padding:6px 0;display:flex;gap:10px;align-items:flex-start}
+  .plan-features li.section-divider{
+    color:var(--ink-3);font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.18em;
+    padding:14px 0 6px;border:0;display:block
+  }
+  .plan-features li.section-divider::before{display:none}
+  .plan-features li.everything{font-weight:700;color:var(--ink);padding-bottom:10px}
+  .plan-features li.everything::before{display:none}
+  .plan-features li::before{content:"✓";color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px}
+  .plan-features li.changed{background:linear-gradient(90deg,#FFF7DD 0%,transparent 70%);border-radius:6px;padding-left:8px;margin-left:-8px}
+  .plan-features li.new{background:linear-gradient(90deg,#E1F4E5 0%,transparent 70%);border-radius:6px;padding-left:8px;margin-left:-8px}
+
+  .new-tag{display:inline-block;background:#1E7C5A;color:#fff;font-size:.62rem;font-weight:700;letter-spacing:.1em;padding:1px 7px;border-radius:10px;margin-left:6px;vertical-align:middle;text-transform:uppercase}
+  .changed-tag{display:inline-block;background:#B8860B;color:#fff;font-size:.62rem;font-weight:700;letter-spacing:.1em;padding:1px 7px;border-radius:10px;margin-left:6px;vertical-align:middle;text-transform:uppercase}
+
+  .view-details{
+    display:inline-block;margin-top:24px;padding:14px 0;text-align:center;
+    color:var(--ink-2);font-size:.85rem;font-weight:600;text-decoration:none;
+    border-top:1px solid var(--line);transition:color .15s
+  }
+  .view-details:hover{color:var(--gold)}
+  .view-details strong{color:var(--blue-mid)}
+  .plan-card.constelacion .view-details strong{color:var(--gold)}
+
+  .plan-cta{
+    margin-top:auto;padding-top:24px;
+  }
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.92rem;width:100%;border:0;cursor:pointer;transition:all .15s}
+  .btn-primary{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:var(--navy);box-shadow:0 8px 18px -8px rgba(201,169,97,.45)}
+  .btn-primary:hover{transform:translateY(-1px)}
+  .btn-secondary{background:var(--navy);color:#fff}
+  .btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--ink-2)}
+
+  /* Note bar */
+  .note-bar{
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;
+    margin-bottom:30px;display:flex;align-items:center;gap:14px;font-size:.88rem;color:var(--ink-2)
+  }
+  .note-bar .key{display:inline-block;padding:3px 9px;border-radius:5px;font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-family:'JetBrains Mono',monospace}
+  .note-bar .key.changed{background:#FFF7DD;color:#7A5A12}
+  .note-bar .key.new{background:#E1F4E5;color:#1E5635}
+
+  /* ───── DESPEGUE — entry tier section ───── */
+  .despegue-section{
+    margin:50px 0 30px;background:linear-gradient(135deg,#0E1A2E 0%,#162842 100%);
+    border-radius:18px;padding:38px 42px;color:#fff;
+    position:relative;overflow:hidden;border:1px solid rgba(201,169,97,.3);
+    box-shadow:0 30px 60px -30px rgba(14,26,46,.4);
+  }
+  .despegue-section::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 60% 50% at 100% 0%,rgba(201,169,97,.18) 0%,transparent 70%);
+    pointer-events:none
+  }
+  .despegue-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1.2fr 1.5fr auto;gap:36px;align-items:center
+  }
+  @media(max-width:900px){.despegue-grid{grid-template-columns:1fr;gap:24px}}
+  .despegue-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .despegue-name{font-size:2.2rem;font-weight:800;letter-spacing:-.03em;color:#fff;margin:0 0 10px}
+  .despegue-tag-new{display:inline-block;background:#1E7C5A;color:#fff;font-size:.62rem;font-weight:700;letter-spacing:.1em;padding:3px 9px;border-radius:10px;vertical-align:middle;text-transform:uppercase;margin-left:8px}
+  .despegue-tagline{color:#C8D2E2;font-size:.95rem;line-height:1.55;margin:0 0 16px}
+  .despegue-price-row{display:flex;align-items:baseline;gap:10px}
+  .despegue-price{font-size:2.6rem;font-weight:800;color:var(--gold);letter-spacing:-.03em;line-height:1}
+  .despegue-per{color:#9CA9C0;font-size:.92rem}
+  .despegue-meta{color:#9CA9C0;font-size:.82rem;margin-top:6px;font-family:'JetBrains Mono',monospace}
+  .despegue-features{list-style:none;padding:0;margin:0;font-size:.88rem;color:#E8EDF6;line-height:1.55}
+  .despegue-features li{padding:5px 0;display:flex;gap:10px;align-items:flex-start}
+  .despegue-features li::before{content:"✓";color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px}
+  .despegue-cta-wrap{display:flex;flex-direction:column;gap:14px;align-items:stretch;min-width:200px}
+  .despegue-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 22px;
+    border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;
+    background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:var(--navy);
+    box-shadow:0 12px 24px -10px rgba(201,169,97,.4);transition:transform .15s
+  }
+  .despegue-cta:hover{transform:translateY(-1px)}
+  .despegue-upgrade-note{font-size:.72rem;color:#9CA9C0;text-align:center;line-height:1.5}
+  .despegue-upgrade-note a{color:var(--gold-2);text-decoration:none;border-bottom:1px solid var(--gold-2)}
+  .despegue-divider{height:1px;background:linear-gradient(90deg,transparent 0%,var(--line) 50%,transparent 100%);margin:48px 0 16px}
+  .despegue-intro{text-align:center;max-width:700px;margin:0 auto 0;color:var(--ink-3);font-size:.92rem}
+  .despegue-intro h3{color:var(--ink);font-size:1.3rem;margin:0 0 8px;letter-spacing:-.02em}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">
+  <strong>PREVIEW</strong> — esta es la sección de pricing de la página principal de
+  <strong>latinprimesystems.com</strong> con los nuevos nombres y features. Mismo branding.
+  Cambios marcados en amarillo (actualizado) o verde (nuevo).
+</div>
+
+<section class="pricing-section">
+  <div class="container">
+
+    <div class="pricing-header">
+      <div class="eyebrow">INVESTMENT</div>
+      <h1 class="title">Enterprise Infrastructure <span class="accent">at Every Budget</span></h1>
+      <div class="lede">
+        <p>Choose the level that fits where your business is today — and upgrade as you grow.</p>
+        <p>Every plan includes setup, configuration, and ongoing support — bilingual.</p>
+      </div>
+    </div>
+
+    <!-- Note bar explaining changes -->
+    <div class="note-bar">
+      <span class="key changed">Cambiado</span>
+      <span>setup fees bajados al benchmark de mercado · cupos voice/chatbot/users actualizados</span>
+      <span class="key new">Nuevo</span>
+      <span>features que no existían en plan anterior · tier renombrado</span>
+    </div>
+
+    <!-- Currency + Billing controls -->
+    <div class="controls-row">
+      <div class="billing-toggle">
+        <button class="active">Monthly</button>
+        <button>Annual <span class="save-badge">SAVE 25%</span></button>
+      </div>
+    </div>
+
+    <div class="currency-row">
+      <span class="currency-label">CURRENCY:</span>
+      <div class="currency-tabs">
+        <button class="active">🇺🇸 USD</button>
+        <button>🇨🇴 COP</button>
+        <button>🇲🇽 MXN</button>
+      </div>
+    </div>
+
+    <!-- 4 PLAN CARDS -->
+    <div class="pricing-grid">
+
+      <!-- ───────────── NÚCLEO ───────────── -->
+      <div class="plan-card nucleo">
+        <h3 class="plan-tier-name nucleo">Núcleo <span class="changed-tag">Era Starter</span></h3>
+        <div class="plan-outcome">El sistema operativo bilingüe de tu negocio.</div>
+        <div class="plan-tagline">Tu negocio organizado, automatizado y respondiendo en español o inglés — sin contratar a nadie nuevo.</div>
+
+        <div class="plan-price-row">
+          <span class="plan-price nucleo">$497</span>
+          <span class="plan-per">/mo</span>
+        </div>
+        <div class="plan-setup">+ <strong>$1,497</strong> one-time setup <span class="changed-tag">Era $2,497</span></div>
+        <div class="plan-best-for"><strong>Best for:</strong> Solo operators y equipos pequeños que arrancan su primer sistema bilingüe real.</div>
+
+        <ul class="plan-features">
+          <li class="section-divider">── WEBSITE ──</li>
+          <li>1-page website or landing page — diseñado, conectado al CRM</li>
+          <li>Hosting & maintenance — incluido</li>
+
+          <li class="section-divider">── CRM & PIPELINE ──</li>
+          <li class="changed">CRM con <strong>2 usuarios</strong> y permisos diferenciados <span class="changed-tag">Era 1</span></li>
+          <li>Pipeline configurado a tu negocio</li>
+          <li>Contact import + lead capture forms</li>
+          <li>Unified social inbox (IG + FB)</li>
+
+          <li class="section-divider">── VOICE & CHAT BILINGÜE ──</li>
+          <li class="new"><strong>Voice agent — 200 min/mes</strong> · responde, califica, agenda <span class="new-tag">Nuevo</span></li>
+          <li class="new"><strong>Chatbot — 1,000 conv/mes</strong> · sitio + WhatsApp · ES/EN automático <span class="new-tag">Nuevo</span></li>
+
+          <li class="section-divider">── AUTOMATIZACIONES ──</li>
+          <li>3 automatizaciones nombradas (lead nuevo / no-show / cliente cerrado)</li>
+          <li>Missed call text-back</li>
+          <li>Lead SMS + email follow-up sequences</li>
+          <li>Appointment reminders</li>
+
+          <li class="section-divider">── SOPORTE ──</li>
+          <li class="changed">Specialist asignado — SLA &lt;4h hábiles <span class="new-tag">Nuevo</span></li>
+          <li>Call mensual de optimización (45 min)</li>
+          <li>Reporte mensual revisado por humano</li>
+        </ul>
+
+        <a class="view-details" href="nucleo-landing-es.html">Ver todos los detalles del Núcleo →</a>
+
+        <div class="plan-cta">
+          <a class="btn btn-primary" href="#">Get My Núcleo System →</a>
+        </div>
+      </div>
+
+      <!-- ───────────── PULSO ───────────── -->
+      <div class="plan-card pulso">
+        <div class="ribbon best">BEST VALUE</div>
+        <h3 class="plan-tier-name pulso" style="margin-top:30px">Pulso <span class="changed-tag">Era Pro</span></h3>
+        <div class="plan-outcome">Cuando tu sistema empieza a tomar pulso.</div>
+        <div class="plan-tagline">Tu operación completa en piloto automático — voice, chat, email, sales y reputación. Todo conectado.</div>
+
+        <div class="plan-price-row">
+          <span class="plan-price pulso">$997</span>
+          <span class="plan-per">/mo</span>
+        </div>
+        <div class="plan-setup">+ <strong>$1,997</strong> one-time setup <span class="changed-tag">Era $3,997</span></div>
+        <div class="plan-best-for"><strong>Best for:</strong> Negocios en crecimiento que ya tienen leads y necesitan más capacidad + canal de email.</div>
+
+        <ul class="plan-features">
+          <li class="everything">Todo lo de Núcleo, más:</li>
+
+          <li class="section-divider">── WEBSITE ──</li>
+          <li>Sitio web completo — todas las páginas, en vivo en 7 días</li>
+
+          <li class="section-divider">── VOICE & CHAT EXPANDIDO ──</li>
+          <li class="changed"><strong>Voice agent — 500 min/mes</strong> (2.5×) <span class="changed-tag">Era 0</span></li>
+          <li class="changed"><strong>Chatbot — 2,500 conv/mes</strong> (2.5×) <span class="changed-tag">Era 0</span></li>
+
+          <li class="section-divider">── CRM & EQUIPO ──</li>
+          <li class="changed"><strong>5 usuarios CRM</strong> con roles diferenciados <span class="changed-tag">Era 1</span></li>
+          <li class="changed"><strong>Automatizaciones ilimitadas</strong> custom-built <span class="changed-tag">Era contadas</span></li>
+
+          <li class="section-divider">── EMAIL MARKETING ──</li>
+          <li class="new"><strong>Email broadcasting + sequences + segmentación</strong> <span class="new-tag">Nuevo en Pulso</span></li>
+          <li class="new">Revenue attribution básico — qué canal cierra cuánto <span class="new-tag">Nuevo</span></li>
+
+          <li class="section-divider">── REPUTACIÓN & SALES ──</li>
+          <li>AI lead scoring</li>
+          <li>Pipeline de ventas completo</li>
+          <li>Solicitudes automatizadas de reseñas</li>
+          <li>Alerta de reseña negativa</li>
+
+          <li class="section-divider">── SOPORTE ──</li>
+          <li class="changed"><strong>Call quincenal</strong> (24/año, 2× del Núcleo) <span class="changed-tag">Era mensual</span></li>
+          <li>Specialist asignado — SLA &lt;4h hábiles</li>
+        </ul>
+
+        <a class="view-details" href="pulso-landing-es.html">Ver todos los detalles del Pulso →</a>
+
+        <div class="plan-cta">
+          <a class="btn btn-primary" href="#">Get My Pulso System →</a>
+        </div>
+      </div>
+
+      <!-- ───────────── ÓRBITA ───────────── -->
+      <div class="plan-card orbita featured">
+        <div class="ribbon popular">MOST POPULAR</div>
+        <h3 class="plan-tier-name orbita" style="margin-top:30px">Órbita <span class="changed-tag">Era Growth</span></h3>
+        <div class="plan-outcome">El motor que mueve tu operación cuando empieza a girar más rápido.</div>
+        <div class="plan-tagline">Sistema gestionado completo — voice ampliado, SMS broadcasting, número dedicado, dashboard de revenue, A/B testing y CSM bilingüe.</div>
+
+        <div class="plan-price-row">
+          <span class="plan-price orbita">$1,797</span>
+          <span class="plan-per">/mo</span>
+        </div>
+        <div class="plan-setup">+ <strong>$2,997</strong> one-time setup <span class="changed-tag">Era $5,997</span></div>
+        <div class="plan-best-for"><strong>Best for:</strong> Operaciones que necesitan más voz, más canales, multi-usuario serio, y revenue attribution avanzado.</div>
+
+        <ul class="plan-features">
+          <li class="everything">Todo lo de Pulso, más:</li>
+
+          <li class="section-divider">── VOICE & CHAT AMPLIADO ──</li>
+          <li class="changed"><strong>Voice agent — 700 min/mes</strong> (1.4× de Pulso) <span class="changed-tag">Era ilimitado vago</span></li>
+          <li class="changed"><strong>Chatbot — 6,000 conv/mes</strong> (2.4× de Pulso) <span class="changed-tag">Nuevo cupo</span></li>
+          <li class="new"><strong>Número telefónico dedicado</strong> para tu voice agent <span class="new-tag">Nuevo</span></li>
+          <li class="new">A/B testing en voice agent y chatbot flows <span class="new-tag">Nuevo</span></li>
+
+          <li class="section-divider">── EQUIPO Y CANALES ──</li>
+          <li class="changed"><strong>15 usuarios CRM</strong> con permisos full <span class="changed-tag">Era ~5</span></li>
+          <li class="new"><strong>SMS broadcasting</strong> (no solo email) <span class="new-tag">Nuevo</span></li>
+          <li class="new"><strong>Revenue attribution avanzado</strong> — dashboard ejecutivo <span class="new-tag">Nuevo</span></li>
+
+          <li class="section-divider">── INTEGRACIONES & DATA ──</li>
+          <li>Custom automations con n8n, webhooks & APIs</li>
+          <li>Call transcripts & summaries automáticos</li>
+          <li>Essential Dashboard con tu marca</li>
+
+          <li class="section-divider">── DEDICATED MANAGEMENT ──</li>
+          <li class="changed"><strong>Call quincenal + estratégica trimestral</strong> con senior LPS <span class="new-tag">Nuevo</span></li>
+          <li>Success Manager dedicado optimizando semanalmente</li>
+          <li>12 horas mensuales dedicadas + 15 optimization touches</li>
+          <li>Auditoría completa trimestral del sistema</li>
+        </ul>
+
+        <a class="view-details" href="orbita-landing-es.html">Ver todos los detalles del Órbita →</a>
+
+        <div class="plan-cta">
+          <a class="btn btn-secondary" href="#">Get My AI Stack →</a>
+        </div>
+      </div>
+
+      <!-- ───────────── CONSTELACIÓN ───────────── -->
+      <div class="plan-card constelacion">
+        <h3 class="plan-tier-name constelacion">Constelación <span class="changed-tag">Era Enterprise</span></h3>
+        <div class="plan-outcome">Diseñado alrededor de tu operación — no al revés.</div>
+        <div class="plan-tagline">Para operaciones hispanas multi-ubicación, multi-brand, con equipos de 25+ personas e integraciones legacy. CSM bilingüe dedicado.</div>
+
+        <div class="plan-price-row">
+          <span class="plan-price custom">Custom</span>
+        </div>
+        <div class="plan-setup">+ from <strong>$8,997</strong> one-time setup <span style="color:var(--ink-3);font-style:italic">· definido en discovery call</span></div>
+        <div class="plan-best-for"><strong>Best for:</strong> Operaciones con 3+ sucursales, multi-brand, custom dev e integraciones legacy. Cliente Constelación: <strong>NBG Latino</strong> (50 estados).</div>
+
+        <ul class="plan-features">
+          <li class="everything">Plan custom — diseñado contigo</li>
+
+          <li class="section-divider">── DIFERENCIADOR ÚNICO ──</li>
+          <li class="new"><strong>CSM bilingüe dedicado</strong> en español e inglés <span class="new-tag">Único en mercado</span></li>
+
+          <li class="section-divider">── INFRAESTRUCTURA CUSTOM ──</li>
+          <li class="new"><strong>Sitio web custom multi-brand</strong> <span class="new-tag">Nuevo</span></li>
+          <li class="new"><strong>Dashboard premium custom</strong> con KPIs por brand/estado/agente <span class="new-tag">Nuevo</span></li>
+          <li class="new"><strong>App móvil branded</strong> (iOS + Android) <span class="new-tag">Nuevo</span></li>
+          <li class="new"><strong>Academia de agentes integrada</strong> (LMS) <span class="new-tag">Nuevo</span></li>
+          <li>Multi-business-unit / multi-brand architecture</li>
+          <li>White-label completo</li>
+
+          <li class="section-divider">── PLATAFORMA & TECNOLOGÍA ──</li>
+          <li>Custom platform selection — GHL, custom build, o híbrido</li>
+          <li>Custom integrations + API + horas de dev bundled</li>
+          <li>Voice + chatbot — volumen custom</li>
+          <li>Email + SMS marketing</li>
+
+          <li class="section-divider">── SECURITY & SOPORTE ──</li>
+          <li>Enterprise security — SSO, RBAC, MFA, encryption, audit logs</li>
+          <li class="new"><strong>SLA &lt;2h hábiles</strong> · canal Slack/WhatsApp dedicado <span class="new-tag">Nuevo</span></li>
+          <li>Quarterly Business Reviews con senior LPS</li>
+          <li>Executive Strategy Director asignado</li>
+        </ul>
+
+        <a class="view-details" href="constelacion-landing-es.html">Ver todos los detalles de Constelación →</a>
+
+        <div class="plan-cta">
+          <a class="btn btn-outline" href="#">Request Proposal</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="text-align:center;color:var(--ink-3);font-size:.82rem;max-width:90ch;margin:0 auto;line-height:1.6">
+      All plans include a free strategy call before you commit. No long-term contracts — cancel anytime.
+      Setup fee is paid once at the start — covers full system build, configuration, and launch.
+      <br>
+      <strong>Garantía de Lanzamiento 30 días</strong> en todos los tiers · SLA mensual de servicio · sin trampas, sin onboarding obligatorio escondido.
+    </p>
+
+    <div class="despegue-divider"></div>
+
+    <div class="despegue-intro">
+      <h3>¿Recién empezando? Empieza con Despegue.</h3>
+      <p>Para operadores que apenas están armando su sistema y no están listos para el build completo del Núcleo. Acceso a la plataforma + soporte bilingüe para que aprendas sin frustarte.</p>
+    </div>
+
+    <!-- ───────────── DESPEGUE — entry tier ───────────── -->
+    <div class="despegue-section">
+      <div class="despegue-grid">
+
+        <!-- LEFT — Brand + price -->
+        <div>
+          <div class="despegue-eyebrow">Tier de entrada</div>
+          <h2 class="despegue-name">Despegue <span class="despegue-tag-new">Nuevo</span></h2>
+          <p class="despegue-tagline">El primer impulso — plataforma con onboarding bilingüe y soporte grupal mensual. Cuando crezcas, gradúas a Núcleo sin pagar setup.</p>
+          <div class="despegue-price-row">
+            <span class="despegue-price">$297</span>
+            <span class="despegue-per">/mes · sin setup</span>
+          </div>
+          <div class="despegue-meta">Mes a mes · cancela cuando quieras</div>
+        </div>
+
+        <!-- CENTER — Features -->
+        <ul class="despegue-features">
+          <li>Acceso a la plataforma LPS (CRM, automatizaciones básicas, formularios)</li>
+          <li><strong>1 sesión de onboarding bilingüe en vivo</strong> (mes 1 · 90 min · 1-on-1)</li>
+          <li><strong>1 automatización pre-configurada</strong> (lead nuevo → respuesta inmediata)</li>
+          <li><strong>Office hours grupales mensuales</strong> · 1 hora · en español</li>
+          <li>Soporte email/chat bilingüe (cola compartida · respuesta &lt;24h hábiles)</li>
+          <li>Docs y video tutoriales en español</li>
+          <li style="color:#9CA9C0;font-size:.82rem;margin-top:8px">Sin voice agent · sin chatbot · sin specialist asignado · sin call 1-on-1</li>
+        </ul>
+
+        <!-- RIGHT — CTA -->
+        <div class="despegue-cta-wrap">
+          <a href="#" class="despegue-cta">Empezar con Despegue →</a>
+          <div class="despegue-upgrade-note">
+            ¿Listo para más?<br>
+            <a href="nucleo-landing-es.html">Núcleo $497/mo →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--ink-3);font-size:.78rem;max-width:80ch;margin:24px auto 0;line-height:1.6;font-style:italic">
+      Despegue es nuestra puerta de entrada para operadores hispanos que apenas arrancan. No es un tier de servicio completo — es la plataforma con suficiente soporte para que aprendas a usarla sin frustrarte.
+      Cuando estés listo para el sistema construido por nosotros, Núcleo te espera <strong>sin pagar setup de nuevo</strong> — el tiempo que invertiste en Despegue cuenta como tu inversión inicial.
+    </p>
+
+  </div>
+</section>
+
+</body>
+</html>
