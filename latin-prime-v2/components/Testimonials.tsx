@@ -257,6 +257,7 @@ export default function Testimonials({ lang = "en" }: { lang?: Lang }) {
         >
           {/* Left — Current testimonial */}
           <div
+            className="tm-card"
             style={{
               background: "#FFFFFF",
               border: "1px solid var(--border)",
@@ -319,9 +320,9 @@ export default function Testimonials({ lang = "en" }: { lang?: Lang }) {
                   {tm.quote[lang]}
                 </p>
 
-                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                <div className="tm-meta-row" style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
                   <Avatar tm={tm} size={48} />
-                  <div style={{ minWidth: 0 }}>
+                  <div style={{ minWidth: 0, flex: 1 }}>
                     <div
                       style={{
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -355,6 +356,9 @@ export default function Testimonials({ lang = "en" }: { lang?: Lang }) {
                         borderRadius: 4,
                         marginTop: 6,
                         display: "inline-block",
+                        maxWidth: "100%",
+                        whiteSpace: "normal",
+                        lineHeight: 1.4,
                         fontWeight: 600,
                       }}
                     >
@@ -362,6 +366,7 @@ export default function Testimonials({ lang = "en" }: { lang?: Lang }) {
                     </div>
                   </div>
                   <div
+                    className="tm-result-pill"
                     style={{
                       marginLeft: "auto",
                       padding: "5px 12px",
@@ -371,8 +376,9 @@ export default function Testimonials({ lang = "en" }: { lang?: Lang }) {
                       fontSize: "0.72rem",
                       letterSpacing: "0.06em",
                       color: "var(--green)",
-                      whiteSpace: "nowrap",
-                      flexShrink: 0,
+                      whiteSpace: "normal",
+                      lineHeight: 1.4,
+                      maxWidth: "100%",
                       alignSelf: "flex-start",
                     }}
                   >
@@ -455,12 +461,13 @@ export default function Testimonials({ lang = "en" }: { lang?: Lang }) {
           </div>
 
           {/* Right — Thumbnail list */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+          <div className="tm-thumbs" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             {testimonials.map((item, i) => (
               <motion.button
                 key={i}
                 onClick={() => goTo(i)}
                 whileHover={{ x: 4 }}
+                className="tm-thumb"
                 style={{
                   background: i === current ? "rgba(180,148,93,0.08)" : "#FFFFFF",
                   border:
@@ -520,6 +527,7 @@ export default function Testimonials({ lang = "en" }: { lang?: Lang }) {
                   </div>
                 </div>
                 <div
+                  className="tm-thumb-result"
                   style={{
                     fontFamily: "'DM Mono', monospace",
                     fontSize: "0.7rem",
@@ -543,6 +551,32 @@ export default function Testimonials({ lang = "en" }: { lang?: Lang }) {
         @media (max-width: 768px) {
           .tm-grid {
             grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          .tm-card {
+            padding: 28px 22px !important;
+            min-height: 0 !important;
+          }
+          .tm-card p {
+            font-size: 0.95rem !important;
+            line-height: 1.65 !important;
+          }
+          .tm-meta-row {
+            gap: 12px !important;
+          }
+          .tm-result-pill {
+            margin-left: 0 !important;
+            width: 100%;
+            text-align: center;
+            margin-top: 4px;
+          }
+          .tm-thumb {
+            padding: 12px 14px !important;
+            gap: 10px !important;
+          }
+          .tm-thumb-result {
+            max-width: 96px !important;
+            font-size: 0.62rem !important;
           }
         }
       `}</style>
