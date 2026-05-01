@@ -126,6 +126,8 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       ctaFallback: "Get Started →",
       viewDetails: "See full Starter details →",
       detailsHref: "/starter",
+      customViewDetails: "See everything Custom can do →",
+      customDetailsHref: "/custom",
       // Add-ons section
       addOnsLabel: "Optional Upgrades",
       addOnsTitle1: "Add AI Capabilities to",
@@ -379,6 +381,8 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       ctaFallback: "Comenzar →",
       viewDetails: "Ver todos los detalles del Starter →",
       detailsHref: "/es/starter",
+      customViewDetails: "Ver todo lo que Custom puede hacer →",
+      customDetailsHref: "/es/custom",
       // Add-ons section
       addOnsLabel: "Mejoras Opcionales",
       addOnsTitle1: "Agrega Capacidades de AI a",
@@ -1212,9 +1216,9 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
                 })()}
                 </motion.div>
 
-                {plan.tier === "Starter" && (
+                {(plan.tier === "Starter" || plan.tier === "Enterprise") && (
                   <a
-                    href={t.detailsHref}
+                    href={plan.tier === "Enterprise" ? t.customDetailsHref : t.detailsHref}
                     style={{
                       display: "block",
                       textAlign: "center",
@@ -1240,7 +1244,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
                       el.style.borderBottomColor = "var(--border2)";
                     }}
                   >
-                    {t.viewDetails}
+                    {plan.tier === "Enterprise" ? t.customViewDetails : t.viewDetails}
                   </a>
                 )}
               </div>
