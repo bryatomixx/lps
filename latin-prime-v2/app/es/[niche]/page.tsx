@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Nav from "@/components/es/Nav";
-import Footer from "@/components/es/Footer";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import NichePageContent from "@/components/NichePageContent";
 import { getNiche, getAllNicheSlugs } from "@/lib/niches";
 
@@ -65,9 +65,9 @@ export default async function NichePageES({ params }: Props) {
 
   return (
     <>
-      <Nav />
+      <Nav lang="es" />
       <NichePageContent niche={niche!} lang="es" />
-      <Footer />
+      <Footer lang="es" />
     </>
   );
 }
