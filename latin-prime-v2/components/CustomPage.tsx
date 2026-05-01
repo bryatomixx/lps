@@ -20,9 +20,9 @@ const T = {
       "When standard plans don't fit, we design and build the infrastructure around your exact operation. Custom dashboards, online academies, internal tools, deep API integrations, AI workflows — anything you can describe, we can build. AI-assisted engineering means weeks instead of months.",
     heroStats: [
       { val: "Custom", label: "scope · custom price" },
-      { val: "Any", label: "platform · any API" },
+      { val: "GHL-native", label: "+ web apps + portals" },
       { val: "Weeks", label: "to delivery" },
-      { val: "100%", label: "yours · documented" },
+      { val: "Hosted", label: "+ maintained by us" },
     ],
     heroCtaPrimary: "Request Custom Proposal",
     heroCtaSecondary: "Book a Discovery Call",
@@ -45,14 +45,9 @@ const T = {
         desc: "Branded learning systems for your team or your customers — lessons, quizzes, progress tracking, certificates, drip schedules, payments, and a full admin to manage cohorts and content.",
       },
       {
-        icon: "🔗",
-        title: "Deep API Integrations",
-        desc: "Connect any tool to any tool. REST, GraphQL, webhooks, OAuth, file drops — we move data between platforms that were never designed to talk to each other and make them feel like one system.",
-      },
-      {
         icon: "⚙️",
-        title: "Custom CRM Workflows",
-        desc: "GoHighLevel, HubSpot, Salesforce, or a fully custom CRM. We build pipelines, automations, lead routing, and reporting that match how your team actually works — not how the tool wants you to work.",
+        title: "GoHighLevel CRM Builds & Automations",
+        desc: "We're a GHL-native shop. Pipelines, automations, lead routing, multi-channel sequences, sub-account setups, and reporting — built around how your team actually works inside GoHighLevel.",
       },
       {
         icon: "🛠️",
@@ -65,9 +60,9 @@ const T = {
         desc: "A login experience your clients use to upload documents, see status, sign agreements, pay invoices, and self-serve — all branded to your business, none of the SaaS clutter.",
       },
       {
-        icon: "📱",
-        title: "Custom Web & Mobile Apps",
-        desc: "If your operation needs an app — web, mobile, or both — we build it. Modern stack, fast UX, real-time sync, secure auth, and an admin panel that actually makes sense.",
+        icon: "💻",
+        title: "Custom Web Apps",
+        desc: "Web-based apps for your operation — fast UX, secure auth, real-time data, and an admin panel that actually makes sense. Works on every device through the browser, no app-store friction.",
       },
       {
         icon: "🎙️",
@@ -78,11 +73,6 @@ const T = {
         icon: "📄",
         title: "Document Generation & Automation",
         desc: "Quotes, proposals, contracts, invoices, reports — generated automatically from form input or CRM data, branded with your template, signed via DocuSign or e-sign of your choice.",
-      },
-      {
-        icon: "🔁",
-        title: "Data Pipelines & ETL",
-        desc: "Move data between systems on a schedule or in real time. Cleanse, transform, deduplicate, enrich. Land it in BigQuery, Postgres, Sheets, or wherever your reporting lives.",
       },
       {
         icon: "🧠",
@@ -128,38 +118,6 @@ const T = {
       },
     ],
 
-    techLabel: "The Stack We Use",
-    techTitlePart1: "Modern Tools,",
-    techTitleShiny: "Yours to Keep.",
-    techDesc:
-      "Everything we build is yours. Code in your repo, data in your accounts, infrastructure under your control. We don't lock you in.",
-    techGroups: [
-      {
-        label: "Frontend & UI",
-        items: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion"],
-      },
-      {
-        label: "Backend & APIs",
-        items: ["Node.js", "Python", "FastAPI", "Hono", "tRPC", "GraphQL"],
-      },
-      {
-        label: "Data & Storage",
-        items: ["PostgreSQL", "Supabase", "Redis", "BigQuery", "S3", "Airtable"],
-      },
-      {
-        label: "AI & Voice",
-        items: ["Claude API", "OpenAI", "ElevenLabs", "VAPI", "RAG / Embeddings"],
-      },
-      {
-        label: "Automation & Integration",
-        items: ["n8n", "Make", "Zapier", "Webhooks", "OAuth", "Any REST / GraphQL API"],
-      },
-      {
-        label: "Infrastructure",
-        items: ["Vercel", "Cloudflare", "AWS", "GitHub Actions", "Sentry"],
-      },
-    ],
-
     industriesLabel: "Built For",
     industriesTitlePart1: "Industry-Agnostic.",
     industriesTitleShiny: "Operation-Specific.",
@@ -185,21 +143,21 @@ const T = {
     pricingDesc:
       "Every Custom engagement is scoped from the discovery call. We send you a fixed-price proposal with deliverables, timeline, and a documented SLA. No surprise invoices.",
     pricingPoints: [
-      "One-time build fee + optional monthly retainer for support and continuous improvement.",
+      "One-time build fee + monthly retainer for hosting, support, and continuous improvement.",
       "Most engagements run $5,000 – $50,000+ depending on scope. Some go higher.",
       "Fixed-price proposal in writing before any work starts.",
       "Documented SLA on uptime and response times.",
-      "All code, data, and infrastructure stay in your accounts. You own everything.",
+      "We host and maintain everything we build for as long as you're an active client.",
     ],
 
-    finalKicker: "Custom · Quoted · Documented · Yours",
+    finalKicker: "Custom · Quoted · Documented · Hosted by us",
     finalH1Part1: "Stop Trying to Force Your Business",
     finalH1Gradient: "into Someone Else's Software.",
     finalDesc:
       "Tell us what you actually need. We'll tell you what it takes to build it, what it costs, and how long it'll take. No fluff.",
     finalCtaPrimary: "Request Custom Proposal",
     finalCtaSecondary: "Book a Discovery Call",
-    finalGuarantee: "🛡️ Documented SLA · Custom guarantees in writing · You own everything we build",
+    finalGuarantee: "🛡️ Documented SLA · Custom guarantees in writing · Hosted and maintained by us",
   },
   es: {
     heroKicker: "Infraestructura de IA a la Medida · Cotizada a tu operación",
@@ -210,9 +168,9 @@ const T = {
       "Cuando los planes estándar no se ajustan, diseñamos y construimos la infraestructura alrededor de tu operación exacta. Dashboards a la medida, academias online, herramientas internas, integraciones API profundas, flujos de IA — lo que puedas describir, lo podemos construir. Ingeniería asistida por IA significa semanas en vez de meses.",
     heroStats: [
       { val: "A la medida", label: "alcance · precio personalizado" },
-      { val: "Cualquier", label: "plataforma · cualquier API" },
+      { val: "GHL-nativo", label: "+ web apps + portales" },
       { val: "Semanas", label: "para entrega" },
-      { val: "100%", label: "tuyo · documentado" },
+      { val: "Hospedado", label: "+ mantenido por nosotros" },
     ],
     heroCtaPrimary: "Solicitar Propuesta Personalizada",
     heroCtaSecondary: "Agendar Llamada de Diagnóstico",
@@ -235,14 +193,9 @@ const T = {
         desc: "Sistemas de aprendizaje con tu marca para tu equipo o tus clientes — lecciones, quizzes, seguimiento de progreso, certificados, drip schedules, pagos y un admin completo para gestionar grupos y contenido.",
       },
       {
-        icon: "🔗",
-        title: "Integraciones API Profundas",
-        desc: "Conecta cualquier herramienta con cualquier herramienta. REST, GraphQL, webhooks, OAuth, drop de archivos — movemos datos entre plataformas que nunca fueron diseñadas para hablarse y hacemos que se sientan como un solo sistema.",
-      },
-      {
         icon: "⚙️",
-        title: "Flujos de CRM Personalizados",
-        desc: "GoHighLevel, HubSpot, Salesforce o un CRM completamente a la medida. Construimos pipelines, automatizaciones, ruteo de leads y reportes que se ajustan a cómo realmente trabaja tu equipo — no a cómo la herramienta quiere que trabajes.",
+        title: "Builds y Automatizaciones en GoHighLevel",
+        desc: "Somos GHL-nativos. Pipelines, automatizaciones, ruteo de leads, secuencias multicanal, configuración de sub-cuentas y reportes — construidos alrededor de cómo realmente trabaja tu equipo dentro de GoHighLevel.",
       },
       {
         icon: "🛠️",
@@ -255,9 +208,9 @@ const T = {
         desc: "Una experiencia de login que tus clientes usan para subir documentos, ver status, firmar acuerdos, pagar facturas y autoservirse — todo con tu marca, sin el ruido de los SaaS.",
       },
       {
-        icon: "📱",
-        title: "Apps Web y Móviles a la Medida",
-        desc: "Si tu operación necesita una app — web, móvil o ambas — la construimos. Stack moderno, UX rápido, sincronización en tiempo real, auth segura y un panel admin que de verdad tiene sentido.",
+        icon: "💻",
+        title: "Apps Web a la Medida",
+        desc: "Apps basadas en web para tu operación — UX rápido, autenticación segura, datos en tiempo real y un panel admin que de verdad tiene sentido. Funciona en cualquier dispositivo desde el navegador, sin la fricción de las app stores.",
       },
       {
         icon: "🎙️",
@@ -268,11 +221,6 @@ const T = {
         icon: "📄",
         title: "Generación y Automatización de Documentos",
         desc: "Cotizaciones, propuestas, contratos, facturas, reportes — generados automáticamente desde un formulario o datos del CRM, con tu plantilla y firmados con DocuSign o el e-sign de tu preferencia.",
-      },
-      {
-        icon: "🔁",
-        title: "Pipelines de Datos y ETL",
-        desc: "Mueve datos entre sistemas en horario o en tiempo real. Limpia, transforma, deduplica, enriquece. Aterrízalo en BigQuery, Postgres, Sheets o donde viva tu reporting.",
       },
       {
         icon: "🧠",
@@ -318,38 +266,6 @@ const T = {
       },
     ],
 
-    techLabel: "El Stack que Usamos",
-    techTitlePart1: "Herramientas Modernas,",
-    techTitleShiny: "Tuyas para Quedarte.",
-    techDesc:
-      "Todo lo que construimos es tuyo. Código en tu repo, datos en tus cuentas, infraestructura bajo tu control. No te encerramos.",
-    techGroups: [
-      {
-        label: "Frontend y UI",
-        items: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion"],
-      },
-      {
-        label: "Backend y APIs",
-        items: ["Node.js", "Python", "FastAPI", "Hono", "tRPC", "GraphQL"],
-      },
-      {
-        label: "Datos y Storage",
-        items: ["PostgreSQL", "Supabase", "Redis", "BigQuery", "S3", "Airtable"],
-      },
-      {
-        label: "IA y Voz",
-        items: ["Claude API", "OpenAI", "ElevenLabs", "VAPI", "RAG / Embeddings"],
-      },
-      {
-        label: "Automatización e Integración",
-        items: ["n8n", "Make", "Zapier", "Webhooks", "OAuth", "Cualquier API REST / GraphQL"],
-      },
-      {
-        label: "Infraestructura",
-        items: ["Vercel", "Cloudflare", "AWS", "GitHub Actions", "Sentry"],
-      },
-    ],
-
     industriesLabel: "Construido Para",
     industriesTitlePart1: "Agnóstico de Industria.",
     industriesTitleShiny: "Específico a tu Operación.",
@@ -375,21 +291,21 @@ const T = {
     pricingDesc:
       "Cada engagement Custom se cotiza desde la llamada de diagnóstico. Te enviamos una propuesta de precio fijo con entregables, timeline y SLA documentado. Sin facturas sorpresa.",
     pricingPoints: [
-      "Tarifa única de construcción + retainer mensual opcional para soporte y mejora continua.",
+      "Tarifa única de construcción + retainer mensual para hosting, soporte y mejora continua.",
       "La mayoría de los engagements van de $5,000 a $50,000+ según el alcance. Algunos son más altos.",
       "Propuesta de precio fijo por escrito antes de empezar a trabajar.",
       "SLA documentado sobre uptime y tiempos de respuesta.",
-      "Todo el código, datos e infraestructura quedan en tus cuentas. Tú eres dueño de todo.",
+      "Hospedamos y mantenemos todo lo que construimos mientras seas cliente activo.",
     ],
 
-    finalKicker: "A la medida · Cotizado · Documentado · Tuyo",
+    finalKicker: "A la medida · Cotizado · Documentado · Hospedado por nosotros",
     finalH1Part1: "Deja de Forzar tu Negocio",
     finalH1Gradient: "al Software de Alguien Más.",
     finalDesc:
       "Cuéntanos lo que realmente necesitas. Te decimos qué se necesita para construirlo, cuánto cuesta y cuánto se va a tardar. Sin rodeos.",
     finalCtaPrimary: "Solicitar Propuesta Personalizada",
     finalCtaSecondary: "Agendar Llamada de Diagnóstico",
-    finalGuarantee: "🛡️ SLA documentado · Garantías personalizadas por escrito · Tú eres dueño de todo",
+    finalGuarantee: "🛡️ SLA documentado · Garantías personalizadas por escrito · Hospedado y mantenido por nosotros",
   },
 } as const;
 
@@ -717,72 +633,8 @@ export default function CustomPage({ lang = "en" }: { lang?: Lang }) {
 
       <div className="gdiv" />
 
-      {/* ── TECH STACK ───────────────────────────────────────────── */}
-      <section className="section-wrap" style={{ background: "var(--surface)" }}>
-        <div className="section-inner">
-          <SectionReveal>
-            <div className="slabel">{t.techLabel}</div>
-            <h2 className="section-title">
-              {t.techTitlePart1}{" "}
-              <ShinyText text={t.techTitleShiny} speed={3.5} fromColor="#1A5CA8" toColor="#D4A53A" />
-            </h2>
-            <p className="section-desc">{t.techDesc}</p>
-          </SectionReveal>
-
-          <div className="tech-grid" style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 16,
-            marginTop: 40,
-          }}>
-            {t.techGroups.map((group, i) => (
-              <SectionReveal key={i} delay={i * 0.06}>
-                <div style={{
-                  background: "#FFFFFF",
-                  border: "1px solid var(--border)",
-                  borderRadius: 10,
-                  padding: "22px 20px",
-                  height: "100%",
-                }}>
-                  <div style={{
-                    fontFamily: "'DM Mono', monospace",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.16em",
-                    textTransform: "uppercase",
-                    color: "var(--gold)",
-                    fontWeight: 700,
-                    marginBottom: 14,
-                  }}>{group.label}</div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                    {group.items.map((item) => (
-                      <span
-                        key={item}
-                        style={{
-                          fontFamily: "'Plus Jakarta Sans', sans-serif",
-                          fontWeight: 600,
-                          fontSize: "0.78rem",
-                          color: "var(--text)",
-                          background: "var(--surface)",
-                          border: "1px solid var(--border2)",
-                          padding: "5px 12px",
-                          borderRadius: 6,
-                        }}
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="gdiv" />
-
       {/* ── INDUSTRIES ───────────────────────────────────────────── */}
-      <section className="section-wrap" style={{ background: "var(--bg)" }}>
+      <section className="section-wrap" style={{ background: "var(--surface)" }}>
         <div className="section-inner">
           <SectionReveal>
             <div className="slabel">{t.industriesLabel}</div>
