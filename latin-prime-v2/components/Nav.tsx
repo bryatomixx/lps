@@ -4,11 +4,44 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { niches } from "@/lib/niches";
 
 const BOOKING_URL =
   "https://link.latinprimesystems.com/widget/bookings/latin-prime-demo";
 
 type Lang = "en" | "es";
+
+interface DropdownItem {
+  href: string;
+  label: string;
+  desc: string;
+}
+
+interface IndustryItem {
+  href: string;
+  label: string;
+  icon: string;
+  slug: string;
+}
+
+interface NavLinkPlain {
+  href: string;
+  label: string;
+}
+interface NavLinkDropdown {
+  label: string;
+  dropdown: DropdownItem[];
+}
+interface NavLinkIndustries {
+  label: string;
+  industries: IndustryItem[];
+}
+type NavLink = NavLinkPlain | NavLinkDropdown | NavLinkIndustries;
+
+const isDropdown = (i: NavLink): i is NavLinkDropdown =>
+  (i as NavLinkDropdown).dropdown !== undefined;
+const isIndustries = (i: NavLink): i is NavLinkIndustries =>
+  (i as NavLinkIndustries).industries !== undefined;
 
 // Paths that exist only in EN today (no ES counterpart).
 // Toggling to ES from these falls back to /es.
@@ -30,11 +63,19 @@ function persistLocale(lang: Lang) {
   document.cookie = `NEXT_LOCALE=${lang}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Lax`;
 }
 
-function localizedLinks(lang: Lang) {
+function localizedLinks(lang: Lang): NavLink[] {
   const prefix = lang === "es" ? "/es" : "";
   // /starter and /pro stay EN-only — link to anchor on the localized homepage instead.
   const planHref = (extra: string) =>
     lang === "es" ? `/es#pricing` : extra;
+
+  // Industries pulled from the canonical niches list, lang-aware hrefs.
+  const industriesItems: IndustryItem[] = niches.map((n) => ({
+    href: lang === "es" ? `/es/${n.slug}` : `/${n.slug}`,
+    label: lang === "es" ? n.nameEs : n.name,
+    icon: n.icon,
+    slug: n.slug,
+  }));
 
   if (lang === "es") {
     return [
@@ -47,6 +88,7 @@ function localizedLinks(lang: Lang) {
           { href: "/es/custom",  label: "Custom — Cotizado",   desc: "Lo que tu negocio necesite. Diseñado a la medida." },
         ],
       },
+      { label: "Industrias", industries: industriesItems },
       { href: `${prefix}/dashboards`, label: "Command Center" },
     ];
   }
@@ -61,6 +103,7 @@ function localizedLinks(lang: Lang) {
         { href: "/custom",            label: "Custom — Quoted",    desc: "Whatever your business needs. Built end to end." },
       ],
     },
+    { label: "Industries", industries: industriesItems },
     { href: `${prefix}/dashboards`, label: "Command Center" },
   ];
 }
@@ -71,7 +114,9 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [plansOpen, setPlansOpen] = useState(false);
+  const [industriesOpen, setIndustriesOpen] = useState(false);
   const plansRef = useRef<HTMLDivElement>(null);
+  const industriesRef = useRef<HTMLDivElement>(null);
 
   const t = lang === "es"
     ? {
@@ -79,6 +124,7 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
         plansSoonLabel: "Growth — $1,797/mes",
         plansSoonDesc: "Sistema IA gestionado + Agente de Voz.",
         plansSection: "Planes",
+        industriesSection: "Industrias",
         toggleAria: "Cambiar a inglés",
       }
     : {
@@ -86,6 +132,7 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
         plansSoonLabel: "Growth — $1,797/mo",
         plansSoonDesc: "Managed AI system + Voice Agent.",
         plansSection: "Plans",
+        industriesSection: "Industries",
         toggleAria: "Switch to Spanish",
       };
 
@@ -99,8 +146,12 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (plansRef.current && !plansRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (plansRef.current && !plansRef.current.contains(target)) {
         setPlansOpen(false);
+      }
+      if (industriesRef.current && !industriesRef.current.contains(target)) {
+        setIndustriesOpen(false);
       }
     };
     document.addEventListener("mousedown", handler);
@@ -110,6 +161,7 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
   useEffect(() => {
     setMenuOpen(false);
     setPlansOpen(false);
+    setIndustriesOpen(false);
   }, [pathname]);
 
   // Persist current locale on every page load so subsequent visits
@@ -123,6 +175,9 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
     ? new Set(["/es/starter", "/es#pricing", "/es/custom"])
     : new Set(["/starter", "/pro", "/custom"]);
   const isPlansActive = plansActivePaths.has(pathname);
+  const isIndustriesActive = niches.some((n) =>
+    pathname === `/${n.slug}` || pathname === `/es/${n.slug}`
+  );
 
   const handleToggle = (target: Lang) => {
     persistLocale(target);
@@ -236,17 +291,15 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
         </Link>
 
         {/* Desktop links */}
-        <div style={{ display: "flex", alignItems: "center", gap: 36 }} className="nav-desktop">
+        <div style={{ display: "flex", alignItems: "center", gap: 28 }} className="nav-desktop">
           {NAV_LINKS.map((item) => {
-            if (item.dropdown) {
+            // ── Plans dropdown
+            if (isDropdown(item)) {
               return (
                 <div key="plans" ref={plansRef} style={{ position: "relative" }}>
                   <button
-                    onClick={() => setPlansOpen(!plansOpen)}
-                    style={{
-                      ...linkStyle(isPlansActive),
-                      gap: 6,
-                    }}
+                    onClick={() => { setPlansOpen(!plansOpen); setIndustriesOpen(false); }}
+                    style={{ ...linkStyle(isPlansActive), gap: 6 }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = isPlansActive ? "var(--text)" : "rgba(15,34,64,0.5)")}
                   >
@@ -337,16 +390,105 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
               );
             }
 
+            // ── Industries dropdown (2-col grid of niches)
+            if (isIndustries(item)) {
+              return (
+                <div key="industries" ref={industriesRef} style={{ position: "relative" }}>
+                  <button
+                    onClick={() => { setIndustriesOpen(!industriesOpen); setPlansOpen(false); }}
+                    style={{ ...linkStyle(isIndustriesActive), gap: 6 }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = isIndustriesActive ? "var(--text)" : "rgba(15,34,64,0.5)")}
+                  >
+                    {item.label}
+                    <svg
+                      width="10" height="10" viewBox="0 0 10 10" fill="none"
+                      style={{ transition: "transform 0.2s", transform: industriesOpen ? "rotate(180deg)" : "rotate(0deg)", opacity: 0.5 }}
+                    >
+                      <path d="M2 3.5l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+
+                  <AnimatePresence>
+                    {industriesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                        transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                        style={{
+                          position: "absolute",
+                          top: "calc(100% + 16px)",
+                          left: "50%",
+                          transform: "translateX(-50%)",
+                          background: "#FFFFFF",
+                          border: "1px solid var(--border)",
+                          borderRadius: 10,
+                          padding: "10px",
+                          width: 520,
+                          boxShadow: "0 8px 32px rgba(15,34,64,0.12), 0 2px 8px rgba(15,34,64,0.06)",
+                          zIndex: 200,
+                          display: "grid",
+                          gridTemplateColumns: "1fr 1fr",
+                          gap: 4,
+                        }}
+                      >
+                        {item.industries.map((ind) => (
+                          <Link
+                            key={ind.slug}
+                            href={ind.href}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 10,
+                              padding: "10px 12px",
+                              borderRadius: 7,
+                              textDecoration: "none",
+                              background: isActive(ind.href) ? "var(--surface)" : "transparent",
+                              transition: "background 0.15s",
+                            }}
+                            onMouseEnter={(e) => { if (!isActive(ind.href)) (e.currentTarget as HTMLElement).style.background = "var(--surface)"; }}
+                            onMouseLeave={(e) => { if (!isActive(ind.href)) (e.currentTarget as HTMLElement).style.background = "transparent"; }}
+                          >
+                            <span style={{ fontSize: "1.15rem", flexShrink: 0 }}>{ind.icon}</span>
+                            <span style={{
+                              fontFamily: "'Plus Jakarta Sans', sans-serif",
+                              fontWeight: 600,
+                              fontSize: "0.82rem",
+                              color: "var(--text)",
+                              lineHeight: 1.3,
+                            }}>
+                              {ind.label}
+                            </span>
+                            {isActive(ind.href) && (
+                              <span style={{ marginLeft: "auto", width: 5, height: 5, borderRadius: "50%", background: "var(--gold)", flexShrink: 0 }} />
+                            )}
+                          </Link>
+                        ))}
+                        <div style={{
+                          position: "absolute", top: -5, left: "50%",
+                          width: 10, height: 10, background: "#FFFFFF",
+                          border: "1px solid var(--border)", borderBottom: "none", borderRight: "none",
+                          transform: "translateX(-50%) rotate(45deg)",
+                        }} />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
+            // ── Plain link
             return (
               <Link
                 key={item.href}
-                href={item.href!}
-                style={linkStyle(isActive(item.href!))}
+                href={item.href}
+                style={linkStyle(isActive(item.href))}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--text)")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = isActive(item.href!) ? "var(--text)" : "rgba(15,34,64,0.5)")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = isActive(item.href) ? "var(--text)" : "rgba(15,34,64,0.5)")}
               >
                 {item.label}
-                {isActive(item.href!) && (
+                {isActive(item.href) && (
                   <span style={{ position: "absolute", bottom: -2, left: 0, right: 0, height: 1, background: "var(--gold)" }} />
                 )}
               </Link>
@@ -391,7 +533,8 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
             {t.bookCta}
           </a>
 
-          {/* Hamburger */}
+          {/* Hamburger — display controlled by .nav-hamburger CSS class
+               (inline display would override the desktop hide rule) */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="nav-hamburger"
@@ -402,7 +545,6 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
               cursor: "pointer",
               width: 38,
               height: 38,
-              display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
@@ -462,13 +604,50 @@ export default function Nav({ lang = "en" }: { lang?: Lang }) {
               <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.58rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--text-dim)", padding: "14px 0 8px", borderBottom: "1px solid var(--border)" }}>
                 {t.plansSection}
               </div>
-              {NAV_LINKS.find((l) => l.dropdown)?.dropdown?.map((d) => (
-                <MobileLink key={d.label} href={d.href} label={d.label} active={isActive(d.href)} indent />
-              ))}
+              {(() => {
+                const plansEntry = NAV_LINKS.find(isDropdown);
+                return plansEntry?.dropdown.map((d) => (
+                  <MobileLink key={d.label} href={d.href} label={d.label} active={isActive(d.href)} indent />
+                ));
+              })()}
               <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 0 12px 16px", borderBottom: "1px solid var(--border)", opacity: 0.4 }}>
                 <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "1rem", color: "var(--text-muted)" }}>{t.plansSoonLabel}</span>
                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.5rem", letterSpacing: "0.1em", color: "var(--text-dim)", background: "var(--surface2)", padding: "2px 7px", borderRadius: 3, textTransform: "uppercase" }}>soon</span>
               </div>
+            </div>
+
+            {/* Industries section */}
+            <div>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.58rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--text-dim)", padding: "14px 0 8px", borderBottom: "1px solid var(--border)" }}>
+                {t.industriesSection}
+              </div>
+              {(() => {
+                const industriesEntry = NAV_LINKS.find(isIndustries);
+                return industriesEntry?.industries.map((ind) => (
+                  <Link
+                    key={ind.slug}
+                    href={ind.href}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      padding: "12px 0 12px 16px",
+                      borderBottom: "1px solid rgba(15,34,64,0.07)",
+                      textDecoration: "none",
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontWeight: isActive(ind.href) ? 700 : 600,
+                      fontSize: "0.95rem",
+                      color: isActive(ind.href) ? "var(--text)" : "rgba(15,34,64,0.65)",
+                    }}
+                  >
+                    <span style={{ fontSize: "1rem" }}>{ind.icon}</span>
+                    {ind.label}
+                    {isActive(ind.href) && (
+                      <span style={{ marginLeft: "auto", width: 5, height: 5, borderRadius: "50%", background: "var(--gold)", flexShrink: 0 }} />
+                    )}
+                  </Link>
+                ));
+              })()}
             </div>
 
             <MobileLink
