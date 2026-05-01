@@ -23,6 +23,8 @@ export default function WhoWeServe({ lang = "en" }: WhoWeServeProps) {
       desc: "This used to be only for companies with million-dollar tech budgets. Not anymore.",
       seeWhat: "See what we can do →",
       dedicatedPage: "Dedicated page ↗",
+      visitNicheCta: "View full automation page →",
+      visitNicheCtaShort: "View page →",
       andManyMore: "And many more industries",
       whatWeDeploy: "What we deploy for you",
       andMuchMore: "And much more...",
@@ -219,6 +221,8 @@ export default function WhoWeServe({ lang = "en" }: WhoWeServeProps) {
       desc: "Antes esto era solo para empresas con presupuestos tecnológicos millonarios. Ya no.",
       seeWhat: "Ver qué podemos hacer →",
       dedicatedPage: "Página dedicada ↗",
+      visitNicheCta: "Ver página completa de automatización →",
+      visitNicheCtaShort: "Ver página →",
       andManyMore: "Y muchas industrias más",
       whatWeDeploy: "Lo que implementamos para ti",
       andMuchMore: "Y mucho más...",
@@ -509,7 +513,7 @@ export default function WhoWeServe({ lang = "en" }: WhoWeServeProps) {
                   >
                     {ind.desc}
                   </p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                     <span
                       style={{
                         fontFamily: "'DM Mono', monospace",
@@ -524,27 +528,41 @@ export default function WhoWeServe({ lang = "en" }: WhoWeServeProps) {
                       {t.seeWhat}
                     </span>
                     <Link
-                      href={`/${ind.slug}`}
+                      href={lang === "es" ? `/es/${ind.slug}` : `/${ind.slug}`}
                       onClick={(e) => e.stopPropagation()}
                       style={{
-                        fontFamily: "'DM Mono', monospace",
-                        fontSize: "0.58rem",
-                        letterSpacing: "0.1em",
-                        color: "var(--text-muted)",
-                        textDecoration: "none",
                         display: "inline-flex",
                         alignItems: "center",
-                        gap: 4,
-                        transition: "color 0.2s",
+                        justifyContent: "center",
+                        gap: 6,
+                        padding: "9px 14px",
+                        background: "rgba(212,165,58,0.1)",
+                        border: "1px solid rgba(212,165,58,0.35)",
+                        borderRadius: 6,
+                        color: "var(--gold)",
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontWeight: 700,
+                        fontSize: "0.72rem",
+                        letterSpacing: "0.02em",
+                        textDecoration: "none",
+                        transition: "background 0.2s, border-color 0.2s, transform 0.2s",
                       }}
                       onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLElement).style.color = "var(--gold)";
+                        const el = e.currentTarget as HTMLElement;
+                        el.style.background = "var(--gold)";
+                        el.style.color = "white";
+                        el.style.borderColor = "var(--gold)";
+                        el.style.transform = "translateY(-1px)";
                       }}
                       onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLElement).style.color = "var(--text-muted)";
+                        const el = e.currentTarget as HTMLElement;
+                        el.style.background = "rgba(212,165,58,0.1)";
+                        el.style.color = "var(--gold)";
+                        el.style.borderColor = "rgba(212,165,58,0.35)";
+                        el.style.transform = "translateY(0)";
                       }}
                     >
-                      {t.dedicatedPage}
+                      {t.visitNicheCtaShort}
                     </Link>
                   </div>
                 </div>
@@ -876,6 +894,42 @@ export default function WhoWeServe({ lang = "en" }: WhoWeServeProps) {
                         Next →
                       </button>
                     )}
+
+                    {/* Primary CTA — go to dedicated niche page */}
+                    <Link
+                      href={lang === "es" ? `/es/${activeIndustry.slug}` : `/${activeIndustry.slug}`}
+                      style={{
+                        marginLeft: "auto",
+                        background: "var(--blue)",
+                        color: "white",
+                        padding: "10px 22px",
+                        borderRadius: 6,
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontWeight: 700,
+                        fontSize: "0.78rem",
+                        letterSpacing: "0.01em",
+                        textDecoration: "none",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 8,
+                        transition: "background 0.2s, transform 0.2s, box-shadow 0.2s",
+                        boxShadow: "0 2px 10px rgba(26,92,168,0.25)",
+                      }}
+                      onMouseEnter={(e) => {
+                        const el = e.currentTarget as HTMLElement;
+                        el.style.background = "var(--gold)";
+                        el.style.transform = "translateY(-1px)";
+                        el.style.boxShadow = "0 6px 20px rgba(212,165,58,0.4)";
+                      }}
+                      onMouseLeave={(e) => {
+                        const el = e.currentTarget as HTMLElement;
+                        el.style.background = "var(--blue)";
+                        el.style.transform = "translateY(0)";
+                        el.style.boxShadow = "0 2px 10px rgba(26,92,168,0.25)";
+                      }}
+                    >
+                      {t.visitNicheCta}
+                    </Link>
                   </div>
                 </div>
               </motion.div>

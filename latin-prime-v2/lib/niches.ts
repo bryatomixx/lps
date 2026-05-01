@@ -6,6 +6,47 @@ export interface FlowNode {
   type: "trigger" | "process" | "action" | "output";
 }
 
+export interface UseCase {
+  title: string;
+  titleEs: string;
+  desc: string;
+  descEs: string;
+  flow: FlowNode[];
+  flowEs: FlowNode[];
+}
+
+export interface BeforeAfterPair {
+  before: string;
+  beforeEs: string;
+  after: string;
+  afterEs: string;
+}
+
+export interface FaqItem {
+  q: string;
+  qEs: string;
+  a: string;
+  aEs: string;
+}
+
+export interface TechStackItem {
+  name: string;
+  desc: string;
+  descEs: string;
+}
+
+export interface FeaturedQuote {
+  name: string;
+  role: string;
+  roleEs: string;
+  quote: string;
+  quoteEs: string;
+  metric: string;
+  metricEs: string;
+  photo?: string;
+  initials: string;
+}
+
 export interface NicheData {
   slug: string;
   icon: string;
@@ -31,6 +72,12 @@ export interface NicheData {
   metaDescEs: string;
   keywords: string[];
   keywordsEs: string[];
+  // ── ROUND-5 enhanced fields (optional during rollout) ──────────────────────
+  useCases?: UseCase[];
+  beforeAfter?: BeforeAfterPair[];
+  faq?: FaqItem[];
+  techStack?: TechStackItem[];
+  featuredQuote?: FeaturedQuote;
 }
 
 export const niches: NicheData[] = [

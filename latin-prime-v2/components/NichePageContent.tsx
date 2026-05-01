@@ -1,6 +1,8 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import NicheAutomationFlow from "./NicheAutomationFlow";
 import SectionReveal from "./SectionReveal";
 import type { NicheData } from "@/lib/niches";
@@ -27,14 +29,32 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
   const backLabel = isEs ? `← Volver a Latin Prime` : `← Back to Latin Prime`;
   const problemLabel = isEs ? "El Problema" : "The Problem";
   const automationLabel = isEs ? "La Automatización" : "The Automation";
+  const useCasesLabel = isEs ? "Casos de Uso Reales" : "Real Use Cases";
+  const useCasesSubtitle = isEs
+    ? "Tres flujos automatizados que entregamos para tu industria — más allá del flujo principal."
+    : "Three automated flows we deliver for your industry — beyond the main pipeline.";
   const deployLabel = isEs ? "Lo Que Implementamos Para Ti" : "What We Deploy For You";
+  const beforeAfterLabel = isEs ? "Antes vs. Después" : "Before vs. After";
+  const beforeAfterTitle = isEs
+    ? `Cómo cambia tu día a día`
+    : `How your day-to-day changes`;
+  const beforeColLabel = isEs ? "Sin nosotros" : "Without us";
+  const afterColLabel = isEs ? "Con LPS" : "With LPS";
   const statsLabel = isEs ? "Resultados Que Puedes Esperar" : "Results You Can Expect";
+  const testimonialLabel = isEs ? "Cliente Real" : "Real Client";
+  const techLabel = isEs ? "Stack que Integramos" : "Stack We Integrate";
+  const techSubtitle = isEs
+    ? "Trabajamos con las herramientas que tu industria ya usa. Si tu plataforma no está aquí pero tiene API, también la conectamos."
+    : "We work with the tools your industry already uses. If your platform isn't listed but exposes an API, we connect it too.";
+  const faqLabel = isEs ? "Preguntas Frecuentes" : "Frequently Asked Questions";
   const ctaTitle = isEs
     ? `¿Listo para automatizar tu ${name.toLowerCase()}?`
     : `Ready to automate your ${name.toLowerCase()}?`;
   const ctaSub = isEs
     ? "Agenda una llamada gratuita de 30 minutos. Te mostramos exactamente cómo funciona para tu negocio — sin compromisos."
     : "Book a free 30-minute strategy call. We'll show you exactly how this works for your business — no commitment required.";
+
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <main>
@@ -50,7 +70,6 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
           overflow: "hidden",
         }}
       >
-        {/* Background grid */}
         <div
           style={{
             position: "absolute",
@@ -61,7 +80,6 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
             zIndex: 0,
           }}
         />
-        {/* Glow */}
         <div
           style={{
             position: "absolute",
@@ -84,7 +102,6 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
             width: "100%",
           }}
         >
-          {/* Back link */}
           <Link
             href={homeUrl}
             style={{
@@ -103,7 +120,6 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
             {backLabel}
           </Link>
 
-          {/* Industry badge */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -133,7 +149,6 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
             </span>
           </motion.div>
 
-          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -151,7 +166,6 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
             {heroTitle}
           </motion.h1>
 
-          {/* Sub */}
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -167,7 +181,6 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
             {heroSub}
           </motion.p>
 
-          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -255,11 +268,8 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
         </div>
       </section>
 
-      {/* ── AUTOMATION FLOW ──────────────────────────────── */}
-      <section
-        className="section-wrap"
-        style={{ background: "var(--bg)" }}
-      >
+      {/* ── AUTOMATION FLOW (main) ───────────────────────── */}
+      <section className="section-wrap" style={{ background: "var(--bg)" }}>
         <div className="section-inner">
           <SectionReveal>
             <div className="slabel">{automationLabel}</div>
@@ -268,10 +278,149 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
         </div>
       </section>
 
+      {/* ── USE CASES (sub-flows) ───────────────────────── */}
+      {niche.useCases && niche.useCases.length > 0 && (
+        <section
+          className="section-wrap"
+          style={{ background: "var(--surface)", borderTop: "1px solid var(--border)" }}
+        >
+          <div className="section-inner">
+            <SectionReveal>
+              <div className="slabel">{useCasesLabel}</div>
+              <p
+                style={{
+                  fontSize: "0.95rem",
+                  color: "var(--text-muted)",
+                  lineHeight: 1.7,
+                  maxWidth: 640,
+                  marginBottom: 32,
+                }}
+              >
+                {useCasesSubtitle}
+              </p>
+            </SectionReveal>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                gap: 16,
+              }}
+            >
+              {niche.useCases.map((uc, i) => {
+                const ucTitle = isEs ? uc.titleEs : uc.title;
+                const ucDesc = isEs ? uc.descEs : uc.desc;
+                const ucFlow = isEs ? uc.flowEs : uc.flow;
+                return (
+                  <SectionReveal key={i} delay={i * 0.08}>
+                    <div
+                      style={{
+                        background: "var(--bg)",
+                        border: "1px solid var(--border)",
+                        borderRadius: 8,
+                        padding: "22px 22px 18px",
+                        height: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontFamily: "'DM Mono', monospace",
+                          fontSize: "0.58rem",
+                          letterSpacing: "0.16em",
+                          textTransform: "uppercase",
+                          color: "var(--gold)",
+                          fontWeight: 700,
+                          marginBottom: 10,
+                        }}
+                      >
+                        Flow {String(i + 1).padStart(2, "0")}
+                      </div>
+                      <h3
+                        style={{
+                          fontFamily: "'Plus Jakarta Sans', sans-serif",
+                          fontWeight: 700,
+                          fontSize: "1rem",
+                          color: "var(--text)",
+                          marginBottom: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {ucTitle}
+                      </h3>
+                      <p
+                        style={{
+                          fontSize: "0.84rem",
+                          color: "var(--text-muted)",
+                          lineHeight: 1.6,
+                          marginBottom: 18,
+                          flexGrow: 1,
+                        }}
+                      >
+                        {ucDesc}
+                      </p>
+                      {/* Compact horizontal mini-flow */}
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 4,
+                          flexWrap: "wrap",
+                          paddingTop: 14,
+                          borderTop: "1px solid var(--border)",
+                        }}
+                      >
+                        {ucFlow.map((node, idx) => (
+                          <div
+                            key={node.id}
+                            style={{ display: "flex", alignItems: "center", gap: 4 }}
+                          >
+                            <span
+                              title={node.label}
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 5,
+                                padding: "4px 8px",
+                                background: "var(--surface)",
+                                border: "1px solid var(--border)",
+                                borderRadius: 4,
+                                fontSize: "0.6rem",
+                                fontFamily: "'DM Mono', monospace",
+                                letterSpacing: "0.04em",
+                                color: "var(--text-muted)",
+                              }}
+                            >
+                              <span style={{ fontSize: "0.85rem" }}>{node.icon}</span>
+                              {node.label}
+                            </span>
+                            {idx < ucFlow.length - 1 && (
+                              <span
+                                style={{
+                                  color: "var(--gold)",
+                                  fontSize: "0.7rem",
+                                  fontWeight: 700,
+                                }}
+                              >
+                                →
+                              </span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </SectionReveal>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── WHAT WE DEPLOY ───────────────────────────────── */}
       <section
         className="section-wrap"
-        style={{ background: "var(--surface)", borderTop: "1px solid var(--border)" }}
+        style={{ background: "var(--bg)", borderTop: "1px solid var(--border)" }}
       >
         <div className="section-inner">
           <SectionReveal>
@@ -300,7 +449,7 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
                     display: "flex",
                     gap: 12,
                     padding: "18px 20px",
-                    background: "var(--bg)",
+                    background: "var(--surface)",
                     border: "1px solid var(--border)",
                     borderRadius: 4,
                     alignItems: "flex-start",
@@ -331,6 +480,201 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
           </div>
         </div>
       </section>
+
+      {/* ── BEFORE / AFTER ─────────────────────────────── */}
+      {niche.beforeAfter && niche.beforeAfter.length > 0 && (
+        <section
+          className="section-wrap"
+          style={{ background: "var(--surface)", borderTop: "1px solid var(--border)" }}
+        >
+          <div className="section-inner">
+            <SectionReveal>
+              <div className="slabel">{beforeAfterLabel}</div>
+              <h2
+                className="section-title"
+                style={{ fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", maxWidth: 580 }}
+              >
+                {beforeAfterTitle}
+              </h2>
+            </SectionReveal>
+            <div
+              className="ba-grid-niche"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 16,
+                marginTop: 32,
+              }}
+            >
+              {/* Before column */}
+              <div
+                style={{
+                  background: "var(--bg)",
+                  border: "1px solid var(--border)",
+                  borderRadius: 8,
+                  padding: "24px 22px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    background: "rgba(15,34,64,0.06)",
+                    color: "var(--text-muted)",
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    fontWeight: 600,
+                    padding: "5px 10px",
+                    borderRadius: 4,
+                    marginBottom: 18,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: 5,
+                      height: 5,
+                      borderRadius: "50%",
+                      background: "#94A3B8",
+                    }}
+                  />
+                  {beforeColLabel}
+                </div>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+                  {niche.beforeAfter.map((p, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 10,
+                        fontSize: "0.85rem",
+                        lineHeight: 1.55,
+                        color: "var(--text-muted)",
+                      }}
+                    >
+                      <span
+                        style={{
+                          flexShrink: 0,
+                          width: 16,
+                          height: 16,
+                          borderRadius: "50%",
+                          border: "1.5px solid #CBD5E1",
+                          color: "#94A3B8",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: "0.6rem",
+                          fontWeight: 700,
+                          marginTop: 2,
+                        }}
+                      >
+                        ✕
+                      </span>
+                      {isEs ? p.beforeEs : p.before}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* After column */}
+              <div
+                style={{
+                  background: "var(--bg)",
+                  border: "1px solid var(--blue)",
+                  borderRadius: 8,
+                  padding: "24px 22px",
+                  position: "relative",
+                  overflow: "hidden",
+                  boxShadow: "0 4px 20px rgba(26,92,168,0.08)",
+                }}
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 3,
+                    background: "linear-gradient(90deg, var(--gold), var(--gold-bright))",
+                  }}
+                />
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    background: "rgba(212,165,58,0.12)",
+                    color: "var(--gold)",
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    fontWeight: 700,
+                    padding: "5px 10px",
+                    borderRadius: 4,
+                    marginBottom: 18,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: 5,
+                      height: 5,
+                      borderRadius: "50%",
+                      background: "var(--gold)",
+                      boxShadow: "0 0 8px var(--gold)",
+                    }}
+                  />
+                  {afterColLabel}
+                </div>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+                  {niche.beforeAfter.map((p, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 10,
+                        fontSize: "0.85rem",
+                        lineHeight: 1.55,
+                        color: "var(--text)",
+                        fontWeight: 500,
+                      }}
+                    >
+                      <span
+                        style={{
+                          flexShrink: 0,
+                          width: 16,
+                          height: 16,
+                          borderRadius: "50%",
+                          background: "var(--gold)",
+                          color: "white",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: "0.55rem",
+                          fontWeight: 800,
+                          marginTop: 2,
+                        }}
+                      >
+                        ✓
+                      </span>
+                      {isEs ? p.afterEs : p.after}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <style>{`
+            @media (max-width: 768px) {
+              .ba-grid-niche { grid-template-columns: 1fr !important; }
+            }
+          `}</style>
+        </section>
+      )}
 
       {/* ── STATS ────────────────────────────────────────── */}
       <section
@@ -390,11 +734,338 @@ export default function NichePageContent({ niche, lang }: NichePageContentProps)
         </div>
       </section>
 
+      {/* ── FEATURED TESTIMONIAL ────────────────────────── */}
+      {niche.featuredQuote && (
+        <section
+          className="section-wrap"
+          style={{ background: "var(--surface)", borderTop: "1px solid var(--border)" }}
+        >
+          <div className="section-inner" style={{ maxWidth: 920 }}>
+            <SectionReveal>
+              <div className="slabel">{testimonialLabel}</div>
+            </SectionReveal>
+            <SectionReveal variant="scale">
+              <div
+                style={{
+                  background: "var(--bg)",
+                  border: "1px solid var(--border)",
+                  borderRadius: 12,
+                  padding: "32px 32px",
+                  marginTop: 16,
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 3,
+                    background: "linear-gradient(90deg, var(--gold), var(--gold-bright), var(--gold))",
+                  }}
+                />
+                <div
+                  className="ft-niche-grid"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "auto 1fr auto",
+                    gap: 24,
+                    alignItems: "center",
+                  }}
+                >
+                  {/* Avatar */}
+                  <div
+                    style={{
+                      width: 72,
+                      height: 72,
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      background: niche.featuredQuote.photo
+                        ? "transparent"
+                        : "linear-gradient(135deg, var(--blue), var(--gold))",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "white",
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontWeight: 800,
+                      fontSize: "1.4rem",
+                      flexShrink: 0,
+                      position: "relative",
+                    }}
+                  >
+                    {niche.featuredQuote.photo ? (
+                      <Image
+                        src={niche.featuredQuote.photo}
+                        alt={niche.featuredQuote.name}
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                    ) : (
+                      niche.featuredQuote.initials
+                    )}
+                  </div>
+                  {/* Quote + person */}
+                  <div style={{ minWidth: 0 }}>
+                    <p
+                      style={{
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)",
+                        fontWeight: 600,
+                        lineHeight: 1.55,
+                        color: "var(--text)",
+                        marginBottom: 14,
+                      }}
+                    >
+                      &ldquo;{isEs ? niche.featuredQuote.quoteEs : niche.featuredQuote.quote}&rdquo;
+                    </p>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "baseline",
+                        gap: 8,
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "'Plus Jakarta Sans', sans-serif",
+                          fontWeight: 800,
+                          fontSize: "0.9rem",
+                          color: "var(--text)",
+                        }}
+                      >
+                        {niche.featuredQuote.name}
+                      </span>
+                      <span style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+                        — {isEs ? niche.featuredQuote.roleEs : niche.featuredQuote.role}
+                      </span>
+                    </div>
+                  </div>
+                  {/* Metric */}
+                  <div
+                    className="ft-niche-metric"
+                    style={{
+                      textAlign: "center",
+                      paddingLeft: 24,
+                      borderLeft: "1px solid var(--border)",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontWeight: 900,
+                        fontSize: "clamp(1.4rem, 2.4vw, 1.9rem)",
+                        background: "linear-gradient(135deg, var(--blue), var(--gold))",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                        letterSpacing: "-0.02em",
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      {isEs ? niche.featuredQuote.metricEs : niche.featuredQuote.metric}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SectionReveal>
+          </div>
+          <style>{`
+            @media (max-width: 768px) {
+              .ft-niche-grid {
+                grid-template-columns: 1fr !important;
+                text-align: center;
+              }
+              .ft-niche-grid > div:first-child { margin: 0 auto; }
+              .ft-niche-metric {
+                border-left: none !important;
+                border-top: 1px solid var(--border);
+                padding-left: 0 !important;
+                padding-top: 18px;
+              }
+            }
+          `}</style>
+        </section>
+      )}
+
+      {/* ── TECH STACK ───────────────────────────────────── */}
+      {niche.techStack && niche.techStack.length > 0 && (
+        <section
+          className="section-wrap"
+          style={{ background: "var(--bg)", borderTop: "1px solid var(--border)" }}
+        >
+          <div className="section-inner">
+            <SectionReveal>
+              <div className="slabel">{techLabel}</div>
+              <p
+                style={{
+                  fontSize: "0.95rem",
+                  color: "var(--text-muted)",
+                  lineHeight: 1.7,
+                  maxWidth: 640,
+                  marginBottom: 32,
+                }}
+              >
+                {techSubtitle}
+              </p>
+            </SectionReveal>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+                gap: 12,
+              }}
+            >
+              {niche.techStack.map((tech, i) => (
+                <SectionReveal key={i} delay={i * 0.05}>
+                  <div
+                    style={{
+                      background: "var(--surface)",
+                      border: "1px solid var(--border)",
+                      borderRadius: 6,
+                      padding: "16px 18px",
+                      height: "100%",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontWeight: 700,
+                        fontSize: "0.92rem",
+                        color: "var(--text)",
+                        marginBottom: 6,
+                      }}
+                    >
+                      {tech.name}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "0.78rem",
+                        color: "var(--text-muted)",
+                        lineHeight: 1.55,
+                      }}
+                    >
+                      {isEs ? tech.descEs : tech.desc}
+                    </div>
+                  </div>
+                </SectionReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── FAQ ──────────────────────────────────────────── */}
+      {niche.faq && niche.faq.length > 0 && (
+        <section
+          className="section-wrap"
+          style={{ background: "var(--surface)", borderTop: "1px solid var(--border)" }}
+        >
+          <div className="section-inner" style={{ maxWidth: 880 }}>
+            <SectionReveal>
+              <div className="slabel">{faqLabel}</div>
+            </SectionReveal>
+            <div style={{ marginTop: 24 }}>
+              {niche.faq.map((item, i) => {
+                const q = isEs ? item.qEs : item.q;
+                const a = isEs ? item.aEs : item.a;
+                const isOpen = openFaq === i;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ delay: i * 0.04 }}
+                    style={{ borderBottom: "1px solid var(--border)" }}
+                  >
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : i)}
+                      style={{
+                        width: "100%",
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        padding: "20px 0",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        gap: 16,
+                        textAlign: "left",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "'Plus Jakarta Sans', sans-serif",
+                          fontWeight: 700,
+                          fontSize: "0.95rem",
+                          color: isOpen ? "var(--text)" : "var(--text-muted)",
+                          lineHeight: 1.4,
+                          transition: "color 0.2s",
+                        }}
+                      >
+                        {q}
+                      </span>
+                      <motion.span
+                        animate={{ rotate: isOpen ? 45 : 0 }}
+                        transition={{ duration: 0.2 }}
+                        style={{
+                          flexShrink: 0,
+                          width: 26,
+                          height: 26,
+                          border: `1px solid ${isOpen ? "var(--gold)" : "var(--border2)"}`,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: isOpen ? "var(--gold)" : "var(--text-dim)",
+                          borderRadius: 6,
+                          fontSize: "1.1rem",
+                          fontWeight: 300,
+                          transition: "border-color 0.2s, color 0.2s",
+                        }}
+                      >
+                        +
+                      </motion.span>
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                          style={{ overflow: "hidden" }}
+                        >
+                          <p
+                            style={{
+                              fontSize: "0.9rem",
+                              color: "var(--text-muted)",
+                              lineHeight: 1.78,
+                              paddingBottom: 22,
+                            }}
+                          >
+                            {a}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── CTA ──────────────────────────────────────────── */}
       <section
         className="section-wrap"
         style={{
-          background: "var(--surface)",
+          background: "var(--bg)",
           borderTop: "1px solid var(--border)",
           textAlign: "center",
         }}
