@@ -95,7 +95,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       dividerLabel: "Monthly Plans — Full Implementation",
       // Section header
       sectionLabel: "Investment",
-      sectionTitle1: "Constelación Infrastructure",
+      sectionTitle1: "Enterprise Infrastructure",
       sectionTitle2: "at Every Budget",
       sectionDesc:
         "Choose the level that fits where your business is today — and upgrade as you grow. Every plan includes setup, configuration, and ongoing support.",
@@ -115,7 +115,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       disclaimer:
         "All plans include a free strategy call before you commit. No long-term contracts — cancel anytime. Setup fee is paid once at the start — it covers full system build, configuration, and launch.",
       // CTA logic
-      ctaConstelación: "Request Proposal",
+      ctaEnterprise: "Request Proposal",
       ctaAnnualBook: "Book My Strategy Call →",
       monthlyCTA: {
         Núcleo:    "Get My Núcleo System →",
@@ -125,7 +125,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       } as Record<string, string>,
       ctaFallback: "Get Started →",
       viewDetails: "See full Núcleo details →",
-      detailsHref: "/nucleo",
+      detailsHref: "/starter",
       customViewDetails: "See everything Custom can do →",
       customDetailsHref: "/custom",
       // Add-ons section
@@ -173,9 +173,9 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       strategicTitle2: "Before You Commit",
       strategicDesc:
         "Not every business should jump straight into implementation. If you need clarity first, LPS offers strategic engagements to identify the right systems, automations, and AI opportunities before building anything.",
-      // Card 1 — AI Órbita Strategy Session
+      // Card 1 — AI Strategy Session
       card1Tag: "Strategic Engagement",
-      card1Title: "AI Órbita Strategy Session",
+      card1Title: "AI Growth Strategy Session",
       card1Desc:
         "A focused strategic session designed to help you identify where AI, automation, CRM, and smarter systems can create the biggest impact in your business right now.",
       card1Items: [
@@ -250,37 +250,28 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
         },
         {
           tier: "Pulso",
-          outcome: "Replace 1–2 manual processes with AI workflows.",
+          outcome: "Your first custom build, plus monthly capacity to keep iterating.",
           tagline:
-            "Your full operation on autopilot — leads, sales, reputation, and a professional website. All connected.",
+            "Your business needs ONE big thing built — your website, your first AI agent, your WhatsApp automation, your custom integration. We design it, build it, and keep iterating on it every month.",
           setupLabel: "+ $1,997 one-time setup",
           priceSub: "/mo",
-          ideal: "Best for: Growing businesses ready to replace manual processes with automated systems.",
+          ideal: "Best for: Businesses that have ONE specific build in mind and want it shipped — not a generic feature menu.",
           badge: "Best Value",
           guarantee:
             "🛡️ 90-Day ROI Guarantee — measurable results or we keep working at no extra cost.",
           cta: "Book Your Free Strategy Call",
           features: [
             "Everything in Núcleo, plus:",
-            { section: "── WEBSITE ──" },
-            "Full website — all the pages your business needs, custom designed, built, and connected to your CRM. Live in 7 days",
-            "Website hosting & maintenance — included every month, no extra cost",
-            "AI chatbot on your website — captures leads, answers FAQs, and books appointments automatically",
-            { section: "── ADVANCED AUTOMATIONS ──" },
-            "Internal workflow automations — task assignments, status updates, and process handoffs between your team",
-            "Re-engagement campaign — automatically reaches out to cold or inactive leads",
-            "Proposal follow-up — automatic nudge sent if a quote or proposal goes unanswered",
-            "Invoice & payment reminders — automated follow-up on unpaid or overdue invoices",
-            "Multi-channel follow-up sequences — SMS, email, and social DMs coordinated in one flow",
-            { section: "── SALES & REPUTATION ──" },
-            "AI lead scoring — automatically ranks your leads so you focus on the hottest ones first",
-            "Full sales pipeline — visual deal tracking from first contact to signed contract",
-            "Automated review requests — every client gets a review prompt after their service",
-            "Negative review alert — get notified immediately if a bad review is left anywhere",
-            { section: "── REPORTING & SUPPORT ──" },
-            "Monthly performance report — leads, bookings, conversions, and automation activity",
-            "Bi-weekly strategy calls",
+            { section: "── YOUR FIRST CUSTOM BUILD ──" },
+            "1 custom build of your choice — scoped during your strategy call. Examples: full multi-page website, AI chatbot trained on your business, WhatsApp Business automation, custom integration between your tools, course / member platform, internal admin tool",
+            "Full design + build + test + documentation + team training — typically live in 14–30 days",
+            "Hosting and maintenance of everything we build — included",
+            { section: "── MONTHLY CAPACITY ──" },
+            "4 hours of dedicated dev / optimization capacity per month — use it for tweaks, additions, or small new builds. Hours don't roll over",
+            "Bi-weekly strategy calls with your success contact",
             "Priority support — 24h response",
+            { section: "── REPORTING ──" },
+            "Monthly performance report — leads, bookings, conversions, automation activity",
           ] as Array<string | { section: string }>,
         },
         {
@@ -350,7 +341,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       dividerLabel: "Planes Mensuales — Implementación Completa",
       // Section header
       sectionLabel: "Inversión",
-      sectionTitle1: "Infraestructura Constelación",
+      sectionTitle1: "Infraestructura Enterprise",
       sectionTitle2: "para Cada Presupuesto",
       sectionDesc:
         "Elige el nivel que se adapta a donde está tu negocio hoy — y escala cuando estés listo. Cada plan incluye configuración, implementación y soporte continuo.",
@@ -370,7 +361,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       disclaimer:
         "Todos los planes incluyen una llamada estratégica gratuita antes de comprometerte. Sin contratos a largo plazo — cancela cuando quieras. La cuota de implementación se paga una sola vez al inicio — cubre la construcción completa del sistema, configuración y lanzamiento.",
       // CTA logic
-      ctaConstelación: "Solicitar Propuesta",
+      ctaEnterprise: "Solicitar Propuesta",
       ctaAnnualBook: "Agendar Mi Llamada Estratégica →",
       monthlyCTA: {
         Núcleo:    "Obtener Mi Sistema Núcleo →",
@@ -380,7 +371,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
       } as Record<string, string>,
       ctaFallback: "Comenzar →",
       viewDetails: "Ver todos los detalles del Núcleo →",
-      detailsHref: "/es/nucleo",
+      detailsHref: "/es/starter",
       customViewDetails: "Ver todo lo que Custom puede hacer →",
       customDetailsHref: "/es/custom",
       // Add-ons section
@@ -505,37 +496,28 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
         },
         {
           tier: "Pulso",
-          outcome: "Reemplaza 1–2 procesos manuales con flujos de IA.",
+          outcome: "Tu primer build a la medida, más capacidad mensual para seguir iterando.",
           tagline:
-            "Tu operación completa en piloto automático — prospectos, ventas, reputación y un sitio web profesional. Todo conectado.",
+            "Tu negocio necesita UNA cosa grande construida — tu sitio web, tu primer agente IA, tu automatización de WhatsApp, tu integración custom. Lo diseñamos, lo construimos y seguimos iterando cada mes.",
           setupLabel: "+ $1,997 implementación única",
           priceSub: "/mes",
-          ideal: "Ideal para: Negocios en crecimiento listos para reemplazar procesos manuales con sistemas automatizados.",
+          ideal: "Ideal para: Negocios que tienen UNA construcción específica en mente y quieren entregarla — no un menú genérico de features.",
           badge: "Mejor Valor",
           guarantee:
             "🛡️ Garantía de ROI 90 días — resultados medibles o seguimos trabajando sin costo adicional.",
           cta: "Agenda Tu Llamada Estratégica Gratuita",
           features: [
             "Todo lo de Núcleo, más:",
-            { section: "── SITIO WEB ──" },
-            "Sitio web completo — todas las páginas que necesita tu negocio, diseño personalizado, construido y conectado a tu CRM. En vivo en 7 días",
-            "Hosting y mantenimiento del sitio web — incluido cada mes, sin costo adicional",
-            "Chatbot de AI en tu sitio web — captura prospectos, responde preguntas frecuentes y agenda citas automáticamente",
-            { section: "── AUTOMATIZACIONES AVANZADAS ──" },
-            "Automatizaciones de flujo de trabajo interno — asignación de tareas, actualizaciones de estado y transferencias de procesos entre tu equipo",
-            "Campaña de reactivación — contacta automáticamente a prospectos fríos o inactivos",
-            "Seguimiento de propuestas — recordatorio automático si una cotización o propuesta queda sin respuesta",
-            "Recordatorios de facturas y pagos — seguimiento automatizado de facturas sin pagar o vencidas",
-            "Secuencias de seguimiento multicanal — SMS, email y DMs coordinados en un solo flujo",
-            { section: "── VENTAS & REPUTACIÓN ──" },
-            "Calificación de prospectos con AI — clasifica automáticamente tus prospectos para que te enfoques primero en los más calientes",
-            "Pipeline de ventas completo — seguimiento visual de deals desde el primer contacto hasta el contrato firmado",
-            "Solicitudes de reseñas automatizadas — cada cliente recibe una invitación a reseñar tras su servicio",
-            "Alerta de reseña negativa — notificación inmediata si se deja una mala reseña en cualquier plataforma",
-            { section: "── REPORTES & SOPORTE ──" },
-            "Reporte mensual de rendimiento — prospectos, reservaciones, conversiones y actividad de automatizaciones",
-            "Llamadas estratégicas quincenales",
+            { section: "── TU PRIMER BUILD A LA MEDIDA ──" },
+            "1 build a la medida de tu elección — definido en tu llamada estratégica. Ejemplos: sitio web completo multi-página, chatbot IA entrenado en tu negocio, automatización de WhatsApp Business, integración custom entre tus herramientas, plataforma de cursos / miembros, herramienta admin interna",
+            "Diseño + construcción + pruebas + documentación + capacitación al equipo — típicamente en vivo en 14–30 días",
+            "Hosting y mantenimiento de todo lo que construimos — incluido",
+            { section: "── CAPACIDAD MENSUAL ──" },
+            "4 horas de capacidad dedicada de dev / optimización al mes — úsalas para ajustes, adiciones o nuevos builds chicos. Las horas no se acumulan",
+            "Llamadas estratégicas quincenales con tu contacto de éxito",
             "Soporte prioritario — respuesta en 24h",
+            { section: "── REPORTES ──" },
+            "Reporte mensual de rendimiento — prospectos, reservaciones, conversiones, actividad de automatizaciones",
           ] as Array<string | { section: string }>,
         },
         {
@@ -1127,7 +1109,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
                   // Annual → always book a call (except Constelación stays same)
                   const href    = !isConstelación && billing === "annual" ? BOOKING_URL : plan.ctaHref;
                   const ctaText = isConstelación
-                    ? t.ctaConstelación
+                    ? t.ctaEnterprise
                     : billing === "annual"
                     ? t.ctaAnnualBook
                     : t.monthlyCTA[plan.tier] ?? t.ctaFallback;
@@ -1453,7 +1435,7 @@ export default function Pricing({ lang = "en" }: { lang?: Lang }) {
                 marginBottom: 28,
               }}
             >
-              {/* Card 1 — AI Órbita Strategy Session */}
+              {/* Card 1 — AI Strategy Session */}
               <div
                 style={{
                   background: "var(--navy)",
